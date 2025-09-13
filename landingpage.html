@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sydney Digital Marketing That Actually Works - The Profit Platform</title>
+    <meta name="description" content="Tired of agencies that disappear after setup? We personally manage your campaigns daily. Sarah's Bakery: 31 → 127 weekly orders in 6 weeks.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --gray-50: #fafafa;
+            --gray-100: #f4f4f4;
+            --gray-200: #e5e5e5;
+            --gray-300: #d4d4d4;
+            --gray-400: #a3a3a3;
+            --gray-500: #737373;
+            --gray-600: #525252;
+            --gray-700: #404040;
+            --gray-800: #262626;
+            --gray-900: #171717;
+            --accent: #FF3B30; /* Red for urgency */
+            --success: #34C759;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--black);
+            line-height: 1.6;
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Urgency Banner */
+        .urgency-banner {
+            background: var(--black);
+            color: var(--white);
+            padding: 12px 0;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            font-size: 14px;
+        }
+
+        .urgency-banner span {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            padding: 20px 0;
+            position: fixed;
+            top: 48px; /* After urgency banner */
+            left: 0;
+            right: 0;
+            z-index: 999;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--black);
+        }
+
+        .nav-cta {
+            background: var(--accent);
+            color: var(--white);
+            padding: 12px 24px;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: transform 0.2s;
+        }
+
+        .nav-cta:hover {
+            transform: scale(1.05);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 80px; /* Account for fixed header */
+            background: var(--white);
+        }
+
+        .problem-headline {
+            font-size: 48px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            max-width: 800px;
+        }
+
+        .problem-highlight {
+            background: linear-gradient(180deg, transparent 60%, #FFE500 60%);
+            padding: 0 4px;
+        }
+
+        .solution-box {
+            background: var(--gray-50);
+            border-left: 4px solid var(--black);
+            padding: 30px;
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .solution-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            color: var(--gray-600);
+        }
+
+        .solution-text {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+
+        .dashboard-preview {
+            width: 100%;
+            max-width: 600px;
+            border: 2px solid var(--black);
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 8px 8px 0 var(--black);
+        }
+
+        /* Proof Section */
+        .proof-strip {
+            background: var(--black);
+            color: var(--white);
+            padding: 30px 0;
+            margin: 40px 0;
+        }
+
+        .proof-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .proof-logo {
+            font-weight: 700;
+            font-size: 18px;
+            opacity: 0.7;
+        }
+
+        .proof-metric {
+            display: flex;
+            align-items: baseline;
+            gap: 15px;
+            font-size: 32px;
+            font-weight: 900;
+        }
+
+        .metric-before {
+            opacity: 0.5;
+            text-decoration: line-through;
+        }
+
+        .metric-arrow {
+            color: var(--success);
+        }
+
+        .proof-label {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        /* Single CTA Section */
+        .cta-section {
+            padding: 60px 0;
+            text-align: center;
+            background: var(--gray-50);
+        }
+
+        .cta-lock {
+            display: inline-block;
+            background: var(--white);
+            border: 2px solid var(--black);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 12px 12px 0 var(--black);
+        }
+
+        .spots-remaining {
+            background: var(--accent);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .cta-headline {
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .cta-subtext {
+            font-size: 18px;
+            color: var(--gray-600);
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            background: var(--black);
+            color: var(--white);
+            padding: 20px 40px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 4px;
+            transition: transform 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .guarantee {
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--gray-600);
+        }
+
+        /* Framework Section */
+        .framework {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .framework-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .framework-title {
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .framework-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--black);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 900;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+        }
+
+        .step-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .step-description {
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        .step-result {
+            background: var(--success);
+            color: var(--white);
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        /* Case Study Section */
+        .case-study {
+            padding: 80px 0;
+            background: var(--gray-50);
+        }
+
+        .case-study-card {
+            background: var(--white);
+            border: 2px solid var(--black);
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 12px 12px 0 var(--black);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .case-badge {
+            background: var(--success);
+            color: var(--white);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .case-headline {
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .case-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+            padding: 30px 0;
+            border-top: 1px solid var(--gray-200);
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 42px;
+            font-weight: 900;
+            color: var(--black);
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: var(--gray-600);
+            margin-top: 5px;
+        }
+
+        .case-quote {
+            font-size: 20px;
+            font-style: italic;
+            line-height: 1.5;
+            color: var(--gray-700);
+            padding-left: 30px;
+            border-left: 4px solid var(--black);
+        }
+
+        .case-author {
+            margin-top: 20px;
+            font-weight: 700;
+        }
+
+        /* Disqualifiers Section */
+        .disqualifiers {
+            padding: 80px 0;
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .disqualifiers-title {
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .disqualifier-list {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .disqualifier-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .disqualifier-icon {
+            color: var(--accent);
+            font-size: 20px;
+            margin-top: 3px;
+        }
+
+        /* Qualifiers Section */
+        .qualifiers {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .qualifiers-title {
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .qualifier-list {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .qualifier-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .qualifier-icon {
+            color: var(--success);
+            font-size: 20px;
+            margin-top: 3px;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: 100px 0;
+            background: var(--gray-50);
+            text-align: center;
+        }
+
+        .final-headline {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 30px;
+            line-height: 1.1;
+        }
+
+        .countdown-timer {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 30px 0;
+        }
+
+        .final-button {
+            background: var(--accent);
+            color: var(--white);
+            padding: 24px 48px;
+            font-size: 20px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 4px;
+            transition: transform 0.2s;
+            box-shadow: 0 10px 30px rgba(255, 59, 48, 0.3);
+        }
+
+        .final-button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-text {
+            opacity: 0.7;
+            margin-bottom: 10px;
+        }
+
+        .footer-phone {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .problem-headline {
+                font-size: 32px;
+            }
+
+            .proof-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .framework-steps {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .case-metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .final-headline {
+                font-size: 32px;
+            }
+        }
+
+        /* Floating WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            z-index: 1000;
+            text-decoration: none;
+            animation: whatsapp-bounce 2s infinite;
+        }
+
+        @keyframes whatsapp-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Urgency Banner -->
+    <div class="urgency-banner">
+        ⚡ <span>Only 2 spots left for February</span> - Next price increase in 7 days
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">THE PROFIT PLATFORM</div>
+            <a href="#qualify" class="nav-cta">See If You Qualify</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="problem-headline">
+                Tired of agencies that <span class="problem-highlight">disappear after setup?</span>
+            </h1>
+
+            <div class="solution-box">
+                <div class="solution-label">The Difference</div>
+                <div class="solution-text">
+                    We personally manage your campaigns every single day.<br>
+                    You get my mobile number. I answer.
+                </div>
+                <img src="https://via.placeholder.com/600x400/000000/FFFFFF?text=Live+Dashboard+Screenshot" alt="Live campaign dashboard showing daily optimization" class="dashboard-preview">
+            </div>
+
+            <!-- Proof Strip -->
+            <div class="proof-strip">
+                <div class="container">
+                    <div class="proof-content">
+                        <div class="proof-logo">Sarah's Bakery Café</div>
+                        <div>
+                            <div class="proof-metric">
+                                <span class="metric-before">31</span>
+                                <span class="metric-arrow">→</span>
+                                <span class="metric-after">127</span>
+                            </div>
+                            <div class="proof-label">weekly orders in 6 weeks</div>
+                        </div>
+                        <div>
+                            <div class="proof-metric">
+                                <span class="metric-before">$1,200</span>
+                                <span class="metric-arrow">→</span>
+                                <span class="metric-after">$4,970</span>
+                            </div>
+                            <div class="proof-label">weekly revenue</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Single CTA -->
+    <section class="cta-section" id="qualify">
+        <div class="container">
+            <div class="cta-lock">
+                <div class="spots-remaining">⚡ 2 SPOTS LEFT FOR FEBRUARY</div>
+                <h2 class="cta-headline">Lock in 2024 pricing before it expires</h2>
+                <p class="cta-subtext">15-minute call to see if we're a fit</p>
+                <a href="tel:0487286451" class="cta-button">Call Now: 0487 286 451</a>
+                <div class="guarantee">No contracts. Cancel anytime. 30-day money back.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Framework Section -->
+    <section class="framework">
+        <div class="container">
+            <div class="framework-header">
+                <h2 class="framework-title">The Profit Platform 3-Layer System™</h2>
+                <p>How we guarantee results while others make excuses</p>
+            </div>
+
+            <div class="framework-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Foundation Layer</h3>
+                    <p class="step-description">Fix your Google presence, website speed, and tracking in week 1. Most agencies skip this.</p>
+                    <span class="step-result">+40% visibility</span>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Acceleration Layer</h3>
+                    <p class="step-description">Launch hyper-targeted ads while building organic rankings. Double-barrel approach.</p>
+                    <span class="step-result">Leads in 48 hours</span>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Domination Layer</h3>
+                    <p class="step-description">Scale what works, cut what doesn't. Daily optimization based on real data.</p>
+                    <span class="step-result">3-5x ROAS</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Study -->
+    <section class="case-study">
+        <div class="container">
+            <div class="case-study-card">
+                <span class="case-badge">VERIFIED RESULT</span>
+                <h2 class="case-headline">
+                    How a Marrickville plumber went from 2 calls a week to 47 calls in 30 days
+                </h2>
+
+                <div class="case-metrics">
+                    <div class="metric">
+                        <div class="metric-value">$890</div>
+                        <div class="metric-label">Ad spend</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">47</div>
+                        <div class="metric-label">Phone calls</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">$18.90</div>
+                        <div class="metric-label">Cost per lead</div>
+                    </div>
+                </div>
+
+                <blockquote class="case-quote">
+                    "I had to hire another plumber. Avi doesn't just set and forget - he texts me screenshots of what's working and actually answers his phone when I call."
+                </blockquote>
+                <div class="case-author">- Michael Chen, Rapid Plumbing Solutions</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Disqualifiers -->
+    <section class="disqualifiers">
+        <div class="container">
+            <h2 class="disqualifiers-title">We're NOT for you if:</h2>
+            <div class="disqualifier-list">
+                <div class="disqualifier-item">
+                    <span class="disqualifier-icon">✕</span>
+                    <span>You want the cheapest option (we're premium for a reason)</span>
+                </div>
+                <div class="disqualifier-item">
+                    <span class="disqualifier-icon">✕</span>
+                    <span>You can't handle 20+ new leads per month</span>
+                </div>
+                <div class="disqualifier-item">
+                    <span class="disqualifier-icon">✕</span>
+                    <span>You need results tomorrow (real growth takes 30-60 days)</span>
+                </div>
+                <div class="disqualifier-item">
+                    <span class="disqualifier-icon">✕</span>
+                    <span>You don't answer your phone or reply to customers quickly</span>
+                </div>
+                <div class="disqualifier-item">
+                    <span class="disqualifier-icon">✕</span>
+                    <span>Your service isn't actually good (marketing amplifies reality)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Qualifiers -->
+    <section class="qualifiers">
+        <div class="container">
+            <h2 class="qualifiers-title">We're PERFECT for you if:</h2>
+            <div class="qualifier-list">
+                <div class="qualifier-item">
+                    <span class="qualifier-icon">✓</span>
+                    <span>You're a service business in Sydney ready to scale</span>
+                </div>
+                <div class="qualifier-item">
+                    <span class="qualifier-icon">✓</span>
+                    <span>You deliver excellent service and want more customers who value quality</span>
+                </div>
+                <div class="qualifier-item">
+                    <span class="qualifier-icon">✓</span>
+                    <span>You're tired of excuses and want someone who takes ownership</span>
+                </div>
+                <div class="qualifier-item">
+                    <span class="qualifier-icon">✓</span>
+                    <span>You can invest $2-5k/month for predictable growth</span>
+                </div>
+                <div class="qualifier-item">
+                    <span class="qualifier-icon">✓</span>
+                    <span>You want a partner, not another vendor</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2 class="final-headline">
+                Every day you wait, your competitors<br>
+                get your customers
+            </h2>
+            <div class="countdown-timer" id="countdown">
+                Price increases in: 6d 23h 45m 12s
+            </div>
+            <a href="tel:0487286451" class="final-button">
+                Claim Your Spot Now →
+            </a>
+            <p style="margin-top: 30px; color: var(--gray-600);">
+                2 spots remaining for February. Next availability: April.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-text">Questions? Call right now:</p>
+            <a href="tel:0487286451" class="footer-phone">0487 286 451</a>
+            <p style="margin-top: 20px; opacity: 0.5;">The Profit Platform Pty Ltd | Sydney, Australia</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/61487286451?text=Hi%20Avi,%20I%20saw%20your%20website%20and%20want%20to%20grow%20my%20business" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const endDate = new Date();
+            endDate.setDate(endDate.getDate() + 7);
+
+            const timer = setInterval(() => {
+                const now = new Date().getTime();
+                const distance = endDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('countdown').innerHTML =
+                    `Price increases in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+                if (distance < 0) {
+                    clearInterval(timer);
+                    document.getElementById('countdown').innerHTML = "EXPIRED";
+                }
+            }, 1000);
+        }
+
+        updateCountdown();
+
+        // Exit Intent Popup
+        let exitIntentShown = false;
+        document.addEventListener('mouseleave', (e) => {
+            if (e.clientY < 10 && !exitIntentShown) {
+                exitIntentShown = true;
+                if (confirm('Wait! Get a free competitor analysis before you go. Want to see what your competitors are doing?')) {
+                    window.location.href = 'tel:0487286451';
+                }
+            }
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Track Scroll Depth
+        let maxScroll = 0;
+        window.addEventListener('scroll', () => {
+            const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            if (scrollPercentage > maxScroll) {
+                maxScroll = scrollPercentage;
+                if (maxScroll > 50 && !document.querySelector('.scroll-cta')) {
+                    // Show floating CTA after 50% scroll
+                    const floatCTA = document.createElement('div');
+                    floatCTA.className = 'scroll-cta';
+                    floatCTA.innerHTML = '<a href="tel:0487286451" style="position: fixed; bottom: 100px; left: 30px; background: var(--accent); color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 5px 20px rgba(0,0,0,0.3); z-index: 999;">📞 Call Now</a>';
+                    document.body.appendChild(floatCTA);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
