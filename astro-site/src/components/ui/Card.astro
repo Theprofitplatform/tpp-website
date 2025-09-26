@@ -1,0 +1,58 @@
+---
+export interface Props {
+  variant?: 'default' | 'elevated' | 'glass' | 'bordered' | 'service' | 'feature';
+  padding?: 'sm' | 'md' | 'lg' | 'xl';
+  class?: string;
+  href?: string;
+  target?: string;
+  rel?: string;
+  ariaLabel?: string;
+}
+
+const {
+  variant = 'default',
+  padding = 'md',
+  class: additionalClass = '',
+  href,
+  target,
+  rel,
+  ariaLabel
+} = Astro.props;
+
+const baseClasses = 'card block transition-all duration-200';
+
+const variantClasses = {
+  default: 'bg-white rounded-lg shadow-sm border border-gray-200',
+  elevated: 'bg-white rounded-lg shadow-md hover:shadow-lg border border-gray-200',
+  glass: 'bg-white/10 backdrop-blur-sm rounded-lg border border-white/20',
+  bordered: 'bg-white rounded-lg border-2 border-gray-300',
+  service: 'service-card bg-white rounded-lg shadow-md hover:shadow-lg border border-gray-200 hover:border-blue-300 transform hover:scale-105',
+  feature: 'feature-card bg-gradient-to-br from-white to-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md'
+};
+
+const paddingClasses = {
+  sm: 'p-4',
+  md: 'p-6',
+  lg: 'p-8',
+  xl: 'p-10'
+};
+
+const className = [
+  baseClasses,
+  variantClasses[variant],
+  paddingClasses[padding],
+  additionalClass
+].join(' ');
+
+const Element = href ? 'a' : 'div';
+---
+
+<Element
+  class={className}
+  href={href}
+  target={target}
+  rel={rel}
+  aria-label={ariaLabel}
+>
+  <slot />
+</Element>

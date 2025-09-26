@@ -1,0 +1,98 @@
+#!/bin/bash
+
+# Script to make the HDF5 libraries.
+# Exit Codes found in /usr/include/sysexits.h
+
+#set -x
+
+
+# Function to configure, make and then install the Package - contains Package Specific build configuration
+
+func_configure_make_install () {
+
+    cd ${WORK_DIR}
+
+    if [ ! -e ALREADY_BUILT ]
+    then
+	[ -n "${CMAKE_BINARY}" ] || CMAKE_BINARY=cmake
+	if [ "${BUILD_SHARED_LIBS}" -eq 1 ]
+	then
+	    SHARED=ON
+	    STATIC=ON
+	elif [ "${BUILD_SHARED_ONLY}" -eq 1 ]
+	then
+	    SHARED=ON
+	    STATIC=OFF
+	else
+	    SHARED=OFF
+	    STATIC=ON
+	fi
+        CMAKE_BUILD_TYPE=None
+        [ "${BUILD_TYPE}" == "debug" ] && CMAKE_BUILD_TYPE=RelWithDebInfo
+        [ "${BUILD_TYPE}" == "production" ] && CMAKE_BUILD_TYPE=Release
+
+	[ -n "${DIST_BUILD}" ] && ENABLE_RPATH=ON || ENABLE_RPATH=OFF
+	${CMAKE_BINARY} -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
+                        -DCMAKE_INSTALL_PREFIX=${OUTPUT_DIR} \
+			-DBUILD_SHARED_LIBS=$SHARED \
+			-DBUILD_STATIC_LIBS=$STATIC \
+			-DUSE_RPATH=${ENABLE_RPATH} \
+                        -Wno-dev \
+                        -DHDF5_INSTALL_CMAKE_DIR=lib/cmake/hdf5 \
+                        -DHDF5_BUILD_HL_LIB=ON \
+                        -DHDF5_BUILD_FORTRAN=ON \
+			-DHDF5_BUILD_GENERATORS=OFF \
+			-DHDF5_ENABLE_SZIP_SUPPORT=OFF \
+			..
+
+	${CMAKE_BINARY} --build .
+	${CMAKE_BINARY} --install .
+        export RETVAL=$?
+    fi
+
+    if [ ! -L ${OUTPUT_DIR}/modules/hdf5.mod ] ; then cd ${OUTPUT_DIR}/modules/ ; ln -s ../include/h5*.mod . ; ln -s ../include/hdf5.mod . ; fi
+
+}
+
+
+# Function that contains Package Specific files and directories to be removed
+
+func_remove_package () {
+
+    rm -f ${OUTPUT_DIR}/bin/h5*
+    rm -f ${OUTPUT_DIR}/bin/gif2h5
+    rm -f ${OUTPUT_DIR}/lib/libhdf5*
+    rm -f ${OUTPUT_DIR}/lib/libdynlib*
+    rm -f ${OUTPUT_DIR}/modules/h5*.mod
+    rm -f ${OUTPUT_DIR}/modules/hdf5.mod
+    rm -f ${OUTPUT_DIR}/include/H5[Aa]*.h
+    rm -f ${OUTPUT_DIR}/include/H5[Cc]*.h
+    rm -f ${OUTPUT_DIR}/include/H5D*.h
+    rm -f ${OUTPUT_DIR}/include/H5E*.h
+    rm -f ${OUTPUT_DIR}/include/H5f*.h
+    rm -f ${OUTPUT_DIR}/include/H5FD*.h
+    rm -f ${OUTPUT_DIR}/include/H5Fa*.h
+    rm -f ${OUTPUT_DIR}/include/H5Fc*.h
+    rm -f ${OUTPUT_DIR}/include/H5Fi*.h
+    rm -f ${OUTPUT_DIR}/include/H5Fl*.h
+    rm -f ${OUTPUT_DIR}/include/H5Fp*.h
+    rm -f ${OUTPUT_DIR}/include/H5G*.h
+    rm -f ${OUTPUT_DIR}/include/H5I*.h
+    rm -f ${OUTPUT_DIR}/include/H5L*.h
+    rm -f ${OUTPUT_DIR}/include/H5M*.h
+    rm -f ${OUTPUT_DIR}/include/H5[Oo]*.h
+    rm -f ${OUTPUT_DIR}/include/H5[Pp]*.h
+    rm -f ${OUTPUT_DIR}/include/H5R*.h
+    rm -f ${OUTPUT_DIR}/include/H5S*.h
+    rm -f ${OUTPUT_DIR}/include/H5T*.h
+    rm -f ${OUTPUT_DIR}/include/H5[Vv]*.h
+    rm -f ${OUTPUT_DIR}/include/H5Z*.h
+    rm -f ${OUTPUT_DIR}/include/h5*.mod
+    rm -rf ${OUTPUT_DIR}/include/hdf5*.*
+    rm -f ${OUTPUT_DIR}/include/tst*.mod
+    rm -rf ${OUTPUT_DIR}/share/hdf5_examples
+    rm -rf ${BUILD_TYPE}
+
+}
+
+

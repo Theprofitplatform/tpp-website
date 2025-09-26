@@ -1,0 +1,147 @@
+{
+  "desktop": {
+    "links": [
+      {
+        "text": "Home",
+        "href": "index.html",
+        "type": "main"
+      },
+      {
+        "text": "Services",
+        "href": "services.html",
+        "type": "main"
+      },
+      {
+        "text": "Pricing",
+        "href": "pricing.html",
+        "type": "main"
+      },
+      {
+        "text": "About",
+        "href": "about.html",
+        "type": "main"
+      },
+      {
+        "text": "Blog",
+        "href": "blog/index.html",
+        "type": "main"
+      },
+      {
+        "text": "Contact",
+        "href": "contact.html",
+        "type": "main"
+      },
+      {
+        "text": "SEO Services",
+        "href": "seo.html",
+        "type": "dropdown"
+      },
+      {
+        "text": "Website Design",
+        "href": "web-design.html",
+        "type": "dropdown"
+      },
+      {
+        "text": "Google Ads",
+        "href": "google-ads.html",
+        "type": "dropdown"
+      }
+    ],
+    "brokenLinks": [
+      {
+        "text": "Pricing",
+        "href": "pricing.html",
+        "type": "main"
+      },
+      {
+        "text": "Blog",
+        "href": "blog/index.html",
+        "type": "main"
+      }
+    ]
+  },
+  "mobile": {
+    "links": [
+      {
+        "text": "Home",
+        "href": "index.html",
+        "isSubItem": false
+      },
+      {
+        "text": "Services",
+        "href": "services.html",
+        "isSubItem": false
+      },
+      {
+        "text": "SEO & Local Search",
+        "href": "seo.html",
+        "isSubItem": true
+      },
+      {
+        "text": "Web Design",
+        "href": "web-design.html",
+        "isSubItem": true
+      },
+      {
+        "text": "Google & Meta Ads",
+        "href": "google-ads.html",
+        "isSubItem": true
+      },
+      {
+        "text": "Pricing",
+        "href": "pricing.html",
+        "isSubItem": false
+      },
+      {
+        "text": "About Us",
+        "href": "about.html",
+        "isSubItem": false
+      },
+      {
+        "text": "Portfolio",
+        "href": "portfolio.html",
+        "isSubItem": false
+      },
+      {
+        "text": "Blog",
+        "href": "blog/index.html",
+        "isSubItem": false
+      },
+      {
+        "text": "Contact",
+        "href": "contact.html",
+        "isSubItem": false
+      }
+    ],
+    "brokenLinks": [
+      {
+        "text": "Pricing",
+        "href": "pricing.html",
+        "isSubItem": false
+      },
+      {
+        "text": "Blog",
+        "href": "blog/index.html",
+        "isSubItem": false
+      }
+    ]
+  },
+  "issues": [
+    "Links only in desktop: About",
+    "Links only in mobile: About Us, Portfolio"
+  ],
+  "allFiles": [
+    "about.html",
+    "contact.html",
+    "google-ads.html",
+    "index.html",
+    "landing page 2.html",
+    "landingpage.html",
+    "portfolio.html",
+    "privacy.html",
+    "seo.html",
+    "services.html",
+    "web-design.html",
+    "blog/blog.html"
+  ]
+}

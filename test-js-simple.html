@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Functionality Test</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #00ff00;
+        }
+        .test-result {
+            margin: 10px 0;
+            padding: 10px;
+            border-left: 4px solid;
+        }
+        .pass { border-color: #00ff00; color: #00ff00; }
+        .fail { border-color: #ff0000; color: #ff0000; }
+        .warn { border-color: #ffaa00; color: #ffaa00; }
+        h2 { color: #00aaff; }
+        .summary {
+            margin-top: 30px;
+            padding: 20px;
+            border: 2px solid #00aaff;
+            background: rgba(0,170,255,0.1);
+        }
+        button {
+            background: #00aaff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0088cc;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔧 JavaScript Functionality Test Suite</h1>
+
+    <button onclick="runAllTests()">Run All Tests</button>
+    <button onclick="clearResults()">Clear Results</button>
+
+    <div id="test-results"></div>
+
+    <div class="summary" id="summary" style="display:none;">
+        <h2>Test Summary</h2>
+        <div id="summary-content"></div>
+    </div>
+
+    <!-- Load the actual JavaScript files -->
+    <script src="website/js/combined.min.js" defer></script>
+    <script src="website/js/consolidated.min.js" async></script>
+
+    <script>
+        const results = {
+            passed: [],
+            failed: [],
+            warnings: []
+        };
+
+        function addResult(type, message) {
+            const container = document.getElementById('test-results');
+            const result = document.createElement('div');
+            result.className = `test-result ${type}`;
+
+            const icon = type === 'pass' ? '✅' : (type === 'fail' ? '❌' : '⚠️');
+            result.innerHTML = `${icon} ${message}`;
+            container.appendChild(result);
+
+            if (type === 'pass') results.passed.push(message);
+            else if (type === 'fail') results.failed.push(message);
+            else results.warnings.push(message);
+        }
+
+        function clearResults() {
+            document.getElementById('test-results').innerHTML = '';
+            document.getElementById('summary').style.display = 'none';
+            results.passed = [];
+            results.failed = [];
+            results.warnings = [];
+        }
+
+        async function runAllTests() {
+            clearResults();
+
+            addResult('warn', 'Starting JavaScript functionality tests...');
+
+            // Wait for scripts to load
+            await new Promise(resolve => setTimeout(resolve, 2000));
+
+            // Test 1: Check if combined.min.js loaded
+            if (window.TPP && window.TPP.app) {
+                addResult('pass', 'Combined.min.js loaded successfully');
+
+                // Test modules
+                const modules = ['navigation', 'smoothScroll', 'forms', 'accessibility'];
+                modules.forEach(module => {
+                    if (window.TPP.modules && window.TPP.modules[module]) {
+                        addResult('pass', `Module '${module}' is available`);
+                    } else {
+                        addResult('fail', `Module '${module}' is missing`);
+                    }
+                });
+            } else {
+                addResult('fail', 'Combined.min.js failed to load - TPP object not found');
+            }
+
+            // Test 2: Service Worker API
+            if ('serviceWorker' in navigator) {
+                addResult('pass', 'Service Worker API is available');
+
+                // Check registrations
+                const registrations = await navigator.serviceWorker.getRegistrations();
+                if (registrations.length > 0) {
+                    addResult('pass', `Service Worker registered: ${registrations.length} registration(s) found`);
+                } else {
+                    addResult('warn', 'No Service Worker registrations found');
+                }
+            } else {
+                addResult('warn', 'Service Worker API not available (may be file:// protocol)');
+            }
+
+            // Test 3: Error handling
+            window.addEventListener('error', function testHandler(e) {
+                if (e.message && e.message.includes('TEST_ERROR')) {
+                    addResult('pass', 'Global error handler is working');
+                    window.removeEventListener('error', testHandler);
+                }
+            });
+
+            // Trigger test error
+            setTimeout(() => {
+                try {
+                    throw new Error('TEST_ERROR: This is a test error');
+                } catch (e) {
+                    window.dispatchEvent(new ErrorEvent('error', { error: e, message: e.message }));
+                }
+            }, 100);
+
+            // Test 4: DOM readiness
+            if (document.readyState === 'complete' || document.readyState === 'interactive') {
+                addResult('pass', `DOM is ready (state: ${document.readyState})`);
+            } else {
+                addResult('warn', `DOM state: ${document.readyState}`);
+            }
+
+            // Test 5: Check if page has JS-enabled class
+            if (document.body.classList.contains('js-enabled')) {
+                addResult('pass', 'JavaScript detection class added to body');
+            } else {
+                addResult('warn', 'JavaScript detection class not found on body');
+            }
+
+            // Test 6: Check console for errors
+            const originalError = console.error;
+            let consoleErrors = 0;
+            console.error = function(...args) {
+                consoleErrors++;
+                originalError.apply(console, args);
+            };
+
+            setTimeout(() => {
+                console.error = originalError;
+                if (consoleErrors === 0) {
+                    addResult('pass', 'No console errors detected');
+                } else {
+                    addResult('warn', `${consoleErrors} console error(s) detected`);
+                }
+
+                // Show summary
+                showSummary();
+            }, 3000);
+
+            // Test 7: Check fallback functionality
+            setTimeout(() => {
+                const testTPP = window.TPP;
+                window.TPP = null;
+
+                // Simulate DOMContentLoaded
+                document.dispatchEvent(new Event('DOMContentLoaded'));
+
+                setTimeout(() => {
+                    // Check if fallback was activated
+                    const navToggle = document.querySelector('.nav-toggle');
+                    if (navToggle && navToggle.onclick) {
+                        addResult('pass', 'JavaScript fallback mechanism is ready');
+                    } else {
+                        addResult('warn', 'JavaScript fallback not detected');
+                    }
+
+                    // Restore TPP
+                    window.TPP = testTPP;
+                }, 2500);
+            }, 500);
+
+            // Test 8: Performance check
+            if (window.performance && window.performance.timing) {
+                const loadTime = window.performance.timing.loadEventEnd - window.performance.timing.navigationStart;
+                if (loadTime > 0 && loadTime < 3000) {
+                    addResult('pass', `Page load time: ${loadTime}ms (under 3s)`);
+                } else if (loadTime > 0) {
+                    addResult('warn', `Page load time: ${loadTime}ms (over 3s)`);
+                }
+            }
+        }
+
+        function showSummary() {
+            const summary = document.getElementById('summary');
+            const content = document.getElementById('summary-content');
+
+            content.innerHTML = `
+                <p>✅ <strong>Passed:</strong> ${results.passed.length} tests</p>
+                <p>❌ <strong>Failed:</strong> ${results.failed.length} tests</p>
+                <p>⚠️ <strong>Warnings:</strong> ${results.warnings.length} issues</p>
+                <hr>
+                <p><strong>Overall Status:</strong> ${
+                    results.failed.length === 0
+                        ? '🎉 All critical tests passed!'
+                        : '⚠️ Some tests failed - review needed'
+                }</p>
+            `;
+
+            summary.style.display = 'block';
+
+            // Log to console
+            console.log('Test Results:', results);
+        }
+
+        // Auto-run tests after page loads
+        window.addEventListener('load', () => {
+            setTimeout(runAllTests, 1000);
+        });
+    </script>
+</body>
+</html>

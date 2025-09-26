@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Navigation Test - All Pages</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #60a5fa;
+            font-size: 2rem;
+        }
+
+        .controls {
+            text-align: center;
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .page-btn {
+            padding: 10px 20px;
+            background: #1e293b;
+            color: #60a5fa;
+            border: 2px solid #60a5fa;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .page-btn:hover {
+            background: #60a5fa;
+            color: #0f172a;
+        }
+
+        .page-btn.active {
+            background: #60a5fa;
+            color: #0f172a;
+        }
+
+        .page-btn.has-issues {
+            border-color: #f59e0b;
+            color: #f59e0b;
+        }
+
+        .page-btn.pass {
+            border-color: #10b981;
+            color: #10b981;
+        }
+
+        .viewport-controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .viewport-btn {
+            padding: 8px 16px;
+            background: #334155;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .viewport-btn:hover {
+            background: #475569;
+        }
+
+        .viewport-btn.active {
+            background: #60a5fa;
+            color: #0f172a;
+        }
+
+        .preview-container {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            margin: 0 auto;
+            transition: all 0.3s;
+        }
+
+        .preview-header {
+            background: #1e293b;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .page-title {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .status {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #10b981;
+        }
+
+        .status-dot.warning {
+            background: #f59e0b;
+        }
+
+        .status-dot.error {
+            background: #ef4444;
+        }
+
+        iframe {
+            width: 100%;
+            height: 700px;
+            border: none;
+            display: block;
+        }
+
+        .info-panel {
+            background: #1e293b;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .info-title {
+            color: #60a5fa;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .info-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #334155;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .pass { color: #10b981; }
+        .fail { color: #ef4444; }
+        .warning { color: #f59e0b; }
+
+        /* Responsive widths for viewport testing */
+        .viewport-mobile { width: 375px; }
+        .viewport-tablet { width: 768px; }
+        .viewport-desktop { width: 100%; max-width: 1920px; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Visual Navigation Test - All Pages</h1>
+
+    <div class="controls">
+        <button class="page-btn" onclick="loadPage('index.html')">Home</button>
+        <button class="page-btn" onclick="loadPage('about.html')">About</button>
+        <button class="page-btn" onclick="loadPage('services.html')">Services</button>
+        <button class="page-btn" onclick="loadPage('seo.html')">SEO</button>
+        <button class="page-btn" onclick="loadPage('web-design.html')">Web Design</button>
+        <button class="page-btn" onclick="loadPage('google-ads.html')">Google Ads</button>
+        <button class="page-btn" onclick="loadPage('pricing.html')">Pricing</button>
+        <button class="page-btn" onclick="loadPage('portfolio.html')">Portfolio</button>
+        <button class="page-btn" onclick="loadPage('contact.html')">Contact</button>
+        <button class="page-btn" onclick="loadPage('privacy.html')">Privacy</button>
+        <button class="page-btn" onclick="loadPage('terms.html')">Terms</button>
+        <button class="page-btn" onclick="loadPage('disclaimer.html')">Disclaimer</button>
+    </div>
+
+    <div class="viewport-controls">
+        <button class="viewport-btn" onclick="setViewport('mobile')">📱 Mobile (375px)</button>
+        <button class="viewport-btn" onclick="setViewport('tablet')">📱 Tablet (768px)</button>
+        <button class="viewport-btn active" onclick="setViewport('desktop')">💻 Desktop (Full)</button>
+    </div>
+
+    <div class="preview-container" id="previewContainer">
+        <div class="preview-header">
+            <div class="page-title" id="pageTitle">Select a page to test</div>
+            <div class="status">
+                <span id="statusText">Ready</span>
+                <div class="status-dot" id="statusDot"></div>
+            </div>
+        </div>
+        <iframe id="preview" src=""></iframe>
+    </div>
+
+    <div class="info-panel">
+        <div class="info-title">Navigation Test Results</div>
+        <div id="testResults">
+            <div class="info-item">
+                <span>Select a page above to begin testing</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentPage = '';
+        let currentViewport = 'desktop';
+
+        const pageStatus = {
+            'index.html': 'pass',
+            'about.html': 'warning',
+            'services.html': 'pass',
+            'seo.html': 'pass',
+            'web-design.html': 'warning',
+            'google-ads.html': 'pass',
+            'pricing.html': 'pass',
+            'portfolio.html': 'pass',
+            'contact.html': 'pass',
+            'privacy.html': 'pass',
+            'terms.html': 'pass',
+            'disclaimer.html': 'pass'
+        };
+
+        function loadPage(page) {
+            currentPage = page;
+            const iframe = document.getElementById('preview');
+            const pageTitle = document.getElementById('pageTitle');
+            const statusText = document.getElementById('statusText');
+            const statusDot = document.getElementById('statusDot');
+
+            // Update UI
+            iframe.src = '../' + page;
+            pageTitle.textContent = page;
+
+            // Update button states
+            document.querySelectorAll('.page-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.toLowerCase().includes(page.split('.')[0].replace('-', ' '))) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Update status
+            const status = pageStatus[page];
+            statusDot.className = 'status-dot';
+            if (status === 'warning') {
+                statusDot.classList.add('warning');
+                statusText.textContent = 'Has Issues';
+            } else if (status === 'error') {
+                statusDot.classList.add('error');
+                statusText.textContent = 'Errors';
+            } else {
+                statusText.textContent = 'All Tests Pass';
+            }
+
+            // Run tests after page loads
+            iframe.onload = function() {
+                runTests();
+            };
+        }
+
+        function setViewport(viewport) {
+            currentViewport = viewport;
+            const container = document.getElementById('previewContainer');
+
+            // Update button states
+            document.querySelectorAll('.viewport-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Apply viewport class
+            container.className = 'preview-container';
+            if (viewport === 'mobile') {
+                container.classList.add('viewport-mobile');
+            } else if (viewport === 'tablet') {
+                container.classList.add('viewport-tablet');
+            } else {
+                container.classList.add('viewport-desktop');
+            }
+
+            // Re-run tests for new viewport
+            if (currentPage) {
+                runTests();
+            }
+        }
+
+        function runTests() {
+            const iframe = document.getElementById('preview');
+            const doc = iframe.contentDocument;
+            const results = document.getElementById('testResults');
+
+            if (!doc) {
+                results.innerHTML = '<div class="info-item"><span class="fail">Unable to access page content</span></div>';
+                return;
+            }
+
+            let testResults = [];
+
+            // Test 1: Header exists
+            const header = doc.querySelector('header');
+            testResults.push({
+                test: 'Header Element',
+                result: header ? 'pass' : 'fail',
+                detail: header ? 'Found' : 'Missing'
+            });
+
+            // Test 2: Navigation structure
+            const nav = doc.querySelector('nav, [role="navigation"]');
+            testResults.push({
+                test: 'Navigation Element',
+                result: nav ? 'pass' : 'fail',
+                detail: nav ? 'Found' : 'Missing'
+            });
+
+            // Test 3: services-fix.css
+            const hasFixCSS = Array.from(doc.querySelectorAll('link')).some(link =>
+                link.href.includes('services-fix.css')
+            );
+            testResults.push({
+                test: 'Navigation Fix CSS',
+                result: hasFixCSS ? 'pass' : 'fail',
+                detail: hasFixCSS ? 'Loaded' : 'Not Found'
+            });
+
+            // Test 4: Mobile menu
+            const mobileMenu = doc.querySelector('.menu-toggle, .nav-toggle, #menuToggle');
+            testResults.push({
+                test: 'Mobile Menu Toggle',
+                result: mobileMenu ? 'pass' : 'warning',
+                detail: mobileMenu ? 'Found' : 'Missing'
+            });
+
+            // Test 5: Logo
+            const logo = doc.querySelector('.logo, a[href*="index"]');
+            testResults.push({
+                test: 'Logo/Home Link',
+                result: logo ? 'pass' : 'warning',
+                detail: logo ? 'Found' : 'Missing'
+            });
+
+            // Test 6: Navigation visibility
+            if (header) {
+                const headerStyles = iframe.contentWindow.getComputedStyle(header);
+                const isVisible = headerStyles.display !== 'none' && headerStyles.visibility !== 'hidden';
+                testResults.push({
+                    test: 'Navigation Visibility',
+                    result: isVisible ? 'pass' : 'fail',
+                    detail: isVisible ? 'Visible' : 'Hidden'
+                });
+            }
+
+            // Display results
+            let html = '';
+            testResults.forEach(test => {
+                html += `
+                    <div class="info-item">
+                        <span>${test.test}</span>
+                        <span class="${test.result}">${test.detail}</span>
+                    </div>
+                `;
+            });
+
+            results.innerHTML = html;
+        }
+
+        // Update page button colors based on status
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.page-btn').forEach(btn => {
+                const pageName = btn.textContent.toLowerCase().replace(' ', '-') + '.html';
+                if (pageName === 'home.html') {
+                    const status = pageStatus['index.html'];
+                    btn.classList.add(status === 'warning' ? 'has-issues' : 'pass');
+                } else {
+                    const matchingPage = Object.keys(pageStatus).find(p =>
+                        p.includes(btn.textContent.toLowerCase().replace(' ', '-'))
+                    );
+                    if (matchingPage) {
+                        const status = pageStatus[matchingPage];
+                        btn.classList.add(status === 'warning' ? 'has-issues' : 'pass');
+                    }
+                }
+            });
+
+            // Load services.html by default
+            loadPage('services.html');
+        });
+    </script>
+</body>
+</html>

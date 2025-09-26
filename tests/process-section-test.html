@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process Section Test - Mobile & Desktop</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .test-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .test-header {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .viewport-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .viewport-btn {
+            padding: 10px 20px;
+            background: #4F46E5;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .viewport-btn:hover {
+            background: #4338CA;
+            transform: translateY(-2px);
+        }
+
+        .viewport-btn.active {
+            background: #10B981;
+        }
+
+        .test-info {
+            background: #E0E7FF;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .test-info h3 {
+            color: #4F46E5;
+            margin-bottom: 10px;
+        }
+
+        .iframe-container {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .iframe-wrapper {
+            position: relative;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+        }
+
+        iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+            display: block;
+        }
+
+        .device-frame {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #4F46E5;
+            color: white;
+            padding: 5px 20px;
+            border-radius: 5px 5px 0 0;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .test-results {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .test-item {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid;
+        }
+
+        .test-pass {
+            background: #D1FAE5;
+            border-color: #10B981;
+        }
+
+        .test-fail {
+            background: #FEE2E2;
+            border-color: #EF4444;
+        }
+
+        .test-warning {
+            background: #FEF3C7;
+            border-color: #F59E0B;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .status-pass {
+            background: #10B981;
+        }
+
+        .status-fail {
+            background: #EF4444;
+        }
+
+        .status-warning {
+            background: #F59E0B;
+        }
+
+        .debug-info {
+            background: #F3F4F6;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #4F46E5;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1>🔍 Process Section Responsive Test</h1>
+            <p>Testing the "Our Process" section layout on different screen sizes</p>
+        </div>
+
+        <div class="viewport-controls">
+            <button class="viewport-btn active" onclick="setViewport('desktop')">
+                💻 Desktop (1920px)
+            </button>
+            <button class="viewport-btn" onclick="setViewport('laptop')">
+                💻 Laptop (1366px)
+            </button>
+            <button class="viewport-btn" onclick="setViewport('tablet')">
+                📱 Tablet (768px)
+            </button>
+            <button class="viewport-btn" onclick="setViewport('mobile')">
+                📱 Mobile (375px)
+            </button>
+            <button class="viewport-btn" onclick="setViewport('mobile-small')">
+                📱 Small Mobile (320px)
+            </button>
+            <button class="viewport-btn" onclick="runTests()">
+                🧪 Run All Tests
+            </button>
+        </div>
+
+        <div class="test-info">
+            <h3>Current Viewport: <span id="current-viewport">Desktop (1920px)</span></h3>
+            <p>Scroll down in the iframe to see the Process section, or click "Run All Tests" for automated testing.</p>
+        </div>
+
+        <div class="iframe-container">
+            <div class="iframe-wrapper" id="iframe-wrapper">
+                <iframe id="test-frame" src="../index.html#process"></iframe>
+            </div>
+        </div>
+
+        <div class="test-results">
+            <h2>Test Results</h2>
+            <div id="test-output">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Click "Run All Tests" to begin automated testing...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const viewports = {
+            'desktop': { width: 1920, name: 'Desktop (1920px)' },
+            'laptop': { width: 1366, name: 'Laptop (1366px)' },
+            'tablet': { width: 768, name: 'Tablet (768px)' },
+            'mobile': { width: 375, name: 'Mobile (375px)' },
+            'mobile-small': { width: 320, name: 'Small Mobile (320px)' }
+        };
+
+        function setViewport(size) {
+            const wrapper = document.getElementById('iframe-wrapper');
+            const viewport = viewports[size];
+
+            // Update wrapper width
+            wrapper.style.width = viewport.width + 'px';
+
+            // Update button states
+            document.querySelectorAll('.viewport-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Update current viewport display
+            document.getElementById('current-viewport').textContent = viewport.name;
+
+            // Reload iframe to apply new viewport
+            const iframe = document.getElementById('test-frame');
+            iframe.src = iframe.src;
+        }
+
+        async function runTests() {
+            const output = document.getElementById('test-output');
+            output.innerHTML = '<div class="loading"><div class="spinner"></div><p>Running tests...</p></div>';
+
+            const results = [];
+
+            for (const [key, viewport] of Object.entries(viewports)) {
+                const result = await testViewport(key, viewport);
+                results.push(result);
+            }
+
+            displayResults(results);
+        }
+
+        async function testViewport(size, viewport) {
+            return new Promise((resolve) => {
+                const wrapper = document.getElementById('iframe-wrapper');
+                wrapper.style.width = viewport.width + 'px';
+
+                const iframe = document.getElementById('test-frame');
+                iframe.src = '../index.html#process';
+
+                iframe.onload = function() {
+                    setTimeout(() => {
+                        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                        const processSection = iframeDoc.querySelector('.process.section');
+                        const timeline = iframeDoc.querySelector('.process-timeline');
+                        const steps = iframeDoc.querySelectorAll('.process-step');
+                        const icons = iframeDoc.querySelectorAll('.process-icon');
+                        const contents = iframeDoc.querySelectorAll('.process-content');
+
+                        const tests = {
+                            viewport: viewport.name,
+                            width: viewport.width,
+                            sectionFound: !!processSection,
+                            timelineFound: !!timeline,
+                            stepsCount: steps.length,
+                            iconsCount: icons.length,
+                            contentsCount: contents.length,
+                            layout: 'unknown',
+                            issues: []
+                        };
+
+                        if (timeline) {
+                            const timelineStyles = iframe.contentWindow.getComputedStyle(timeline);
+                            const firstStep = steps[0];
+
+                            if (firstStep) {
+                                const stepStyles = iframe.contentWindow.getComputedStyle(firstStep);
+
+                                // Check if layout is vertical or horizontal
+                                if (timelineStyles.display === 'flex' && timelineStyles.flexDirection === 'row') {
+                                    tests.layout = 'horizontal (incorrect)';
+                                    tests.issues.push('Timeline using horizontal flex layout');
+                                } else if (stepStyles.display === 'flex') {
+                                    tests.layout = 'flex-based';
+                                    tests.issues.push('Steps using flex display');
+                                } else {
+                                    tests.layout = 'vertical (correct)';
+                                }
+
+                                // Check timeline positioning
+                                const timelineBefore = iframe.contentWindow.getComputedStyle(timeline, '::before');
+                                if (timelineBefore && timelineBefore.position === 'absolute') {
+                                    tests.timelineLineVisible = true;
+                                } else {
+                                    tests.issues.push('Timeline line may not be visible');
+                                }
+                            }
+
+                            // Check icon positioning
+                            if (icons.length > 0) {
+                                const iconStyles = iframe.contentWindow.getComputedStyle(icons[0]);
+                                if (iconStyles.position !== 'absolute') {
+                                    tests.issues.push('Icons not absolutely positioned');
+                                }
+                            }
+
+                            // Check content alternation
+                            if (contents.length >= 2) {
+                                const content1 = contents[0].getBoundingClientRect();
+                                const content2 = contents[1].getBoundingClientRect();
+
+                                if (viewport.width > 768) {
+                                    // Desktop: should alternate left/right
+                                    if (Math.abs(content1.left - content2.left) < 50) {
+                                        tests.issues.push('Content not alternating left/right on desktop');
+                                    }
+                                } else {
+                                    // Mobile: should be stacked
+                                    if (Math.abs(content1.left - content2.left) > 50) {
+                                        tests.issues.push('Content not properly stacked on mobile');
+                                    }
+                                }
+                            }
+                        }
+
+                        resolve(tests);
+                    }, 2000); // Wait for styles to apply
+                };
+            });
+        }
+
+        function displayResults(results) {
+            const output = document.getElementById('test-output');
+            let html = '';
+
+            results.forEach(test => {
+                const hasIssues = test.issues.length > 0;
+                const statusClass = hasIssues ? 'test-warning' : 'test-pass';
+                const statusIcon = hasIssues ? 'status-warning' : 'status-pass';
+
+                html += `
+                    <div class="test-item ${statusClass}">
+                        <h3><span class="status-indicator ${statusIcon}"></span>${test.viewport}</h3>
+                        <p><strong>Width:</strong> ${test.width}px</p>
+                        <p><strong>Section Found:</strong> ${test.sectionFound ? '✅ Yes' : '❌ No'}</p>
+                        <p><strong>Timeline Found:</strong> ${test.timelineFound ? '✅ Yes' : '❌ No'}</p>
+                        <p><strong>Layout Type:</strong> ${test.layout}</p>
+                        <p><strong>Process Steps:</strong> ${test.stepsCount}</p>
+                        <p><strong>Icons:</strong> ${test.iconsCount}</p>
+                        <p><strong>Content Blocks:</strong> ${test.contentsCount}</p>
+                        ${test.issues.length > 0 ? `
+                            <p><strong>Issues Found:</strong></p>
+                            <ul>
+                                ${test.issues.map(issue => `<li>⚠️ ${issue}</li>`).join('')}
+                            </ul>
+                        ` : '<p><strong>✅ No issues detected</strong></p>'}
+                    </div>
+                `;
+            });
+
+            // Summary
+            const totalIssues = results.reduce((sum, test) => sum + test.issues.length, 0);
+            const summaryClass = totalIssues === 0 ? 'test-pass' : 'test-warning';
+
+            html = `
+                <div class="test-item ${summaryClass}">
+                    <h3>📊 Test Summary</h3>
+                    <p><strong>Total Viewports Tested:</strong> ${results.length}</p>
+                    <p><strong>Total Issues Found:</strong> ${totalIssues}</p>
+                    <p>${totalIssues === 0 ? '✅ All tests passed successfully!' : '⚠️ Some issues detected - review individual viewport results above.'}</p>
+                </div>
+            ` + html;
+
+            output.innerHTML = html;
+        }
+
+        // Initialize with desktop view
+        window.addEventListener('load', () => {
+            setViewport('desktop');
+        });
+    </script>
+</body>
+</html>

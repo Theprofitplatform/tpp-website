@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Dashboard Screenshot</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Inter', sans-serif;
+            background: #f5f5f5;
+        }
+
+        .dashboard-container {
+            width: 600px;
+            height: 400px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .dashboard-header {
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .dashboard-title {
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .dashboard-subtitle {
+            color: rgba(255,255,255,0.8);
+            font-size: 12px;
+            margin: 5px 0 0 0;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .metric-card {
+            background: rgba(255,255,255,0.15);
+            border-radius: 8px;
+            padding: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .metric-value {
+            color: white;
+            font-size: 24px;
+            font-weight: 900;
+            margin: 0;
+        }
+
+        .metric-label {
+            color: rgba(255,255,255,0.7);
+            font-size: 11px;
+            margin: 5px 0 0 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .metric-change {
+            color: #4ade80;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 2px 0 0 0;
+        }
+
+        .chart-container {
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 15px;
+            height: 120px;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .chart-title {
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 0 0 10px 0;
+        }
+
+        .chart-line {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            right: 15px;
+            height: 60px;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.3) 100%);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .trend-line {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: linear-gradient(45deg, transparent 40%, #4ade80 50%, transparent 60%);
+            transform: skewX(-45deg);
+        }
+
+        .status-indicator {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #4ade80;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .optimization-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 10px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container" id="dashboard">
+        <div class="status-indicator">LIVE</div>
+        <div class="optimization-badge">Auto-Optimizing</div>
+
+        <div class="dashboard-header">
+            <h2 class="dashboard-title">The Profit Platform Dashboard</h2>
+            <p class="dashboard-subtitle">Real-time campaign performance • Updated 2 min ago</p>
+        </div>
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <h3 class="metric-value">127</h3>
+                <p class="metric-label">Weekly Leads</p>
+                <p class="metric-change">+310% vs last month</p>
+            </div>
+
+            <div class="metric-card">
+                <h3 class="metric-value">$18.90</h3>
+                <p class="metric-label">Cost Per Lead</p>
+                <p class="metric-change">-67% optimized</p>
+            </div>
+
+            <div class="metric-card">
+                <h3 class="metric-value">4.2x</h3>
+                <p class="metric-label">ROAS</p>
+                <p class="metric-change">+180% improved</p>
+            </div>
+
+            <div class="metric-card">
+                <h3 class="metric-value">89%</h3>
+                <p class="metric-label">Quality Score</p>
+                <p class="metric-change">Excellent rating</p>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <h3 class="chart-title">Lead Growth Trend (7 days)</h3>
+            <div class="chart-line">
+                <div class="trend-line"></div>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+
+    <button onclick="downloadImage()" style="background: #4F46E5; color: white; border: none; padding: 15px 30px; border-radius: 8px; font-weight: 600; cursor: pointer;">
+        Download Dashboard Image
+    </button>
+
+    <script>
+        async function downloadImage() {
+            const dashboard = document.getElementById('dashboard');
+
+            // Use html2canvas if available, otherwise create SVG
+            if (typeof html2canvas !== 'undefined') {
+                const canvas = await html2canvas(dashboard, {
+                    width: 600,
+                    height: 400,
+                    backgroundColor: null,
+                    scale: 2
+                });
+
+                const link = document.createElement('a');
+                link.download = 'dashboard-screenshot.png';
+                link.href = canvas.toDataURL();
+                link.click();
+            } else {
+                // Fallback: Convert to SVG
+                const svgData = createSVGDashboard();
+                const blob = new Blob([svgData], {type: 'image/svg+xml'});
+                const url = URL.createObjectURL(blob);
+
+                const link = document.createElement('a');
+                link.download = 'dashboard-screenshot.svg';
+                link.href = url;
+                link.click();
+
+                URL.revokeObjectURL(url);
+            }
+        }
+
+        function createSVGDashboard() {
+            return `
+            <svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#667eea"/>
+                        <stop offset="100%" style="stop-color:#764ba2"/>
+                    </linearGradient>
+                </defs>
+
+                <!-- Background -->
+                <rect width="600" height="400" fill="url(#bg)" rx="12"/>
+
+                <!-- Header -->
+                <rect x="20" y="20" width="560" height="60" fill="rgba(255,255,255,0.1)" rx="8"/>
+                <text x="35" y="45" fill="white" font-family="Inter, sans-serif" font-size="18" font-weight="700">The Profit Platform Dashboard</text>
+                <text x="35" y="65" fill="rgba(255,255,255,0.8)" font-family="Inter, sans-serif" font-size="12">Real-time campaign performance • Updated 2 min ago</text>
+
+                <!-- Live indicator -->
+                <rect x="540" y="25" width="40" height="20" fill="#4ade80" rx="10"/>
+                <text x="555" y="37" fill="white" font-family="Inter, sans-serif" font-size="10" font-weight="600" text-anchor="middle">LIVE</text>
+
+                <!-- Metrics Grid -->
+                <!-- Metric 1 -->
+                <rect x="20" y="100" width="135" height="80" fill="rgba(255,255,255,0.15)" rx="8"/>
+                <text x="35" y="125" fill="white" font-family="Inter, sans-serif" font-size="24" font-weight="900">127</text>
+                <text x="35" y="145" fill="rgba(255,255,255,0.7)" font-family="Inter, sans-serif" font-size="11">WEEKLY LEADS</text>
+                <text x="35" y="165" fill="#4ade80" font-family="Inter, sans-serif" font-size="12" font-weight="600">+310% vs last month</text>
+
+                <!-- Metric 2 -->
+                <rect x="165" y="100" width="135" height="80" fill="rgba(255,255,255,0.15)" rx="8"/>
+                <text x="180" y="125" fill="white" font-family="Inter, sans-serif" font-size="24" font-weight="900">$18.90</text>
+                <text x="180" y="145" fill="rgba(255,255,255,0.7)" font-family="Inter, sans-serif" font-size="11">COST PER LEAD</text>
+                <text x="180" y="165" fill="#4ade80" font-family="Inter, sans-serif" font-size="12" font-weight="600">-67% optimized</text>
+
+                <!-- Metric 3 -->
+                <rect x="310" y="100" width="135" height="80" fill="rgba(255,255,255,0.15)" rx="8"/>
+                <text x="325" y="125" fill="white" font-family="Inter, sans-serif" font-size="24" font-weight="900">4.2x</text>
+                <text x="325" y="145" fill="rgba(255,255,255,0.7)" font-family="Inter, sans-serif" font-size="11">ROAS</text>
+                <text x="325" y="165" fill="#4ade80" font-family="Inter, sans-serif" font-size="12" font-weight="600">+180% improved</text>
+
+                <!-- Metric 4 -->
+                <rect x="455" y="100" width="125" height="80" fill="rgba(255,255,255,0.15)" rx="8"/>
+                <text x="470" y="125" fill="white" font-family="Inter, sans-serif" font-size="24" font-weight="900">89%</text>
+                <text x="470" y="145" fill="rgba(255,255,255,0.7)" font-family="Inter, sans-serif" font-size="11">QUALITY SCORE</text>
+                <text x="470" y="165" fill="#4ade80" font-family="Inter, sans-serif" font-size="12" font-weight="600">Excellent rating</text>
+
+                <!-- Chart Container -->
+                <rect x="20" y="200" width="560" height="120" fill="rgba(255,255,255,0.1)" rx="8"/>
+                <text x="35" y="220" fill="white" font-family="Inter, sans-serif" font-size="12" font-weight="600">Lead Growth Trend (7 days)</text>
+
+                <!-- Chart Line -->
+                <rect x="35" y="240" width="530" height="60" fill="rgba(255,255,255,0.1)" rx="4"/>
+                <polyline points="35,280 135,260 235,250 335,240 435,230 535,220"
+                         stroke="#4ade80" stroke-width="3" fill="none"/>
+
+                <!-- Optimization Badge -->
+                <rect x="20" y="340" width="100" height="24" fill="rgba(255,255,255,0.2)" rx="12"/>
+                <text x="70" y="355" fill="white" font-family="Inter, sans-serif" font-size="10" font-weight="600" text-anchor="middle">Auto-Optimizing</text>
+            </svg>`;
+        }
+
+        // Auto-generate image on page load
+        setTimeout(() => {
+            console.log('Dashboard loaded - ready to convert to image');
+        }, 1000);
+    </script>
+</body>
+</html>

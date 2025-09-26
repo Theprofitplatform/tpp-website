@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal & Administrative Documents - The Profit Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .document-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .document-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .document-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .document-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .document-card h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .document-card p {
+            color: #6c757d;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .document-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .document-features li {
+            padding: 8px 0;
+            color: #495057;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .document-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .document-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #5a67d8 0%, #6b4699 100%);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .info-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .info-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .info-item {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .info-item h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .info-item p {
+            color: #6c757d;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-left: 10px;
+        }
+
+        .badge.new {
+            background: #ef4444;
+        }
+
+        .badge.popular {
+            background: #f59e0b;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+            padding: 20px;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: opacity 0.3s;
+        }
+
+        .footer a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .documents-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .document-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📋 Legal & Administrative Documents</h1>
+            <p>Professional templates for your business operations</p>
+        </div>
+
+        <div class="documents-grid">
+            <!-- Master Service Agreement -->
+            <div class="document-card">
+                <div class="document-icon">📄</div>
+                <h2>Master Service Agreement <span class="badge">Essential</span></h2>
+                <p>Comprehensive month-to-month contract outlining service terms, payment conditions, and mutual obligations.</p>
+                <ul class="document-features">
+                    <li>No lock-in contracts</li>
+                    <li>Clear service definitions</li>
+                    <li>Payment terms & conditions</li>
+                    <li>Intellectual property clauses</li>
+                    <li>Termination provisions</li>
+                </ul>
+                <div class="document-actions">
+                    <a href="master-service-agreement.html" class="btn btn-primary">View Document</a>
+                    <a href="master-service-agreement.html" class="btn btn-secondary" onclick="window.open(this.href).print(); return false;">Print</a>
+                </div>
+            </div>
+
+            <!-- Statement of Work -->
+            <div class="document-card">
+                <div class="document-icon">📋</div>
+                <h2>Statement of Work <span class="badge popular">Popular</span></h2>
+                <p>Detailed template for defining specific project deliverables, timelines, and success metrics.</p>
+                <ul class="document-features">
+                    <li>Project scope definition</li>
+                    <li>Deliverables & milestones</li>
+                    <li>Timeline & phases</li>
+                    <li>Investment breakdown</li>
+                    <li>Success metrics</li>
+                </ul>
+                <div class="document-actions">
+                    <a href="statement-of-work-template.html" class="btn btn-primary">View Template</a>
+                    <a href="statement-of-work-template.html" class="btn btn-secondary" onclick="window.open(this.href).print(); return false;">Print</a>
+                </div>
+            </div>
+
+            <!-- Privacy Policy -->
+            <div class="document-card">
+                <div class="document-icon">🔒</div>
+                <h2>Privacy Policy</h2>
+                <p>GDPR and Privacy Act compliant policy for handling client data and website visitor information.</p>
+                <ul class="document-features">
+                    <li>Data collection practices</li>
+                    <li>User rights & controls</li>
+                    <li>Cookie policies</li>
+                    <li>Third-party disclosures</li>
+                    <li>Australian Privacy Principles</li>
+                </ul>
+                <div class="document-actions">
+                    <a href="privacy-policy.html" class="btn btn-primary">View Policy</a>
+                    <a href="privacy-policy.html" class="btn btn-secondary" onclick="window.open(this.href).print(); return false;">Print</a>
+                </div>
+            </div>
+
+            <!-- Terms of Service -->
+            <div class="document-card">
+                <div class="document-icon">⚖️</div>
+                <h2>Terms of Service</h2>
+                <p>Comprehensive terms and conditions for website usage and service engagement.</p>
+                <ul class="document-features">
+                    <li>Service terms & conditions</li>
+                    <li>User responsibilities</li>
+                    <li>Limitation of liability</li>
+                    <li>Dispute resolution</li>
+                    <li>Governing law provisions</li>
+                </ul>
+                <div class="document-actions">
+                    <a href="terms-of-service.html" class="btn btn-primary">View Terms</a>
+                    <a href="terms-of-service.html" class="btn btn-secondary" onclick="window.open(this.href).print(); return false;">Print</a>
+                </div>
+            </div>
+
+            <!-- NDA Template -->
+            <div class="document-card">
+                <div class="document-icon">🤝</div>
+                <h2>NDA Template <span class="badge">Mutual</span></h2>
+                <p>Mutual non-disclosure agreement for protecting sensitive business information.</p>
+                <ul class="document-features">
+                    <li>Mutual confidentiality</li>
+                    <li>Clear definitions</li>
+                    <li>3-year term coverage</li>
+                    <li>Marketing data protection</li>
+                    <li>Remedies & enforcement</li>
+                </ul>
+                <div class="document-actions">
+                    <a href="nda-template.html" class="btn btn-primary">View NDA</a>
+                    <a href="nda-template.html" class="btn btn-secondary" onclick="window.open(this.href).print(); return false;">Print</a>
+                </div>
+            </div>
+
+            <!-- Invoice Template -->
+            <div class="document-card">
+                <div class="document-icon">💰</div>
+                <h2>Invoice Template <span class="badge new">Interactive</span></h2>
+                <p>Professional, branded invoice template with automatic calculations and multiple payment options.</p>
+                <ul class="document-features">
+                    <li>Auto-calculating totals</li>
+                    <li>GST compliant</li>
+                    <li>Multiple payment methods</li>
+                    <li>Professional branding</li>
+                    <li>Print & PDF ready</li>
+                </ul>
+                <div class="document-actions">
+                    <a href="invoice-template.html" class="btn btn-primary">Create Invoice</a>
+                    <a href="invoice-template.html" class="btn btn-secondary" onclick="window.open(this.href).print(); return false;">Print</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2>How to Use These Documents</h2>
+            <p style="color: #6c757d; margin-bottom: 30px;">All documents are professionally drafted and ready for immediate use</p>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <h3>1. Select</h3>
+                    <p>Choose the document you need from our comprehensive collection</p>
+                </div>
+                <div class="info-item">
+                    <h3>2. Customize</h3>
+                    <p>Edit the highlighted fields with your specific information</p>
+                </div>
+                <div class="info-item">
+                    <h3>3. Review</h3>
+                    <p>Ensure all details are accurate and complete</p>
+                </div>
+                <div class="info-item">
+                    <h3>4. Execute</h3>
+                    <p>Print, sign, and share with relevant parties</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; padding: 25px; background: #f8f9fa; border-radius: 10px;">
+                <h3 style="color: #667eea; margin-bottom: 15px;">⚠️ Legal Disclaimer</h3>
+                <p style="color: #6c757d; line-height: 1.8;">
+                    These documents are provided as templates and should be reviewed by legal counsel before use. The Profit Platform is not a law firm and does not provide legal advice. Each business situation is unique, and you should consult with a qualified attorney to ensure these documents meet your specific needs and comply with applicable laws in your jurisdiction.
+                </p>
+            </div>
+
+            <div style="margin-top: 30px; padding: 25px; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 10px; border-left: 4px solid #3b82f6;">
+                <h3 style="color: #3b82f6; margin-bottom: 15px;">💡 Pro Tips</h3>
+                <ul style="color: #6c757d; text-align: left; list-style: none; padding: 0;">
+                    <li style="margin: 10px 0;">✓ Always keep signed copies of all agreements in a secure location</li>
+                    <li style="margin: 10px 0;">✓ Review and update documents annually or when regulations change</li>
+                    <li style="margin: 10px 0;">✓ Use digital signatures for faster execution (DocuSign, Adobe Sign)</li>
+                    <li style="margin: 10px 0;">✓ Maintain a document register to track all active agreements</li>
+                    <li style="margin: 10px 0;">✓ Set calendar reminders for contract renewal dates</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p style="margin-bottom: 20px;">© 2025 The Profit Platform. All documents are proprietary and confidential.</p>
+            <div>
+                <a href="mailto:legal@theprofitplatform.com.au">Contact Legal</a>
+                <a href="mailto:avi@theprofitplatform.com.au">Email Support</a>
+                <a href="tel:+61487286451">Call: +61 487 286 451</a>
+            </div>
+            <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.9;">
+                Level 1, 234 George Street, Sydney NSW 2000 | ABN: [TO BE PROVIDED]
+            </p>
+        </div>
+    </div>
+</body>
+</html>

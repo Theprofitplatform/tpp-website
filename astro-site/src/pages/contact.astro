@@ -1,0 +1,420 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "Contact Us | The Profit Platform - Get Your Free Consultation";
+const description = "Ready to grow your business? Contact The Profit Platform for a free digital marketing consultation. Call 1300 123 456 or fill out our form.";
+
+const faqs = [
+  {
+    question: "How quickly can we see results?",
+    answer: "Results vary by service. PPC campaigns can show immediate results, while SEO typically takes 3-6 months for significant improvements. We provide detailed timelines during consultation."
+  },
+  {
+    question: "Do you offer guarantees?",
+    answer: "Yes! We offer a 90-day money-back guarantee if we don't deliver the agreed-upon KPIs. Your success is our priority."
+  },
+  {
+    question: "What's included in the free consultation?",
+    answer: "Our free consultation includes a comprehensive website audit, competitor analysis, and customized growth strategy recommendations valued at $500."
+  },
+  {
+    question: "Do you work with small businesses?",
+    answer: "Absolutely! We work with businesses of all sizes, from startups to enterprises. Our packages are designed to scale with your growth."
+  },
+  {
+    question: "How do you report on performance?",
+    answer: "We provide monthly detailed reports with all key metrics, plus access to a real-time dashboard where you can track your campaign performance 24/7."
+  }
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <style>
+    .hero {
+      background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+      padding: 120px 0 80px;
+      text-align: center;
+      color: white;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      opacity: 0.95;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 60px;
+      padding: 80px 0;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .contact-form {
+      background: white;
+      padding: 50px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .form-group {
+      margin-bottom: 30px;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: #1e293b;
+    }
+
+    .required {
+      color: #ef4444;
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid #e2e8f0;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: #8b5cf6;
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+    }
+
+    .form-textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 18px;
+      background: linear-gradient(135deg, #8b5cf6, #6366f1);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+    }
+
+    .contact-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .info-card {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .info-card h3 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.3rem;
+      color: #1e293b;
+      margin-bottom: 15px;
+    }
+
+    .info-card p {
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    .info-icon {
+      font-size: 1.5rem;
+    }
+
+    .hours-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .hours-row {
+      display: contents;
+    }
+
+    .day {
+      font-weight: 600;
+      color: #475569;
+    }
+
+    .time {
+      text-align: right;
+      color: #64748b;
+    }
+
+    .map-section {
+      background: #f8fafc;
+      padding: 80px 0;
+    }
+
+    .map-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .map-placeholder {
+      width: 100%;
+      height: 500px;
+      background: linear-gradient(135deg, #e0e7ff 0%, #cdd5f4 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748b;
+      font-size: 1.2rem;
+    }
+
+    .faq-section {
+      padding: 80px 0;
+    }
+
+    .faq-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 20px;
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .faq-item:hover {
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .faq-question {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #1e293b;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-icon {
+      font-size: 1.5rem;
+      color: #8b5cf6;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      margin-top: 20px;
+      color: #64748b;
+      line-height: 1.8;
+      display: none;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    @media (max-width: 968px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-form {
+        padding: 30px;
+      }
+    }
+  </style>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Let's Grow Your Business Together</h1>
+      <p>Get your free consultation and discover how we can transform your digital presence</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="container">
+    <div class="contact-container">
+      <!-- Contact Form -->
+      <div class="contact-form">
+        <h2 style="font-size: 2rem; margin-bottom: 40px; color: #1e293b;">Get Your Free Consultation</h2>
+        <form id="contactForm">
+          <div class="form-group">
+            <label class="form-label">
+              Full Name <span class="required">*</span>
+            </label>
+            <input type="text" class="form-input" name="name" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">
+              Email Address <span class="required">*</span>
+            </label>
+            <input type="email" class="form-input" name="email" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">
+              Phone Number <span class="required">*</span>
+            </label>
+            <input type="tel" class="form-input" name="phone" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">
+              Business Name
+            </label>
+            <input type="text" class="form-input" name="business" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">
+              How can we help you? <span class="required">*</span>
+            </label>
+            <textarea class="form-textarea" name="message" required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            Send Message →
+          </button>
+        </form>
+      </div>
+
+      <!-- Contact Sidebar -->
+      <div class="contact-sidebar">
+        <div class="info-card">
+          <h3>
+            <span class="info-icon">📞</span>
+            Call Us
+          </h3>
+          <p style="font-size: 1.3rem; font-weight: 700; color: #8b5cf6;">1300 123 456</p>
+          <p>Mon-Fri 9am-6pm AEST</p>
+        </div>
+
+        <div class="info-card">
+          <h3>
+            <span class="info-icon">📧</span>
+            Email Us
+          </h3>
+          <p>hello@theprofitplatform.com.au</p>
+          <p>We'll respond within 24 hours</p>
+        </div>
+
+        <div class="info-card">
+          <h3>
+            <span class="info-icon">📍</span>
+            Visit Us
+          </h3>
+          <p>Level 10, 123 Pitt Street<br>Sydney NSW 2000</p>
+        </div>
+
+        <div class="info-card">
+          <h3>
+            <span class="info-icon">🕐</span>
+            Business Hours
+          </h3>
+          <div class="hours-grid">
+            <div class="hours-row">
+              <span class="day">Monday-Friday</span>
+              <span class="time">9:00 AM - 6:00 PM</span>
+            </div>
+            <div class="hours-row">
+              <span class="day">Saturday</span>
+              <span class="time">10:00 AM - 4:00 PM</span>
+            </div>
+            <div class="hours-row">
+              <span class="day">Sunday</span>
+              <span class="time">Closed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="map-section">
+    <div class="container">
+      <h2 class="gradient-text" style="text-align: center; font-size: 2.5rem; margin-bottom: 60px;">Find Us</h2>
+      <div class="map-container">
+        <div class="map-placeholder">
+          <span>🗺️ Interactive Map Coming Soon</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="container">
+      <h2 class="gradient-text" style="text-align: center; font-size: 2.5rem; margin-bottom: 60px;">
+        Frequently Asked Questions
+      </h2>
+      <div class="faq-container">
+        {faqs.map((faq, index) => (
+          <div class="faq-item" data-faq={index}>
+            <div class="faq-question">
+              <span>{faq.question}</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              {faq.answer}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // FAQ Toggle
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('active');
+      });
+    });
+
+    // Form Submission
+    document.getElementById('contactForm')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Thank you for your message! We\'ll get back to you within 24 hours.');
+    });
+  </script>
+</BaseLayout>

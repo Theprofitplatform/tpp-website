@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A/B Testing Master Plan - The Profit Platform</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #F9FAFB;
+            line-height: 1.6;
+            color: #374151;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .test-section {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #6366F1;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1F2937;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .test-card {
+            background: #F8FAFC;
+            border: 2px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .test-card:hover {
+            border-color: #6366F1;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.1);
+        }
+
+        .test-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .test-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1F2937;
+        }
+
+        .priority-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .high-priority {
+            background: #FEE2E2;
+            color: #991B1B;
+        }
+
+        .medium-priority {
+            background: #FEF3C7;
+            color: #92400E;
+        }
+
+        .low-priority {
+            background: #E0F2FE;
+            color: #0C4A6E;
+        }
+
+        .test-variants {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .variant {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            padding: 16px;
+            position: relative;
+        }
+
+        .variant-label {
+            position: absolute;
+            top: -8px;
+            left: 16px;
+            background: #6366F1;
+            color: white;
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .control-variant .variant-label {
+            background: #6B7280;
+        }
+
+        .variant-content {
+            margin-top: 8px;
+            font-style: italic;
+            color: #4B5563;
+        }
+
+        .expected-results {
+            background: #F0FDF4;
+            border: 1px solid #BBF7D0;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+
+        .results-title {
+            color: #15803D;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .results-list {
+            color: #166534;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .test-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .metric-item {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #6366F1;
+            margin-bottom: 4px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: #6B7280;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .implementation-code {
+            background: #1F2937;
+            color: #E5E7EB;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+
+        .code-comment {
+            color: #10B981;
+        }
+
+        .timeline {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            width: 16px;
+            height: 16px;
+            background: #6366F1;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+
+        .timeline-content h4 {
+            margin: 0 0 8px 0;
+            color: #1F2937;
+            font-weight: 600;
+        }
+
+        .timeline-content p {
+            margin: 0;
+            color: #6B7280;
+            font-size: 14px;
+        }
+
+        .timeline-date {
+            color: #9CA3AF;
+            font-size: 12px;
+            font-weight: 500;
+            margin-left: auto;
+        }
+
+        .statistical-power {
+            background: #FEF2F2;
+            border: 1px solid #FECACA;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .power-title {
+            color: #DC2626;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .power-content {
+            color: #991B1B;
+            font-size: 14px;
+        }
+
+        .tool-integration {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 24px 0;
+        }
+
+        .tool-card {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .tool-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+
+        .tool-name {
+            font-weight: 600;
+            color: #1F2937;
+            margin-bottom: 8px;
+        }
+
+        .tool-purpose {
+            font-size: 14px;
+            color: #6B7280;
+        }
+
+        .test-checklist {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #374151;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #6366F1;
+        }
+
+        .winner-analysis {
+            background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
+            border: 2px solid #10B981;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .winner-title {
+            color: #059669;
+            font-weight: 700;
+            margin-bottom: 16px;
+            font-size: 1.2rem;
+        }
+
+        .winner-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+        }
+
+        .winner-stat {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .winner-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #059669;
+            display: block;
+        }
+
+        .winner-label {
+            font-size: 12px;
+            color: #065F46;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .test-variants {
+                grid-template-columns: 1fr;
+            }
+
+            .test-metrics,
+            .tool-integration,
+            .winner-stats {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center; font-size: 2.5rem; margin-bottom: 16px; color: #1F2937;">A/B Testing Master Plan</h1>
+        <p style="text-align: center; color: #6B7280; font-size: 1.1rem; margin-bottom: 48px;">Data-driven optimization for maximum conversions</p>
+
+        <!-- Testing Overview & Strategy -->
+        <div class="test-section">
+            <h2 class="section-title">
+                🎯 Testing Strategy Overview
+            </h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Phase 1: Foundation Tests (Month 1)</h4>
+                        <p>High-impact, fundamental elements that affect all visitors</p>
+                    </div>
+                    <div class="timeline-date">Week 1-4</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Phase 2: Optimization Tests (Month 2)</h4>
+                        <p>Refine successful elements and test advanced variations</p>
+                    </div>
+                    <div class="timeline-date">Week 5-8</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Phase 3: Micro-Optimization (Month 3)</h4>
+                        <p>Fine-tune details and test personalization approaches</p>
+                    </div>
+                    <div class="timeline-date">Week 9-12</div>
+                </div>
+            </div>
+
+            <div class="statistical-power">
+                <div class="power-title">Statistical Significance Requirements</div>
+                <div class="power-content">
+                    • Minimum sample size: 1,000 visitors per variant<br>
+                    • Confidence level: 95%<br>
+                    • Statistical power: 80%<br>
+                    • Minimum detectable effect: 20% improvement<br>
+                    • Test duration: Minimum 2 weeks, maximum 4 weeks
+                </div>
+            </div>
+        </div>
+
+        <!-- High-Priority Tests -->
+        <div class="test-section">
+            <h2 class="section-title">
+                🚀 Phase 1: High-Priority Foundation Tests
+            </h2>
+
+            <!-- Test 1: Hero Headlines -->
+            <div class="test-card">
+                <div class="test-header">
+                    <h3 class="test-title">Homepage Hero Headlines</h3>
+                    <span class="priority-badge high-priority">High Priority</span>
+                </div>
+
+                <p><strong>Hypothesis:</strong> Value-focused headlines with specific benefits will outperform generic marketing claims</p>
+
+                <div class="test-variants">
+                    <div class="variant control-variant">
+                        <div class="variant-label">Control</div>
+                        <div class="variant-content">
+                            "Sydney's Digital Marketing Expert"<br>
+                            <small>Helping small businesses grow online</small>
+                        </div>
+                    </div>
+
+                    <div class="variant">
+                        <div class="variant-label">Variant A</div>
+                        <div class="variant-content">
+                            "Triple Your Sydney Leads in 90 Days"<br>
+                            <small>No lock-in contracts. Complete transparency. Guaranteed results.</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expected-results">
+                    <div class="results-title">Expected Results:</div>
+                    <ul class="results-list">
+                        <li>25-40% increase in contact form submissions</li>
+                        <li>Higher time on page and scroll depth</li>
+                        <li>Improved message clarity and value perception</li>
+                    </ul>
+                </div>
+
+                <div class="test-metrics">
+                    <div class="metric-item">
+                        <div class="metric-value">2,500</div>
+                        <div class="metric-label">Min Sample Size</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-value">3 weeks</div>
+                        <div class="metric-label">Test Duration</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-value">5.2%</div>
+                        <div class="metric-label">Current CVR</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-value">7.3%</div>
+                        <div class="metric-label">Target CVR</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Test 2: CTA Buttons -->
+            <div class="test-card">
+                <div class="test-header">
+                    <h3 class="test-title">Primary CTA Button Copy</h3>
+                    <span class="priority-badge high-priority">High Priority</span>
+                </div>
+
+                <p><strong>Hypothesis:</strong> Specific, benefit-driven CTA copy will outperform generic "contact" language</p>
+
+                <div class="test-variants">
+                    <div class="variant control-variant">
+                        <div class="variant-label">Control</div>
+                        <div class="variant-content">
+                            "Contact Us Today"
+                        </div>
+                    </div>
+
+                    <div class="variant">
+                        <div class="variant-label">Variant A</div>
+                        <div class="variant-content">
+                            "Get My FREE $997 Marketing Audit"
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expected-results">
+                    <div class="results-title">Expected Results:</div>
+                    <ul class="results-list">
+                        <li>35-50% increase in button click-through rate</li>
+                        <li>Higher quality leads due to value expectation</li>
+                        <li>Improved conversion rate from click to form completion</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Test 3: Value Proposition -->
+            <div class="test-card">
+                <div class="test-header">
+                    <h3 class="test-title">Core Value Proposition Messaging</h3>
+                    <span class="priority-badge high-priority">High Priority</span>
+                </div>
+
+                <p><strong>Hypothesis:</strong> Problem-solution focused messaging will resonate better than feature-focused messaging</p>
+
+                <div class="test-variants">
+                    <div class="variant control-variant">
+                        <div class="variant-label">Control</div>
+                        <div class="variant-content">
+                            "Professional SEO, Google Ads, and Web Design Services"
+                        </div>
+                    </div>
+
+                    <div class="variant">
+                        <div class="variant-label">Variant A</div>
+                        <div class="variant-content">
+                            "Stop Losing Customers to Competitors Who Show Up First on Google"
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Medium-Priority Tests -->
+        <div class="test-section">
+            <h2 class="section-title">
+                ⚡ Phase 2: Medium-Priority Optimization Tests
+            </h2>
+
+            <!-- Test 4: Social Proof -->
+            <div class="test-card">
+                <div class="test-header">
+                    <h3 class="test-title">Social Proof Elements</h3>
+                    <span class="priority-badge medium-priority">Medium Priority</span>
+                </div>
+
+                <p><strong>Hypothesis:</strong> Specific, local testimonials will build more trust than generic statistics</p>
+
+                <div class="test-variants">
+                    <div class="variant control-variant">
+                        <div class="variant-label">Control</div>
+                        <div class="variant-content">
+                            "50+ Businesses Helped"<br>
+                            "4.9★ Google Rating"
+                        </div>
+                    </div>
+
+                    <div class="variant">
+                        <div class="variant-label">Variant A</div>
+                        <div class="variant-content">
+                            "Sarah from Bondi increased leads 340% in 60 days"<br>
+                            <em>"Best marketing investment we've made" - Mike, Parramatta</em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Test 5: Urgency Messaging -->
+            <div class="test-card">
+                <div class="test-header">
+                    <h3 class="test-title">Urgency and Scarcity Elements</h3>
+                    <span class="priority-badge medium-priority">Medium Priority</span>
+                </div>
+
+                <p><strong>Hypothesis:</strong> Authentic capacity-based scarcity will increase conversion rates more than time-based urgency</p>
+
+                <div class="test-variants">
+                    <div class="variant control-variant">
+                        <div class="variant-label">Control</div>
+                        <div class="variant-content">
+                            No urgency messaging
+                        </div>
+                    </div>
+
+                    <div class="variant">
+                        <div class="variant-label">Variant A</div>
+                        <div class="variant-content">
+                            "Only 3 new SEO clients this month (I personally handle every account)"
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Test 6: Pricing Display -->
+            <div class="test-card">
+                <div class="test-header">
+                    <h3 class="test-title">Pricing Information Display</h3>
+                    <span class="priority-badge medium-priority">Medium Priority</span>
+                </div>
+
+                <p><strong>Hypothesis:</strong> Showing investment ranges builds trust and pre-qualifies leads better than hiding pricing</p>
+
+                <div class="test-variants">
+                    <div class="variant control-variant">
+                        <div class="variant-label">Control</div>
+                        <div class="variant-content">
+                            No pricing information shown
+                        </div>
+                    </div>
+
+                    <div class="variant">
+                        <div class="variant-label">Variant A</div>
+                        <div class="variant-content">
+                            "SEO: From $990/month"<br>
+                            "Google Ads: From $1,290/month"<br>
+                            "Website Design: From $1,490"
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Advanced Tests -->
+        <div class="test-section">
+            <h2 class="section-title">
+                🔬 Phase 3: Advanced Micro-Optimization Tests
+            </h2>
+
+            <!-- Test 7: Form Length -->
+            <div class="test-card">
+                <div class="test-header">
+                    <h3 class="test-title">Contact Form Field Count</h3>
+                    <span class="priority-badge low-priority">Low Priority</span>
+                </div>
+
+                <p><strong>Hypothesis:</strong> Progressive disclosure forms will achieve higher completion rates than long single-page forms</p>
+
+                <div class="test-variants">
+                    <div class="variant control-variant">
+                        <div class="variant-label">Control</div>
+                        <div class="variant-content">
+                            8-field single-page form
+                        </div>
+                    </div>
+
+                    <div class="variant">
+                        <div class="variant-label">Variant A</div>
+                        <div class="variant-content">
+                            3-step progressive form (3 fields → 2 fields → 3 fields)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Test 8: Navigation -->
+            <div class="test-card">
+                <div class="test-header">
+                    <h3 class="test-title">Navigation Menu Structure</h3>
+                    <span class="priority-badge low-priority">Low Priority</span>
+                </div>
+
+                <p><strong>Hypothesis:</strong> Benefit-focused navigation labels will improve user engagement compared to service-focused labels</p>
+
+                <div class="test-variants">
+                    <div class="variant control-variant">
+                        <div class="variant-label">Control</div>
+                        <div class="variant-content">
+                            "SEO Services" | "Google Ads" | "Web Design"
+                        </div>
+                    </div>
+
+                    <div class="variant">
+                        <div class="variant-label">Variant A</div>
+                        <div class="variant-content">
+                            "Get Found on Google" | "Instant Traffic" | "Convert More Visitors"
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Implementation Framework -->
+        <div class="test-section">
+            <h2 class="section-title">
+                🛠️ Implementation Framework
+            </h2>
+
+            <div class="tool-integration">
+                <div class="tool-card">
+                    <div class="tool-icon">📊</div>
+                    <div class="tool-name">Google Optimize</div>
+                    <div class="tool-purpose">A/B testing and personalization</div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">📈</div>
+                    <div class="tool-name">Google Analytics 4</div>
+                    <div class="tool-purpose">Conversion tracking and analysis</div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">🔥</div>
+                    <div class="tool-name">Hotjar</div>
+                    <div class="tool-purpose">Heatmaps and user behavior</div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">📋</div>
+                    <div class="tool-name">Typeform/Calendly</div>
+                    <div class="tool-purpose">Form and booking optimization</div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">⚡</div>
+                    <div class="tool-name">GTM</div>
+                    <div class="tool-purpose">Tag management and tracking</div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">🎯</div>
+                    <div class="tool-name">Facebook Pixel</div>
+                    <div class="tool-purpose">Social media conversion tracking</div>
+                </div>
+            </div>
+
+            <div class="implementation-code">
+                <div class="code-comment">/* A/B Testing Implementation Framework */</div>
+<pre>// Google Optimize Integration
+gtag('config', 'OPT-XXXXXXX');
+
+// Test Assignment and Tracking
+function assignABTestVariant(testName, variants) {
+    const userId = getUserId();
+    const variantIndex = hashUserId(userId, testName) % variants.length;
+    const assignedVariant = variants[variantIndex];
+
+    // Store variant for consistency
+    sessionStorage.setItem(`ab_test_${testName}`, assignedVariant);
+
+    // Track assignment
+    gtag('event', 'ab_test_assigned', {
+        'test_name': testName,
+        'variant': assignedVariant,
+        'user_id': userId
+    });
+
+    return assignedVariant;
+}
+
+// Conversion Tracking
+function trackConversion(testName, conversionType, value = null) {
+    const variant = sessionStorage.getItem(`ab_test_${testName}`);
+
+    gtag('event', 'conversion', {
+        'test_name': testName,
+        'variant': variant,
+        'conversion_type': conversionType,
+        'value': value,
+        'currency': 'AUD'
+    });
+
+    // Also track to Facebook Pixel
+    if (typeof fbq !== 'undefined') {
+        fbq('track', 'Lead', {
+            content_name: testName,
+            content_category: variant,
+            value: value,
+            currency: 'AUD'
+        });
+    }
+}
+
+// Statistical Significance Calculator
+function calculateSignificance(controlConversions, controlVisitors,
+                              variantConversions, variantVisitors) {
+    const controlRate = controlConversions / controlVisitors;
+    const variantRate = variantConversions / variantVisitors;
+
+    const pooledRate = (controlConversions + variantConversions) /
+                      (controlVisitors + variantVisitors);
+
+    const standardError = Math.sqrt(pooledRate * (1 - pooledRate) *
+                         (1/controlVisitors + 1/variantVisitors));
+
+    const zScore = (variantRate - controlRate) / standardError;
+    const pValue = 2 * (1 - normalCDF(Math.abs(zScore)));
+
+    return {
+        controlRate: controlRate,
+        variantRate: variantRate,
+        improvement: ((variantRate - controlRate) / controlRate) * 100,
+        zScore: zScore,
+        pValue: pValue,
+        isSignificant: pValue < 0.05
+    };
+}</pre>
+            </div>
+        </div>
+
+        <!-- Testing Checklist -->
+        <div class="test-section">
+            <h2 class="section-title">
+                ✅ Pre-Launch Testing Checklist
+            </h2>
+
+            <div class="test-checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" id="check1">
+                    <label for="check1">Define clear hypothesis and success metrics</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check2">
+                    <label for="check2">Calculate minimum sample size for statistical power</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check3">
+                    <label for="check3">Set up proper tracking and conversion goals</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check4">
+                    <label for="check4">Create test variants and QA all versions</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check5">
+                    <label for="check5">Configure traffic allocation (50/50 split)</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check6">
+                    <label for="check6">Set test duration (minimum 2 weeks)</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check7">
+                    <label for="check7">Test on mobile and desktop devices</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check8">
+                    <label for="check8">Document test setup and parameters</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check9">
+                    <label for="check9">Set up automated reports and monitoring</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check10">
+                    <label for="check10">Plan winner implementation strategy</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sample Results -->
+        <div class="test-section">
+            <h2 class="section-title">
+                🏆 Sample Test Results Analysis
+            </h2>
+
+            <div class="winner-analysis">
+                <div class="winner-title">Test Winner: Value-Focused Headlines</div>
+
+                <div class="winner-stats">
+                    <div class="winner-stat">
+                        <span class="winner-value">6,247</span>
+                        <div class="winner-label">Total Visitors</div>
+                    </div>
+                    <div class="winner-stat">
+                        <span class="winner-value">7.8%</span>
+                        <div class="winner-label">Winner CVR</div>
+                    </div>
+                    <div class="winner-stat">
+                        <span class="winner-value">5.2%</span>
+                        <div class="winner-label">Control CVR</div>
+                    </div>
+                    <div class="winner-stat">
+                        <span class="winner-value">+50%</span>
+                        <div class="winner-label">Improvement</div>
+                    </div>
+                    <div class="winner-stat">
+                        <span class="winner-value">99.2%</span>
+                        <div class="winner-label">Confidence</div>
+                    </div>
+                    <div class="winner-stat">
+                        <span class="winner-value">21 days</span>
+                        <div class="winner-label">Test Duration</div>
+                    </div>
+                </div>
+
+                <p style="margin-top: 16px; color: #059669; font-size: 14px;">
+                    <strong>Key Insights:</strong> Value-focused headlines that clearly communicate the $997 audit offer
+                    resonated significantly better with Sydney business owners. The specific benefit and local focus
+                    increased both engagement and conversion rates.
+                </p>
+            </div>
+        </div>
+
+        <!-- Monthly Testing Calendar -->
+        <div class="test-section">
+            <h2 class="section-title">
+                📅 12-Month Testing Calendar
+            </h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
+                <div style="background: #F0FDF4; border: 2px solid #10B981; border-radius: 12px; padding: 16px;">
+                    <h4 style="color: #059669; margin: 0 0 12px 0;">Q1 - Foundation (Jan-Mar)</h4>
+                    <ul style="margin: 0; padding-left: 16px; color: #065F46; font-size: 14px;">
+                        <li>Hero headlines and messaging</li>
+                        <li>Primary CTA buttons</li>
+                        <li>Value proposition testing</li>
+                        <li>Social proof elements</li>
+                    </ul>
+                </div>
+
+                <div style="background: #FEF3C7; border: 2px solid #F59E0B; border-radius: 12px; padding: 16px;">
+                    <h4 style="color: #D97706; margin: 0 0 12px 0;">Q2 - Optimization (Apr-Jun)</h4>
+                    <ul style="margin: 0; padding-left: 16px; color: #92400E; font-size: 14px;">
+                        <li>Form optimization</li>
+                        <li>Urgency messaging</li>
+                        <li>Pricing display tests</li>
+                        <li>Trust indicators</li>
+                    </ul>
+                </div>
+
+                <div style="background: #E0F2FE; border: 2px solid #0284C7; border-radius: 12px; padding: 16px;">
+                    <h4 style="color: #0369A1; margin: 0 0 12px 0;">Q3 - Refinement (Jul-Sep)</h4>
+                    <ul style="margin: 0; padding-left: 16px; color: #0C4A6E; font-size: 14px;">
+                        <li>Navigation optimization</li>
+                        <li>Mobile experience</li>
+                        <li>Page load speed</li>
+                        <li>Content layout tests</li>
+                    </ul>
+                </div>
+
+                <div style="background: #F3E8FF; border: 2px solid #7C3AED; border-radius: 12px; padding: 16px;">
+                    <h4 style="color: #6D28D9; margin: 0 0 12px 0;">Q4 - Personalization (Oct-Dec)</h4>
+                    <ul style="margin: 0; padding-left: 16px; color: #581C87; font-size: 14px;">
+                        <li>Industry-specific messaging</li>
+                        <li>Geographic customization</li>
+                        <li>Seasonal offers</li>
+                        <li>Advanced segmentation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample A/B Testing Implementation
+        class ABTestManager {
+            constructor() {
+                this.tests = {};
+                this.userId = this.generateUserId();
+            }
+
+            generateUserId() {
+                let userId = localStorage.getItem('ab_user_id');
+                if (!userId) {
+                    userId = 'user_' + Math.random().toString(36).substr(2, 9);
+                    localStorage.setItem('ab_user_id', userId);
+                }
+                return userId;
+            }
+
+            createTest(testName, variants, trafficAllocation = null) {
+                if (!trafficAllocation) {
+                    trafficAllocation = variants.map(() => 1 / variants.length);
+                }
+
+                this.tests[testName] = {
+                    variants: variants,
+                    allocation: trafficAllocation,
+                    startTime: Date.now()
+                };
+
+                return this.assignVariant(testName);
+            }
+
+            assignVariant(testName) {
+                const test = this.tests[testName];
+                if (!test) return null;
+
+                // Check if user already has assignment
+                const storageKey = `ab_test_${testName}`;
+                let assignedVariant = sessionStorage.getItem(storageKey);
+
+                if (!assignedVariant) {
+                    // Hash user ID with test name for consistent assignment
+                    const hash = this.hashString(this.userId + testName);
+                    const random = (hash % 10000) / 10000;
+
+                    let cumulativeAllocation = 0;
+                    for (let i = 0; i < test.variants.length; i++) {
+                        cumulativeAllocation += test.allocation[i];
+                        if (random < cumulativeAllocation) {
+                            assignedVariant = test.variants[i];
+                            break;
+                        }
+                    }
+
+                    sessionStorage.setItem(storageKey, assignedVariant);
+
+                    // Track assignment
+                    this.trackEvent('ab_test_assigned', {
+                        test_name: testName,
+                        variant: assignedVariant,
+                        user_id: this.userId
+                    });
+                }
+
+                return assignedVariant;
+            }
+
+            trackConversion(testName, conversionType, value = null) {
+                const variant = sessionStorage.getItem(`ab_test_${testName}`);
+                if (!variant) return;
+
+                this.trackEvent('ab_test_conversion', {
+                    test_name: testName,
+                    variant: variant,
+                    conversion_type: conversionType,
+                    value: value,
+                    user_id: this.userId
+                });
+
+                // Also track to Google Analytics
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'conversion', {
+                        'custom_parameter_1': testName,
+                        'custom_parameter_2': variant,
+                        'value': value,
+                        'currency': 'AUD'
+                    });
+                }
+            }
+
+            hashString(str) {
+                let hash = 0;
+                for (let i = 0; i < str.length; i++) {
+                    const char = str.charCodeAt(i);
+                    hash = ((hash << 5) - hash) + char;
+                    hash = hash & hash; // Convert to 32bit integer
+                }
+                return Math.abs(hash);
+            }
+
+            trackEvent(eventName, properties) {
+                // Send to your analytics endpoint
+                console.log('A/B Test Event:', eventName, properties);
+
+                // Example implementation
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', eventName, properties);
+                }
+            }
+
+            getTestResults(testName) {
+                // In a real implementation, this would query your analytics data
+                // For demo purposes, returning mock data
+                return {
+                    test_name: testName,
+                    variants: [
+                        { name: 'control', visitors: 1250, conversions: 65, rate: 5.2 },
+                        { name: 'variant_a', visitors: 1230, conversions: 96, rate: 7.8 }
+                    ],
+                    winner: 'variant_a',
+                    improvement: 50.0,
+                    confidence: 99.2
+                };
+            }
+        }
+
+        // Initialize A/B Testing
+        const abTester = new ABTestManager();
+
+        // Example: Homepage headline test
+        document.addEventListener('DOMContentLoaded', function() {
+            const headlineTest = abTester.createTest('homepage_headline', ['control', 'value_focused']);
+
+            // Apply the variant
+            if (headlineTest === 'value_focused') {
+                const headline = document.querySelector('h1');
+                if (headline) {
+                    headline.textContent = 'Triple Your Sydney Leads in 90 Days';
+                }
+            }
+
+            // Track form submissions as conversions
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    abTester.trackConversion('homepage_headline', 'form_submission', 997);
+                });
+            });
+        });
+
+        // CTA Button Test
+        const ctaTest = abTester.createTest('cta_buttons', ['control', 'value_focused']);
+        if (ctaTest === 'value_focused') {
+            const ctaButtons = document.querySelectorAll('.btn-primary');
+            ctaButtons.forEach(button => {
+                if (button.textContent.includes('Contact')) {
+                    button.textContent = 'Get My FREE $997 Marketing Audit';
+                }
+            });
+        }
+
+        // Track CTA clicks
+        document.addEventListener('click', function(e) {
+            if (e.target.matches('.btn-primary')) {
+                abTester.trackConversion('cta_buttons', 'cta_click');
+            }
+        });
+
+        // Scroll depth tracking for engagement
+        let maxScrollPercent = 0;
+        window.addEventListener('scroll', function() {
+            const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+
+            if (scrollPercent > maxScrollPercent) {
+                maxScrollPercent = scrollPercent;
+
+                // Track scroll milestones
+                if (maxScrollPercent >= 25 && !window.scrollTracked25) {
+                    abTester.trackConversion('homepage_headline', 'scroll_25');
+                    window.scrollTracked25 = true;
+                }
+
+                if (maxScrollPercent >= 50 && !window.scrollTracked50) {
+                    abTester.trackConversion('homepage_headline', 'scroll_50');
+                    window.scrollTracked50 = true;
+                }
+
+                if (maxScrollPercent >= 75 && !window.scrollTracked75) {
+                    abTester.trackConversion('homepage_headline', 'scroll_75');
+                    window.scrollTracked75 = true;
+                }
+            }
+        });
+
+        // Time on page tracking
+        let pageLoadTime = Date.now();
+        setInterval(() => {
+            const timeOnPage = Math.round((Date.now() - pageLoadTime) / 1000);
+
+            if (timeOnPage === 30 && !window.timeTracked30) {
+                abTester.trackConversion('homepage_headline', 'time_30s');
+                window.timeTracked30 = true;
+            }
+
+            if (timeOnPage === 60 && !window.timeTracked60) {
+                abTester.trackConversion('homepage_headline', 'time_60s');
+                window.timeTracked60 = true;
+            }
+
+            if (timeOnPage === 120 && !window.timeTracked120) {
+                abTester.trackConversion('homepage_headline', 'time_120s');
+                window.timeTracked120 = true;
+            }
+        }, 1000);
+
+        // Example statistical significance calculation
+        function calculateTestResults() {
+            const results = abTester.getTestResults('homepage_headline');
+            console.log('Test Results:', results);
+
+            // Display results in UI
+            const resultsSection = document.querySelector('.winner-analysis');
+            if (resultsSection) {
+                const winnerRate = results.variants.find(v => v.name === results.winner).rate;
+                const controlRate = results.variants.find(v => v.name === 'control').rate;
+
+                resultsSection.querySelector('.winner-value').textContent = `${winnerRate}%`;
+                // Update other stats as needed
+            }
+        }
+
+        // Run results calculation after page load
+        setTimeout(calculateTestResults, 2000);
+    </script>
+</body>
+</html>

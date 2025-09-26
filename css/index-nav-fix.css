@@ -1,0 +1,92 @@
+/* Index.html Specific Navigation Fixes */
+
+/* Reset conflicting styles from services-fix.css */
+header.premium-nav .container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    max-width: 1280px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Logo positioning - keep it on the left */
+.logo.premium-logo {
+    flex-shrink: 0 !important;
+    margin-right: 30px !important;
+}
+
+/* Navigation links centered properly */
+#primary-navigation {
+    flex: 1 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.nav-links.premium-nav-links {
+    display: flex !important;
+    gap: 8px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* CTA button positioning - keep it on the right */
+.nav-cta {
+    flex-shrink: 0 !important;
+    margin-left: 30px !important;
+}
+
+/* Better spacing for nav items */
+.nav-item.premium-nav-item {
+    padding: 12px 20px !important;
+    white-space: nowrap !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1400px) {
+    header.premium-nav .container {
+        padding: 0 40px !important;
+    }
+
+    .nav-links.premium-nav-links {
+        gap: 15px !important;
+    }
+
+    .nav-item.premium-nav-item {
+        padding: 10px 15px !important;
+    }
+}
+
+@media (max-width: 1200px) {
+    header.premium-nav .container {
+        padding: 0 30px !important;
+    }
+
+    .nav-links.premium-nav-links {
+        gap: 10px !important;
+    }
+
+    .nav-item.premium-nav-item {
+        padding: 10px 12px !important;
+        font-size: 0.9rem !important;
+    }
+}
+
+@media (max-width: 968px) {
+    header.premium-nav .container {
+        padding: 0 20px !important;
+    }
+}
+
+/* Fix dropdown alignment */
+.nav-dropdown .dropdown-menu {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+}

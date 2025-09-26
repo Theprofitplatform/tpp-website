@@ -1,0 +1,245 @@
+<!-- STANDARD NAVIGATION TEMPLATE FOR ALL PAGES -->
+<!-- Copy this navigation structure to all pages -->
+
+<!-- Header Navigation -->
+<header id="header" role="banner" class="premium-nav">
+    <div class="progress-indicator"></div>
+    <div class="nav-floating-container">
+        <div class="container">
+            <a href="index.html" class="logo premium-logo" aria-label="The Profit Platform - Home">
+                <div class="logo-content">
+                    <picture>
+                        <source srcset="images/optimized/logo.webp" type="image/webp">
+                        <img src="images/optimized/logo.png"
+                             alt="The Profit Platform Logo"
+                             class="logo-img"
+                             width="150"
+                             height="50"
+                             loading="eager"
+                             fetchpriority="high"
+                             decoding="async">
+                    </picture>
+                    <div class="logo-tagline">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="logo-accent"></div>
+            </a>
+
+            <nav id="primary-navigation" role="navigation" aria-label="Main navigation">
+                <ul class="nav-links premium-nav-links" role="menubar">
+                    <li role="none">
+                        <a href="index.html" class="nav-item premium-nav-item" role="menuitem">
+                            <i class="fas fa-home nav-icon" aria-hidden="true"></i>
+                            <span>Home</span>
+                            <div class="nav-pill-bg"></div>
+                        </a>
+                    </li>
+                    <li class="nav-dropdown premium-dropdown" role="none">
+                        <a href="services.html"
+                           class="nav-item premium-nav-item"
+                           role="menuitem"
+                           aria-expanded="false"
+                           aria-haspopup="true"
+                           aria-controls="services-dropdown">
+                            <i class="fas fa-rocket nav-icon" aria-hidden="true"></i>
+                            <span>Services</span>
+                            <i class="fas fa-chevron-down dropdown-arrow" aria-hidden="true"></i>
+                            <div class="nav-pill-bg"></div>
+                        </a>
+                        <div class="dropdown-menu mega-dropdown" role="menu" id="services-dropdown" aria-label="Services submenu">
+                            <div class="mega-dropdown-content">
+                                <a href="seo.html" class="dropdown-item mega-item" role="menuitem">
+                                    <div class="mega-item-icon">
+                                        <i class="fas fa-search" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="mega-item-content">
+                                        <strong>SEO Services</strong>
+                                        <span>Dominate Google search results</span>
+                                    </div>
+                                    <div class="mega-item-arrow">
+                                        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                                    </div>
+                                </a>
+                                <a href="web-design.html" class="dropdown-item mega-item" role="menuitem">
+                                    <div class="mega-item-icon">
+                                        <i class="fas fa-laptop-code" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="mega-item-content">
+                                        <strong>Website Design</strong>
+                                        <span>Convert visitors to customers</span>
+                                    </div>
+                                    <div class="mega-item-arrow">
+                                        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                                    </div>
+                                </a>
+                                <a href="google-ads.html" class="dropdown-item mega-item" role="menuitem">
+                                    <div class="mega-item-icon">
+                                        <i class="fas fa-bullhorn" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="mega-item-content">
+                                        <strong>Google Ads</strong>
+                                        <span>Instant traffic and leads</span>
+                                    </div>
+                                    <div class="mega-item-arrow">
+                                        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li role="none">
+                        <a href="pricing.html" class="nav-item premium-nav-item" role="menuitem">
+                            <i class="fas fa-dollar-sign nav-icon" aria-hidden="true"></i>
+                            <span>Pricing</span>
+                            <div class="nav-pill-bg"></div>
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="about.html" class="nav-item premium-nav-item" role="menuitem">
+                            <i class="fas fa-users nav-icon" aria-hidden="true"></i>
+                            <span>About</span>
+                            <div class="nav-pill-bg"></div>
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="blog/blog.html" class="nav-item premium-nav-item" role="menuitem">
+                            <i class="fas fa-blog nav-icon" aria-hidden="true"></i>
+                            <span>Blog</span>
+                            <div class="nav-pill-bg"></div>
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="contact.html" class="cta-link interactive-element" class="nav-item premium-nav-item" role="menuitem">
+                            <i class="fas fa-envelope nav-icon" aria-hidden="true"></i>
+                            <span>Contact</span>
+                            <div class="nav-pill-bg"></div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="nav-cta">
+                <a href="contact.html" class="cta-link interactive-element" class="btn btn-primary premium-cta-btn" aria-label="Get Free Chat - Contact us">
+                    <i class="fas fa-comments premium-cta-icon" aria-hidden="true"></i>
+                    <span>Let's Chat</span>
+                    <div class="premium-cta-glow"></div>
+                </a>
+            </div>
+
+            <button class="menu-toggle"
+                    id="menuToggle"
+                    aria-label="Open mobile menu"
+                    aria-expanded="false"
+                    aria-controls="mobileNav"
+                    type="button">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Mobile Navigation Overlay -->
+<div class="mobile-nav-overlay" id="mobileNavOverlay" aria-hidden="true"></div>
+
+<!-- Mobile Navigation Menu -->
+<div class="mobile-nav"
+     id="mobileNav"
+     role="dialog"
+     aria-modal="true"
+     aria-labelledby="mobile-nav-title"
+     aria-hidden="true">
+    <button class="mobile-nav-close"
+            id="mobileNavClose"
+            aria-label="Close mobile menu">
+        <i class="fas fa-times"></i>
+    </button>
+    <div class="mobile-nav-header">
+        <div class="mobile-logo">
+            <img src="images/optimized/logo.png" alt="The Profit Platform" width="120" height="40">
+        </div>
+    </div>
+    <nav aria-label="Mobile navigation">
+        <h2 id="mobile-nav-title" class="sr-only">Navigation Menu</h2>
+        <div class="mobile-nav-links" role="list">
+            <a href="index.html" role="listitem">
+                <span aria-hidden="true">🏠</span> Home
+            </a>
+            <a href="services.html" role="listitem">
+                <span aria-hidden="true">🎯</span> Services
+            </a>
+            <a href="seo.html" role="listitem" class="mobile-sub-item">
+                <span aria-hidden="true">📍</span> SEO & Local Search
+            </a>
+            <a href="web-design.html" role="listitem" class="mobile-sub-item">
+                <span aria-hidden="true">🎨</span> Web Design
+            </a>
+            <a href="google-ads.html" role="listitem" class="mobile-sub-item">
+                <span aria-hidden="true">📢</span> Google & Meta Ads
+            </a>
+            <a href="pricing.html" role="listitem">
+                <span aria-hidden="true">💰</span> Pricing
+            </a>
+            <a href="about.html" role="listitem">
+                <span aria-hidden="true">👥</span> About Us
+            </a>
+            <a href="blog/blog.html" role="listitem">
+                <span aria-hidden="true">📝</span> Blog
+            </a>
+            <a href="contact.html" class="cta-link interactive-element" role="listitem">
+                <span aria-hidden="true">📞</span> Contact
+            </a>
+        </div>
+    </nav>
+    <div class="mobile-nav-cta">
+        <a href="tel:+61487286451"
+           class="phone-number"
+           aria-label="Call us at 0487 286 451">
+            0487 286 451
+        </a>
+        <a href="contact.html" class="cta-link interactive-element"
+           class="btn btn-primary"
+           aria-label="Get Free Chat - Contact us">
+            Let's Chat
+        </a>
+    </div>
+</div>
+
+<!-- NAVIGATION JAVASCRIPT -->
+<script>
+    // Mobile navigation functionality
+    document.getElementById('menuToggle').addEventListener('click', function() {
+        const mobileNav = document.getElementById('mobileNav');
+        const overlay = document.getElementById('mobileNavOverlay');
+
+        mobileNav.classList.toggle('active');
+        overlay.classList.toggle('active');
+        this.classList.toggle('active');
+
+        // Update ARIA attributes
+        const isOpen = mobileNav.classList.contains('active');
+        this.setAttribute('aria-expanded', isOpen);
+        mobileNav.setAttribute('aria-hidden', !isOpen);
+    });
+
+    document.getElementById('mobileNavClose').addEventListener('click', function() {
+        const mobileNav = document.getElementById('mobileNav');
+        const overlay = document.getElementById('mobileNavOverlay');
+        const menuToggle = document.getElementById('menuToggle');
+
+        mobileNav.classList.remove('active');
+        overlay.classList.remove('active');
+        menuToggle.classList.remove('active');
+
+        // Update ARIA attributes
+        menuToggle.setAttribute('aria-expanded', false);
+        mobileNav.setAttribute('aria-hidden', true);
+    });
+
+    // Close mobile nav when overlay is clicked
+    document.getElementById('mobileNavOverlay').addEventListener('click', function() {
+        document.getElementById('mobileNavClose').click();
+    });
+</script>

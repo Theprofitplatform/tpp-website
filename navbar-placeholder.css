@@ -1,0 +1,26 @@
+/* Navbar placeholder to prevent layout shift */
+body::before {
+    content: "";
+    display: block;
+    height: 80px;
+    background: linear-gradient(90deg, #ffffff 0%, rgba(255,255,255,0.95) 100%);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    transition: opacity 0.3s ease;
+}
+
+/* Hide placeholder once navigation is loaded */
+body[data-nav-loaded]::before {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Ensure main content doesn't jump */
+#main-content {
+    padding-top: 80px !important;
+}

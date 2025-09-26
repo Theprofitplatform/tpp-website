@@ -1,0 +1,27 @@
+{
+  "timestamp": "2025-09-21T14:04:13.445Z",
+  "optimizations": {
+    "css": {
+      "originalSize": 416483,
+      "optimizedSize": 10416,
+      "reduction": "97.5"
+    },
+    "js": {
+      "originalSize": 116116,
+      "optimizedSize": 6817,
+      "reduction": "94.1"
+    },
+    "html": {
+      "originalBlocking": 16,
+      "optimizedBlocking": 3
+    }
+  },
+  "files": {
+    "created": [
+      "css/consolidated.min.css",
+      "js/consolidated.min.js",
+      "index-optimized.html",
+      "sw-optimized.js"
+    ]
+  }
+}

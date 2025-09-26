@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Dropdown Fix</title>
+
+    <!-- All CSS in correct order -->
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/dropdown-fix.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .test-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            z-index: 9999;
+            font-family: Arial, sans-serif;
+        }
+
+        .test-indicator h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+
+        .test-indicator .status {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
+
+        .status-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .status-icon.success {
+            background: #4CAF50;
+        }
+
+        .status-icon.error {
+            background: #f44336;
+        }
+
+        .dropdown-debug {
+            position: fixed;
+            top: 200px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 12px;
+            z-index: 9998;
+            max-width: 300px;
+        }
+
+        .dropdown-debug h4 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+
+        .dropdown-debug pre {
+            margin: 0;
+            white-space: pre-wrap;
+            color: #666;
+        }
+
+        /* Visual guide lines */
+        .center-guide {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 200px;
+            background: rgba(255, 0, 0, 0.3);
+            z-index: 9997;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation will be injected here -->
+
+    <!-- Center guide line for visual reference -->
+    <div class="center-guide"></div>
+
+    <!-- Debug information -->
+    <div class="dropdown-debug">
+        <h4>Dropdown Debug Info</h4>
+        <pre id="debug-info">Hover over Services to test...</pre>
+    </div>
+
+    <!-- Test Status Indicator -->
+    <div class="test-indicator">
+        <h3>Dropdown Alignment Test</h3>
+        <div class="status">
+            <div class="status-icon success"></div>
+            <span>CSS Fix Applied</span>
+        </div>
+        <div class="status">
+            <div class="status-icon success"></div>
+            <span>JS Updated</span>
+        </div>
+        <div class="status" id="alignment-status">
+            <div class="status-icon error"></div>
+            <span>Testing alignment...</span>
+        </div>
+    </div>
+
+    <!-- Navigation Script -->
+    <script src="js/components/navigation-inline.js"></script>
+
+    <!-- Test Script -->
+    <script>
+        // Wait for navigation to load
+        setTimeout(() => {
+            const servicesDropdown = document.querySelector('.nav-dropdown');
+            const debugInfo = document.getElementById('debug-info');
+            const alignmentStatus = document.getElementById('alignment-status');
+
+            if (servicesDropdown) {
+                // Add observer to detect when dropdown opens
+                const observer = new MutationObserver((mutations) => {
+                    mutations.forEach((mutation) => {
+                        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                            const dropdown = mutation.target;
+                            const menu = dropdown.querySelector('.dropdown-menu, .mega-dropdown');
+
+                            if (dropdown.classList.contains('active') && menu) {
+                                // Get positions
+                                const dropdownRect = dropdown.getBoundingClientRect();
+                                const menuRect = menu.getBoundingClientRect();
+                                const triggerRect = dropdown.querySelector('.nav-item').getBoundingClientRect();
+
+                                // Calculate centers
+                                const triggerCenter = triggerRect.left + (triggerRect.width / 2);
+                                const menuCenter = menuRect.left + (menuRect.width / 2);
+                                const difference = Math.abs(triggerCenter - menuCenter);
+
+                                // Update debug info
+                                debugInfo.textContent = `Trigger Center: ${triggerCenter.toFixed(1)}px
+Menu Center: ${menuCenter.toFixed(1)}px
+Difference: ${difference.toFixed(1)}px
+Menu Left: ${menuRect.left.toFixed(1)}px
+Menu Width: ${menuRect.width.toFixed(1)}px
+Transform: ${window.getComputedStyle(menu).transform}
+Position: ${window.getComputedStyle(menu).position}`;
+
+                                // Update status
+                                const statusIcon = alignmentStatus.querySelector('.status-icon');
+                                const statusText = alignmentStatus.querySelector('span');
+
+                                if (difference < 10) {
+                                    statusIcon.classList.remove('error');
+                                    statusIcon.classList.add('success');
+                                    statusText.textContent = 'Dropdown centered! ✓';
+                                } else {
+                                    statusIcon.classList.add('error');
+                                    statusIcon.classList.remove('success');
+                                    statusText.textContent = `Off by ${difference.toFixed(0)}px`;
+                                }
+
+                                // Move center guide to show trigger center
+                                const guide = document.querySelector('.center-guide');
+                                if (guide) {
+                                    guide.style.left = triggerCenter + 'px';
+                                }
+                            }
+                        }
+                    });
+                });
+
+                observer.observe(servicesDropdown, {
+                    attributes: true,
+                    attributeFilter: ['class']
+                });
+
+                console.log('✓ Dropdown test initialized');
+            } else {
+                console.error('✗ Services dropdown not found');
+                debugInfo.textContent = 'ERROR: Dropdown not found!';
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

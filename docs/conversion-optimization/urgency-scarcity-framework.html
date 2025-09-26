@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethical Urgency & Scarcity Framework - The Profit Platform</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #F9FAFB;
+            line-height: 1.6;
+            color: #374151;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .framework-section {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #6366F1;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1F2937;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .urgency-type {
+            background: #F8FAFC;
+            border: 2px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .urgency-type:hover {
+            border-color: #6366F1;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.1);
+        }
+
+        .type-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .type-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1F2937;
+        }
+
+        .ethics-rating {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .high-ethics {
+            background: #D1FAE5;
+            color: #065F46;
+        }
+
+        .medium-ethics {
+            background: #FEF3C7;
+            color: #92400E;
+        }
+
+        .low-ethics {
+            background: #FEE2E2;
+            color: #991B1B;
+        }
+
+        .copy-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .copy-example {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            padding: 16px;
+            position: relative;
+        }
+
+        .copy-label {
+            position: absolute;
+            top: -8px;
+            left: 16px;
+            background: #6366F1;
+            color: white;
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .copy-text {
+            margin: 8px 0 0 0;
+            font-style: italic;
+            color: #4B5563;
+        }
+
+        .implementation-guide {
+            background: #F0FDF4;
+            border: 1px solid #BBF7D0;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .guide-title {
+            color: #15803D;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .guide-steps {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .guide-steps li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: #166534;
+        }
+
+        .guide-steps li::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            background: #10B981;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .guide-steps {
+            counter-reset: step-counter;
+        }
+
+        .warning-box {
+            background: #FEF2F2;
+            border: 1px solid #FECACA;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .warning-title {
+            color: #DC2626;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .warning-text {
+            color: #991B1B;
+            font-size: 14px;
+        }
+
+        .countdown-demos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 24px 0;
+        }
+
+        .countdown-demo {
+            background: white;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .countdown-title {
+            font-size: 14px;
+            color: #6B7280;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .countdown-display {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #DC2626;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 8px;
+        }
+
+        .countdown-context {
+            font-size: 12px;
+            color: #6B7280;
+        }
+
+        .scarcity-indicators {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .scarcity-badge {
+            background: linear-gradient(135deg, #FEF3C7, #FCD34D);
+            border: 2px solid #F59E0B;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #92400E;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .seasonal-calendar {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .calendar-header {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1F2937;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .calendar-item {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .calendar-month {
+            font-weight: 600;
+            color: #6366F1;
+            margin-bottom: 8px;
+        }
+
+        .calendar-trigger {
+            font-size: 14px;
+            color: #4B5563;
+        }
+
+        .ab-test-variants {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 24px 0;
+        }
+
+        .variant {
+            background: white;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .variant-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .variant-title {
+            font-weight: 600;
+            color: #1F2937;
+        }
+
+        .conversion-rate {
+            background: #10B981;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .tracking-code {
+            background: #F3F4F6;
+            border: 1px solid #D1D5DB;
+            border-radius: 8px;
+            padding: 16px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #374151;
+            white-space: pre-wrap;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        @media (max-width: 768px) {
+            .copy-examples,
+            .countdown-demos,
+            .ab-test-variants {
+                grid-template-columns: 1fr;
+            }
+
+            .scarcity-indicators {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center; font-size: 2.5rem; margin-bottom: 16px; color: #1F2937;">Ethical Urgency & Scarcity Framework</h1>
+        <p style="text-align: center; color: #6B7280; font-size: 1.1rem; margin-bottom: 48px;">Building authentic urgency that converts without manipulating</p>
+
+        <!-- Time-Based Urgency -->
+        <div class="framework-section">
+            <h2 class="section-title">
+                ⏰ Time-Based Urgency
+            </h2>
+
+            <div class="urgency-type">
+                <div class="type-header">
+                    <h3 class="type-title">Limited-Time Offers</h3>
+                    <span class="ethics-rating high-ethics">High Ethics</span>
+                </div>
+
+                <p>Create genuine time pressure with real deadlines tied to legitimate business reasons.</p>
+
+                <div class="copy-examples">
+                    <div class="copy-example">
+                        <div class="copy-label">Consultation</div>
+                        <p class="copy-text">"I'm only taking 5 new clients this month to ensure quality service. Book your free audit before spots fill up."</p>
+                    </div>
+
+                    <div class="copy-example">
+                        <div class="copy-label">Promotion</div>
+                        <p class="copy-text">"End-of-quarter special: Save $500 on your setup fee. Offer ends March 31st (I need to hit my quarterly targets)."</p>
+                    </div>
+
+                    <div class="copy-example">
+                        <div class="copy-label">Seasonal</div>
+                        <p class="copy-text">"Get ready for Christmas shopping season - SEO changes take 3 months to show results. Start by September 1st."</p>
+                    </div>
+                </div>
+
+                <div class="implementation-guide">
+                    <div class="guide-title">
+                        ✅ Implementation Guidelines
+                    </div>
+                    <ol class="guide-steps">
+                        <li>Always tie deadlines to real business constraints (capacity, seasonal needs, etc.)</li>
+                        <li>Use specific dates and times rather than vague "limited time"</li>
+                        <li>Explain WHY the deadline exists - transparency builds trust</li>
+                        <li>Honor your deadlines - removing offers when promised builds credibility</li>
+                        <li>Track and display real countdown timers for authenticity</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="countdown-demos">
+                <div class="countdown-demo">
+                    <div class="countdown-title">Free Audit Spots</div>
+                    <div class="countdown-display" id="auditTimer">02:47:33</div>
+                    <div class="countdown-context">Until monthly spots reset</div>
+                </div>
+
+                <div class="countdown-demo">
+                    <div class="countdown-title">Q4 Setup Discount</div>
+                    <div class="countdown-display" id="quarterTimer">23:15:42</div>
+                    <div class="countdown-context">Days until offer expires</div>
+                </div>
+
+                <div class="countdown-demo">
+                    <div class="countdown-title">Christmas Season Prep</div>
+                    <div class="countdown-display" id="seasonTimer">127</div>
+                    <div class="countdown-context">Days to start SEO for Christmas</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quantity-Based Scarcity -->
+        <div class="framework-section">
+            <h2 class="section-title">
+                📊 Quantity-Based Scarcity
+            </h2>
+
+            <div class="urgency-type">
+                <div class="type-header">
+                    <h3 class="type-title">Limited Availability</h3>
+                    <span class="ethics-rating high-ethics">High Ethics</span>
+                </div>
+
+                <p>Real capacity constraints create authentic scarcity without artificial manipulation.</p>
+
+                <div class="scarcity-indicators">
+                    <div class="scarcity-badge">
+                        📅 <span id="slotsRemaining">3</span> consultation spots left this month
+                    </div>
+                    <div class="scarcity-badge">
+                        🎯 Only taking <span>5</span> new SEO clients (quality over quantity)
+                    </div>
+                    <div class="scarcity-badge">
+                        🚀 <span id="auditSlots">12</span> free audits remaining this quarter
+                    </div>
+                    <div class="scarcity-badge">
+                        💼 <span>2</span> spots left for intensive 90-day program
+                    </div>
+                </div>
+
+                <div class="copy-examples">
+                    <div class="copy-example">
+                        <div class="copy-label">Capacity Truth</div>
+                        <p class="copy-text">"I personally handle every client (no juniors, no outsourcing). This means I can only take 15 active clients at a time."</p>
+                    </div>
+
+                    <div class="copy-example">
+                        <div class="copy-label">Quality Focus</div>
+                        <p class="copy-text">"I limit new SEO clients to 5 per month so I can spend proper time on strategy and implementation for each business."</p>
+                    </div>
+
+                    <div class="copy-example">
+                        <div class="copy-label">Resource Constraint</div>
+                        <p class="copy-text">"Free comprehensive audits take 3-4 hours each. I can only complete 20 per month while serving existing clients."</p>
+                    </div>
+                </div>
+
+                <div class="implementation-guide">
+                    <div class="guide-title">
+                        ✅ Best Practices for Quantity Scarcity
+                    </div>
+                    <ol class="guide-steps">
+                        <li>Base limits on real capacity constraints (time, resources, team size)</li>
+                        <li>Update counters in real-time as spots are taken</li>
+                        <li>Explain the reason behind limitations (quality service, personal attention)</li>
+                        <li>Use waiting lists when capacity is full to maintain momentum</li>
+                        <li>Be transparent about when new spots will open</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Social Proof Urgency -->
+        <div class="framework-section">
+            <h2 class="section-title">
+                👥 Social Proof Urgency
+            </h2>
+
+            <div class="urgency-type">
+                <div class="type-header">
+                    <h3 class="type-title">Demand-Based Pressure</h3>
+                    <span class="ethics-rating high-ethics">High Ethics</span>
+                </div>
+
+                <p>Show real demand from other prospects to create natural urgency.</p>
+
+                <div class="copy-examples">
+                    <div class="copy-example">
+                        <div class="copy-label">Inquiry Volume</div>
+                        <p class="copy-text">"I've had 47 consultation requests this week. Book now to secure your spot before the queue gets longer."</p>
+                    </div>
+
+                    <div class="copy-example">
+                        <div class="copy-label">Recent Activity</div>
+                        <p class="copy-text">"3 Sydney businesses booked their marketing audits in the last 24 hours. Don't let your competitors get ahead."</p>
+                    </div>
+
+                    <div class="copy-example">
+                        <div class="copy-label">Competitor Action</div>
+                        <p class="copy-text">"Your main competitor just improved their SEO. Here's how to leapfrog them before they gain more ground."</p>
+                    </div>
+                </div>
+
+                <!-- Live Activity Feed Demo -->
+                <div class="activity-demo" style="background: #F8FAFC; border-radius: 12px; padding: 20px; margin: 20px 0;">
+                    <h4 style="margin: 0 0 16px 0; color: #374151;">Live Activity Feed</h4>
+                    <div id="activityFeed" style="max-height: 200px; overflow-y: auto;">
+                        <!-- Dynamic content populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seasonal & Event-Based Urgency -->
+        <div class="framework-section">
+            <h2 class="section-title">
+                📅 Seasonal & Event-Based Urgency
+            </h2>
+
+            <div class="seasonal-calendar">
+                <div class="calendar-header">Marketing Calendar Triggers</div>
+                <div class="calendar-grid">
+                    <div class="calendar-item">
+                        <div class="calendar-month">January</div>
+                        <div class="calendar-trigger">New Year business goals</div>
+                    </div>
+                    <div class="calendar-item">
+                        <div class="calendar-month">March</div>
+                        <div class="calendar-trigger">Financial year planning</div>
+                    </div>
+                    <div class="calendar-item">
+                        <div class="calendar-month">June</div>
+                        <div class="calendar-trigger">Mid-year review & pivot</div>
+                    </div>
+                    <div class="calendar-item">
+                        <div class="calendar-month">September</div>
+                        <div class="calendar-trigger">Christmas season prep</div>
+                    </div>
+                    <div class="calendar-item">
+                        <div class="calendar-month">November</div>
+                        <div class="calendar-trigger">Black Friday campaigns</div>
+                    </div>
+                    <div class="calendar-item">
+                        <div class="calendar-month">December</div>
+                        <div class="calendar-trigger">Next year strategy</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copy-examples">
+                <div class="copy-example">
+                    <div class="copy-label">Christmas Rush</div>
+                    <p class="copy-text">"Christmas shoppers start searching in October. Your SEO needs to be ready by September 1st to capture holiday traffic."</p>
+                </div>
+
+                <div class="copy-example">
+                    <div class="copy-label">Tax Time</div>
+                    <p class="copy-text">"Claim your marketing as a tax deduction. Book before June 30th to maximize your 2024 business expense claims."</p>
+                </div>
+
+                <div class="copy-example">
+                    <div class="copy-label">Economic Climate</div>
+                    <p class="copy-text">"In uncertain times, businesses with strong online presence survive and thrive. Don't wait for the next downturn."</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ethical Boundaries -->
+        <div class="framework-section">
+            <h2 class="section-title">
+                🛡️ Ethical Boundaries & Guidelines
+            </h2>
+
+            <div class="warning-box">
+                <div class="warning-title">
+                    ⚠️ Never Use These Tactics
+                </div>
+                <div class="warning-text">
+                    <strong>Fake Scarcity:</strong> Artificial timers that reset, fake "last item" claims, or made-up limitations<br>
+                    <strong>Emotional Manipulation:</strong> Fear-mongering, guilt-tripping, or exploiting insecurities<br>
+                    <strong>False Urgency:</strong> Evergreen timers, fake deadlines, or pressure without legitimate reason<br>
+                    <strong>Bait & Switch:</strong> Changing offers after engagement or adding hidden conditions
+                </div>
+            </div>
+
+            <div class="implementation-guide">
+                <div class="guide-title">
+                    ✅ Ethical Guidelines Checklist
+                </div>
+                <ol class="guide-steps">
+                    <li><strong>Truthfulness:</strong> Every claim must be 100% accurate and verifiable</li>
+                    <li><strong>Transparency:</strong> Explain the real reasons behind urgency or scarcity</li>
+                    <li><strong>Value-First:</strong> Focus on helping customers make the right decision</li>
+                    <li><strong>Respect:</strong> Honor all promises and deadlines without exception</li>
+                    <li><strong>Alternatives:</strong> Always offer next steps if current offer doesn't suit</li>
+                    <li><strong>Customer Benefit:</strong> Urgency should benefit the customer, not just the business</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- A/B Testing Variants -->
+        <div class="framework-section">
+            <h2 class="section-title">
+                🧪 A/B Testing Variants
+            </h2>
+
+            <div class="ab-test-variants">
+                <div class="variant">
+                    <div class="variant-header">
+                        <div class="variant-title">Control: No Urgency</div>
+                        <div class="conversion-rate">2.3%</div>
+                    </div>
+                    <p class="copy-text">"Ready to grow your Sydney business? Get your free marketing audit today."</p>
+                </div>
+
+                <div class="variant">
+                    <div class="variant-header">
+                        <div class="variant-title">Time Scarcity</div>
+                        <div class="conversion-rate">4.7%</div>
+                    </div>
+                    <p class="copy-text">"Only 3 free audit spots left this month. Book yours before February 28th."</p>
+                </div>
+
+                <div class="variant">
+                    <div class="variant-header">
+                        <div class="variant-title">Social Proof</div>
+                        <div class="conversion-rate">3.9%</div>
+                    </div>
+                    <p class="copy-text">"Join 15+ Sydney businesses who've tripled their leads. Get your free audit today."</p>
+                </div>
+
+                <div class="variant">
+                    <div class="variant-header">
+                        <div class="variant-title">Reason Why</div>
+                        <div class="conversion-rate">5.2%</div>
+                    </div>
+                    <p class="copy-text">"I personally handle every audit (3-4 hours each). Only 5 spots available this month."</p>
+                </div>
+            </div>
+
+            <div class="tracking-code">
+<!-- Urgency A/B Testing Implementation -->
+<script>
+// Define urgency variants
+const urgencyVariants = [
+    {
+        id: 'control',
+        headline: 'Get Your Free Marketing Audit',
+        subtext: 'Discover growth opportunities for your Sydney business',
+        cta: 'Get Free Audit',
+        urgency: false
+    },
+    {
+        id: 'time_scarcity',
+        headline: 'Only 3 Audit Spots Left This Month',
+        subtext: 'Book before February 28th - spots fill fast',
+        cta: 'Secure My Spot',
+        urgency: true,
+        timer: true
+    },
+    {
+        id: 'social_proof',
+        headline: 'Join 50+ Successful Sydney Businesses',
+        subtext: '3 new audits booked in the last 24 hours',
+        cta: 'Get My Audit',
+        urgency: true,
+        social: true
+    },
+    {
+        id: 'reason_why',
+        headline: 'Personal Audit From Sydney Marketing Expert',
+        subtext: 'I handle every audit personally (3-4 hours each)',
+        cta: 'Book Personal Audit',
+        urgency: true,
+        explanation: true
+    }
+];
+
+// Assign variant and track
+const assignedVariant = urgencyVariants[Math.floor(Math.random() * urgencyVariants.length)];
+sessionStorage.setItem('urgency_variant', assignedVariant.id);
+
+// Track variant assignment
+gtag('event', 'urgency_variant_assigned', {
+    'variant_id': assignedVariant.id,
+    'variant_type': assignedVariant.urgency ? 'urgency' : 'control'
+});
+</script>
+            </div>
+        </div>
+
+        <!-- Implementation Tracking -->
+        <div class="framework-section">
+            <h2 class="section-title">
+                📊 Performance Tracking
+            </h2>
+
+            <div class="implementation-guide">
+                <div class="guide-title">
+                    📈 Key Metrics to Track
+                </div>
+                <ol class="guide-steps">
+                    <li><strong>Conversion Rate:</strong> Compare urgency vs non-urgency CTAs</li>
+                    <li><strong>Engagement Time:</strong> How long users spend with urgent messaging</li>
+                    <li><strong>Bounce Rate:</strong> Ensure urgency doesn't increase bounces</li>
+                    <li><strong>Customer Quality:</strong> Track LTV of urgency-driven customers</li>
+                    <li><strong>Trust Metrics:</strong> Monitor reviews and satisfaction scores</li>
+                    <li><strong>Completion Rate:</strong> From click to actual booking/purchase</li>
+                </ol>
+            </div>
+
+            <div class="tracking-code">
+<!-- Urgency Performance Tracking -->
+<script>
+function trackUrgencyInteraction(action, variant, element) {
+    // Google Analytics 4
+    gtag('event', 'urgency_interaction', {
+        'event_category': 'Conversion_Optimization',
+        'urgency_variant': variant,
+        'action_type': action,
+        'element_type': element,
+        'timestamp': Date.now()
+    });
+
+    // Custom tracking for detailed analysis
+    fetch('/api/track-urgency', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            variant: variant,
+            action: action,
+            element: element,
+            page_url: window.location.href,
+            user_agent: navigator.userAgent,
+            timestamp: new Date().toISOString()
+        })
+    });
+}
+
+// Track timer views
+document.querySelectorAll('.countdown-display').forEach(timer => {
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                trackUrgencyInteraction('timer_viewed',
+                    sessionStorage.getItem('urgency_variant'), 'countdown_timer');
+            }
+        });
+    });
+    observer.observe(timer);
+});
+</script>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dynamic Activity Feed
+        const activities = [
+            { name: "Sarah", location: "Bondi", action: "booked consultation", time: "2 min ago" },
+            { name: "Mike", location: "Parramatta", action: "claimed free audit", time: "8 min ago" },
+            { name: "Lisa", location: "Penrith", action: "downloaded SEO guide", time: "15 min ago" },
+            { name: "James", location: "North Shore", action: "started 90-day program", time: "23 min ago" },
+            { name: "Emma", location: "Manly", action: "booked strategy call", time: "31 min ago" },
+            { name: "David", location: "CBD", action: "claimed audit offer", time: "37 min ago" }
+        ];
+
+        function updateActivityFeed() {
+            const feed = document.getElementById('activityFeed');
+            const shuffled = activities.sort(() => 0.5 - Math.random());
+            const selected = shuffled.slice(0, 4);
+
+            feed.innerHTML = selected.map(activity => `
+                <div style="display: flex; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid #E5E7EB;">
+                    <div style="width: 8px; height: 8px; background: #10B981; border-radius: 50%; animation: pulse 2s infinite;"></div>
+                    <span style="color: #374151; font-size: 14px;">
+                        <strong>${activity.name}</strong> from ${activity.location} ${activity.action}
+                    </span>
+                    <span style="color: #6B7280; font-size: 12px; margin-left: auto;">${activity.time}</span>
+                </div>
+            `).join('');
+        }
+
+        // Update activity feed every 15 seconds
+        updateActivityFeed();
+        setInterval(updateActivityFeed, 15000);
+
+        // Dynamic countdown timers
+        function updateCountdowns() {
+            const now = new Date();
+
+            // Audit timer (resets monthly)
+            const nextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+            const timeToReset = nextMonth - now;
+            const hours = Math.floor(timeToReset / (1000 * 60 * 60));
+            const minutes = Math.floor((timeToReset % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeToReset % (1000 * 60)) / 1000);
+
+            const auditTimer = document.getElementById('auditTimer');
+            if (auditTimer) {
+                auditTimer.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+
+            // Quarter timer (end of current quarter)
+            const quarterEnd = new Date(now.getFullYear(), Math.floor(now.getMonth() / 3) * 3 + 3, 0);
+            const daysToQuarter = Math.ceil((quarterEnd - now) / (1000 * 60 * 60 * 24));
+
+            const quarterTimer = document.getElementById('quarterTimer');
+            if (quarterTimer) {
+                quarterTimer.textContent = daysToQuarter;
+            }
+
+            // Update slot counters periodically
+            const slotsElement = document.getElementById('slotsRemaining');
+            if (slotsElement) {
+                const currentSlots = parseInt(slotsElement.textContent);
+                // Simulate realistic decreases
+                if (Math.random() < 0.1 && currentSlots > 0) {
+                    slotsElement.textContent = currentSlots - 1;
+                }
+            }
+        }
+
+        // Update timers every second
+        setInterval(updateCountdowns, 1000);
+
+        // Track scroll depth for urgency elements
+        const urgencyElements = document.querySelectorAll('.urgency-type, .countdown-demo, .scarcity-badge');
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const urgencyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const elementClass = entry.target.className;
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'urgency_element_viewed', {
+                            'event_category': 'Conversion_Optimization',
+                            'element_type': elementClass,
+                            'scroll_depth': Math.round((window.scrollY / document.body.scrollHeight) * 100)
+                        });
+                    }
+                }
+            });
+        }, observerOptions);
+
+        urgencyElements.forEach(element => urgencyObserver.observe(element));
+
+        // A/B test urgency messaging
+        function initializeUrgencyTesting() {
+            const variants = ['control', 'time_scarcity', 'social_proof', 'reason_why'];
+            const assignedVariant = variants[Math.floor(Math.random() * variants.length)];
+
+            // Store variant for session
+            sessionStorage.setItem('urgency_test_variant', assignedVariant);
+
+            // Track assignment
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'ab_test_assigned', {
+                    'event_category': 'Experimentation',
+                    'test_name': 'urgency_messaging',
+                    'variant': assignedVariant
+                });
+            }
+
+            return assignedVariant;
+        }
+
+        // Initialize testing if not already done
+        if (!sessionStorage.getItem('urgency_test_variant')) {
+            initializeUrgencyTesting();
+        }
+    </script>
+</body>
+</html>

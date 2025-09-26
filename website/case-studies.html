@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Studies - The Profit Platform | Real Client Results</title>
+    <meta name="description" content="See real results from our Sydney clients: 310% revenue increase for Sarah's Bakery, 47 leads for Rapid Plumbing in 30 days, and more proven digital marketing successes.">
+    <meta name="keywords" content="digital marketing case studies sydney, marketing results sydney, client testimonials, marketing roi, business growth sydney">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Case Studies - The Profit Platform | Real Client Results">
+    <meta property="og:description" content="See real results from our Sydney clients: 310% revenue increase for Sarah's Bakery, 47 leads for Rapid Plumbing in 30 days, and more proven digital marketing successes.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://theprofitplatform.com.au/case-studies">
+
+    <!-- Fonts and Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4F46E5;
+            --secondary: #F59E0B;
+            --success: #10B981;
+            --danger: #EF4444;
+            --dark: #1F2937;
+            --light: #F9FAFB;
+            --white: #FFFFFF;
+            --gray-100: #F3F4F6;
+            --gray-200: #E5E7EB;
+            --gray-300: #D1D5DB;
+            --gray-600: #4B5563;
+            --gray-700: #374151;
+            --gray-800: #1F2937;
+            --gray-900: #111827;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--gray-800);
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #6366F1 100%);
+            color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Case Studies Grid */
+        .case-studies {
+            padding: 5rem 0;
+            background: var(--light);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .case-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .case-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+        }
+
+        .case-badge {
+            display: inline-block;
+            background: var(--success);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1.5rem;
+        }
+
+        .case-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .case-industry {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1.5rem;
+        }
+
+        .case-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+            padding: 1.5rem 0;
+            border-top: 1px solid var(--gray-200);
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--success);
+            line-height: 1;
+        }
+
+        .metric-change {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            margin-top: 0.25rem;
+        }
+
+        .metric-label {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 0.5rem;
+        }
+
+        .case-challenge {
+            margin-bottom: 1.5rem;
+        }
+
+        .case-challenge h4 {
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: 0.5rem;
+        }
+
+        .case-solution {
+            margin-bottom: 1.5rem;
+        }
+
+        .case-solution h4 {
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: 0.5rem;
+        }
+
+        .case-quote {
+            background: var(--gray-50);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            font-style: italic;
+            margin: 2rem 0;
+        }
+
+        .case-quote p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .quote-author {
+            font-weight: 600;
+            color: var(--gray-700);
+            font-style: normal;
+        }
+
+        .case-timeline {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            font-weight: 500;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gray-900);
+            color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .cta-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .case-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .case-metrics {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">THE PROFIT PLATFORM</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/case-studies" class="active">Case Studies</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>$2.3M+ in New Revenue Generated for Sydney Businesses</h1>
+            <p>See the exact strategies and results that transformed struggling businesses into market leaders. Every number is verified, every story is real.</p>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="case-studies">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Real Sydney Businesses, Real Results</h2>
+                <p class="section-subtitle">These aren't fake testimonials or cherry-picked results. These are verified, documented transformations from business owners who went from struggling to thriving.</p>
+            </div>
+
+            <div class="case-grid">
+                <!-- Case Study 1: Sarah's Bakery -->
+                <div class="case-card">
+                    <span class="case-badge">310% Revenue Growth</span>
+                    <div class="case-industry">Food & Beverage • Bondi</div>
+                    <h3 class="case-title">How Sarah's Bakery Café Tripled Weekly Orders in 6 Weeks</h3>
+
+                    <div class="case-metrics">
+                        <div class="metric">
+                            <div class="metric-value">127</div>
+                            <div class="metric-change">from 31</div>
+                            <div class="metric-label">Weekly Orders</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">$4,970</div>
+                            <div class="metric-change">from $1,200</div>
+                            <div class="metric-label">Weekly Revenue</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">6</div>
+                            <div class="metric-change">weeks</div>
+                            <div class="metric-label">Time to Results</div>
+                        </div>
+                    </div>
+
+                    <div class="case-challenge">
+                        <h4>The Problem (Sound Familiar?):</h4>
+                        <p>Sarah was working 70-hour weeks but only making money on weekends. Weekdays were dead. She had amazing products but no one could find her online. "I felt like I was failing," she told me on our first call.</p>
+                    </div>
+
+                    <div class="case-solution">
+                        <h4>What We Did:</h4>
+                        <p>Week 1: Fixed her Google My Business and got her ranking for "fresh bakery Bondi." Week 2: Launched targeted ads for weekday coffee meetings. Week 3: Built online ordering system. Week 6: She was booked solid.</p>
+                    </div>
+
+                    <div class="case-quote">
+                        <p>"I had to hire two more bakers within a month. The weekday crowd we now get is incredible - and they're ordering our premium items, not just the basics."</p>
+                        <div class="quote-author">- Sarah Chen, Sarah's Bakery Café</div>
+                    </div>
+
+                    <div class="case-timeline">Campaign Duration: 6 weeks • Industry: Food & Beverage</div>
+                </div>
+
+                <!-- Case Study 2: Rapid Plumbing -->
+                <div class="case-card">
+                    <span class="case-badge">2,350% Lead Increase</span>
+                    <div class="case-industry">Home Services • Marrickville</div>
+                    <h3 class="case-title">From 2 Weekly Calls to 47 Quality Leads in 30 Days</h3>
+
+                    <div class="case-metrics">
+                        <div class="metric">
+                            <div class="metric-value">47</div>
+                            <div class="metric-change">from 2</div>
+                            <div class="metric-label">Monthly Leads</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">$18.90</div>
+                            <div class="metric-change">cost per lead</div>
+                            <div class="metric-label">Acquisition Cost</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">73%</div>
+                            <div class="metric-change">conversion rate</div>
+                            <div class="metric-label">Lead Quality</div>
+                        </div>
+                    </div>
+
+                    <div class="case-challenge">
+                        <h4>The Problem (Sound Familiar?):</h4>
+                        <p>Michael was sitting by the phone hoping it would ring. Some weeks he'd get 5 calls, other weeks zero. "I had no control over my income," he said. "It was terrifying."</p>
+                    </div>
+
+                    <div class="case-solution">
+                        <h4>What We Did:</h4>
+                        <p>Day 1: Set up emergency plumber ads for "plumber near me." Day 7: Added maintenance campaigns. Day 14: Implemented call tracking. Day 30: 47 qualified leads, phone ringing daily.</p>
+                    </div>
+
+                    <div class="case-quote">
+                        <p>"I went from hoping the phone would ring to having to hire another plumber. Avi doesn't just set and forget - he texts me screenshots of what's working and actually answers his phone when I call."</p>
+                        <div class="quote-author">- Michael Chen, Rapid Plumbing Solutions</div>
+                    </div>
+
+                    <div class="case-timeline">Campaign Duration: 30 days • Industry: Home Services</div>
+                </div>
+
+                <!-- Case Study 3: Elite Personal Training -->
+                <div class="case-card">
+                    <span class="case-badge">180% Client Growth</span>
+                    <div class="case-industry">Fitness • Parramatta</div>
+                    <h3 class="case-title">Personal Trainer Builds Waitlist of 50+ Premium Clients</h3>
+
+                    <div class="case-metrics">
+                        <div class="metric">
+                            <div class="metric-value">28</div>
+                            <div class="metric-change">from 10</div>
+                            <div class="metric-label">Active Clients</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">$8,400</div>
+                            <div class="metric-change">monthly revenue</div>
+                            <div class="metric-label">Revenue Growth</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">52</div>
+                            <div class="metric-change">wait list</div>
+                            <div class="metric-label">Demand Created</div>
+                        </div>
+                    </div>
+
+                    <div class="case-challenge">
+                        <h4>The Problem (Sound Familiar?):</h4>
+                        <p>James had the skills but was stuck training random gym members for $25/session. "I knew I was worth more, but didn't know how to find the right clients," he admitted.</p>
+                    </div>
+
+                    <div class="case-solution">
+                        <h4>What We Did:</h4>
+                        <p>Week 1: Created transformation case studies. Week 2: Launched targeted ads for executives wanting personal training. Week 4: Built consultation booking system. Week 8: Charging $150/session with a waitlist.</p>
+                    </div>
+
+                    <div class="case-quote">
+                        <p>"I'm now charging $150 per session and have a 3-week waitlist. The clients that come through are serious about results and respect my expertise. It's completely changed my business."</p>
+                        <div class="quote-author">- James Rodriguez, Elite Personal Training</div>
+                    </div>
+
+                    <div class="case-timeline">Campaign Duration: 8 weeks • Industry: Fitness & Wellness</div>
+                </div>
+
+                <!-- Case Study 4: Luxury Landscaping -->
+                <div class="case-card">
+                    <span class="case-badge">425% Project Value</span>
+                    <div class="case-industry">Landscaping • North Shore</div>
+                    <h3 class="case-title">Landscaper Attracts High-End Projects Worth $50k+</h3>
+
+                    <div class="case-metrics">
+                        <div class="metric">
+                            <div class="metric-value">$52k</div>
+                            <div class="metric-change">avg project</div>
+                            <div class="metric-label">Project Value</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">8</div>
+                            <div class="metric-change">monthly quotes</div>
+                            <div class="metric-label">Quality Inquiries</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">95%</div>
+                            <div class="metric-change">close rate</div>
+                            <div class="metric-label">Conversion Rate</div>
+                        </div>
+                    </div>
+
+                    <div class="case-challenge">
+                        <h4>The Challenge:</h4>
+                        <p>David's landscaping business was stuck doing small maintenance jobs. He wanted to move into luxury garden design but couldn't attract the right clientele who valued premium work.</p>
+                    </div>
+
+                    <div class="case-solution">
+                        <h4>Our Solution:</h4>
+                        <p>Repositioned the brand for luxury market, created a portfolio-driven website, and launched targeted campaigns in affluent suburbs with before/after transformation content.</p>
+                    </div>
+
+                    <div class="case-quote">
+                        <p>"We went from doing $5k deck repairs to designing $80k complete garden transformations. The clients now come to us because they want the best, not the cheapest."</p>
+                        <div class="quote-author">- David Kim, Luxury Landscapes Sydney</div>
+                    </div>
+
+                    <div class="case-timeline">Campaign Duration: 12 weeks • Industry: Home & Garden</div>
+                </div>
+
+                <!-- Case Study 5: TechFix IT Solutions -->
+                <div class="case-card">
+                    <span class="case-badge">520% Lead Volume</span>
+                    <div class="case-industry">IT Services • CBD</div>
+                    <h3 class="case-title">IT Support Company Dominates Business District</h3>
+
+                    <div class="case-metrics">
+                        <div class="metric">
+                            <div class="metric-value">31</div>
+                            <div class="metric-change">from 5</div>
+                            <div class="metric-label">Monthly Leads</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">$12k</div>
+                            <div class="metric-change">average contract</div>
+                            <div class="metric-label">Contract Value</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">4hrs</div>
+                            <div class="metric-change">response time</div>
+                            <div class="metric-label">Lead Response</div>
+                        </div>
+                    </div>
+
+                    <div class="case-challenge">
+                        <h4>The Challenge:</h4>
+                        <p>TechFix had excellent technical skills but struggled to communicate their value to non-technical business owners. Most leads were price shoppers looking for the cheapest option.</p>
+                    </div>
+
+                    <div class="case-solution">
+                        <h4>Our Solution:</h4>
+                        <p>Developed content that translated technical benefits into business outcomes, created industry-specific landing pages, and implemented a consultation process that qualified prospects.</p>
+                    </div>
+
+                    <div class="case-quote">
+                        <p>"We're no longer competing on price. Business owners now understand that downtime costs more than quality IT support. Our average contract value has doubled."</p>
+                        <div class="quote-author">- Alex Patel, TechFix IT Solutions</div>
+                    </div>
+
+                    <div class="case-timeline">Campaign Duration: 10 weeks • Industry: Technology</div>
+                </div>
+
+                <!-- Case Study 6: Bella's Beauty Studio -->
+                <div class="case-card">
+                    <span class="case-badge">240% Booking Increase</span>
+                    <div class="case-industry">Beauty & Wellness • Bondi Junction</div>
+                    <h3 class="case-title">Beauty Studio Books Out 3 Months in Advance</h3>
+
+                    <div class="case-metrics">
+                        <div class="metric">
+                            <div class="metric-value">340</div>
+                            <div class="metric-change">from 100</div>
+                            <div class="metric-label">Monthly Bookings</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">$185</div>
+                            <div class="metric-change">service average</div>
+                            <div class="metric-label">Treatment Value</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">89%</div>
+                            <div class="metric-change">retention rate</div>
+                            <div class="metric-label">Client Retention</div>
+                        </div>
+                    </div>
+
+                    <div class="case-challenge">
+                        <h4>The Challenge:</h4>
+                        <p>Bella's beauty studio had great reviews but inconsistent bookings. Clients weren't aware of their full range of premium treatments, leading to lower average transaction values.</p>
+                    </div>
+
+                    <div class="case-solution">
+                        <h4>Our Solution:</h4>
+                        <p>Implemented an online booking system, created treatment package promotions, and launched targeted social media campaigns showcasing transformation results and new services.</p>
+                    </div>
+
+                    <div class="case-quote">
+                        <p>"I'm booked solid and finally charging what I'm worth. Clients are booking multiple treatments and referring their friends. I've had to hire two additional therapists."</p>
+                        <div class="quote-author">- Isabella Martinez, Bella's Beauty Studio</div>
+                    </div>
+
+                    <div class="case-timeline">Campaign Duration: 8 weeks • Industry: Beauty & Wellness</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Ready to Be Our Next Success Story?</h2>
+            <p class="cta-subtitle">Stop wondering if digital marketing can work for your business. These results prove it can.</p>
+            <a href="tel:+61487286451" class="phone-link interactive-element" class="cta-button">Get Your Free Strategy Call</a>
+        </div>
+    </section>
+
+    <script>
+        // Add smooth scrolling and intersection observer animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.case-card');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s, transform 0.6s';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

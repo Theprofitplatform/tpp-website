@@ -1,0 +1,128 @@
+name: Bmad Ecosystem - Release
+
+on:
+    # Run on manual trigger
+    workflow_dispatch:
+
+# Configuration for the version of external packages
+# We do this so we can cache them and avoid checking out that big
+# repository at all times.
+env:
+  EXTERNAL_PACKAGES_VERSION: main
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    defaults:
+        run:
+          shell: bash
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+    steps:
+      # Check out the code from GitHub and all history
+      - uses: actions/checkout@v3
+
+
+      - name: Define Release Name
+        id: release_name
+        run: |
+          git fetch --prune --unshallow --tags
+          # call .github/scripts/next_version.sh to get the next version
+          # and set it as an output variable
+          echo "Next version: $(.github/scripts/next_version.sh)"
+          echo "version=$(.github/scripts/next_version.sh)" >> $GITHUB_OUTPUT
+
+    #   Uncomment this block if we decide to run the tests later
+    #   # Install system dependencies
+    #   - name: Install System Dependencies
+    #     run: |
+    #       sudo apt update
+    #       sudo apt-get install gfortran g++ cmake libtool-bin libreadline-dev libpango1.0-dev libssl-dev bc
+
+      # In case we don't have it available, check it out
+      - name: Checkout External Packages
+        run: |
+          git clone --depth 1 --branch ${{ env.EXTERNAL_PACKAGES_VERSION }} https://github.com/bmad-sim/bmad-external-packages.git ~/external_packages
+
+      - name: Move External packages
+        run: |
+          echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
+          for dep in ~/external_packages/*; \
+          do if [ $dep != "README.md" ]; \
+            then cp -r $dep $GITHUB_WORKSPACE/; \
+            fi; \
+          done
+
+      - name: Assemble Tarball
+        run: |
+          mkdir -p ~/bmad_dist;
+          mkdir ~/bmad_dist_${{ steps.release_name.outputs.version }};
+          cp -r $GITHUB_WORKSPACE/*  ~/bmad_dist_${{ steps.release_name.outputs.version }}/;
+          tar --exclude .git --exclude .github  --exclude .gitignore -czf ~/bmad_dist/bmad_dist.tar.gz -C ~/ bmad_dist_${{ steps.release_name.outputs.version }}
+
+
+      - name: Create Release - ${{ steps.release_name.outputs.version }}
+        id: create_release
+        uses: ncipollo/release-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          artifactErrorsFailBuild: true
+          artifacts: ~/bmad_dist/bmad_dist.tar.gz
+          body: |
+            # Bmad Distribution - ${{ steps.release_name.outputs.version }}
+          generateReleaseNotes: true
+          makeLatest: true
+          tag: ${{ steps.release_name.outputs.version }}
+          commit: "main"
+
+
+      - name: Report Failure Status on Slack
+        if: failure()
+        uses: ravsamhq/notify-slack-action@1.4.0
+        with:
+          status: ${{ job.status }}
+          notify_when: 'failure'
+          notification_title: 'Bmad Distribution Pipeline Failed'
+          message_format: ':poop: *{workflow}* failed. Please check more details at <https://github.com/bmad-sim/bmad-ecosystem/actions/workflows/release.yml|{repo}>.'
+          footer: ''
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: Report New Release on Slack
+        if: success()
+        uses: ravsamhq/notify-slack-action@1.4.0
+        with:
+          status: ${{ job.status }}
+          notification_title: 'Bmad Distribution Pipeline'
+          message_format: ':tada: *{workflow}* produced a new release of Bmad (${{ steps.release_name.outputs.version }}). Check it out at <${{ steps.create_release.outputs.html_url }}|{repo}>.'
+          footer: ''
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: Install dependencies for manual build
+        run: |
+          sudo apt update
+          sudo apt install texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra texlive-full texlive-science
+
+      - name: Build Bmad PDF Manual for Release - ${{ steps.release_name.outputs.version }}
+        run: |
+          cd ${GITHUB_WORKSPACE}/bmad/doc/
+          pdflatex bmad.tex
+          ./makeindex.pl
+
+      - name: Build Tao PDF Manual for Release - ${{ steps.release_name.outputs.version }}
+        run: |
+          cd ${GITHUB_WORKSPACE}/tao/doc/
+          pdflatex tao.tex
+          ./makeindex.pl
+
+      - name: Upload Release Assets - Bmad & Tao Manual
+        run: |
+          gh release upload ${{ steps.release_name.outputs.version }} ${GITHUB_WORKSPACE}/bmad/doc/bmad.pdf ${GITHUB_WORKSPACE}/tao/doc/tao.pdf
+        env:
+          GITHUB_TOKEN: ${{ github.TOKEN }}

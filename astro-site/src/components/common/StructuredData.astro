@@ -1,0 +1,249 @@
+---
+export interface Props {
+  pageType?: 'homepage' | 'service' | 'about' | 'contact';
+  serviceName?: string;
+  serviceDescription?: string;
+}
+
+const {
+  pageType = 'homepage',
+  serviceName = 'Digital Marketing Services',
+  serviceDescription = 'Comprehensive digital marketing services including SEO, Google Ads, and web design.'
+} = Astro.props;
+---
+
+<!-- Enhanced Structured Data for Local SEO -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://theprofitplatform.com.au/#organization",
+            "name": "The Profit Platform",
+            "alternateName": "TPP",
+            "description": "Sydney digital marketing specialist helping small businesses grow online through affordable SEO, Google Ads, and web design services.",
+            "url": "https://theprofitplatform.com.au",
+            "sameAs": [
+                "https://www.facebook.com/profile.php?id=61574707582255",
+                "https://www.instagram.com/theprofitplatformau",
+                "https://linkedin.com/company/theprofitplatform",
+                "https://twitter.com/profitplatform",
+                "https://youtube.com/theprofitplatform"
+            ],
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://storage.googleapis.com/msgsndr/El8AYzrtJG3nVg76QPpa/media/68b56f6e09148075ab5016df.png",
+                "width": "300",
+                "height": "100"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+61487286451",
+                "contactType": "customer service",
+                "areaServed": "AU",
+                "availableLanguage": "English"
+            },
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Sydney",
+                "addressRegion": "NSW",
+                "addressCountry": "AU",
+                "postalCode": "2000"
+            },
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "-33.8688",
+                "longitude": "151.2093"
+            },
+            "foundingDate": "2019",
+            "numberOfEmployees": {
+                "@type": "QuantitativeValue",
+                "value": "15"
+            },
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.9",
+                "reviewCount": "15",
+                "bestRating": "5",
+                "worstRating": "1"
+            }
+        },
+        {
+            "@type": "LocalBusiness",
+            "@id": "https://theprofitplatform.com.au/#business",
+            "name": "The Profit Platform",
+            "image": "https://theprofitplatform.com.au/wp-content/uploads/2025/08/The-Profit-Platform-Growth-Dashboard-1.png",
+            "telephone": "+61487286451",
+            "email": "avi@theprofitplatform.com.au",
+            "url": "https://theprofitplatform.com.au",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Sydney",
+                "addressRegion": "NSW",
+                "addressCountry": "AU"
+            },
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "-33.8688",
+                "longitude": "151.2093"
+            },
+            "openingHoursSpecification": [
+                {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                    "opens": "09:00",
+                    "closes": "18:00"
+                }
+            ],
+            "priceRange": "$990-$3990",
+            "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+            "currenciesAccepted": "AUD",
+            "areaServed": {
+                "@type": "GeoCircle",
+                "geoMidpoint": {
+                    "@type": "GeoCoordinates",
+                    "latitude": "-33.8688",
+                    "longitude": "151.2093"
+                },
+                "geoRadius": "50000"
+            }
+        },
+        {
+            "@type": "WebSite",
+            "@id": "https://theprofitplatform.com.au/#website",
+            "url": "https://theprofitplatform.com.au",
+            "name": "The Profit Platform",
+            "description": "Sydney digital marketing specialist helping small businesses grow online. Affordable SEO, Google Ads & web design. Personal service, no lock-ins.",
+            "publisher": {
+                "@id": "https://theprofitplatform.com.au/#organization"
+            },
+            "inLanguage": "en-AU",
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://theprofitplatform.com.au/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://theprofitplatform.com.au/#webpage",
+            "url": "https://theprofitplatform.com.au",
+            "name": "Digital Marketing Agency Sydney | Get 3x More Leads - The Profit Platform",
+            "description": "Sydney digital marketing specialist helping small businesses grow online. Affordable SEO, Google Ads & web design. Personal service, no lock-ins.",
+            "isPartOf": {
+                "@id": "https://theprofitplatform.com.au/#website"
+            },
+            "about": {
+                "@id": "https://theprofitplatform.com.au/#organization"
+            },
+            "primaryImageOfPage": {
+                "@type": "ImageObject",
+                "url": "https://theprofitplatform.com.au/wp-content/uploads/2025/08/The-Profit-Platform-Growth-Dashboard-1.png"
+            },
+            "datePublished": "2024-01-01T00:00:00+11:00",
+            "dateModified": "2024-12-31T23:59:59+11:00",
+            "breadcrumb": {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://theprofitplatform.com.au"
+                    }
+                ]
+            }
+        },
+        {
+            "@type": "Service",
+            "name": "Local SEO Sydney",
+            "description": "Local search engine optimization services to help Sydney businesses rank #1 on Google and attract more local customers.",
+            "provider": {
+                "@id": "https://theprofitplatform.com.au/#organization"
+            },
+            "areaServed": "Sydney, NSW, Australia",
+            "serviceType": "Search Engine Optimization",
+            "offers": {
+                "@type": "Offer",
+                "priceRange": "$990-$3990",
+                "priceCurrency": "AUD",
+                "availability": "https://schema.org/InStock"
+            }
+        },
+        {
+            "@type": "Service",
+            "name": "Google Ads Management",
+            "description": "Professional Google Ads campaign management and optimization to generate instant customers and maximize ROI.",
+            "provider": {
+                "@id": "https://theprofitplatform.com.au/#organization"
+            },
+            "areaServed": "Sydney, NSW, Australia",
+            "serviceType": "Pay-Per-Click Advertising",
+            "offers": {
+                "@type": "Offer",
+                "priceRange": "$990-$3990",
+                "priceCurrency": "AUD",
+                "availability": "https://schema.org/InStock"
+            }
+        },
+        {
+            "@type": "Service",
+            "name": "Web Design Sydney",
+            "description": "High-converting website design and development services for Sydney businesses to turn visitors into paying customers.",
+            "provider": {
+                "@id": "https://theprofitplatform.com.au/#organization"
+            },
+            "areaServed": "Sydney, NSW, Australia",
+            "serviceType": "Web Design & Development",
+            "offers": {
+                "@type": "Offer",
+                "priceRange": "$990-$3990",
+                "priceCurrency": "AUD",
+                "availability": "https://schema.org/InStock"
+            }
+        }
+    ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does SEO cost in Sydney?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our SEO services start from $2,500/month, with packages tailored to your business needs and goals."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to see SEO results?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most clients see significant improvements within 3-6 months, with continued growth over 12+ months."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer Google Ads management?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, we provide comprehensive Google Ads management starting from $1,500/month plus ad spend."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What areas in Sydney do you service?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We service all of Sydney including CBD, North Shore, Eastern Suburbs, and Western Sydney."
+      }
+    }
+  ]
+}
+</script>

@@ -1,0 +1,30 @@
+{
+  "timestamp": "2025-09-22T00:20:40.522694",
+  "total_files": 21,
+  "components": [
+    {
+      "component": "footer",
+      "occurrences": 12,
+      "files": [
+        "about.html",
+        "contact.html",
+        "disclaimer.html",
+        "google-ads-landing.html",
+        "google-ads.html",
+        "index.html",
+        "portfolio.html",
+        "privacy-policy.html",
+        "privacy.html",
+        "services (draft).html",
+        "terms.html",
+        "web-design.html"
+      ],
+      "savings_bytes": 72270,
+      "priority_score": 867240
+    }
+  ],
+  "estimated_savings": 72270,
+  "priority_order": [
+    "footer"
+  ]
+}

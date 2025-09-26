@@ -1,0 +1,602 @@
+{
+  "timestamp": "2025-09-23T14:38:10.247Z",
+  "score": 0,
+  "criticalErrors": [
+    {
+      "message": "Possible exposed sensitive data",
+      "details": "\n                    <form id=\"contactForm\"\n    <i"
+    }
+  ],
+  "errors": [
+    {
+      "message": "Inline script 1 has syntax error",
+      "details": "Unexpected token ':'"
+    },
+    {
+      "message": "Inline script 2 has syntax error",
+      "details": "Unexpected token ':'"
+    },
+    {
+      "message": "Inline script 3 has syntax error",
+      "details": "Unexpected token ':'"
+    },
+    {
+      "message": "Inline script 4 has syntax error",
+      "details": "Unexpected token ':'"
+    },
+    {
+      "message": "Inline script 5 has syntax error",
+      "details": "Unexpected token ':'"
+    },
+    {
+      "message": "Inline script 6 has syntax error",
+      "details": "Unexpected token ':'"
+    },
+    {
+      "message": "contactForm: Missing action attribute",
+      "details": ""
+    },
+    {
+      "message": "contactForm: No submit button found",
+      "details": ""
+    },
+    {
+      "message": "1 interactive elements missing labels",
+      "details": ""
+    },
+    {
+      "message": "Form input without label",
+      "details": "text"
+    },
+    {
+      "message": "Form input without label",
+      "details": "services"
+    },
+    {
+      "message": "Invalid JSON in structured data 1",
+      "details": "Unexpected token ',', ...\"anization\",\n        \"... is not valid JSON"
+    },
+    {
+      "message": "Invalid JSON in structured data 2",
+      "details": "Unexpected token ',', ...\"anization\",\n  \"@id\":\"... is not valid JSON"
+    },
+    {
+      "message": "Invalid JSON in structured data 3",
+      "details": "Unexpected token ',', ...\"lBusiness\",\n  \"@id\":\"... is not valid JSON"
+    },
+    {
+      "message": "Invalid JSON in structured data 4",
+      "details": "Unexpected token ',', ...\" \"WebSite\",\n  \"@id\":\"... is not valid JSON"
+    },
+    {
+      "message": "Invalid JSON in structured data 5",
+      "details": "Unexpected token ',', ...\"crumbList\",\n  \"itemL\"... is not valid JSON"
+    },
+    {
+      "message": "Invalid JSON in structured data 6",
+      "details": "Unexpected token ',', ...\" \"FAQPage\",\n  \"mainE\"... is not valid JSON"
+    }
+  ],
+  "warnings": [
+    {
+      "message": "Heading hierarchy broken",
+      "details": "H2 followed by H4"
+    },
+    {
+      "message": "7 links with href=\"#\" and no onclick",
+      "details": ""
+    },
+    {
+      "message": "28 buttons without action or form context",
+      "details": ""
+    },
+    {
+      "message": "contactForm: Missing method attribute (defaults to GET)",
+      "details": ""
+    },
+    {
+      "message": "contactForm: Email input without validation",
+      "details": ""
+    },
+    {
+      "message": "contactForm: Input \"services\" missing label",
+      "details": ""
+    },
+    {
+      "message": "External script without integrity check",
+      "details": "https://www.googletagmanager.com/gtag/js?id=G-FB947JWCFT"
+    },
+    {
+      "message": "Only 0/1 images are responsive",
+      "details": ""
+    },
+    {
+      "message": "35 elements with font size < 14px (hard to read on mobile)",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A skip-link",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A cta-primary-modern",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A cta-secondary-modern",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A btn btn-secondary",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A btn btn-secondary",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A btn btn-secondary",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A btn btn-secondary",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A btn btn-primary",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A btn btn-secondary",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: INPUT faqSearch",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: BUTTON faq-filter active",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: BUTTON faq-filter",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: BUTTON faq-filter",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: BUTTON faq-filter",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: BUTTON faq-filter",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: BUTTON faq-question",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: BUTTON faq-question",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: BUTTON faq-question",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: BUTTON faq-question",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: BUTTON faq-question",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: BUTTON faq-question",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: BUTTON faq-question",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: BUTTON faq-question",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: BUTTON faq-question",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: BUTTON faq-question",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: BUTTON faq-question",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: BUTTON faq-question",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: BUTTON faq-question",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: BUTTON faq-question",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: BUTTON faq-question",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: BUTTON faq-question",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: BUTTON faq-question",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: BUTTON faq-question",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: BUTTON faq-question",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: BUTTON faq-question",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: BUTTON showMoreFaqs",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A btn btn-cta-primary",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A btn btn-cta-secondary",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: INPUT ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: INPUT honeypot",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: INPUT ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: INPUT ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: INPUT firstName",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: INPUT lastName",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: INPUT email",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: INPUT phone",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: INPUT company",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: SELECT industry",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: SELECT budget",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: SELECT services_section",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: TEXTAREA message",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: INPUT consent",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: BUTTON btn btn-primary submit-btn",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A social-icon",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A social-icon",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A social-icon",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A social-icon",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A social-icon",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A ",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: BUTTON exitClose",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: A btn-exit-primary",
+      "details": ""
+    },
+    {
+      "message": "Touch target too small: BUTTON exitDecline",
+      "details": ""
+    },
+    {
+      "message": "External CSS without integrity check",
+      "details": "https://theprofitplatform.com.au/"
+    },
+    {
+      "message": "External CSS without integrity check",
+      "details": "https://theprofitplatform.com.au/"
+    },
+    {
+      "message": "External CSS without integrity check",
+      "details": "https://theprofitplatform.com.au/"
+    },
+    {
+      "message": "External CSS without integrity check",
+      "details": "https://fonts.googleapis.com"
+    },
+    {
+      "message": "External CSS without integrity check",
+      "details": "https://fonts.gstatic.com"
+    },
+    {
+      "message": "External CSS without integrity check",
+      "details": "https://cdnjs.cloudflare.com"
+    },
+    {
+      "message": "External CSS without integrity check",
+      "details": "https://www.google-analytics.com"
+    },
+    {
+      "message": "External CSS without integrity check",
+      "details": "https://www.googletagmanager.com"
+    },
+    {
+      "message": "External CSS without integrity check",
+      "details": "https://www.google.com"
+    },
+    {
+      "message": "External CSS without integrity check",
+      "details": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    },
+    {
+      "message": "External CSS without integrity check",
+      "details": "https://storage.googleapis.com/msgsndr/El8AYzrtJG3nVg76QPpa/media/68b56f6e09148075ab5016df.png"
+    },
+    {
+      "message": "External CSS without integrity check",
+      "details": "https://storage.googleapis.com/msgsndr/El8AYzrtJG3nVg76QPpa/media/68b56f98291670614001dfbf.png"
+    },
+    {
+      "message": "External CSS without integrity check",
+      "details": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    },
+    {
+      "message": "External CSS without integrity check",
+      "details": "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    },
+    {
+      "message": "External JS without integrity check",
+      "details": "https://www.googletagmanager.com/gtag/js?id=G-FB947JWCFT"
+    }
+  ],
+  "successes": [
+    {
+      "message": "HTML loaded and parsed successfully",
+      "details": ""
+    },
+    {
+      "message": "HTML structure test completed",
+      "details": ""
+    },
+    {
+      "message": "JavaScript has no syntax errors",
+      "details": ""
+    },
+    {
+      "message": "JavaScript functionality test completed",
+      "details": ""
+    },
+    {
+      "message": "User interaction test completed",
+      "details": ""
+    },
+    {
+      "message": "Form testing completed",
+      "details": ""
+    },
+    {
+      "message": "Security test completed",
+      "details": ""
+    },
+    {
+      "message": "Performance test completed",
+      "details": ""
+    },
+    {
+      "message": "Mobile responsiveness test completed",
+      "details": ""
+    },
+    {
+      "message": "Accessibility test completed",
+      "details": ""
+    },
+    {
+      "message": "SEO test completed",
+      "details": ""
+    },
+    {
+      "message": "Asset loading test completed",
+      "details": ""
+    },
+    {
+      "message": "External dependencies test completed",
+      "details": ""
+    }
+  ],
+  "totalIssues": 134,
+  "status": "CRITICAL"
+}

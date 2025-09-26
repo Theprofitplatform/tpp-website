@@ -1,0 +1,51 @@
+{
+  "campaigns": [
+    {
+      "name": "Lead Magnets - Search",
+      "type": "SEARCH",
+      "budget": 75,
+      "ad_groups": [
+        {
+          "name": "Free Website Audit",
+          "keywords": [
+            "free website audit",
+            "website audit tool",
+            "SEO audit free",
+            "website analysis free",
+            "website checker"
+          ],
+          "ads": [
+            {
+              "headline1": "Free Website Audit Tool",
+              "headline2": "Get $500 Report Instantly",
+              "headline3": "Find Revenue Leaks Now",
+              "description1": "27-point audit reveals why you're losing money.",
+              "description2": "Used by 1,247 Australian businesses. Get yours free.",
+              "final_url": "https://theprofitplatform.com.au/free-audit.html"
+            }
+          ]
+        },
+        {
+          "name": "ROI Calculator",
+          "keywords": [
+            "google ads roi calculator",
+            "ppc roi calculator",
+            "advertising roi calculator",
+            "marketing roi calculator",
+            "calculate google ads profit"
+          ],
+          "ads": [
+            {
+              "headline1": "Google Ads ROI Calculator",
+              "headline2": "Calculate Exact Profit",
+              "headline3": "Before You Spend $1",
+              "description1": "See your exact ROI from Google Ads instantly.",
+              "description2": "Free calculator shows profit potential in seconds.",
+              "final_url": "https://theprofitplatform.com.au/roi-calculator.html"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

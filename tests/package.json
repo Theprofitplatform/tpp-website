@@ -1,0 +1,36 @@
+{
+  "name": "hive-mind-performance-testing",
+  "version": "1.0.0",
+  "description": "Comprehensive performance testing framework with hive mind collective intelligence",
+  "main": "hive-mind-test-runner.js",
+  "type": "module",
+  "scripts": {
+    "test": "node hive-mind-test-runner.js",
+    "test:performance": "node hive-mind-test-runner.js --mode performance_only",
+    "test:functional": "node hive-mind-test-runner.js --mode functional_only",
+    "test:regression": "node hive-mind-test-runner.js --mode regression_only",
+    "test:cicd": "node hive-mind-test-runner.js --cicd true --exit-on-failure true",
+    "coordinator": "node hive-mind-coordinator.js",
+    "regression-monitor": "node performance-regression-detector.js monitor",
+    "stress-test": "node stress-test-analyzer.js"
+  },
+  "dependencies": {
+    "puppeteer": "^21.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  },
+  "keywords": [
+    "performance",
+    "testing",
+    "hive-mind",
+    "collective-intelligence",
+    "web-vitals",
+    "regression",
+    "functional-testing",
+    "accessibility",
+    "seo"
+  ],
+  "author": "Hive Mind Collective Intelligence System",
+  "license": "MIT"
+}

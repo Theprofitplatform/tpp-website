@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Debug</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .debug-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .issue {
+            background: #fee;
+            padding: 10px;
+            margin: 10px 0;
+            border-left: 4px solid red;
+        }
+        .success {
+            background: #efe;
+            padding: 10px;
+            margin: 10px 0;
+            border-left: 4px solid green;
+        }
+        iframe {
+            width: 100%;
+            height: 150px;
+            border: 2px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Navigation Debug Tool</h1>
+
+    <div class="debug-container">
+        <h2>Testing index.html Navigation</h2>
+        <iframe id="testFrame" src="../index.html"></iframe>
+    </div>
+
+    <div class="debug-container">
+        <h2>Navigation Analysis</h2>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const iframe = document.getElementById('testFrame');
+                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                const results = document.getElementById('results');
+                let html = '';
+
+                // Check viewport width
+                const viewportWidth = iframe.contentWindow.innerWidth;
+                html += `<div class="success">Viewport Width: ${viewportWidth}px</div>`;
+
+                // Check if navigation exists
+                const nav = iframeDoc.querySelector('#primary-navigation');
+                if (nav) {
+                    html += '<div class="success">✓ Navigation element found</div>';
+
+                    // Check computed styles
+                    const navStyles = iframe.contentWindow.getComputedStyle(nav);
+                    html += `<div>Navigation display: ${navStyles.display}</div>`;
+                    html += `<div>Navigation visibility: ${navStyles.visibility}</div>`;
+                } else {
+                    html += '<div class="issue">✗ Navigation element NOT found</div>';
+                }
+
+                // Check nav links container
+                const navLinks = iframeDoc.querySelector('.premium-nav-links');
+                if (navLinks) {
+                    html += '<div class="success">✓ Nav links container found</div>';
+
+                    const linksStyles = iframe.contentWindow.getComputedStyle(navLinks);
+                    html += `<div>Nav links display: ${linksStyles.display}</div>`;
+                    html += `<div>Nav links visibility: ${linksStyles.visibility}</div>`;
+                    html += `<div>Nav links opacity: ${linksStyles.opacity}</div>`;
+                    html += `<div>Nav links width: ${linksStyles.width}</div>`;
+
+                    if (linksStyles.display === 'none') {
+                        html += '<div class="issue">⚠️ NAV LINKS ARE HIDDEN (display: none)</div>';
+                    }
+                    if (linksStyles.visibility === 'hidden') {
+                        html += '<div class="issue">⚠️ NAV LINKS ARE INVISIBLE (visibility: hidden)</div>';
+                    }
+
+                    // Count nav items
+                    const navItems = navLinks.querySelectorAll('.premium-nav-item');
+                    html += `<div>Number of nav items: ${navItems.length}</div>`;
+
+                    if (navItems.length > 0) {
+                        html += '<div><strong>Nav Items Found:</strong><ul>';
+                        navItems.forEach(item => {
+                            const text = item.querySelector('span')?.textContent || 'Unknown';
+                            const href = item.getAttribute('href');
+                            const itemStyles = iframe.contentWindow.getComputedStyle(item);
+                            html += `<li>${text} → ${href} (display: ${itemStyles.display})</li>`;
+                        });
+                        html += '</ul></div>';
+                    }
+                } else {
+                    html += '<div class="issue">✗ Nav links container NOT found (.premium-nav-links)</div>';
+
+                    // Try alternate selector
+                    const altNavLinks = iframeDoc.querySelector('.nav-links');
+                    if (altNavLinks) {
+                        html += '<div class="success">✓ Found alternate nav links (.nav-links)</div>';
+                        const altStyles = iframe.contentWindow.getComputedStyle(altNavLinks);
+                        html += `<div>Alt nav links display: ${altStyles.display}</div>`;
+                    }
+                }
+
+                // Check for any CSS errors
+                const allStyles = iframeDoc.querySelectorAll('link[rel="stylesheet"]');
+                html += `<div><strong>Stylesheets loaded: ${allStyles.length}</strong></div>`;
+                allStyles.forEach(link => {
+                    html += `<div>• ${link.href.split('/').pop()}</div>`;
+                });
+
+                // Check media query
+                const mediaQuery968 = iframe.contentWindow.matchMedia('(max-width: 968px)');
+                html += `<div>Media query (max-width: 968px) matches: ${mediaQuery968.matches}</div>`;
+                if (mediaQuery968.matches && viewportWidth > 968) {
+                    html += '<div class="issue">⚠️ MEDIA QUERY MISMATCH - viewport is wider than 968px but query matches!</div>';
+                }
+
+                results.innerHTML = html;
+            }, 2000); // Wait for iframe to load
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,247 @@
+{
+  "total_files_found": 34,
+  "successfully_converted": 34,
+  "failed_conversions": 0,
+  "skipped_files": 0,
+  "conversions": [
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/profit-tools/tools/rank-tracker.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/tools/rank-tracker.astro",
+      "title": "Free Google Ranking Tracker - Check Your SEO Rankings Instantly",
+      "description": "Track your website's Google rankings for any keyword instantly. Free SEO rank checker tool with competitor analysis and mobile rankings."
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/profit-tools/tools/revenue-leak-detector.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/tools/revenue-leak-detector.astro",
+      "title": "Revenue Leak Detector - Find Hidden Money In Your Business",
+      "description": "Discover how much revenue your business is losing. Free interactive quiz identifies money leaks and provides instant fixes."
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/profit-tools/tools/speed-test.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/tools/speed-test.astro",
+      "title": "Website Speed Test - Free Page Speed Checker",
+      "description": "Test your website speed instantly. Get detailed performance metrics, Core Web Vitals scores, and actionable optimization tips."
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/src/tools/keyword-difficulty-checker.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/tools/keyword-difficulty-checker.astro",
+      "title": "Keyword Difficulty Checker - SEO Keyword Analysis Tool | The Profit Platform",
+      "description": "Check keyword difficulty scores and competition analysis. Find the best keywords for your SEO strategy with our comprehensive keyword research tool."
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/src/tools/local-rankings-map.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/tools/local-rankings-map.astro",
+      "title": "Local Rankings Map - Local SEO Analysis Tool | The Profit Platform",
+      "description": "Track local search rankings across different locations. Analyze geographic performance and optimize your local SEO strategy with our interactive map."
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/src/tools/seo-audit-tool.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/tools/seo-audit-tool.astro",
+      "title": "SEO Audit Tool - Complete Website Analysis | The Profit Platform",
+      "description": "Comprehensive SEO audit tool with scoring system. Analyze your website's SEO performance, get actionable insights, and improve your search rankings."
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/src/tools/speed-tester.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/tools/speed-tester.astro",
+      "title": "Website Speed Tester - Performance Analysis Tool | The Profit Platform",
+      "description": "Test your website speed and performance. Get detailed insights on loading times, Core Web Vitals, and optimization recommendations."
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/src/calculators/budget-optimizer.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/calculators/budget-optimizer.astro",
+      "title": "Budget Optimizer - Marketing Budget Calculator | The Profit Platform",
+      "description": "Optimize your marketing budget across different services. Get data-driven recommendations for SEO, Google Ads, social media, and web design investments."
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/src/calculators/conversion-rate-calculator.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/calculators/conversion-rate-calculator.astro",
+      "title": "Conversion Rate Calculator - Analytics & Optimization Tool | The Profit Platform",
+      "description": "Calculate and optimize your conversion rates. Analyze funnel performance, A/B test results, and get actionable insights to boost conversions."
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/src/calculators/roi-calculator.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/calculators/roi-calculator.astro",
+      "title": "ROI Calculator - Marketing Investment Returns | The Profit Platform",
+      "description": "Calculate your marketing ROI with our advanced calculator. Track investment returns, payback periods, and optimize your marketing budget for maximum profitability."
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/docs/conversion-optimization/ab-testing-plan.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/lead-magnets/ab-testing-plan.astro",
+      "title": "A/B Testing Master Plan - The Profit Platform",
+      "description": "Sydney Digital Marketing Expert"
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/docs/conversion-optimization/exit-intent-popup.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/lead-magnets/exit-intent-popup.astro",
+      "title": "Exit-Intent Popup - 90-Day Growth Sprint",
+      "description": "Sydney Digital Marketing Expert"
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/docs/conversion-optimization/floating-cta.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/lead-magnets/floating-cta.astro",
+      "title": "Floating CTA Variations - The Profit Platform",
+      "description": "Sydney Digital Marketing Expert"
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/docs/conversion-optimization/form-optimization.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/lead-magnets/form-optimization.astro",
+      "title": "Form Optimization Framework - The Profit Platform",
+      "description": "Sydney Digital Marketing Expert"
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/docs/conversion-optimization/lead-magnets.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/lead-magnets/lead-magnets.astro",
+      "title": "Lead Magnets Collection - The Profit Platform",
+      "description": "Sydney Digital Marketing Expert"
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/docs/conversion-optimization/tracking-implementation.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/lead-magnets/tracking-implementation.astro",
+      "title": "Heatmap & User Journey Tracking Setup - The Profit Platform",
+      "description": "Sydney Digital Marketing Expert"
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/docs/conversion-optimization/trust-badges.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/lead-magnets/trust-badges.astro",
+      "title": "Trust Badges & Credibility Indicators - The Profit Platform",
+      "description": "Sydney Digital Marketing Expert"
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/docs/conversion-optimization/urgency-scarcity-framework.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/lead-magnets/urgency-scarcity-framework.astro",
+      "title": "Ethical Urgency & Scarcity Framework - The Profit Platform",
+      "description": "Sydney Digital Marketing Expert"
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/docs/legal/index.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/legal/index.astro",
+      "title": "Legal & Administrative Documents - The Profit Platform",
+      "description": "Sydney Digital Marketing Expert"
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/docs/legal/invoice-template.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/legal/invoice-template.astro",
+      "title": "Invoice Template - The Profit Platform",
+      "description": "Sydney Digital Marketing Expert"
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/docs/legal/master-service-agreement.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/legal/master-service-agreement.astro",
+      "title": "Master Service Agreement - The Profit Platform",
+      "description": "Sydney Digital Marketing Expert"
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/docs/legal/nda-template.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/legal/nda-template.astro",
+      "title": "Non-Disclosure Agreement - The Profit Platform",
+      "description": "Sydney Digital Marketing Expert"
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/docs/legal/privacy-policy.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/legal/privacy-policy.astro",
+      "title": "Privacy Policy - The Profit Platform",
+      "description": "Sydney Digital Marketing Expert"
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/docs/legal/statement-of-work-template.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/legal/statement-of-work-template.astro",
+      "title": "Statement of Work Template - The Profit Platform",
+      "description": "Sydney Digital Marketing Expert"
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/docs/legal/terms-of-service.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/legal/terms-of-service.astro",
+      "title": "Terms of Service - The Profit Platform",
+      "description": "Sydney Digital Marketing Expert"
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/docs/service-templates/campaign-brief-template.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/service-templates/campaign-brief-template.astro",
+      "title": "Campaign Brief Template - The Profit Platform",
+      "description": "Sydney Digital Marketing Expert"
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/docs/service-templates/content-calendar-template.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/service-templates/content-calendar-template.astro",
+      "title": "Content Calendar Template - The Profit Platform",
+      "description": "Sydney Digital Marketing Expert"
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/docs/service-templates/index.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/service-templates/index.astro",
+      "title": "Service Delivery Templates - The Profit Platform",
+      "description": "Sydney Digital Marketing Expert"
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/docs/service-templates/monthly-reporting-template.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/service-templates/monthly-reporting-template.astro",
+      "title": "Monthly Performance Report - The Profit Platform",
+      "description": "Sydney Digital Marketing Expert"
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/docs/service-templates/seo-audit-template.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/service-templates/seo-audit-template.astro",
+      "title": "SEO Audit Template - The Profit Platform",
+      "description": "Sydney Digital Marketing Expert"
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/docs/service-templates/website-development-brief.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/service-templates/website-development-brief.astro",
+      "title": "Website Development Brief - The Profit Platform",
+      "description": "Sydney Digital Marketing Expert"
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/docs/marketing/brand-guidelines.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/marketing/brand-guidelines.astro",
+      "title": "Brand Guidelines - The Profit Platform",
+      "description": "Sydney Digital Marketing Expert"
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/docs/marketing/email-templates.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/marketing/email-templates.astro",
+      "title": "Email Templates - The Profit Platform",
+      "description": "Sydney Digital Marketing Expert"
+    },
+    {
+      "success": true,
+      "source": "/home/abhi/projects/tpp/tools/index.html",
+      "target": "/home/abhi/projects/tpp/astro-site/src/pages/tools/index.astro",
+      "title": "Free Marketing Tools - The Profit Platform",
+      "description": "Professional-grade marketing tools to analyze, optimize, and grow your Sydney business. 100% free, no signup required."
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,392 @@
+name: Production Deployment Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 2 * * *'  # Daily at 2 AM for automated optimization
+
+env:
+  NODE_VERSION: '18'
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  # Code Quality Checks
+  quality-check:
+    runs-on: ubuntu-latest
+    name: Code Quality & Linting
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Check code formatting
+        run: npm run format:check
+
+      - name: Security audit
+        run: npm audit --audit-level=moderate
+
+  # Automated Testing
+  test:
+    runs-on: ubuntu-latest
+    needs: quality-check
+    name: Automated Testing Suite
+
+    strategy:
+      matrix:
+        test-suite: [unit, integration, e2e]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ${{ matrix.test-suite }} tests
+        run: |
+          if [ "${{ matrix.test-suite }}" == "unit" ]; then
+            npm run test
+          elif [ "${{ matrix.test-suite }}" == "integration" ]; then
+            npm run test:integration
+          else
+            npx playwright install
+            npm run test:playwright
+          fi
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results-${{ matrix.test-suite }}
+          path: |
+            coverage/
+            playwright-report/
+            test-results/
+
+  # Performance Testing
+  performance:
+    runs-on: ubuntu-latest
+    needs: test
+    name: Performance & Lighthouse Audit
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Build production bundle
+        run: |
+          npm ci
+          npm run build
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v10
+        with:
+          urls: |
+            http://localhost:8080
+            http://localhost:8080/services.html
+            http://localhost:8080/contact.html
+          budgetPath: ./lighthouse-budget.json
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+
+      - name: Check bundle size
+        run: |
+          npm run analyze
+          node scripts/check-bundle-size.js
+
+  # SEO Validation
+  seo-check:
+    runs-on: ubuntu-latest
+    needs: test
+    name: SEO & Schema Validation
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Validate Schema Markup
+        run: |
+          python3 scripts/validate-schema.py
+
+      - name: Check meta tags
+        run: |
+          python3 scripts/check-meta-tags.py
+
+      - name: Validate sitemap
+        run: |
+          python3 scripts/validate-sitemap.py
+
+  # Build & Optimize
+  build:
+    runs-on: ubuntu-latest
+    needs: [test, performance, seo-check]
+    name: Build & Optimization
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          pip install cssutils beautifulsoup4 lxml
+
+      - name: Extract inline styles
+        run: npm run extract:inline-styles
+
+      - name: Consolidate CSS
+        run: npm run consolidate:css
+
+      - name: Build components
+        run: npm run build:components
+
+      - name: Optimize images
+        run: npm run optimize:images
+
+      - name: Build production bundle
+        run: npm run build
+
+      - name: Generate service worker
+        run: node scripts/generate-sw.js
+
+      - name: Compress assets
+        run: |
+          find dist -type f \( -name "*.js" -o -name "*.css" -o -name "*.html" \) -exec gzip -k {} \;
+          find dist -type f \( -name "*.js" -o -name "*.css" -o -name "*.html" \) -exec brotli -k {} \;
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: production-build
+          path: dist/
+
+  # Deploy to Staging
+  deploy-staging:
+    runs-on: ubuntu-latest
+    needs: build
+    name: Deploy to Staging
+    environment:
+      name: staging
+      url: https://staging.theprofitplatform.com.au
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: production-build
+          path: dist/
+
+      - name: Deploy to staging server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.STAGING_HOST }}
+          username: ${{ secrets.STAGING_USER }}
+          key: ${{ secrets.STAGING_KEY }}
+          source: "dist/*"
+          target: "/var/www/staging"
+
+      - name: Run smoke tests
+        run: |
+          curl -f https://staging.theprofitplatform.com.au || exit 1
+          curl -f https://staging.theprofitplatform.com.au/services.html || exit 1
+
+  # Visual Regression Testing
+  visual-regression:
+    runs-on: ubuntu-latest
+    needs: deploy-staging
+    name: Visual Regression Testing
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install Playwright
+        run: |
+          npm ci
+          npx playwright install
+
+      - name: Run visual tests
+        run: npm run test:visual
+        env:
+          TEST_URL: https://staging.theprofitplatform.com.au
+
+      - name: Upload visual diff
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: visual-regression-diff
+          path: test-results/visual/
+
+  # Deploy to Production
+  deploy-production:
+    runs-on: ubuntu-latest
+    needs: [deploy-staging, visual-regression]
+    name: Deploy to Production
+    environment:
+      name: production
+      url: https://theprofitplatform.com.au
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: production-build
+          path: dist/
+
+      - name: Backup current production
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.PROD_HOST }}
+          username: ${{ secrets.PROD_USER }}
+          key: ${{ secrets.PROD_KEY }}
+          script: |
+            timestamp=$(date +%Y%m%d_%H%M%S)
+            cp -r /var/www/html /var/www/backups/backup_$timestamp
+            # Keep only last 5 backups
+            ls -t /var/www/backups | tail -n +6 | xargs -I {} rm -rf /var/www/backups/{}
+
+      - name: Deploy to production
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.PROD_HOST }}
+          username: ${{ secrets.PROD_USER }}
+          key: ${{ secrets.PROD_KEY }}
+          source: "dist/*"
+          target: "/var/www/html"
+
+      - name: Clear CDN cache
+        run: |
+          curl -X POST https://api.cloudflare.com/client/v4/zones/${{ secrets.CF_ZONE_ID }}/purge_cache \
+            -H "Authorization: Bearer ${{ secrets.CF_API_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            --data '{"purge_everything":true}'
+
+      - name: Warm up cache
+        run: |
+          urls=(
+            "https://theprofitplatform.com.au"
+            "https://theprofitplatform.com.au/services.html"
+            "https://theprofitplatform.com.au/contact.html"
+            "https://theprofitplatform.com.au/about.html"
+          )
+          for url in "${urls[@]}"; do
+            curl -s -o /dev/null -w "%{http_code}" "$url"
+          done
+
+  # Post-deployment monitoring
+  monitor:
+    runs-on: ubuntu-latest
+    needs: deploy-production
+    name: Post-deployment Monitoring
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Check production health
+        run: |
+          # Check main pages
+          curl -f https://theprofitplatform.com.au || exit 1
+          curl -f https://theprofitplatform.com.au/services.html || exit 1
+
+          # Check API endpoints
+          curl -f https://theprofitplatform.com.au/api/health || exit 1
+
+      - name: Run synthetic monitoring
+        run: |
+          npm ci
+          npm run test:synthetic
+        env:
+          PRODUCTION_URL: https://theprofitplatform.com.au
+
+      - name: Check Core Web Vitals
+        run: |
+          npm run test:cwv
+        env:
+          TEST_URL: https://theprofitplatform.com.au
+
+      - name: Send deployment notification
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          text: 'Production deployment completed successfully!'
+          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+        if: always()
+
+  # Rollback on failure
+  rollback:
+    runs-on: ubuntu-latest
+    needs: monitor
+    name: Automatic Rollback
+    if: failure()
+
+    steps:
+      - name: Rollback to previous version
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.PROD_HOST }}
+          username: ${{ secrets.PROD_USER }}
+          key: ${{ secrets.PROD_KEY }}
+          script: |
+            # Get latest backup
+            latest_backup=$(ls -t /var/www/backups | head -n1)
+
+            # Rollback
+            rm -rf /var/www/html/*
+            cp -r /var/www/backups/$latest_backup/* /var/www/html/
+
+            echo "Rolled back to $latest_backup"
+
+      - name: Alert team
+        uses: 8398a7/action-slack@v3
+        with:
+          status: 'failure'
+          text: '⚠️ Production deployment failed! Automatic rollback initiated.'
+          webhook_url: ${{ secrets.SLACK_WEBHOOK }}

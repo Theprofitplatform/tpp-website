@@ -1,0 +1,440 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "SEO Services | The Profit Platform - Sydney SEO Experts";
+const description = "Dominate search rankings with proven SEO strategies. 420% average traffic increase. Get found by more customers with Sydney's top SEO agency.";
+
+const services = [
+  {
+    icon: "🔍",
+    title: "Technical SEO",
+    description: "Optimize your website's foundation for maximum search visibility",
+    features: ["Site speed optimization", "Mobile-first indexing", "Schema markup", "XML sitemaps"]
+  },
+  {
+    icon: "📝",
+    title: "Content Strategy",
+    description: "Create content that ranks and converts your target audience",
+    features: ["Keyword research", "Content optimization", "Blog strategy", "Topic clusters"]
+  },
+  {
+    icon: "🔗",
+    title: "Link Building",
+    description: "Build authority with high-quality, relevant backlinks",
+    features: ["Outreach campaigns", "Guest posting", "Digital PR", "Competitor analysis"]
+  },
+  {
+    icon: "📍",
+    title: "Local SEO",
+    description: "Dominate local search results and Google Maps",
+    features: ["Google My Business", "Local citations", "Review management", "Local content"]
+  }
+];
+
+const benefits = [
+  { icon: "📈", title: "Sustainable Growth", description: "Long-term organic traffic that compounds over time" },
+  { icon: "💰", title: "Cost-Effective", description: "Higher ROI than paid advertising in the long run" },
+  { icon: "🎯", title: "Targeted Traffic", description: "Reach customers actively searching for your solutions" },
+  { icon: "🏆", title: "Competitive Edge", description: "Outrank competitors and capture market share" },
+  { icon: "🔔", title: "Brand Authority", description: "Build trust and credibility in your industry" },
+  { icon: "📊", title: "Measurable Results", description: "Track every metric that matters to your business" }
+];
+
+const process = [
+  { step: "1", title: "SEO Audit", description: "Comprehensive analysis of your current performance" },
+  { step: "2", title: "Strategy Development", description: "Custom roadmap based on your goals and competition" },
+  { step: "3", title: "On-Page Optimization", description: "Optimize every element for maximum impact" },
+  { step: "4", title: "Content Creation", description: "Develop high-value content that ranks and converts" },
+  { step: "5", title: "Link Building", description: "Build authority through strategic link acquisition" },
+  { step: "6", title: "Monitor & Refine", description: "Continuous optimization based on performance data" }
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <style>
+    .hero {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      padding: 120px 0 100px;
+      position: relative;
+      overflow: hidden;
+      color: white;
+    }
+
+    .hero-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0.1;
+      background-image: 
+        repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.1) 35px, rgba(255,255,255,.1) 70px);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      opacity: 0.95;
+      max-width: 700px;
+      margin: 0 auto 40px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      padding: 80px 0;
+    }
+
+    .service-card {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(16, 185, 129, 0.15);
+    }
+
+    .service-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .service-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 15px;
+    }
+
+    .service-description {
+      color: #64748b;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    .service-features {
+      list-style: none;
+    }
+
+    .service-features li {
+      padding: 8px 0;
+      color: #475569;
+      font-size: 0.95rem;
+      padding-left: 25px;
+      position: relative;
+    }
+
+    .service-features li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #10b981;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .benefits-section {
+      background: #f0fdf4;
+      padding: 80px 0;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
+    }
+
+    .benefit-card {
+      background: white;
+      padding: 35px;
+      border-radius: 16px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s ease;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .benefit-icon {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .benefit-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 10px;
+    }
+
+    .benefit-description {
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    .process-section {
+      padding: 80px 0;
+    }
+
+    .process-timeline {
+      max-width: 900px;
+      margin: 60px auto 0;
+      position: relative;
+    }
+
+    .process-timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(180deg, #10b981, #059669);
+    }
+
+    .process-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 60px;
+      position: relative;
+    }
+
+    .process-item:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .process-content {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      width: 45%;
+    }
+
+    .process-number {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1.3rem;
+      z-index: 1;
+    }
+
+    .process-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 10px;
+    }
+
+    .process-description {
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    .stats-section {
+      background: linear-gradient(135deg, #1e293b, #334155);
+      padding: 80px 0;
+      text-align: center;
+      color: white;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    .stat-label {
+      opacity: 0.9;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 768px) {
+      .process-timeline::before {
+        left: 30px;
+      }
+
+      .process-item {
+        flex-direction: column !important;
+        margin-left: 60px;
+      }
+
+      .process-content {
+        width: 100%;
+      }
+
+      .process-number {
+        left: 30px;
+      }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-pattern"></div>
+    <div class="container hero-content">
+      <h1>SEO That Drives Real Business Growth</h1>
+      <p>Dominate search rankings, attract qualified traffic, and grow your revenue with data-driven SEO strategies that deliver measurable results.</p>
+      <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+        <a href="/free-audit" class="btn btn-primary" style="background: white; color: #10b981; font-size: 1.1rem; padding: 18px 36px;">
+          Get Free SEO Audit
+        </a>
+        <a href="/portfolio" class="btn btn-secondary" style="border-color: white; color: white; font-size: 1.1rem; padding: 18px 36px;">
+          View Results
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="container">
+    <h2 class="gradient-text" style="text-align: center; font-size: 2.5rem; margin-bottom: 20px;">
+      Comprehensive SEO Services
+    </h2>
+    <p style="text-align: center; color: #64748b; font-size: 1.2rem; max-width: 700px; margin: 0 auto 60px;">
+      Everything you need to dominate search results and drive organic growth
+    </p>
+
+    <div class="services-grid">
+      {services.map((service) => (
+        <div class="service-card">
+          <div class="service-icon">{service.icon}</div>
+          <h3 class="service-title">{service.title}</h3>
+          <p class="service-description">{service.description}</p>
+          <ul class="service-features">
+            {service.features.map((feature) => (
+              <li>{feature}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="benefits-section">
+    <div class="container">
+      <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px; color: #1e293b;">
+        Why SEO Matters for Your Business
+      </h2>
+      <p style="text-align: center; color: #64748b; font-size: 1.2rem; max-width: 700px; margin: 0 auto;">
+        SEO isn't just about rankings - it's about sustainable business growth
+      </p>
+
+      <div class="benefits-grid">
+        {benefits.map((benefit) => (
+          <div class="benefit-card">
+            <div class="benefit-icon">{benefit.icon}</div>
+            <h3 class="benefit-title">{benefit.title}</h3>
+            <p class="benefit-description">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="process-section">
+    <div class="container">
+      <h2 class="gradient-text" style="text-align: center; font-size: 2.5rem; margin-bottom: 20px;">
+        Our SEO Process
+      </h2>
+      <p style="text-align: center; color: #64748b; font-size: 1.2rem; max-width: 700px; margin: 0 auto;">
+        A proven methodology that consistently delivers results
+      </p>
+
+      <div class="process-timeline">
+        {process.map((item) => (
+          <div class="process-item">
+            <div class="process-content">
+              <h3 class="process-title">{item.title}</h3>
+              <p class="process-description">{item.description}</p>
+            </div>
+            <div class="process-number">{item.step}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="container">
+      <h2 style="font-size: 2.5rem; margin-bottom: 20px;">SEO Results That Matter</h2>
+      <p style="font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto;">
+        Average results our clients see within the first 6 months
+      </p>
+
+      <div class="stats-grid">
+        <div>
+          <div class="stat-number">+420%</div>
+          <div class="stat-label">Organic Traffic</div>
+        </div>
+        <div>
+          <div class="stat-number">#1-3</div>
+          <div class="stat-label">Rankings Achieved</div>
+        </div>
+        <div>
+          <div class="stat-number">+156%</div>
+          <div class="stat-label">Conversion Rate</div>
+        </div>
+        <div>
+          <div class="stat-number">280%</div>
+          <div class="stat-label">Average ROI</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section style="background: linear-gradient(135deg, #10b981, #059669); padding: 100px 0; text-align: center; color: white;">
+    <div class="container">
+      <h2 style="font-size: 3rem; margin-bottom: 20px; font-weight: 900;">Ready to Dominate Search?</h2>
+      <p style="font-size: 1.3rem; opacity: 0.95; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+        Get your free SEO audit and discover your growth potential
+      </p>
+      <a href="/contact" class="btn btn-primary" style="background: white; color: #10b981; font-size: 1.2rem; padding: 20px 40px;">
+        Get Your Free Audit →
+      </a>
+    </div>
+  </section>
+</BaseLayout>

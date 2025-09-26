@@ -1,0 +1,109 @@
+{
+  "performance": {
+    "targets": {
+      "firstContentfulPaint": 800,
+      "largestContentfulPaint": 1200,
+      "cumulativeLayoutShift": 0.1,
+      "firstInputDelay": 50,
+      "timeToInteractive": 1500,
+      "speedIndex": 1000,
+      "totalBlockingTime": 150
+    },
+    "optimization": {
+      "images": {
+        "lazy": true,
+        "webp": true,
+        "avif": true,
+        "quality": 85,
+        "progressive": true,
+        "placeholder": "blur"
+      },
+      "fonts": {
+        "preload": ["Inter-400", "Inter-600", "Inter-700"],
+        "display": "swap",
+        "subset": "latin"
+      },
+      "css": {
+        "critical": true,
+        "minify": true,
+        "purge": true,
+        "inlineSize": 14000
+      },
+      "javascript": {
+        "defer": true,
+        "async": false,
+        "minify": true,
+        "bundle": true,
+        "treeshake": true
+      },
+      "caching": {
+        "serviceWorker": true,
+        "staticAssets": 31536000,
+        "htmlPages": 3600,
+        "apiResponses": 300
+      }
+    },
+    "monitoring": {
+      "realUserMonitoring": true,
+      "syntheticTesting": true,
+      "performanceBudget": true,
+      "alerts": {
+        "fcpThreshold": 1000,
+        "lcpThreshold": 1500,
+        "clsThreshold": 0.1
+      }
+    },
+    "compression": {
+      "gzip": true,
+      "brotli": true,
+      "level": 6
+    },
+    "preload": {
+      "critical": [
+        "/css/critical.min.css",
+        "/js/combined.min.js",
+        "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      ],
+      "prefetch": [
+        "/css/style.min.css",
+        "/about.html",
+        "/services.html"
+      ],
+      "preconnect": [
+        "https://fonts.googleapis.com",
+        "https://fonts.gstatic.com",
+        "https://storage.googleapis.com",
+        "https://www.google-analytics.com"
+      ]
+    }
+  },
+  "seo": {
+    "structured_data": true,
+    "meta_optimization": true,
+    "canonical_urls": true,
+    "sitemap": true,
+    "robots": true,
+    "open_graph": true,
+    "twitter_cards": true,
+    "local_seo": {
+      "business_schema": true,
+      "location": "Sydney, NSW, Australia",
+      "service_areas": ["Sydney", "Bondi", "Parramatta", "Penrith"]
+    }
+  },
+  "accessibility": {
+    "wcag_level": "AA",
+    "aria_labels": true,
+    "focus_management": true,
+    "color_contrast": 4.5,
+    "keyboard_navigation": true,
+    "screen_reader": true
+  },
+  "security": {
+    "https": true,
+    "csp": true,
+    "sri": true,
+    "permissions_policy": true,
+    "referrer_policy": "strict-origin-when-cross-origin"
+  }
+}

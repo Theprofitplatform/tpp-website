@@ -1,0 +1,688 @@
+{
+  "service_area_schema": {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://theprofitplatform.com.au/#service-area",
+    "name": "The Profit Platform",
+    "description": "Digital marketing services covering all areas of Greater Sydney",
+    "areaServed": [
+      {
+        "@type": "City",
+        "@id": "https://en.wikipedia.org/wiki/Sydney",
+        "name": "Sydney",
+        "alternateName": "Greater Sydney",
+        "containedIn": {
+          "@type": "State",
+          "name": "New South Wales",
+          "alternateName": "NSW",
+          "containedIn": {
+            "@type": "Country",
+            "name": "Australia",
+            "alternateName": "AU"
+          }
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "-33.8688",
+          "longitude": "151.2093"
+        }
+      },
+      {
+        "@type": "GeoCircle",
+        "@id": "https://theprofitplatform.com.au/#greater-sydney-area",
+        "name": "Greater Sydney Service Area",
+        "description": "Complete digital marketing coverage across Greater Sydney metropolitan area",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": "-33.8688",
+          "longitude": "151.2093",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Sydney",
+            "addressRegion": "NSW",
+            "addressCountry": "AU"
+          }
+        },
+        "geoRadius": "80000"
+      }
+    ]
+  },
+
+  "sydney_regions_detailed": {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Place",
+        "@id": "https://theprofitplatform.com.au/#sydney-cbd-area",
+        "name": "Sydney CBD",
+        "alternateName": [
+          "Sydney Central Business District",
+          "Sydney City",
+          "The Rocks",
+          "Circular Quay"
+        ],
+        "description": "Digital marketing services for Sydney CBD businesses including corporates, restaurants, retail, and professional services",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "-33.8688",
+          "longitude": "151.2093"
+        },
+        "containedIn": {
+          "@type": "City",
+          "name": "Sydney"
+        },
+        "containsPlace": [
+          {
+            "@type": "Place",
+            "name": "The Rocks",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.8587",
+              "longitude": "151.2069"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Circular Quay",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.8617",
+              "longitude": "151.2106"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Martin Place",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.8678",
+              "longitude": "151.2073"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "Place",
+        "@id": "https://theprofitplatform.com.au/#eastern-suburbs-area",
+        "name": "Eastern Suburbs",
+        "alternateName": [
+          "Sydney Eastern Suburbs",
+          "Eastern Sydney"
+        ],
+        "description": "Premium digital marketing services for Eastern Suburbs including Bondi, Double Bay, Paddington, and surrounding affluent areas",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "-33.8913",
+          "longitude": "151.2770"
+        },
+        "containedIn": {
+          "@type": "City",
+          "name": "Sydney"
+        },
+        "containsPlace": [
+          {
+            "@type": "Place",
+            "name": "Bondi Beach",
+            "alternateName": "Bondi",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.8915",
+              "longitude": "151.2767"
+            },
+            "touristType": "Beach destination and lifestyle hub"
+          },
+          {
+            "@type": "Place",
+            "name": "Double Bay",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.8772",
+              "longitude": "151.2408"
+            },
+            "touristType": "Premium shopping and dining precinct"
+          },
+          {
+            "@type": "Place",
+            "name": "Paddington",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.8847",
+              "longitude": "151.2291"
+            },
+            "touristType": "Heritage architecture and boutique shopping"
+          },
+          {
+            "@type": "Place",
+            "name": "Rose Bay",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.8696",
+              "longitude": "151.2664"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Woollahra",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.8856",
+              "longitude": "151.2483"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Vaucluse",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.8588",
+              "longitude": "151.2778"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "Place",
+        "@id": "https://theprofitplatform.com.au/#north-shore-area",
+        "name": "North Shore",
+        "alternateName": [
+          "Sydney North Shore",
+          "Lower North Shore",
+          "Upper North Shore"
+        ],
+        "description": "Family-focused digital marketing for North Shore businesses in Chatswood, Hornsby, St Leonards and surrounding professional areas",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "-33.7969",
+          "longitude": "151.1964"
+        },
+        "containedIn": {
+          "@type": "City",
+          "name": "Sydney"
+        },
+        "containsPlace": [
+          {
+            "@type": "Place",
+            "name": "Chatswood",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.7969",
+              "longitude": "151.1835"
+            },
+            "touristType": "Major commercial and retail hub"
+          },
+          {
+            "@type": "Place",
+            "name": "North Sydney",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.8403",
+              "longitude": "151.2068"
+            },
+            "touristType": "Corporate and business district"
+          },
+          {
+            "@type": "Place",
+            "name": "St Leonards",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.8233",
+              "longitude": "151.1949"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Hornsby",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.7053",
+              "longitude": "151.1000"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Neutral Bay",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.8306",
+              "longitude": "151.2226"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Mosman",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.8290",
+              "longitude": "151.2441"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "Place",
+        "@id": "https://theprofitplatform.com.au/#western-sydney-area",
+        "name": "Western Sydney",
+        "alternateName": [
+          "Greater Western Sydney",
+          "Sydney West"
+        ],
+        "description": "Cost-effective digital marketing solutions for Western Sydney's diverse and growing business community",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "-33.8191",
+          "longitude": "150.7841"
+        },
+        "containedIn": {
+          "@type": "City",
+          "name": "Sydney"
+        },
+        "containsPlace": [
+          {
+            "@type": "Place",
+            "name": "Parramatta",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.8175",
+              "longitude": "151.0021"
+            },
+            "touristType": "Major business and commercial center"
+          },
+          {
+            "@type": "Place",
+            "name": "Penrith",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.7506",
+              "longitude": "150.6940"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Blacktown",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.7683",
+              "longitude": "150.9067"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Liverpool",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.9213",
+              "longitude": "150.9218"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Campbelltown",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-34.0639",
+              "longitude": "150.8155"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Auburn",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.8495",
+              "longitude": "151.0320"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "Place",
+        "@id": "https://theprofitplatform.com.au/#inner-west-area",
+        "name": "Inner West",
+        "alternateName": [
+          "Sydney Inner West",
+          "Inner West Sydney"
+        ],
+        "description": "Creative digital marketing for Inner West's vibrant artistic and cultural business community",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "-33.8878",
+          "longitude": "151.1626"
+        },
+        "containedIn": {
+          "@type": "City",
+          "name": "Sydney"
+        },
+        "containsPlace": [
+          {
+            "@type": "Place",
+            "name": "Newtown",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.8964",
+              "longitude": "151.1806"
+            },
+            "touristType": "Cultural and artistic hub"
+          },
+          {
+            "@type": "Place",
+            "name": "Surry Hills",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.8839",
+              "longitude": "151.2128"
+            },
+            "touristType": "Creative and dining precinct"
+          },
+          {
+            "@type": "Place",
+            "name": "Glebe",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.8782",
+              "longitude": "151.1900"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Balmain",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.8576",
+              "longitude": "151.1792"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Darlinghurst",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.8790",
+              "longitude": "151.2188"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Leichhardt",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.8836",
+              "longitude": "151.1556"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "Place",
+        "@id": "https://theprofitplatform.com.au/#northern-beaches-area",
+        "name": "Northern Beaches",
+        "alternateName": [
+          "Sydney Northern Beaches",
+          "Northern Beaches Sydney"
+        ],
+        "description": "Lifestyle-focused digital marketing for Northern Beaches businesses serving beach communities and tourists",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "-33.7515",
+          "longitude": "151.2940"
+        },
+        "containedIn": {
+          "@type": "City",
+          "name": "Sydney"
+        },
+        "containsPlace": [
+          {
+            "@type": "Place",
+            "name": "Manly",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.7963",
+              "longitude": "151.2873"
+            },
+            "touristType": "Beach destination and ferry terminal"
+          },
+          {
+            "@type": "Place",
+            "name": "Dee Why",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.7541",
+              "longitude": "151.2891"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Mona Vale",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.6775",
+              "longitude": "151.3064"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Avalon",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.6355",
+              "longitude": "151.3229"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Brookvale",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.7644",
+              "longitude": "151.2700"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Narrabeen",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.7196",
+              "longitude": "151.2989"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "Place",
+        "@id": "https://theprofitplatform.com.au/#southern-sydney-area",
+        "name": "Southern Sydney",
+        "alternateName": [
+          "Sydney South",
+          "St George Area"
+        ],
+        "description": "Comprehensive digital marketing for Southern Sydney including Sutherland Shire and St George areas",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "-33.9978",
+          "longitude": "151.1270"
+        },
+        "containedIn": {
+          "@type": "City",
+          "name": "Sydney"
+        },
+        "containsPlace": [
+          {
+            "@type": "Place",
+            "name": "Cronulla",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-34.0571",
+              "longitude": "151.1518"
+            },
+            "touristType": "Beach suburb and surfing destination"
+          },
+          {
+            "@type": "Place",
+            "name": "Hurstville",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.9676",
+              "longitude": "151.1034"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Miranda",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-34.0345",
+              "longitude": "151.1006"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "Kogarah",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.9633",
+              "longitude": "151.1343"
+            }
+          }
+        ]
+      }
+    ]
+  },
+
+  "service_delivery_areas": {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://theprofitplatform.com.au/#service-delivery",
+    "name": "Digital Marketing Services Across Greater Sydney",
+    "description": "Professional digital marketing services delivered across all areas of Greater Sydney",
+    "provider": {
+      "@type": "LocalBusiness",
+      "@id": "https://theprofitplatform.com.au/#service-area"
+    },
+    "serviceArea": [
+      {
+        "@type": "AdministrativeArea",
+        "name": "Greater Sydney",
+        "containsPlace": [
+          {
+            "@type": "PostalCodeRange",
+            "postalCodeBegin": "2000",
+            "postalCodeEnd": "2249",
+            "addressCountry": "AU",
+            "addressRegion": "NSW"
+          },
+          {
+            "@type": "PostalCodeRange",
+            "postalCodeBegin": "2555",
+            "postalCodeEnd": "2574",
+            "addressCountry": "AU",
+            "addressRegion": "NSW"
+          }
+        ]
+      }
+    ],
+    "hoursAvailable": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "18:00",
+        "validFrom": "2024-01-01",
+        "validThrough": "2024-12-31"
+      }
+    ],
+    "availableChannel": [
+      {
+        "@type": "ServiceChannel",
+        "serviceType": "In-person consultation",
+        "availableLanguage": "English",
+        "serviceLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Level 1, 234 George Street",
+            "addressLocality": "Sydney",
+            "addressRegion": "NSW",
+            "postalCode": "2000",
+            "addressCountry": "AU"
+          }
+        }
+      },
+      {
+        "@type": "ServiceChannel",
+        "serviceType": "Remote consultation",
+        "availableLanguage": "English"
+      },
+      {
+        "@type": "ServiceChannel",
+        "serviceType": "On-site visit",
+        "availableLanguage": "English",
+        "serviceArea": {
+          "@type": "GeoCircle",
+          "geoMidpoint": {
+            "@type": "GeoCoordinates",
+            "latitude": "-33.8688",
+            "longitude": "151.2093"
+          },
+          "geoRadius": "50000"
+        }
+      }
+    ]
+  },
+
+  "postal_code_coverage": {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://theprofitplatform.com.au/#postal-coverage",
+    "name": "The Profit Platform Postal Code Coverage",
+    "serviceArea": [
+      {
+        "@type": "PostalAddress",
+        "postalCode": "2000",
+        "addressLocality": "Sydney CBD",
+        "addressRegion": "NSW",
+        "addressCountry": "AU"
+      },
+      {
+        "@type": "PostalAddress",
+        "postalCode": "2010",
+        "addressLocality": "Surry Hills",
+        "addressRegion": "NSW",
+        "addressCountry": "AU"
+      },
+      {
+        "@type": "PostalAddress",
+        "postalCode": "2021",
+        "addressLocality": "Bondi Beach",
+        "addressRegion": "NSW",
+        "addressCountry": "AU"
+      },
+      {
+        "@type": "PostalAddress",
+        "postalCode": "2067",
+        "addressLocality": "Chatswood",
+        "addressRegion": "NSW",
+        "addressCountry": "AU"
+      },
+      {
+        "@type": "PostalAddress",
+        "postalCode": "2150",
+        "addressLocality": "Parramatta",
+        "addressRegion": "NSW",
+        "addressCountry": "AU"
+      },
+      {
+        "@type": "PostalAddress",
+        "postalCode": "2095",
+        "addressLocality": "Manly",
+        "addressRegion": "NSW",
+        "addressCountry": "AU"
+      }
+    ]
+  }
+}

@@ -1,0 +1,380 @@
+/*
+ * Enhanced Service Card Animations
+ * Modern CSS animations with smooth transitions, hover effects, and loading states
+ * Optimized for performance with GPU acceleration
+ */
+
+/* =========================
+   ENHANCED SERVICE CARD ANIMATIONS
+   ========================= */
+
+/* CSS Variables for Animation Timing */
+:root {
+    --animation-duration-fast: 0.2s;
+    --animation-duration-medium: 0.4s;
+    --animation-duration-slow: 0.8s;
+    --animation-easing: cubic-bezier(0.4, 0, 0.2, 1);
+    --animation-easing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --shadow-hover: 0 20px 60px rgba(0, 0, 0, 0.15);
+    --shadow-active: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Enhanced Service Cards - Base Styles */
+.service-card {
+    /* Enable GPU acceleration */
+    transform: translateZ(0);
+    will-change: transform, box-shadow, opacity;
+    backface-visibility: hidden;
+
+    /* Enhanced transitions */
+    transition:
+        transform var(--animation-duration-medium) var(--animation-easing),
+        box-shadow var(--animation-duration-medium) var(--animation-easing),
+        background-color var(--animation-duration-medium) var(--animation-easing),
+        border-color var(--animation-duration-medium) var(--animation-easing);
+
+    /* Initial state for entrance animations */
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+
+    /* Enhanced background with gradient overlay */
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%),
+        rgba(255, 255, 255, 0.9);
+
+    /* Better border and shadow */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        0 4px 16px rgba(0, 0, 0, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* Card Entrance Animation */
+.service-card.animate-in {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition:
+        opacity var(--animation-duration-slow) var(--animation-easing),
+        transform var(--animation-duration-slow) var(--animation-easing);
+}
+
+/* Staggered Animation Delays */
+.service-card:nth-child(1) { transition-delay: 0.1s; }
+.service-card:nth-child(2) { transition-delay: 0.2s; }
+.service-card:nth-child(3) { transition-delay: 0.3s; }
+.service-card:nth-child(4) { transition-delay: 0.4s; }
+
+/* Enhanced Hover Effects */
+.service-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.15),
+        0 15px 40px rgba(44, 134, 249, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.95) 100%),
+        rgba(255, 255, 255, 0.95);
+
+    border-color: rgba(44, 134, 249, 0.2);
+}
+
+/* Active state for touch devices */
+.service-card:active {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: var(--shadow-active);
+    transition-duration: var(--animation-duration-fast);
+}
+
+/* Enhanced Shimmer Effect */
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(44, 134, 249, 0.05) 25%,
+        rgba(255, 255, 255, 0.6) 50%,
+        rgba(44, 134, 249, 0.05) 75%,
+        transparent 100%
+    );
+    transition: left var(--animation-duration-slow) var(--animation-easing);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.service-card:hover::before {
+    left: 100%;
+}
+
+/* Glowing border effect on hover */
+.service-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg,
+        rgba(44, 134, 249, 0.3) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(44, 134, 249, 0.3) 100%);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+    opacity: 0;
+    transition: opacity var(--animation-duration-medium) var(--animation-easing);
+    pointer-events: none;
+}
+
+.service-card:hover::after {
+    opacity: 1;
+}
+
+/* Enhanced Service Icon Animations */
+.service-icon {
+    transition:
+        transform var(--animation-duration-medium) var(--animation-easing-bounce),
+        box-shadow var(--animation-duration-medium) var(--animation-easing),
+        background var(--animation-duration-medium) var(--animation-easing);
+
+    /* Gradient background with better colors */
+    background: linear-gradient(135deg,
+        #667eea 0%,
+        #764ba2 100%);
+
+    position: relative;
+    overflow: hidden;
+}
+
+.service-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.2) 0%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.1) 100%);
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity var(--animation-duration-medium) var(--animation-easing);
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.15) rotate(8deg);
+    box-shadow:
+        0 20px 40px rgba(44, 134, 249, 0.3),
+        0 10px 20px rgba(0, 0, 0, 0.1);
+
+    background: linear-gradient(135deg,
+        #2c86f9 0%,
+        #667eea 100%);
+}
+
+.service-card:hover .service-icon::before {
+    opacity: 1;
+}
+
+/* Icon bounce animation on load */
+@keyframes iconBounce {
+    0% { transform: scale(0.3) rotate(-180deg); opacity: 0; }
+    50% { transform: scale(1.1) rotate(0deg); opacity: 1; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.service-icon.animate-in {
+    animation: iconBounce var(--animation-duration-slow) var(--animation-easing-bounce);
+}
+
+/* Enhanced Text Animations */
+.service-card h3 {
+    transition:
+        color var(--animation-duration-medium) var(--animation-easing),
+        transform var(--animation-duration-medium) var(--animation-easing);
+}
+
+.service-card:hover h3 {
+    color: #2c86f9;
+    transform: translateY(-2px);
+}
+
+.service-card p {
+    transition:
+        color var(--animation-duration-medium) var(--animation-easing),
+        transform var(--animation-duration-medium) var(--animation-easing);
+}
+
+.service-card:hover p {
+    color: var(--pp-gray-700);
+    transform: translateY(-1px);
+}
+
+/* Enhanced Feature List Animations */
+.service-features li {
+    transition: transform var(--animation-duration-fast) var(--animation-easing);
+}
+
+.service-card:hover .service-features li {
+    transform: translateX(5px);
+}
+
+.service-features li:nth-child(1) { transition-delay: 0.05s; }
+.service-features li:nth-child(2) { transition-delay: 0.1s; }
+.service-features li:nth-child(3) { transition-delay: 0.15s; }
+.service-features li:nth-child(4) { transition-delay: 0.2s; }
+
+/* CTA Button Enhancements */
+.service-cta .btn {
+    transition:
+        transform var(--animation-duration-medium) var(--animation-easing),
+        box-shadow var(--animation-duration-medium) var(--animation-easing),
+        background var(--animation-duration-medium) var(--animation-easing);
+}
+
+.service-card:hover .service-cta .btn {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(44, 134, 249, 0.3);
+    background: linear-gradient(135deg, #2c86f9 0%, #667eea 100%);
+}
+
+/* Loading Animation for Cards */
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(44, 134, 249, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(44, 134, 249, 0);
+    }
+}
+
+.service-card.loading {
+    animation: pulseGlow 2s infinite;
+}
+
+/* Subtle floating animation */
+@keyframes gentleFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.service-card {
+    animation: gentleFloat 6s ease-in-out infinite;
+}
+
+.service-card:nth-child(2) { animation-delay: -2s; }
+.service-card:nth-child(3) { animation-delay: -4s; }
+
+/* Accessibility - Respect user preferences */
+@media (prefers-reduced-motion: reduce) {
+    .service-card,
+    .service-icon,
+    .service-card h3,
+    .service-card p,
+    .service-features li,
+    .service-cta .btn,
+    .service-card::before {
+        animation: none !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .service-card:hover {
+        transform: none !important;
+    }
+
+    .service-card:hover .service-icon {
+        transform: scale(1.05) !important;
+    }
+}
+
+/* Mobile Responsive Animations */
+@media (max-width: 768px) {
+    .service-card:hover {
+        transform: translateY(-8px) scale(1.01);
+    }
+
+    .service-card:hover .service-icon {
+        transform: scale(1.1) rotate(3deg);
+    }
+
+    /* Reduce animation intensity on mobile */
+    .service-card::before {
+        display: none;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .service-card:hover {
+        transform: none;
+    }
+
+    .service-card:active {
+        transform: scale(0.98);
+        transition-duration: 0.1s;
+    }
+
+    .service-card::before,
+    .service-card::after {
+        display: none;
+    }
+}
+
+/* Performance optimization for older devices */
+@media (max-width: 480px) {
+    .service-card {
+        will-change: auto;
+    }
+
+    .service-card:hover {
+        will-change: transform, box-shadow;
+    }
+}
+
+/* Grid item specific animations */
+.services-grid .service-card:first-child {
+    animation-delay: 0.1s;
+}
+
+.services-grid .service-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.services-grid .service-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+/* Enhanced focus states for accessibility */
+.service-card:focus-within {
+    outline: 2px solid #2c86f9;
+    outline-offset: 4px;
+    transform: translateY(-5px);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .service-card {
+        border: 2px solid;
+    }
+
+    .service-card:hover {
+        border-color: #0066cc;
+    }
+}

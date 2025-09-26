@@ -1,0 +1,414 @@
+{
+  "templates": {
+    "coder": {
+      "type": "coder",
+      "capabilities": [
+        "code-generation",
+        "debugging",
+        "refactoring",
+        "language-specific-optimization"
+      ],
+      "languages": [
+        "javascript",
+        "typescript",
+        "python",
+        "java",
+        "cpp",
+        "rust",
+        "go"
+      ],
+      "autoSpawnTriggers": [
+        "*.js",
+        "*.ts",
+        "*.py",
+        "*.java",
+        "*.cpp",
+        "*.rs",
+        "*.go"
+      ]
+    },
+    "tester": {
+      "type": "tester",
+      "capabilities": [
+        "unit-testing",
+        "integration-testing",
+        "e2e-testing",
+        "test-generation",
+        "coverage-analysis"
+      ],
+      "frameworks": [
+        "jest",
+        "mocha",
+        "pytest",
+        "junit",
+        "cypress",
+        "playwright"
+      ],
+      "autoSpawnTriggers": [
+        "*.test.*",
+        "*.spec.*",
+        "*_test.*",
+        "test_*.*"
+      ]
+    },
+    "analyst": {
+      "type": "analyst",
+      "capabilities": [
+        "data-analysis",
+        "pattern-recognition",
+        "performance-metrics",
+        "configuration-optimization",
+        "dependency-analysis"
+      ],
+      "specializations": [
+        "json-processing",
+        "yaml-configuration",
+        "environment-variables",
+        "api-analysis"
+      ],
+      "autoSpawnTriggers": [
+        "*.json",
+        "*.yaml",
+        "*.yml",
+        "*.env",
+        "*.config.*"
+      ]
+    },
+    "optimizer": {
+      "type": "optimizer",
+      "capabilities": [
+        "performance-optimization",
+        "memory-optimization",
+        "algorithm-optimization",
+        "bundle-size-reduction",
+        "caching-strategies"
+      ],
+      "techniques": [
+        "code-splitting",
+        "lazy-loading",
+        "tree-shaking",
+        "minification",
+        "compression"
+      ],
+      "autoSpawnTriggers": [
+        "performance-issues",
+        "high-memory-usage",
+        "slow-build-times",
+        "large-bundle-size"
+      ]
+    },
+    "coordinator": {
+      "type": "coordinator",
+      "capabilities": [
+        "task-delegation",
+        "agent-orchestration",
+        "workflow-management",
+        "priority-scheduling",
+        "resource-allocation"
+      ],
+      "responsibilities": [
+        "distribute-tasks",
+        "monitor-progress",
+        "resolve-conflicts",
+        "aggregate-results"
+      ],
+      "autoSpawnTriggers": [
+        "multi-file-changes",
+        "complex-workflows",
+        "parallel-tasks"
+      ]
+    },
+    "documenter": {
+      "type": "documenter",
+      "capabilities": [
+        "documentation-generation",
+        "api-documentation",
+        "code-comments",
+        "readme-creation",
+        "changelog-management"
+      ],
+      "formats": [
+        "markdown",
+        "jsdoc",
+        "sphinx",
+        "swagger",
+        "postman"
+      ],
+      "autoSpawnTriggers": [
+        "*.md",
+        "README*",
+        "CHANGELOG*",
+        "*.rst",
+        "docs/*"
+      ]
+    },
+    "system-architect": {
+      "type": "architect",
+      "capabilities": [
+        "system-design",
+        "architecture-planning",
+        "component-design",
+        "database-schema",
+        "api-design"
+      ],
+      "tools": [
+        "uml-diagrams",
+        "sequence-diagrams",
+        "er-diagrams",
+        "flowcharts",
+        "architecture-diagrams"
+      ],
+      "autoSpawnTriggers": [
+        "*.drawio",
+        "*.puml",
+        "*.diagram",
+        "architecture-changes",
+        "system-redesign"
+      ]
+    },
+    "performance-benchmarker": {
+      "type": "performance-benchmarker",
+      "capabilities": [
+        "performance-testing",
+        "load-testing",
+        "stress-testing",
+        "benchmark-creation",
+        "profiling"
+      ],
+      "metrics": [
+        "response-time",
+        "throughput",
+        "cpu-usage",
+        "memory-usage",
+        "network-latency"
+      ],
+      "autoSpawnTriggers": [
+        "*.perf.*",
+        "*.bench.*",
+        "*benchmark*",
+        "performance-regression"
+      ]
+    },
+    "reviewer": {
+      "type": "reviewer",
+      "capabilities": [
+        "code-review",
+        "security-review",
+        "best-practices-check",
+        "style-guide-enforcement",
+        "accessibility-review"
+      ],
+      "checkpoints": [
+        "code-quality",
+        "security-vulnerabilities",
+        "performance-issues",
+        "maintainability",
+        "test-coverage"
+      ],
+      "autoSpawnTriggers": [
+        "pull-request",
+        "merge-request",
+        "code-review-needed"
+      ]
+    },
+    "researcher": {
+      "type": "researcher",
+      "capabilities": [
+        "information-gathering",
+        "api-research",
+        "library-comparison",
+        "best-practices-research",
+        "solution-exploration"
+      ],
+      "sources": [
+        "documentation",
+        "github-repos",
+        "stack-overflow",
+        "technical-blogs",
+        "research-papers"
+      ],
+      "autoSpawnTriggers": [
+        "new-technology",
+        "library-selection",
+        "problem-research"
+      ]
+    },
+    "task-orchestrator": {
+      "type": "task-orchestrator",
+      "capabilities": [
+        "workflow-automation",
+        "ci-cd-pipeline",
+        "build-orchestration",
+        "deployment-automation",
+        "task-scheduling"
+      ],
+      "integrations": [
+        "github-actions",
+        "jenkins",
+        "docker",
+        "kubernetes",
+        "terraform"
+      ],
+      "autoSpawnTriggers": [
+        "*.yml",
+        "*.yaml",
+        "Dockerfile",
+        "docker-compose*",
+        "*.tf"
+      ]
+    },
+    "code-analyzer": {
+      "type": "code-analyzer",
+      "capabilities": [
+        "static-analysis",
+        "dependency-scanning",
+        "vulnerability-detection",
+        "code-metrics",
+        "complexity-analysis"
+      ],
+      "tools": [
+        "eslint",
+        "sonarqube",
+        "snyk",
+        "dependabot",
+        "code-climate"
+      ],
+      "autoSpawnTriggers": [
+        "code-analysis-needed",
+        "security-scan",
+        "quality-check"
+      ]
+    },
+    "api-docs": {
+      "type": "api-docs",
+      "capabilities": [
+        "openapi-generation",
+        "postman-collection",
+        "api-testing",
+        "endpoint-documentation",
+        "schema-validation"
+      ],
+      "formats": [
+        "openapi-3.0",
+        "swagger-2.0",
+        "raml",
+        "api-blueprint",
+        "graphql-schema"
+      ],
+      "autoSpawnTriggers": [
+        "*.openapi.*",
+        "*.swagger.*",
+        "api-docs/*",
+        "*.graphql"
+      ]
+    },
+    "perf-analyzer": {
+      "type": "perf-analyzer",
+      "capabilities": [
+        "runtime-profiling",
+        "memory-profiling",
+        "network-analysis",
+        "database-query-optimization",
+        "cache-analysis"
+      ],
+      "profilers": [
+        "chrome-devtools",
+        "node-profiler",
+        "py-spy",
+        "java-flight-recorder",
+        "perf"
+      ],
+      "autoSpawnTriggers": [
+        "performance-issue",
+        "slow-response",
+        "memory-leak",
+        "high-cpu-usage"
+      ]
+    },
+    "monitor": {
+      "type": "monitor",
+      "capabilities": [
+        "real-time-monitoring",
+        "alert-management",
+        "log-analysis",
+        "metric-collection",
+        "incident-response"
+      ],
+      "integrations": [
+        "prometheus",
+        "grafana",
+        "elastic-stack",
+        "datadog",
+        "new-relic"
+      ],
+      "autoSpawnTriggers": [
+        "monitoring-setup",
+        "alert-configuration",
+        "dashboard-creation"
+      ]
+    },
+    "specialist": {
+      "type": "specialist",
+      "capabilities": [
+        "domain-expertise",
+        "specialized-algorithms",
+        "industry-standards",
+        "regulatory-compliance",
+        "specialized-testing"
+      ],
+      "domains": [
+        "machine-learning",
+        "blockchain",
+        "iot",
+        "real-time-systems",
+        "embedded-systems"
+      ],
+      "autoSpawnTriggers": [
+        "specialized-requirement",
+        "domain-specific-task"
+      ]
+    }
+  },
+  "spawning-rules": {
+    "file-based": {
+      "enabled": true,
+      "scan-on-edit": true,
+      "batch-spawn": true
+    },
+    "task-based": {
+      "enabled": true,
+      "complexity-analysis": true,
+      "dynamic-adjustment": true
+    },
+    "performance-based": {
+      "enabled": true,
+      "scale-up-threshold": 0.8,
+      "scale-down-threshold": 0.3,
+      "monitoring-interval": 30000
+    },
+    "resource-limits": {
+      "max-agents": 8,
+      "max-per-type": 2,
+      "idle-timeout": 300000,
+      "memory-limit-per-agent": "512MB"
+    }
+  },
+  "coordination-strategies": {
+    "mesh": {
+      "description": "All agents can communicate with each other",
+      "best-for": ["complex-tasks", "collaborative-development"]
+    },
+    "hierarchical": {
+      "description": "Tree structure with coordinator at top",
+      "best-for": ["large-projects", "clear-delegation"]
+    },
+    "ring": {
+      "description": "Circular communication pattern",
+      "best-for": ["pipeline-tasks", "sequential-processing"]
+    },
+    "star": {
+      "description": "Central coordinator with peripheral agents",
+      "best-for": ["simple-delegation", "quick-tasks"]
+    }
+  }
+}

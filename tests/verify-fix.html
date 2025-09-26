@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Navigation Fix</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+        .warning {
+            color: orange;
+            font-weight: bold;
+        }
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: 2px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Navigation Fix Verification</h1>
+
+    <div class="test-container">
+        <h2>Live Preview</h2>
+        <iframe id="testFrame" src="../index.html"></iframe>
+    </div>
+
+    <div class="test-container">
+        <h2>Test Results</h2>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const iframe = document.getElementById('testFrame');
+                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                const results = document.getElementById('results');
+                let testsPass = 0;
+                let testsFail = 0;
+                let html = '<h3>CSS & JS Loading Tests:</h3>';
+
+                // Test 1: Check if CSS files are loaded
+                const stylesheets = iframeDoc.querySelectorAll('link[rel="stylesheet"]');
+                let cssLoaded = false;
+                stylesheets.forEach(link => {
+                    if (link.href.includes('style.css')) {
+                        cssLoaded = true;
+                        html += `<div class="success">✓ style.css is loaded (not minified version)</div>`;
+                        testsPass++;
+                    }
+                    if (link.href.includes('critical.css')) {
+                        html += `<div class="success">✓ critical.css is loaded (not minified version)</div>`;
+                        testsPass++;
+                    }
+                });
+
+                // Test 2: Check if JS is loaded
+                const scripts = iframeDoc.querySelectorAll('script[src]');
+                let jsLoaded = false;
+                scripts.forEach(script => {
+                    if (script.src.includes('combined.js')) {
+                        jsLoaded = true;
+                        html += `<div class="success">✓ combined.js is loaded (not minified version)</div>`;
+                        testsPass++;
+                    }
+                });
+
+                // Test 3: Check navigation visibility
+                html += '<h3>Navigation Tests:</h3>';
+                const nav = iframeDoc.querySelector('#primary-navigation');
+                if (nav) {
+                    const navStyles = iframe.contentWindow.getComputedStyle(nav);
+                    if (navStyles.display !== 'none') {
+                        html += '<div class="success">✓ Navigation is visible</div>';
+                        testsPass++;
+                    } else {
+                        html += '<div class="error">✗ Navigation is hidden (display: none)</div>';
+                        testsFail++;
+                    }
+                }
+
+                // Test 4: Check header position
+                const header = iframeDoc.querySelector('header.premium-nav');
+                if (header) {
+                    const headerStyles = iframe.contentWindow.getComputedStyle(header);
+                    if (headerStyles.position === 'fixed') {
+                        html += '<div class="success">✓ Header is fixed positioned</div>';
+                        testsPass++;
+                    } else {
+                        html += '<div class="error">✗ Header is not fixed (position: ' + headerStyles.position + ')</div>';
+                        testsFail++;
+                    }
+
+                    // Check z-index
+                    const zIndex = parseInt(headerStyles.zIndex);
+                    if (zIndex > 100) {
+                        html += '<div class="success">✓ Header has high z-index (' + zIndex + ')</div>';
+                        testsPass++;
+                    } else {
+                        html += '<div class="warning">⚠ Header z-index might be too low (' + zIndex + ')</div>';
+                    }
+                }
+
+                // Test 5: Check nav links visibility
+                const navLinks = iframeDoc.querySelector('.premium-nav-links');
+                if (navLinks) {
+                    const linksStyles = iframe.contentWindow.getComputedStyle(navLinks);
+                    const viewportWidth = iframe.contentWindow.innerWidth;
+
+                    if (viewportWidth > 968) {
+                        if (linksStyles.display !== 'none' && linksStyles.display !== '') {
+                            html += '<div class="success">✓ Desktop nav links are visible (display: ' + linksStyles.display + ')</div>';
+                            testsPass++;
+                        } else {
+                            html += '<div class="error">✗ Desktop nav links are hidden on wide screen</div>';
+                            testsFail++;
+                        }
+                    }
+
+                    // Count nav items
+                    const navItems = navLinks.querySelectorAll('.premium-nav-item');
+                    html += `<div>Found ${navItems.length} navigation items</div>`;
+                }
+
+                // Test 6: Check for content overlap
+                html += '<h3>Content Positioning Tests:</h3>';
+                const successSection = iframeDoc.querySelector('section.results');
+                if (successSection) {
+                    const rect = successSection.getBoundingClientRect();
+                    if (rect.top > 100) {
+                        html += '<div class="success">✓ Success Stories section is properly positioned (top: ' + Math.round(rect.top) + 'px)</div>';
+                        testsPass++;
+                    } else {
+                        html += '<div class="error">✗ Success Stories section is too high (top: ' + Math.round(rect.top) + 'px)</div>';
+                        testsFail++;
+                    }
+                }
+
+                // Summary
+                html += `<h3>Summary:</h3>`;
+                html += `<div class="${testsPass > testsFail ? 'success' : 'error'}">`;
+                html += `Tests Passed: ${testsPass}<br>`;
+                html += `Tests Failed: ${testsFail}<br>`;
+                html += `</div>`;
+
+                if (testsPass > testsFail) {
+                    html += '<div class="success">✅ Navigation should be working now!</div>';
+                } else {
+                    html += '<div class="error">❌ There are still issues to fix</div>';
+                }
+
+                results.innerHTML = html;
+            }, 3000); // Wait for iframe to fully load
+        });
+    </script>
+</body>
+</html>

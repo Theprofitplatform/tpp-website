@@ -1,0 +1,181 @@
+{
+  "type": "performance_optimization_validation",
+  "timestamp": 1758854060148,
+  "results": {
+    "timestamp": "2025-09-26T02:34:20.134Z",
+    "overallScore": 58,
+    "optimizations": {
+      "CSS Consolidation": {
+        "implemented": false,
+        "details": "Found 34 CSS files, consolidated: true",
+        "recommendation": "Consolidate CSS files to reduce HTTP requests",
+        "weight": 15,
+        "category": "resources"
+      },
+      "CSS Minification": {
+        "implemented": true,
+        "details": "Found 3 minified CSS files",
+        "recommendation": "Minify CSS files to reduce file size",
+        "weight": 10,
+        "category": "resources"
+      },
+      "Critical CSS Inlining": {
+        "implemented": true,
+        "details": "Critical CSS file exists: true",
+        "recommendation": "Extract and inline critical CSS for faster rendering",
+        "weight": 20,
+        "category": "rendering"
+      },
+      "JavaScript Bundling": {
+        "implemented": false,
+        "details": "Found 12 JS files, bundled: true",
+        "recommendation": "Bundle JavaScript files to reduce HTTP requests",
+        "weight": 15,
+        "category": "resources"
+      },
+      "JavaScript Minification": {
+        "implemented": true,
+        "details": "Found 1 minified JS files",
+        "recommendation": "Minify JavaScript files to reduce file size",
+        "weight": 10,
+        "category": "resources"
+      },
+      "Async/Defer Loading": {
+        "implemented": true,
+        "details": "Async/defer attributes found: true",
+        "recommendation": "Add async/defer attributes to non-critical scripts",
+        "weight": 10,
+        "category": "loading"
+      },
+      "Image Optimization": {
+        "implemented": false,
+        "details": "Found 0 WebP images out of 3 total",
+        "recommendation": "Convert images to WebP format for better compression",
+        "weight": 15,
+        "category": "resources"
+      },
+      "Lazy Loading": {
+        "implemented": true,
+        "details": "Lazy loading attributes found: true",
+        "recommendation": "Implement lazy loading for images and other resources",
+        "weight": 10,
+        "category": "loading"
+      },
+      "Service Worker": {
+        "implemented": true,
+        "details": "Service worker file exists: true",
+        "recommendation": "Implement service worker for advanced caching",
+        "weight": 15,
+        "category": "caching"
+      },
+      "Browser Caching Headers": {
+        "implemented": false,
+        "details": "Cache headers configuration found: false",
+        "recommendation": "Configure proper cache headers for static resources",
+        "weight": 10,
+        "category": "caching"
+      },
+      "Resource Hints": {
+        "implemented": true,
+        "details": "Resource hints found: true",
+        "recommendation": "Add resource hints (preload, prefetch, preconnect) for critical resources",
+        "weight": 10,
+        "category": "network"
+      },
+      "Compression": {
+        "implemented": false,
+        "details": "Compression configuration found: false",
+        "recommendation": "Enable Gzip/Brotli compression on server",
+        "weight": 15,
+        "category": "network"
+      },
+      "Performance Monitoring": {
+        "implemented": true,
+        "details": "Performance monitoring implementation found: true",
+        "recommendation": "Implement comprehensive performance monitoring",
+        "weight": 10,
+        "category": "monitoring"
+      }
+    },
+    "gaps": [
+      {
+        "name": "CSS Consolidation",
+        "category": "resources",
+        "weight": 15,
+        "recommendation": "Consolidate CSS files to reduce HTTP requests"
+      },
+      {
+        "name": "JavaScript Bundling",
+        "category": "resources",
+        "weight": 15,
+        "recommendation": "Bundle JavaScript files to reduce HTTP requests"
+      },
+      {
+        "name": "Image Optimization",
+        "category": "resources",
+        "weight": 15,
+        "recommendation": "Convert images to WebP format for better compression"
+      },
+      {
+        "name": "Compression",
+        "category": "network",
+        "weight": 15,
+        "recommendation": "Enable Gzip/Brotli compression on server"
+      },
+      {
+        "name": "Browser Caching Headers",
+        "category": "caching",
+        "weight": 10,
+        "recommendation": "Configure proper cache headers for static resources"
+      }
+    ],
+    "recommendations": [
+      {
+        "title": "Image Optimization",
+        "category": "resources",
+        "impact": "High",
+        "effort": "High",
+        "timeline": "1-2 weeks",
+        "weight": 15,
+        "recommendation": "Convert images to WebP format for better compression"
+      },
+      {
+        "title": "CSS Consolidation",
+        "category": "resources",
+        "impact": "High",
+        "effort": "Medium",
+        "timeline": "3-5 days",
+        "weight": 15,
+        "recommendation": "Consolidate CSS files to reduce HTTP requests"
+      },
+      {
+        "title": "JavaScript Bundling",
+        "category": "resources",
+        "impact": "High",
+        "effort": "Medium",
+        "timeline": "3-5 days",
+        "weight": 15,
+        "recommendation": "Bundle JavaScript files to reduce HTTP requests"
+      },
+      {
+        "title": "Compression",
+        "category": "network",
+        "impact": "High",
+        "effort": "Medium",
+        "timeline": "3-5 days",
+        "weight": 15,
+        "recommendation": "Enable Gzip/Brotli compression on server"
+      },
+      {
+        "title": "Browser Caching Headers",
+        "category": "caching",
+        "impact": "Medium",
+        "effort": "Medium",
+        "timeline": "1 week",
+        "weight": 10,
+        "recommendation": "Configure proper cache headers for static resources"
+      }
+    ]
+  },
+  "agent": "performance_analyzer"
+}

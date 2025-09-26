@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Rankings Map - Local SEO Analysis Tool | The Profit Platform</title>
+    <meta name="description" content="Track local search rankings across different locations. Analyze geographic performance and optimize your local SEO strategy with our interactive map.">
+    <meta name="keywords" content="local SEO, local rankings, geographic search, local search optimization, map rankings, location-based SEO">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared/calculator-styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+    <div class="calculator-container">
+        <div class="calculator-card">
+            <div class="calculator-header">
+                <h1 class="calculator-title">Local Rankings Map</h1>
+                <p class="calculator-subtitle">Track and analyze your local search rankings across different geographic locations</p>
+            </div>
+
+            <div class="tabs-container">
+                <div class="tabs-nav">
+                    <button class="tab-button active" class="interactive-element">Rankings Map</button>
+                    <button class="tab-button" class="interactive-element">Location Analysis</button>
+                    <button class="tab-button" class="interactive-element">Competitor Comparison</button>
+                    <button class="tab-button" class="interactive-element">GMB Performance</button>
+                </div>
+
+                <!-- Rankings Map Tab -->
+                <div class="tab-content active">
+                    <div class="map-controls">
+                        <form id="ranking-search-form" class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label" for="business-name">Business Name</label>
+                                <input type="text" id="business-name" class="form-input" required placeholder="The Profit Platform">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="search-keyword">Search Keyword</label>
+                                <input type="text" id="search-keyword" class="form-input" required placeholder="digital marketing agency">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="base-location">Base Location</label>
+                                <input type="text" id="base-location" class="form-input" required placeholder="Sydney, NSW, Australia">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="search-radius">Search Radius (km)</label>
+                                <select id="search-radius" class="form-select">
+                                    <option value="5">5 km</option>
+                                    <option value="10">10 km</option>
+                                    <option value="25" selected>25 km</option>
+                                    <option value="50">50 km</option>
+                                    <option value="100">100 km</option>
+                                </select>
+                            </div>
+                        </form>
+
+                        <button type="button" class="calculate-btn" onclick="analyzeLocalRankings()" id="analyze-btn" class="interactive-element">
+                            <span id="analyze-btn-text">Analyze Local Rankings</span>
+                            <span id="analyze-loading" class="loading" style="display: none;"></span>
+                        </button>
+                    </div>
+
+                    <div id="map-results" class="map-section" style="display: none;">
+                        <div class="map-summary">
+                            <div class="summary-stats">
+                                <div class="stat-card">
+                                    <div id="total-locations" class="stat-value">0</div>
+                                    <div class="stat-label">Locations Analyzed</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div id="average-ranking" class="stat-value">0</div>
+                                    <div class="stat-label">Average Ranking</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div id="top3-percentage" class="stat-value success">0%</div>
+                                    <div class="stat-label">Top 3 Rankings</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div id="not-found" class="stat-value warning">0</div>
+                                    <div class="stat-label">Not Found</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="interactive-map">
+                            <div class="map-legend">
+                                <h4>Ranking Legend</h4>
+                                <div class="legend-items">
+                                    <div class="legend-item">
+                                        <div class="legend-marker rank-1-3"></div>
+                                        <span>Top 3 (1-3)</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-marker rank-4-10"></div>
+                                        <span>Page 1 (4-10)</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-marker rank-11-20"></div>
+                                        <span>Page 2 (11-20)</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-marker rank-not-found"></div>
+                                        <span>Not Found (20+)</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="rankings-map" style="height: 500px; width: 100%; border-radius: 8px;"></div>
+                        </div>
+
+                        <div class="location-details">
+                            <h3>📍 Detailed Location Analysis</h3>
+                            <div id="location-breakdown"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Location Analysis Tab -->
+                <div class="tab-content">
+                    <div class="location-performance">
+                        <h3>🎯 Location Performance Analysis</h3>
+
+                        <div class="performance-filters">
+                            <div class="form-group">
+                                <label class="form-label" for="analysis-period">Analysis Period</label>
+                                <select id="analysis-period" class="form-select">
+                                    <option value="7">Last 7 days</option>
+                                    <option value="30" selected>Last 30 days</option>
+                                    <option value="90">Last 90 days</option>
+                                    <option value="365">Last year</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="sort-performance">Sort By</label>
+                                <select id="sort-performance" class="form-select" onchange="sortPerformanceData()">
+                                    <option value="ranking">Best Rankings</option>
+                                    <option value="improvement">Most Improved</option>
+                                    <option value="decline">Biggest Decline</option>
+                                    <option value="alphabetical">Alphabetical</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button class="calculate-btn" onclick="analyzeLocationPerformance()" class="interactive-element">Analyze Performance</button>
+
+                        <div id="performance-results" class="results-container" style="display: none;">
+                            <div class="chart-container">
+                                <canvas id="performance-trend-chart" width="400" height="300"></canvas>
+                            </div>
+
+                            <div class="performance-table">
+                                <h4>Location Performance Details</h4>
+                                <div id="performance-table-content"></div>
+                            </div>
+
+                            <div class="insights-section">
+                                <h4>🔍 Performance Insights</h4>
+                                <div id="performance-insights"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Competitor Comparison Tab -->
+                <div class="tab-content">
+                    <div class="competitor-setup">
+                        <h3>🏆 Local Competitor Analysis</h3>
+
+                        <div class="competitors-form">
+                            <div class="competitor-inputs">
+                                <div class="form-group">
+                                    <label class="form-label" for="competitor1">Competitor 1</label>
+                                    <input type="text" id="competitor1" class="form-input" placeholder="Competitor Business Name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label" for="competitor2">Competitor 2</label>
+                                    <input type="text" id="competitor2" class="form-input" placeholder="Competitor Business Name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label" for="competitor3">Competitor 3</label>
+                                    <input type="text" id="competitor3" class="form-input" placeholder="Competitor Business Name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label" for="comparison-keyword">Comparison Keyword</label>
+                                    <input type="text" id="comparison-keyword" class="form-input" placeholder="digital marketing services">
+                                </div>
+                            </div>
+
+                            <div class="comparison-settings">
+                                <div class="form-group">
+                                    <label class="form-label" for="comparison-locations">Target Locations</label>
+                                    <textarea id="comparison-locations" class="form-input" rows="4" placeholder="Sydney CBD
+Parramatta
+Chatswood
+Bondi Junction"></textarea>
+                                    <small>Enter one location per line</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="calculate-btn" onclick="runCompetitorComparison()" class="interactive-element">Compare Competitors</button>
+
+                        <div id="competitor-comparison-results" class="results-container" style="display: none;">
+                            <div class="comparison-summary">
+                                <h4>📊 Competitive Landscape</h4>
+                                <div id="competitive-metrics"></div>
+                            </div>
+
+                            <div class="chart-container">
+                                <canvas id="competitor-comparison-chart" width="400" height="300"></canvas>
+                            </div>
+
+                            <div class="competitive-analysis">
+                                <h4>🎯 Competitive Analysis</h4>
+                                <div id="competitive-insights"></div>
+                            </div>
+
+                            <div class="opportunity-matrix">
+                                <h4>💎 Market Opportunities</h4>
+                                <div id="market-opportunities"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GMB Performance Tab -->
+                <div class="tab-content">
+                    <div class="gmb-analysis">
+                        <h3>🏪 Google My Business Performance</h3>
+
+                        <div class="gmb-metrics">
+                            <div class="metric-cards">
+                                <div class="metric-card">
+                                    <h4>Profile Views</h4>
+                                    <div id="gmb-views" class="metric-value">0</div>
+                                    <div class="metric-change positive">+12.5% vs last month</div>
+                                </div>
+
+                                <div class="metric-card">
+                                    <h4>Search Queries</h4>
+                                    <div id="gmb-searches" class="metric-value">0</div>
+                                    <div class="metric-change positive">+8.3% vs last month</div>
+                                </div>
+
+                                <div class="metric-card">
+                                    <h4>Map Views</h4>
+                                    <div id="gmb-maps" class="metric-value">0</div>
+                                    <div class="metric-change negative">-3.2% vs last month</div>
+                                </div>
+
+                                <div class="metric-card">
+                                    <h4>Actions Taken</h4>
+                                    <div id="gmb-actions" class="metric-value">0</div>
+                                    <div class="metric-change positive">+15.8% vs last month</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="gmb-charts">
+                            <div class="chart-container">
+                                <canvas id="gmb-performance-chart" width="400" height="300"></canvas>
+                            </div>
+
+                            <div class="chart-container">
+                                <canvas id="gmb-actions-chart" width="400" height="200"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="gmb-optimization">
+                            <h4>🚀 GMB Optimization Recommendations</h4>
+                            <div id="gmb-recommendations"></div>
+                        </div>
+
+                        <button class="calculate-btn" onclick="analyzeGMBPerformance()" class="interactive-element">Refresh GMB Data</button>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                <button class="calculate-btn" style="flex: 1;" onclick="generateLocalReport()" class="interactive-element">Generate Report</button>
+                <button class="calculate-btn" style="flex: 1;" onclick="shareLocalResults()" class="interactive-element">Share Analysis</button>
+                <button class="calculate-btn" style="flex: 1;" onclick="scheduleTracking()" class="interactive-element">Schedule Tracking</button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .map-section {
+            margin: 2rem 0;
+        }
+
+        .map-summary {
+            margin-bottom: 2rem;
+        }
+
+        .summary-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .interactive-map {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: var(--shadow);
+            margin: 2rem 0;
+        }
+
+        .map-legend {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--background-color);
+            border-radius: 6px;
+        }
+
+        .legend-items {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .legend-marker {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+        }
+
+        .rank-1-3 {
+            background: #10b981;
+        }
+
+        .rank-4-10 {
+            background: #f59e0b;
+        }
+
+        .rank-11-20 {
+            background: #ef4444;
+        }
+
+        .rank-not-found {
+            background: #6b7280;
+        }
+
+        .location-details {
+            margin: 2rem 0;
+        }
+
+        .location-item {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            box-shadow: var(--shadow);
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .location-item.header {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        .ranking-badge {
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-align: center;
+            color: white;
+        }
+
+        .rank-excellent {
+            background: #10b981;
+        }
+
+        .rank-good {
+            background: #f59e0b;
+        }
+
+        .rank-poor {
+            background: #ef4444;
+        }
+
+        .rank-missing {
+            background: #6b7280;
+        }
+
+        .performance-filters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .performance-table {
+            margin: 2rem 0;
+        }
+
+        .metric-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .metric-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .metric-card h4 {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-change {
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .metric-change.positive {
+            color: var(--success-color);
+        }
+
+        .metric-change.negative {
+            color: var(--danger-color);
+        }
+
+        .competitor-inputs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .comparison-summary {
+            margin: 2rem 0;
+        }
+
+        .competitive-metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 6px;
+            margin: 0.5rem 0;
+            box-shadow: var(--shadow);
+        }
+
+        .competitive-score {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .insights-section {
+            margin: 2rem 0;
+        }
+
+        .insight-item {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--primary-color);
+            box-shadow: var(--shadow);
+        }
+
+        .opportunity-item {
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--success-color);
+        }
+
+        @media (max-width: 768px) {
+            .location-item {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .location-item > div:first-child {
+                font-weight: 600;
+            }
+
+            .legend-items {
+                flex-direction: column;
+            }
+
+            .competitor-inputs {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <script src="../shared/calculator-utils.js"></script>
+    <script>
+        // Initialize tabs
+        CalculatorUtils.initializeTabs('.tabs-container');
+
+        let map;
+        let performanceChart, competitorChart, gmbPerformanceChart, gmbActionsChart;
+        let rankingData = [];
+
+        function analyzeLocalRankings() {
+            const businessName = document.getElementById('business-name').value.trim();
+            const keyword = document.getElementById('search-keyword').value.trim();
+            const location = document.getElementById('base-location').value.trim();
+            const radius = parseInt(document.getElementById('search-radius').value);
+
+            if (!businessName || !keyword || !location) {
+                CalculatorUtils.showNotification('Please fill in all required fields', 'warning');
+                return;
+            }
+
+            const btn = document.getElementById('analyze-btn');
+            const btnText = document.getElementById('analyze-btn-text');
+            const loading = document.getElementById('analyze-loading');
+
+            btn.disabled = true;
+            btnText.style.display = 'none';
+            loading.style.display = 'inline-block';
+
+            // Simulate API call
+            setTimeout(() => {
+                rankingData = generateRankingData(location, radius);
+                displayRankingResults(rankingData);
+
+                btn.disabled = false;
+                btnText.style.display = 'inline-block';
+                loading.style.display = 'none';
+
+                const resultsContainer = document.getElementById('map-results');
+                resultsContainer.style.display = 'block';
+                resultsContainer.scrollIntoView({ behavior: 'smooth' });
+            }, 3000);
+        }
+
+        function generateRankingData(baseLocation, radius) {
+            const locations = [
+                'Sydney CBD', 'Parramatta', 'Chatswood', 'Bondi Junction', 'Manly',
+                'Liverpool', 'Blacktown', 'Penrith', 'Hornsby', 'Sutherland',
+                'Bankstown', 'Burwood', 'Eastwood', 'Cronulla', 'Dee Why'
+            ];
+
+            const coordinates = [
+                [-33.8688, 151.2093], [-33.8150, 150.9989], [-33.7969, 151.1816],
+                [-33.8915, 151.2495], [-33.7969, 151.2840], [-33.9213, 150.9218],
+                [-33.7681, 150.9048], [-33.7508, 150.6864], [-33.7077, 151.0991],
+                [-34.0310, 151.1066], [-33.9185, 151.0306], [-33.8770, 151.1040],
+                [-33.7904, 151.0820], [-34.0574, 151.1547], [-33.7580, 151.2864]
+            ];
+
+            return locations.slice(0, 12).map((location, index) => ({
+                name: location,
+                lat: coordinates[index][0] + (Math.random() - 0.5) * 0.1,
+                lng: coordinates[index][1] + (Math.random() - 0.5) * 0.1,
+                ranking: Math.floor(Math.random() * 25) + 1,
+                searchVolume: Math.floor(Math.random() * 500) + 50,
+                distance: Math.round(Math.random() * radius),
+                found: Math.random() > 0.15 // 85% found rate
+            }));
+        }
+
+        function displayRankingResults(data) {
+            const totalLocations = data.length;
+            const foundResults = data.filter(d => d.found);
+            const averageRanking = foundResults.length > 0
+                ? foundResults.reduce((sum, d) => sum + d.ranking, 0) / foundResults.length
+                : 0;
+            const top3Count = foundResults.filter(d => d.ranking <= 3).length;
+            const top3Percentage = (top3Count / totalLocations) * 100;
+            const notFoundCount = data.filter(d => !d.found).length;
+
+            // Update summary stats
+            CalculatorUtils.animateValue(document.getElementById('total-locations'), 0, totalLocations, 1000);
+            CalculatorUtils.animateValue(
+                document.getElementById('average-ranking'),
+                0, averageRanking, 1500,
+                (val) => val.toFixed(1)
+            );
+            CalculatorUtils.animateValue(
+                document.getElementById('top3-percentage'),
+                0, top3Percentage, 1500,
+                (val) => val.toFixed(0) + '%'
+            );
+            CalculatorUtils.animateValue(document.getElementById('not-found'), 0, notFoundCount, 1000);
+
+            // Initialize map
+            initializeMap(data);
+
+            // Display location breakdown
+            displayLocationBreakdown(data);
+        }
+
+        function initializeMap(data) {
+            // Clear existing map
+            if (map) {
+                map.remove();
+            }
+
+            // Initialize Leaflet map centered on Sydney
+            map = L.map('rankings-map').setView([-33.8688, 151.2093], 11);
+
+            // Add tile layer
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+
+            // Add markers for each location
+            data.forEach(location => {
+                let markerColor = '#6b7280'; // Not found
+                let title = `${location.name}: Not Found`;
+
+                if (location.found) {
+                    if (location.ranking <= 3) {
+                        markerColor = '#10b981'; // Top 3
+                        title = `${location.name}: Rank #${location.ranking}`;
+                    } else if (location.ranking <= 10) {
+                        markerColor = '#f59e0b'; // Page 1
+                        title = `${location.name}: Rank #${location.ranking}`;
+                    } else if (location.ranking <= 20) {
+                        markerColor = '#ef4444'; // Page 2
+                        title = `${location.name}: Rank #${location.ranking}`;
+                    }
+                }
+
+                // Create custom icon
+                const customIcon = L.divIcon({
+                    className: 'custom-marker',
+                    html: `<div style="background-color: ${markerColor}; width: 20px; height: 20px; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.3);"></div>`,
+                    iconSize: [20, 20],
+                    iconAnchor: [10, 10]
+                });
+
+                // Add marker
+                const marker = L.marker([location.lat, location.lng], {icon: customIcon})
+                    .addTo(map)
+                    .bindPopup(`
+                        <strong>${location.name}</strong><br>
+                        ${location.found ? `Ranking: #${location.ranking}` : 'Not Found'}<br>
+                        Search Volume: ${location.searchVolume}/month<br>
+                        Distance: ${location.distance}km
+                    `);
+            });
+        }
+
+        function displayLocationBreakdown(data) {
+            const container = document.getElementById('location-breakdown');
+            container.innerHTML = '';
+
+            // Header
+            const header = document.createElement('div');
+            header.className = 'location-item header';
+            header.innerHTML = `
+                <div>Location</div>
+                <div>Ranking</div>
+                <div>Volume</div>
+                <div>Distance</div>
+            `;
+            container.appendChild(header);
+
+            // Sort by ranking
+            const sortedData = [...data].sort((a, b) => {
+                if (!a.found && !b.found) return 0;
+                if (!a.found) return 1;
+                if (!b.found) return -1;
+                return a.ranking - b.ranking;
+            });
+
+            // Data rows
+            sortedData.forEach(location => {
+                const row = document.createElement('div');
+                row.className = 'location-item';
+
+                let rankingBadge = '';
+                let rankingClass = 'rank-missing';
+
+                if (location.found) {
+                    if (location.ranking <= 3) {
+                        rankingBadge = `#${location.ranking}`;
+                        rankingClass = 'rank-excellent';
+                    } else if (location.ranking <= 10) {
+                        rankingBadge = `#${location.ranking}`;
+                        rankingClass = 'rank-good';
+                    } else if (location.ranking <= 20) {
+                        rankingBadge = `#${location.ranking}`;
+                        rankingClass = 'rank-poor';
+                    }
+                } else {
+                    rankingBadge = 'Not Found';
+                }
+
+                row.innerHTML = `
+                    <div><strong>${location.name}</strong></div>
+                    <div><span class="ranking-badge ${rankingClass}">${rankingBadge}</span></div>
+                    <div>${location.searchVolume}/month</div>
+                    <div>${location.distance}km</div>
+                `;
+                container.appendChild(row);
+            });
+        }
+
+        function analyzeLocationPerformance() {
+            // Simulate performance analysis
+            setTimeout(() => {
+                displayPerformanceResults();
+            }, 1500);
+        }
+
+        function displayPerformanceResults() {
+            const resultsContainer = document.getElementById('performance-results');
+            resultsContainer.style.display = 'block';
+
+            createPerformanceTrendChart();
+            displayPerformanceTable();
+            generatePerformanceInsights();
+        }
+
+        function createPerformanceTrendChart() {
+            const ctx = document.getElementById('performance-trend-chart').getContext('2d');
+
+            if (performanceChart) performanceChart.destroy();
+
+            // Generate trend data
+            const days = [];
+            const rankings = [];
+            const visibility = [];
+
+            for (let i = 30; i >= 0; i--) {
+                const date = new Date();
+                date.setDate(date.getDate() - i);
+                days.push(date.toLocaleDateString('en-AU', { month: 'short', day: 'numeric' }));
+
+                // Simulate ranking trend (improving over time)
+                const baseRanking = 15 - (i * 0.2) + (Math.random() * 4 - 2);
+                rankings.push(Math.max(1, Math.min(20, baseRanking)));
+
+                // Visibility percentage
+                visibility.push(Math.random() * 20 + 60);
+            }
+
+            performanceChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: days,
+                    datasets: [{
+                        label: 'Average Ranking',
+                        data: rankings,
+                        borderColor: '#ef4444',
+                        backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                        tension: 0.4,
+                        yAxisID: 'y'
+                    }, {
+                        label: 'Visibility (%)',
+                        data: visibility,
+                        borderColor: '#10b981',
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        tension: 0.4,
+                        yAxisID: 'y1'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Local Rankings Performance Trend'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: 'Average Ranking'
+                            },
+                            reverse: true, // Lower ranking numbers are better
+                            min: 1,
+                            max: 20
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: 'Visibility (%)'
+                            },
+                            min: 0,
+                            max: 100,
+                            grid: {
+                                drawOnChartArea: false,
+                            },
+                        }
+                    }
+                }
+            });
+        }
+
+        function displayPerformanceTable() {
+            const container = document.getElementById('performance-table-content');
+            const performanceData = [
+                { location: 'Sydney CBD', current: 3, previous: 5, change: '+2', visibility: 85 },
+                { location: 'Parramatta', current: 7, previous: 8, change: '+1', visibility: 72 },
+                { location: 'Chatswood', current: 12, previous: 9, change: '-3', visibility: 58 },
+                { location: 'Bondi Junction', current: 2, previous: 2, change: '0', visibility: 92 },
+                { location: 'Manly', current: 15, previous: 18, change: '+3', visibility: 45 }
+            ];
+
+            let html = `
+                <div class="performance-row header">
+                    <div>Location</div>
+                    <div>Current Rank</div>
+                    <div>Previous Rank</div>
+                    <div>Change</div>
+                    <div>Visibility</div>
+                </div>
+            `;
+
+            performanceData.forEach(item => {
+                const changeClass = item.change.startsWith('+') ? 'positive' :
+                                  item.change.startsWith('-') ? 'negative' : 'neutral';
+
+                html += `
+                    <div class="performance-row">
+                        <div><strong>${item.location}</strong></div>
+                        <div>#${item.current}</div>
+                        <div>#${item.previous}</div>
+                        <div class="change-indicator ${changeClass}">${item.change}</div>
+                        <div>${item.visibility}%</div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function generatePerformanceInsights() {
+            const container = document.getElementById('performance-insights');
+            const insights = [
+                {
+                    icon: '📈',
+                    title: 'Improving Trend',
+                    description: 'Overall rankings have improved by 23% over the last 30 days, with strongest gains in Sydney CBD and Manly.'
+                },
+                {
+                    icon: '🎯',
+                    title: 'High-Opportunity Locations',
+                    description: 'Chatswood shows recent decline but has high search volume potential - focus optimization efforts here.'
+                },
+                {
+                    icon: '🏆',
+                    title: 'Top Performers',
+                    description: 'Bondi Junction and Sydney CBD consistently rank in top 3 positions - maintain current strategy.'
+                },
+                {
+                    icon: '⚠️',
+                    title: 'Areas for Attention',
+                    description: 'Rankings beyond 15km from base location show higher variability - consider local content strategy.'
+                }
+            ];
+
+            container.innerHTML = insights.map(insight => `
+                <div class="insight-item">
+                    <h5>${insight.icon} ${insight.title}</h5>
+                    <p>${insight.description}</p>
+                </div>
+            `).join('');
+        }
+
+        function runCompetitorComparison() {
+            const competitor1 = document.getElementById('competitor1').value.trim();
+            const competitor2 = document.getElementById('competitor2').value.trim();
+            const competitor3 = document.getElementById('competitor3').value.trim();
+
+            if (!competitor1 && !competitor2 && !competitor3) {
+                CalculatorUtils.showNotification('Please enter at least one competitor', 'warning');
+                return;
+            }
+
+            // Simulate competitor analysis
+            setTimeout(() => {
+                displayCompetitorResults();
+            }, 2000);
+        }
+
+        function displayCompetitorResults() {
+            const resultsContainer = document.getElementById('competitor-comparison-results');
+            resultsContainer.style.display = 'block';
+
+            displayCompetitiveMetrics();
+            createCompetitorChart();
+            generateCompetitiveInsights();
+            displayMarketOpportunities();
+        }
+
+        function displayCompetitiveMetrics() {
+            const container = document.getElementById('competitive-metrics');
+            const metrics = [
+                { label: 'Market Share', value: '18.5%', rank: '2nd position' },
+                { label: 'Average Ranking', value: '4.2', rank: 'Above average' },
+                { label: 'Visibility Score', value: '73%', rank: 'Strong presence' },
+                { label: 'Geographic Coverage', value: '85%', rank: 'Excellent reach' }
+            ];
+
+            container.innerHTML = metrics.map(metric => `
+                <div class="competitive-metric">
+                    <div>
+                        <strong>${metric.label}</strong>
+                        <div style="font-size: 0.875rem; color: var(--text-muted);">${metric.rank}</div>
+                    </div>
+                    <div class="competitive-score">${metric.value}</div>
+                </div>
+            `).join('');
+        }
+
+        function createCompetitorChart() {
+            const ctx = document.getElementById('competitor-comparison-chart').getContext('2d');
+
+            if (competitorChart) competitorChart.destroy();
+
+            competitorChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Average Ranking', 'Visibility', 'Geographic Coverage', 'Review Score', 'Local Citations'],
+                    datasets: [{
+                        label: 'Your Business',
+                        data: [75, 73, 85, 88, 92],
+                        backgroundColor: 'rgba(37, 99, 235, 0.2)',
+                        borderColor: '#2563eb',
+                        borderWidth: 2
+                    }, {
+                        label: 'Competitor 1',
+                        data: [85, 82, 78, 85, 88],
+                        backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                        borderColor: '#ef4444',
+                        borderWidth: 2
+                    }, {
+                        label: 'Competitor 2',
+                        data: [65, 58, 72, 90, 75],
+                        backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                        borderColor: '#f59e0b',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Competitive Analysis Radar'
+                        }
+                    },
+                    scales: {
+                        r: {
+                            min: 0,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        }
+
+        function generateCompetitiveInsights() {
+            const container = document.getElementById('competitive-insights');
+            const insights = [
+                'Your business ranks 2nd in the competitive landscape with strong performance in local citations and review scores.',
+                'Competitor 1 leads in average rankings but has lower geographic coverage than your business.',
+                'Opportunity exists to improve visibility scores by optimizing GMB posts and local content.',
+                'Your review management strategy is outperforming competitors - maintain this advantage.'
+            ];
+
+            container.innerHTML = insights.map(insight => `
+                <div class="insight-item">
+                    <p>${insight}</p>
+                </div>
+            `).join('');
+        }
+
+        function displayMarketOpportunities() {
+            const container = document.getElementById('market-opportunities');
+            const opportunities = [
+                { location: 'Parramatta', opportunity: 'High', reason: 'Low competitor density, high search volume' },
+                { location: 'Liverpool', opportunity: 'Medium', reason: 'Growing market, moderate competition' },
+                { location: 'Penrith', opportunity: 'High', reason: 'Underserved market, expanding population' },
+                { location: 'Hornsby', opportunity: 'Low', reason: 'High competition, saturated market' }
+            ];
+
+            container.innerHTML = opportunities.map(opp => `
+                <div class="opportunity-item">
+                    <h5>${opp.location} - ${opp.opportunity} Opportunity</h5>
+                    <p>${opp.reason}</p>
+                </div>
+            `).join('');
+        }
+
+        function analyzeGMBPerformance() {
+            // Simulate GMB data
+            const gmbData = {
+                views: 15420,
+                searches: 8650,
+                maps: 3420,
+                actions: 1850
+            };
+
+            // Animate values
+            CalculatorUtils.animateValue(
+                document.getElementById('gmb-views'),
+                0, gmbData.views, 2000,
+                (val) => CalculatorUtils.formatNumber(val)
+            );
+
+            CalculatorUtils.animateValue(
+                document.getElementById('gmb-searches'),
+                0, gmbData.searches, 2000,
+                (val) => CalculatorUtils.formatNumber(val)
+            );
+
+            CalculatorUtils.animateValue(
+                document.getElementById('gmb-maps'),
+                0, gmbData.maps, 2000,
+                (val) => CalculatorUtils.formatNumber(val)
+            );
+
+            CalculatorUtils.animateValue(
+                document.getElementById('gmb-actions'),
+                0, gmbData.actions, 2000,
+                (val) => CalculatorUtils.formatNumber(val)
+            );
+
+            createGMBCharts();
+            generateGMBRecommendations();
+        }
+
+        function createGMBCharts() {
+            // Performance trend chart
+            const performanceCtx = document.getElementById('gmb-performance-chart').getContext('2d');
+
+            if (gmbPerformanceChart) gmbPerformanceChart.destroy();
+
+            const days = [];
+            const views = [];
+            const actions = [];
+
+            for (let i = 30; i >= 0; i--) {
+                const date = new Date();
+                date.setDate(date.getDate() - i);
+                days.push(date.toLocaleDateString('en-AU', { month: 'short', day: 'numeric' }));
+                views.push(Math.floor(Math.random() * 200 + 400));
+                actions.push(Math.floor(Math.random() * 50 + 40));
+            }
+
+            gmbPerformanceChart = new Chart(performanceCtx, {
+                type: 'line',
+                data: {
+                    labels: days,
+                    datasets: [{
+                        label: 'Profile Views',
+                        data: views,
+                        borderColor: '#2563eb',
+                        backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                        tension: 0.4
+                    }, {
+                        label: 'Actions Taken',
+                        data: actions,
+                        borderColor: '#10b981',
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'GMB Performance Trend (Last 30 Days)'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            // Actions breakdown chart
+            const actionsCtx = document.getElementById('gmb-actions-chart').getContext('2d');
+
+            if (gmbActionsChart) gmbActionsChart.destroy();
+
+            gmbActionsChart = new Chart(actionsCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Website Visits', 'Direction Requests', 'Phone Calls', 'Message Sent'],
+                    datasets: [{
+                        data: [650, 520, 380, 300],
+                        backgroundColor: CalculatorUtils.generateChartColors(4),
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Customer Actions Breakdown'
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+
+        function generateGMBRecommendations() {
+            const container = document.getElementById('gmb-recommendations');
+            const recommendations = [
+                {
+                    priority: 'High',
+                    title: 'Increase Post Frequency',
+                    description: 'Post 2-3 times per week to improve visibility and engagement.',
+                    impact: 'Can increase views by 15-25%'
+                },
+                {
+                    priority: 'Medium',
+                    title: 'Optimize Business Hours',
+                    description: 'Update special hours for holidays and events to reduce confusion.',
+                    impact: 'Improves user experience and reduces negative reviews'
+                },
+                {
+                    priority: 'High',
+                    title: 'Encourage More Reviews',
+                    description: 'Implement systematic review request process for satisfied customers.',
+                    impact: 'Can improve local rankings significantly'
+                },
+                {
+                    priority: 'Low',
+                    title: 'Add More Photos',
+                    description: 'Upload recent photos of your business, team, and services.',
+                    impact: 'Increases engagement and builds trust'
+                }
+            ];
+
+            container.innerHTML = recommendations.map(rec => `
+                <div class="recommendation-item">
+                    <div class="recommendation-priority priority-${rec.priority.toLowerCase()}">${rec.priority.toUpperCase()}</div>
+                    <h5>${rec.title}</h5>
+                    <p>${rec.description}</p>
+                    <small><strong>Expected Impact:</strong> ${rec.impact}</small>
+                </div>
+            `).join('');
+        }
+
+        function sortPerformanceData() {
+            CalculatorUtils.showNotification('Performance data sorted!', 'info');
+        }
+
+        function generateLocalReport() {
+            CalculatorUtils.showNotification('Generating comprehensive local SEO report...', 'info');
+        }
+
+        function shareLocalResults() {
+            CalculatorUtils.shareResults('My Local Rankings Analysis', {
+                'Average Ranking': document.getElementById('average-ranking').textContent,
+                'Top 3 Rankings': document.getElementById('top3-percentage').textContent,
+                'Locations Analyzed': document.getElementById('total-locations').textContent
+            });
+        }
+
+        function scheduleTracking() {
+            CalculatorUtils.showNotification('Scheduled tracking setup coming soon!', 'info');
+        }
+
+        // Initialize with sample data and GMB performance
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('business-name').value = 'The Profit Platform';
+            document.getElementById('search-keyword').value = 'digital marketing agency';
+            document.getElementById('base-location').value = 'Sydney, NSW, Australia';
+
+            // Initialize GMB data
+            setTimeout(() => {
+                analyzeGMBPerformance();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

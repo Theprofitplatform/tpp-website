@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revenue Leak Detector - Find Hidden Money In Your Business</title>
+    <meta name="description" content="Discover how much revenue your business is losing. Free interactive quiz identifies money leaks and provides instant fixes.">
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        .money-gradient {
+            background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .money-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .leak-animation {
+            animation: leak 2s ease-in-out infinite;
+        }
+        @keyframes leak {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(50px) scale(0.5); opacity: 0; }
+        }
+        .progress-segment {
+            transition: all 0.3s ease;
+        }
+        .dollar-rain {
+            position: absolute;
+            font-size: 2rem;
+            animation: rain 3s linear infinite;
+        }
+        @keyframes rain {
+            0% { transform: translateY(-100px); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/" class="flex-shrink-0 flex items-center">
+                        <span class="text-2xl font-bold text-orange-600">The Profit Platform</span>
+                    </a>
+                    <div class="hidden md:ml-6 md:flex md:space-x-8">
+                        <a href="/tools" class="text-gray-700 hover:text-orange-600 px-3 py-2 text-sm font-medium">All Tools</a>
+                        <a href="#" class="text-orange-600 border-b-2 border-orange-600 px-3 py-2 text-sm font-medium">Revenue Leak Detector</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="money-gradient text-white py-16 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 text-center relative z-10">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">
+                💸 Revenue Leak Detector
+            </h1>
+            <p class="text-xl mb-8 text-yellow-50">
+                Discover how much money your business is losing every month
+            </p>
+            <div class="flex justify-center space-x-6 text-sm">
+                <span><i class="fas fa-calculator"></i> 2-Minute Quiz</span>
+                <span><i class="fas fa-chart-line"></i> Instant Results</span>
+                <span><i class="fas fa-download"></i> Free Report</span>
+            </div>
+        </div>
+
+        <!-- Floating money icons -->
+        <div class="dollar-rain" style="left: 10%; animation-delay: 0s;">💵</div>
+        <div class="dollar-rain" style="left: 30%; animation-delay: 1s;">💰</div>
+        <div class="dollar-rain" style="left: 50%; animation-delay: 2s;">💸</div>
+        <div class="dollar-rain" style="left: 70%; animation-delay: 0.5s;">💵</div>
+        <div class="dollar-rain" style="left: 90%; animation-delay: 1.5s;">💰</div>
+    </section>
+
+    <!-- Main Quiz Container -->
+    <section class="py-12">
+        <div class="max-w-4xl mx-auto px-4">
+            <!-- Progress Bar -->
+            <div class="glass-panel rounded-2xl shadow-xl p-6 mb-8">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-sm font-medium text-gray-600">Progress</span>
+                    <span class="text-sm font-medium text-gray-600">
+                        Question <span id="currentQuestion">1</span> of <span id="totalQuestions">10</span>
+                    </span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-3">
+                    <div id="progressBar" class="bg-orange-500 h-3 rounded-full transition-all duration-300" style="width: 10%"></div>
+                </div>
+                <div class="flex justify-between mt-2">
+                    <span class="text-xs text-gray-500">Start</span>
+                    <span class="text-xs text-gray-500">Analysis</span>
+                </div>
+            </div>
+
+            <!-- Question Container -->
+            <div id="quizContainer" class="glass-panel rounded-2xl shadow-2xl p-8">
+                <!-- Start Screen -->
+                <div id="startScreen" class="text-center py-12">
+                    <div class="money-float text-6xl mb-6">💰</div>
+                    <h2 class="text-3xl font-bold mb-4">Ready to Find Your Revenue Leaks?</h2>
+                    <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+                        Answer 10 quick questions about your business and we'll show you exactly
+                        where you're losing money and how to fix it immediately.
+                    </p>
+
+                    <div class="grid md:grid-cols-3 gap-6 mb-8 max-w-2xl mx-auto">
+                        <div class="text-center">
+                            <i class="fas fa-clock text-3xl text-blue-500 mb-2"></i>
+                            <p class="font-semibold">2 Minutes</p>
+                            <p class="text-sm text-gray-600">Quick & Easy</p>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-lock text-3xl text-green-500 mb-2"></i>
+                            <p class="font-semibold">100% Private</p>
+                            <p class="text-sm text-gray-600">No Login Required</p>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-gift text-3xl text-purple-500 mb-2"></i>
+                            <p class="font-semibold">Free Report</p>
+                            <p class="text-sm text-gray-600">Instant Download</p>
+                        </div>
+                    </div>
+
+                    <button onclick="startQuiz()" class="bg-orange-600 text-white py-4 px-8 rounded-lg text-lg font-semibold hover:bg-orange-700 transition-colors">
+                        <i class="fas fa-play mr-2"></i>Start Revenue Leak Detection
+                    </button>
+                </div>
+
+                <!-- Question Screens (Hidden Initially) -->
+                <div id="questionScreen" class="hidden">
+                    <div class="mb-8">
+                        <h2 id="questionTitle" class="text-2xl font-bold mb-2"></h2>
+                        <p id="questionSubtitle" class="text-gray-600"></p>
+                    </div>
+
+                    <div id="answerOptions" class="space-y-4">
+                        <!-- Answer options will be inserted here -->
+                    </div>
+
+                    <div class="flex justify-between mt-8">
+                        <button onclick="previousQuestion()" id="prevBtn" class="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50" disabled>
+                            <i class="fas fa-arrow-left mr-2"></i>Previous
+                        </button>
+                        <button onclick="nextQuestion()" id="nextBtn" class="px-6 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 disabled:opacity-50" disabled>
+                            Next<i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Calculating Screen -->
+                <div id="calculatingScreen" class="hidden text-center py-12">
+                    <div class="relative inline-block mb-8">
+                        <div class="w-32 h-32 border-8 border-orange-200 rounded-full"></div>
+                        <div class="absolute top-0 left-0 w-32 h-32 border-8 border-orange-600 rounded-full animate-spin border-t-transparent"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-4xl">💰</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Analyzing Your Business...</h3>
+                    <p id="analysisStatus" class="text-gray-600 mb-4">Calculating revenue leaks...</p>
+                    <div class="max-w-md mx-auto">
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-2">
+                                <i id="check1" class="fas fa-circle text-gray-300"></i>
+                                <span>Analyzing website conversion</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i id="check2" class="fas fa-circle text-gray-300"></i>
+                                <span>Checking SEO opportunities</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i id="check3" class="fas fa-circle text-gray-300"></i>
+                                <span>Evaluating marketing channels</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i id="check4" class="fas fa-circle text-gray-300"></i>
+                                <span>Calculating lost revenue</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section (Hidden Initially) -->
+            <div id="resultsSection" class="hidden space-y-8">
+                <!-- Main Results Card -->
+                <div class="glass-panel rounded-2xl shadow-2xl p-8">
+                    <div class="text-center mb-8">
+                        <h2 class="text-3xl font-bold mb-4">Your Revenue Leak Report</h2>
+                        <div class="inline-block p-8 bg-red-50 rounded-full mb-4">
+                            <div class="text-5xl font-bold text-red-600">
+                                $<span id="totalLeak">0</span>
+                            </div>
+                            <p class="text-gray-600 mt-2">Lost Revenue Per Month</p>
+                        </div>
+                        <p class="text-xl text-gray-700">
+                            That's <span class="font-bold text-red-600">$<span id="yearlyLeak">0</span></span> per year!
+                        </p>
+                    </div>
+
+                    <!-- Leak Breakdown -->
+                    <div class="grid md:grid-cols-2 gap-8 mb-8">
+                        <div>
+                            <h3 class="text-lg font-semibold mb-4">Revenue Leaks by Source</h3>
+                            <canvas id="leakChart" width="400" height="300"></canvas>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-4">Impact Analysis</h3>
+                            <div class="space-y-3" id="impactList">
+                                <!-- Will be filled dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Wins -->
+                <div class="glass-panel rounded-2xl shadow-2xl p-8">
+                    <h3 class="text-2xl font-bold mb-6">
+                        <i class="fas fa-rocket text-green-500 mr-2"></i>
+                        Quick Wins (Implement Today)
+                    </h3>
+
+                    <div class="grid md:grid-cols-2 gap-6" id="quickWins">
+                        <!-- Will be filled dynamically -->
+                    </div>
+                </div>
+
+                <!-- Detailed Recommendations -->
+                <div class="glass-panel rounded-2xl shadow-2xl p-8">
+                    <h3 class="text-2xl font-bold mb-6">
+                        <i class="fas fa-clipboard-list text-blue-500 mr-2"></i>
+                        Your Personalized Action Plan
+                    </h3>
+
+                    <div class="space-y-6" id="actionPlan">
+                        <!-- Will be filled dynamically -->
+                    </div>
+                </div>
+
+                <!-- Revenue Recovery Timeline -->
+                <div class="glass-panel rounded-2xl shadow-2xl p-8">
+                    <h3 class="text-2xl font-bold mb-6">Revenue Recovery Timeline</h3>
+
+                    <div class="relative">
+                        <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-gray-300"></div>
+                        <div class="space-y-8" id="timeline">
+                            <div class="flex items-start">
+                                <div class="bg-green-500 text-white rounded-full w-16 h-16 flex items-center justify-center font-bold mr-4">
+                                    30d
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">First Month</h4>
+                                    <p class="text-gray-600">Recover $<span id="month1Recovery">0</span> with quick fixes</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-blue-500 text-white rounded-full w-16 h-16 flex items-center justify-center font-bold mr-4">
+                                    60d
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Second Month</h4>
+                                    <p class="text-gray-600">Additional $<span id="month2Recovery">0</span> from optimizations</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-purple-500 text-white rounded-full w-16 h-16 flex items-center justify-center font-bold mr-4">
+                                    90d
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Third Month</h4>
+                                    <p class="text-gray-600">Full recovery of $<span id="month3Recovery">0</span> monthly</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Email Capture -->
+                <div class="glass-panel rounded-2xl shadow-2xl p-8">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold mb-4">Get Your Full Report + Implementation Guide</h3>
+                        <p class="text-gray-600 mb-6">
+                            Enter your email to receive your personalized revenue recovery report
+                            with step-by-step instructions.
+                        </p>
+
+                        <form id="emailForm" class="max-w-md mx-auto">
+                            <div class="flex gap-2">
+                                <input type="email"
+                                       id="email"
+                                       placeholder="your@email.com"
+                                       class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
+                                       required>
+                                <button type="submit" class="bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700">
+                                    Send Report
+                                </button>
+                            </div>
+                        </form>
+
+                        <p class="text-xs text-gray-500 mt-4">
+                            We'll also send you weekly revenue optimization tips. Unsubscribe anytime.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="bg-gradient-to-r from-orange-600 to-red-600 rounded-2xl p-8 text-white text-center">
+                    <h3 class="text-2xl font-bold mb-4">Want Us to Fix These Leaks For You?</h3>
+                    <p class="mb-6">Our experts can implement all these fixes and recover your lost revenue</p>
+                    <div class="flex justify-center gap-4">
+                        <a href="/contact" class="bg-white text-orange-600 py-3 px-8 rounded-lg font-semibold hover:bg-gray-100">
+                            Get Revenue Recovery Quote
+                        </a>
+                        <button onclick="scheduleCall()" class="bg-transparent border-2 border-white text-white py-3 px-8 rounded-lg font-semibold hover:bg-white hover:text-orange-600">
+                            Schedule Strategy Call
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Share Results -->
+                <div class="glass-panel rounded-2xl shadow-xl p-6 text-center">
+                    <p class="mb-4">Help other businesses find their revenue leaks:</p>
+                    <div class="flex justify-center gap-4">
+                        <button onclick="shareOnTwitter()" class="bg-blue-400 text-white px-4 py-2 rounded-lg hover:bg-blue-500">
+                            <i class="fab fa-twitter mr-2"></i>Share on Twitter
+                        </button>
+                        <button onclick="shareOnLinkedIn()" class="bg-blue-700 text-white px-4 py-2 rounded-lg hover:bg-blue-800">
+                            <i class="fab fa-linkedin mr-2"></i>Share on LinkedIn
+                        </button>
+                        <button onclick="shareOnFacebook()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                            <i class="fab fa-facebook mr-2"></i>Share on Facebook
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Quiz Questions
+        const questions = [
+            {
+                id: 1,
+                title: "What's your current monthly revenue?",
+                subtitle: "This helps us calculate the impact of improvements",
+                type: "single",
+                answers: [
+                    { text: "Under $10,000", value: 5000 },
+                    { text: "$10,000 - $50,000", value: 30000 },
+                    { text: "$50,000 - $100,000", value: 75000 },
+                    { text: "$100,000 - $500,000", value: 300000 },
+                    { text: "Over $500,000", value: 750000 }
+                ]
+            },
+            {
+                id: 2,
+                title: "How much website traffic do you get per month?",
+                subtitle: "Visitors to your website",
+                type: "single",
+                answers: [
+                    { text: "Under 1,000 visitors", value: 500 },
+                    { text: "1,000 - 5,000 visitors", value: 3000 },
+                    { text: "5,000 - 10,000 visitors", value: 7500 },
+                    { text: "10,000 - 50,000 visitors", value: 30000 },
+                    { text: "Over 50,000 visitors", value: 75000 }
+                ]
+            },
+            {
+                id: 3,
+                title: "What's your website conversion rate?",
+                subtitle: "Percentage of visitors who become customers",
+                type: "single",
+                answers: [
+                    { text: "I don't know", value: 0.5 },
+                    { text: "Under 1%", value: 0.5 },
+                    { text: "1-2%", value: 1.5 },
+                    { text: "2-3%", value: 2.5 },
+                    { text: "Over 3%", value: 4 }
+                ]
+            },
+            {
+                id: 4,
+                title: "Do you have Google Analytics installed?",
+                subtitle: "Tracking visitor behavior",
+                type: "single",
+                answers: [
+                    { text: "Yes, and I check it regularly", value: 100 },
+                    { text: "Yes, but I rarely look at it", value: 60 },
+                    { text: "I think so", value: 30 },
+                    { text: "No", value: 0 },
+                    { text: "What's Google Analytics?", value: 0 }
+                ]
+            },
+            {
+                id: 5,
+                title: "How often do you update your website?",
+                subtitle: "Fresh content impacts rankings and engagement",
+                type: "single",
+                answers: [
+                    { text: "Weekly", value: 100 },
+                    { text: "Monthly", value: 75 },
+                    { text: "Every few months", value: 50 },
+                    { text: "Once a year", value: 25 },
+                    { text: "Can't remember last update", value: 0 }
+                ]
+            },
+            {
+                id: 6,
+                title: "Which marketing channels do you use?",
+                subtitle: "Select all that apply",
+                type: "multiple",
+                answers: [
+                    { text: "Google Ads", value: 25 },
+                    { text: "Facebook/Instagram Ads", value: 25 },
+                    { text: "SEO", value: 25 },
+                    { text: "Email Marketing", value: 25 },
+                    { text: "Content Marketing", value: 20 },
+                    { text: "None of these", value: -50 }
+                ]
+            },
+            {
+                id: 7,
+                title: "Do you have an email list?",
+                subtitle: "Email marketing ROI is typically 42:1",
+                type: "single",
+                answers: [
+                    { text: "Yes, over 5,000 subscribers", value: 100 },
+                    { text: "Yes, 1,000-5,000 subscribers", value: 75 },
+                    { text: "Yes, under 1,000 subscribers", value: 50 },
+                    { text: "Just starting to build one", value: 25 },
+                    { text: "No email list", value: 0 }
+                ]
+            },
+            {
+                id: 8,
+                title: "How fast does your website load?",
+                subtitle: "53% of visitors leave if it takes over 3 seconds",
+                type: "single",
+                answers: [
+                    { text: "Under 2 seconds", value: 100 },
+                    { text: "2-3 seconds", value: 75 },
+                    { text: "3-5 seconds", value: 50 },
+                    { text: "Over 5 seconds", value: 25 },
+                    { text: "I don't know", value: 30 }
+                ]
+            },
+            {
+                id: 9,
+                title: "Is your website mobile-friendly?",
+                subtitle: "60% of searches are on mobile",
+                type: "single",
+                answers: [
+                    { text: "Yes, fully responsive", value: 100 },
+                    { text: "Mostly works on mobile", value: 60 },
+                    { text: "Some issues on mobile", value: 30 },
+                    { text: "Not mobile-friendly", value: 0 },
+                    { text: "Not sure", value: 30 }
+                ]
+            },
+            {
+                id: 10,
+                title: "Do you follow up with leads?",
+                subtitle: "80% of sales require 5 follow-ups",
+                type: "single",
+                answers: [
+                    { text: "Automated follow-up system", value: 100 },
+                    { text: "Manual follow-up within 24 hours", value: 75 },
+                    { text: "Follow up within a week", value: 50 },
+                    { text: "Occasionally follow up", value: 25 },
+                    { text: "No follow-up system", value: 0 }
+                ]
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let answers = {};
+        let selectedAnswers = new Set();
+
+        function startQuiz() {
+            document.getElementById('startScreen').classList.add('hidden');
+            document.getElementById('questionScreen').classList.remove('hidden');
+            showQuestion(0);
+        }
+
+        function showQuestion(index) {
+            const question = questions[index];
+            selectedAnswers.clear();
+
+            document.getElementById('questionTitle').textContent = question.title;
+            document.getElementById('questionSubtitle').textContent = question.subtitle;
+            document.getElementById('currentQuestion').textContent = index + 1;
+            document.getElementById('totalQuestions').textContent = questions.length;
+
+            // Update progress bar
+            const progress = ((index + 1) / questions.length) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+
+            // Generate answer options
+            let optionsHtml = '';
+            question.answers.forEach((answer, i) => {
+                if (question.type === 'single') {
+                    optionsHtml += `
+                        <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg hover:border-orange-500 cursor-pointer transition-all">
+                            <input type="radio" name="q${question.id}" value="${i}" onchange="selectAnswer(${i}, false)" class="mr-3">
+                            <span class="text-lg">${answer.text}</span>
+                        </label>
+                    `;
+                } else {
+                    optionsHtml += `
+                        <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg hover:border-orange-500 cursor-pointer transition-all">
+                            <input type="checkbox" name="q${question.id}" value="${i}" onchange="selectAnswer(${i}, true)" class="mr-3">
+                            <span class="text-lg">${answer.text}</span>
+                        </label>
+                    `;
+                }
+            });
+
+            document.getElementById('answerOptions').innerHTML = optionsHtml;
+
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = index === 0;
+            document.getElementById('nextBtn').disabled = true;
+
+            // Restore previous answers if any
+            if (answers[question.id]) {
+                const savedAnswers = answers[question.id];
+                savedAnswers.forEach(answerIndex => {
+                    const input = document.querySelector(`input[name="q${question.id}"][value="${answerIndex}"]`);
+                    if (input) {
+                        input.checked = true;
+                        selectedAnswers.add(answerIndex);
+                    }
+                });
+                document.getElementById('nextBtn').disabled = false;
+            }
+        }
+
+        function selectAnswer(answerIndex, isMultiple) {
+            if (isMultiple) {
+                if (selectedAnswers.has(answerIndex)) {
+                    selectedAnswers.delete(answerIndex);
+                } else {
+                    selectedAnswers.add(answerIndex);
+                }
+            } else {
+                selectedAnswers.clear();
+                selectedAnswers.add(answerIndex);
+            }
+
+            document.getElementById('nextBtn').disabled = selectedAnswers.size === 0;
+        }
+
+        function nextQuestion() {
+            // Save current answers
+            answers[questions[currentQuestionIndex].id] = Array.from(selectedAnswers);
+
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                showQuestion(currentQuestionIndex);
+            } else {
+                calculateResults();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                showQuestion(currentQuestionIndex);
+            }
+        }
+
+        function calculateResults() {
+            document.getElementById('questionScreen').classList.add('hidden');
+            document.getElementById('calculatingScreen').classList.remove('hidden');
+
+            // Animate calculation steps
+            const steps = ['check1', 'check2', 'check3', 'check4'];
+            const statuses = [
+                'Analyzing website conversion...',
+                'Checking SEO opportunities...',
+                'Evaluating marketing channels...',
+                'Calculating lost revenue...'
+            ];
+
+            steps.forEach((step, index) => {
+                setTimeout(() => {
+                    document.getElementById(step).className = 'fas fa-check-circle text-green-500';
+                    document.getElementById('analysisStatus').textContent = statuses[index];
+                }, (index + 1) * 800);
+            });
+
+            // Show results after animation
+            setTimeout(() => {
+                generateResults();
+            }, 4000);
+        }
+
+        function generateResults() {
+            // Calculate revenue leaks based on answers
+            const monthlyRevenue = answers[1] ? questions[0].answers[answers[1][0]].value : 30000;
+            const traffic = answers[2] ? questions[1].answers[answers[2][0]].value : 3000;
+            const conversionRate = answers[3] ? questions[2].answers[answers[3][0]].value : 1.5;
+
+            // Calculate leaks
+            const conversionLeak = monthlyRevenue * 0.15; // 15% lost from poor conversion
+            const seoLeak = monthlyRevenue * 0.20; // 20% lost from poor SEO
+            const emailLeak = monthlyRevenue * 0.10; // 10% lost from no email marketing
+            const speedLeak = monthlyRevenue * 0.08; // 8% lost from slow speed
+            const mobileLeak = monthlyRevenue * 0.12; // 12% lost from mobile issues
+
+            const totalLeak = Math.floor(conversionLeak + seoLeak + emailLeak + speedLeak + mobileLeak);
+            const yearlyLeak = totalLeak * 12;
+
+            // Display results
+            document.getElementById('calculatingScreen').classList.add('hidden');
+            document.getElementById('quizContainer').classList.add('hidden');
+            document.getElementById('resultsSection').classList.remove('hidden');
+
+            // Animate numbers
+            animateValue('totalLeak', 0, totalLeak, 2000);
+            animateValue('yearlyLeak', 0, yearlyLeak, 2000);
+
+            // Create leak chart
+            createLeakChart([conversionLeak, seoLeak, emailLeak, speedLeak, mobileLeak]);
+
+            // Generate impact list
+            const impacts = [
+                { name: 'Poor Conversion Rate', amount: conversionLeak, icon: 'fa-chart-line' },
+                { name: 'Missing SEO Traffic', amount: seoLeak, icon: 'fa-search' },
+                { name: 'No Email Marketing', amount: emailLeak, icon: 'fa-envelope' },
+                { name: 'Slow Website Speed', amount: speedLeak, icon: 'fa-tachometer-alt' },
+                { name: 'Mobile Experience', amount: mobileLeak, icon: 'fa-mobile-alt' }
+            ];
+
+            const impactHtml = impacts.map(impact => `
+                <div class="flex justify-between items-center p-3 bg-red-50 rounded-lg">
+                    <div class="flex items-center">
+                        <i class="fas ${impact.icon} text-red-500 mr-3"></i>
+                        <span>${impact.name}</span>
+                    </div>
+                    <span class="font-bold text-red-600">-$${Math.floor(impact.amount).toLocaleString()}</span>
+                </div>
+            `).join('');
+
+            document.getElementById('impactList').innerHTML = impactHtml;
+
+            // Generate quick wins
+            const quickWins = [
+                { title: 'Add Exit-Intent Popup', savings: '$2,500/mo', time: '30 min' },
+                { title: 'Speed Up Website', savings: '$1,800/mo', time: '2 hours' },
+                { title: 'Fix Mobile Issues', savings: '$3,200/mo', time: '1 day' },
+                { title: 'Install Live Chat', savings: '$1,500/mo', time: '1 hour' }
+            ];
+
+            const quickWinsHtml = quickWins.map(win => `
+                <div class="p-4 bg-green-50 rounded-lg">
+                    <h4 class="font-semibold mb-2">${win.title}</h4>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-green-600 font-bold">+${win.savings}</span>
+                        <span class="text-gray-600">⏱ ${win.time}</span>
+                    </div>
+                </div>
+            `).join('');
+
+            document.getElementById('quickWins').innerHTML = quickWinsHtml;
+
+            // Set recovery timeline
+            document.getElementById('month1Recovery').textContent = Math.floor(totalLeak * 0.3).toLocaleString();
+            document.getElementById('month2Recovery').textContent = Math.floor(totalLeak * 0.3).toLocaleString();
+            document.getElementById('month3Recovery').textContent = totalLeak.toLocaleString();
+
+            // Scroll to results
+            document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function animateValue(id, start, end, duration) {
+            const element = document.getElementById(id);
+            const increment = (end - start) / (duration / 10);
+            let current = start;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= end) {
+                    element.textContent = Math.floor(end).toLocaleString();
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current).toLocaleString();
+                }
+            }, 10);
+        }
+
+        function createLeakChart(data) {
+            const ctx = document.getElementById('leakChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Conversion', 'SEO', 'Email', 'Speed', 'Mobile'],
+                    datasets: [{
+                        data: data,
+                        backgroundColor: [
+                            'rgba(239, 68, 68, 0.8)',
+                            'rgba(245, 158, 11, 0.8)',
+                            'rgba(59, 130, 246, 0.8)',
+                            'rgba(139, 92, 246, 0.8)',
+                            'rgba(34, 197, 94, 0.8)'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+
+        // Email form submission
+        document.getElementById('emailForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Report sent! Check your email.');
+        });
+
+        // Sharing functions
+        function shareOnTwitter() {
+            const text = `I just discovered I'm losing $${document.getElementById('totalLeak').textContent}/month in my business! Find your revenue leaks:`;
+            window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(window.location.href)}`);
+        }
+
+        function shareOnLinkedIn() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`);
+        }
+
+        function shareOnFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`);
+        }
+
+        function scheduleCall() {
+            window.location.href = '/contact';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Animations Test</title>
+    <style>
+        :root {
+            --pp-primary: #2c86f9;
+            --pp-primary-dark: #1e6ee8;
+            --pp-success: #10b981;
+            --pp-gray-600: #475569;
+            --pp-gray-800: #1e293b;
+            --pp-white: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f8fafc;
+        }
+
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--pp-white);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid transparent;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .service-card.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px rgba(0,0,0,0.1);
+            border-color: var(--pp-primary);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--pp-primary), var(--pp-primary-dark));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--pp-white);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--pp-gray-800);
+            margin-bottom: 1rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .service-features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            color: var(--pp-gray-600);
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .service-features li::before {
+            content: "✓";
+            color: var(--pp-success);
+            font-weight: 700;
+            margin-right: 0.75rem;
+        }
+
+        .status {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--pp-white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--pp-primary);
+        }
+
+        .status-item {
+            margin-bottom: 10px;
+        }
+
+        .status-item.success {
+            color: var(--pp-success);
+        }
+
+        .status-item.error {
+            color: #ef4444;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Service Animations Test</h1>
+
+        <div class="status" id="status">
+            <div class="status-item" id="script-load">❌ Script Loading...</div>
+            <div class="status-item" id="window-object">❌ window.serviceAnimations</div>
+            <div class="status-item" id="animations">❌ Animations Active</div>
+            <div class="status-item" id="css-vars">❌ CSS Variables</div>
+        </div>
+
+        <div class="service-card" data-test="card-1">
+            <div class="service-icon">🚀</div>
+            <h3 class="service-title">Test Service Card 1</h3>
+            <ul class="service-features">
+                <li>Feature 1 - Should animate in</li>
+                <li>Feature 2 - With staggered effect</li>
+                <li>Feature 3 - On card entrance</li>
+            </ul>
+        </div>
+
+        <div class="service-card" data-test="card-2">
+            <div class="service-icon">⚡</div>
+            <h3 class="service-title">Test Service Card 2</h3>
+            <ul class="service-features">
+                <li>Hover effects should work</li>
+                <li>Icon should animate on hover</li>
+                <li>Card should lift on hover</li>
+            </ul>
+        </div>
+
+        <div class="service-card" data-test="card-3" style="margin-top: 100vh;">
+            <div class="service-icon">💫</div>
+            <h3 class="service-title">Test Service Card 3 (Scroll to see)</h3>
+            <ul class="service-features">
+                <li>Should animate when scrolled into view</li>
+                <li>Tests intersection observer</li>
+                <li>Performance optimizations active</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Test script to verify animation functionality
+        function updateStatus(elementId, success, message) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.className = 'status-item ' + (success ? 'success' : 'error');
+                element.textContent = (success ? '✅' : '❌') + ' ' + message;
+            }
+        }
+
+        // Test CSS variables
+        function testCSSVariables() {
+            const testEl = document.createElement('div');
+            testEl.style.color = 'var(--pp-primary)';
+            document.body.appendChild(testEl);
+            const computed = getComputedStyle(testEl).color;
+            document.body.removeChild(testEl);
+
+            const hasVars = computed !== '' && computed !== 'var(--pp-primary)';
+            updateStatus('css-vars', hasVars, hasVars ? 'CSS Variables Working' : 'CSS Variables Failed');
+            return hasVars;
+        }
+
+        // Test after DOM load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateStatus('script-load', true, 'DOM Loaded');
+            testCSSVariables();
+
+            // Check if window.serviceAnimations exists
+            setTimeout(() => {
+                const hasServiceAnimations = typeof window.serviceAnimations !== 'undefined';
+                updateStatus('window-object', hasServiceAnimations,
+                    hasServiceAnimations ? 'Global Object Available' : 'Global Object Missing');
+
+                // Test animations
+                const cards = document.querySelectorAll('.service-card');
+                let animatedCards = 0;
+
+                cards.forEach(card => {
+                    if (card.classList.contains('animate-in')) {
+                        animatedCards++;
+                    }
+                });
+
+                updateStatus('animations', animatedCards > 0,
+                    `${animatedCards}/${cards.length} Cards Animated`);
+
+                // Manual test for intersection observer
+                if (hasServiceAnimations && window.serviceAnimations.observers) {
+                    const hasObserver = window.serviceAnimations.observers.has('entrance');
+                    console.log('Intersection Observer Active:', hasObserver);
+                }
+
+            }, 500);
+        });
+
+        // Custom event listeners for animation events
+        document.addEventListener('serviceCardAnimated', (e) => {
+            console.log('Card animated:', e.detail);
+        });
+
+        console.log('Test script loaded');
+    </script>
+
+    <!-- Load the service animations script -->
+    <script src="../website/js/service-animations.js"></script>
+</body>
+</html>

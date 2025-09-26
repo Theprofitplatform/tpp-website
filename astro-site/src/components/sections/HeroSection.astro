@@ -1,0 +1,220 @@
+---
+import Button from '../ui/Button.astro';
+
+export interface Props {
+  title?: {
+    line1?: string;
+    line2?: string;
+    line3?: string;
+  };
+  subtitle?: string;
+  locations?: string[];
+  stats?: {
+    revenueIncrease?: string;
+    clients?: string;
+  };
+  ctaPrimary?: {
+    text?: string;
+    subtext?: string;
+    href?: string;
+  };
+  ctaSecondary?: {
+    label?: string;
+    phone?: string;
+  };
+  trustBadges?: {
+    rating?: string;
+    noLockIn?: boolean;
+  };
+  dashboardImage?: string;
+  floatingMetrics?: {
+    metric1?: { value: string; label: string; };
+    metric2?: { value: string; label: string; };
+    metric3?: { value: string; label: string; };
+  };
+}
+
+const {
+  title = {
+    line1: "Sydney's Local",
+    line2: "Small Business Marketing Expert",
+    line3: "Fresh Approach, Proven Methods"
+  },
+  subtitle = "Dominate Google searches in Bondi, Parramatta, Penrith & across Greater Sydney. Founded 2024, I'm helping Sydney businesses get 2x more leads in 60 days with cutting-edge strategies.",
+  locations = ["Bondi", "Parramatta", "Penrith"],
+  stats = {
+    revenueIncrease: "247",
+    clients: "15"
+  },
+  ctaPrimary = {
+    text: "Claim Free $997 Audit",
+    subtext: "Only 5 spots left this week",
+    href: "/contact"
+  },
+  ctaSecondary = {
+    label: "Call Avi directly",
+    phone: "0487 286 451"
+  },
+  trustBadges = {
+    rating: "4.9",
+    noLockIn: true
+  },
+  dashboardImage = "https://storage.googleapis.com/msgsndr/El8AYzrtJG3nVg76QPpa/media/68b56f98291670614001dfbf.png",
+  floatingMetrics = {
+    metric1: { value: "2x", label: "More Leads" },
+    metric2: { value: "67", label: "New Leads/Month" },
+    metric3: { value: "15x", label: "ROI Average" }
+  }
+} = Astro.props;
+---
+
+<!-- Enhanced Hero Section -->
+<section class="hero-modern" role="banner" aria-labelledby="heroHeading">
+    <div class="hero-background" aria-hidden="true">
+        <div class="hero-gradient-mesh"></div>
+        <div class="hero-floating-elements">
+            <div class="floating-orb orb-1"></div>
+            <div class="floating-orb orb-2"></div>
+            <div class="floating-orb orb-3"></div>
+        </div>
+        <div class="hero-grid-overlay"></div>
+    </div>
+
+    <div class="container">
+        <div class="hero-wrapper">
+            <div class="hero-content-modern">
+                <h1 id="heroHeading" class="hero-title-modern" data-aos="fade-up">
+                    <span class="title-line">{title.line1}</span>
+                    <span class="title-gradient">{title.line2}</span>
+                    <span class="title-highlight">{title.line3}</span>
+                </h1>
+
+                <p class="hero-subtitle-modern" data-aos="fade-up" data-aos-delay="100">
+                    Dominate Google searches in
+                    {locations.map((location, index) => (
+                        <>
+                            <span class="location-highlight">{location}</span>
+                            {index < locations.length - 1 && index === locations.length - 2 ? " & " :
+                             index < locations.length - 1 ? ", " : ""}
+                        </>
+                    ))} across Greater Sydney.
+                    Founded 2024, I'm helping Sydney businesses get 2x more leads in 60 days with cutting-edge strategies.
+                </p>
+
+                <div class="hero-stats-modern" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-card-modern">
+                        <div class="stat-icon-wrapper">
+                            <div class="stat-icon-bg"></div>
+                            <i class="fas fa-chart-line stat-icon"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value"><span class="counter" data-target={stats.revenueIncrease}>{stats.revenueIncrease}</span>%</div>
+                            <div class="stat-label">Revenue Increase</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card-modern">
+                        <div class="stat-icon-wrapper">
+                            <div class="stat-icon-bg"></div>
+                            <i class="fas fa-users stat-icon"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value"><span class="counter" data-target={stats.clients}>{stats.clients}</span>+</div>
+                            <div class="stat-label">Sydney Clients</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-cta-modern" data-aos="fade-up" data-aos-delay="300">
+                    <a href={ctaPrimary.href} class="cta-primary-modern">
+                        <span class="cta-content">
+                            <span class="cta-main">{ctaPrimary.text}</span>
+                            <span class="cta-sub">{ctaPrimary.subtext}</span>
+                        </span>
+                        <span class="cta-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </span>
+                        <div class="cta-glow"></div>
+                    </a>
+
+                    <a href={`tel:+61${ctaSecondary.phone?.replace(/\s/g, '')}`} class="cta-secondary-modern">
+                        <span class="cta-icon-pulse">
+                            <i class="fas fa-phone"></i>
+                        </span>
+                        <span class="cta-text">
+                            <span class="cta-label">{ctaSecondary.label}</span>
+                            <span class="cta-number">{ctaSecondary.phone}</span>
+                        </span>
+                    </a>
+                </div>
+
+                <div class="trust-badges-modern" data-aos="fade-up" data-aos-delay="400">
+                    <div class="trust-item">
+                        <i class="fas fa-star"></i>
+                        <span>{trustBadges.rating}★ Rating</span>
+                    </div>
+                    <div class="trust-divider"></div>
+                    <div class="trust-item">
+                        <i class="fas fa-award"></i>
+                        <span>No Lock-in Contracts</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual-modern" data-aos="fade-left" data-aos-delay="200">
+                <div class="visual-container">
+                    <div class="visual-frame">
+                        <img src={dashboardImage}
+                             alt="Digital Marketing Dashboard showing impressive growth results"
+                             class="hero-dashboard-image"
+                             loading="eager"
+                             fetchpriority="high">
+                        <div class="visual-overlay"></div>
+                    </div>
+
+                    <div class="floating-metric metric-1">
+                        <div class="metric-icon">
+                            <i class="fas fa-arrow-trend-up"></i>
+                        </div>
+                        <div class="metric-content">
+                            <div class="metric-value">{floatingMetrics.metric1?.value}</div>
+                            <div class="metric-label">{floatingMetrics.metric1?.label}</div>
+                        </div>
+                    </div>
+
+                    <div class="floating-metric metric-2">
+                        <div class="metric-icon">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <div class="metric-content">
+                            <div class="metric-value">{floatingMetrics.metric2?.value}</div>
+                            <div class="metric-label">{floatingMetrics.metric2?.label}</div>
+                        </div>
+                    </div>
+
+                    <div class="floating-metric metric-3">
+                        <div class="metric-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="metric-content">
+                            <div class="metric-value">{floatingMetrics.metric3?.value}</div>
+                            <div class="metric-label">{floatingMetrics.metric3?.label}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visual-decoration">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="decoration-blob">
+                        <path fill="url(#gradient)" d="M47.3,-57.2C59.9,-47.1,67.7,-30.8,69.8,-13.8C71.9,3.2,68.3,20.9,59.5,35.1C50.7,49.3,36.7,60,21.2,64.5C5.7,69,-11.3,67.3,-26.8,61.2C-42.3,55.1,-56.3,44.6,-63.4,30.3C-70.5,16,-70.7,-2.1,-65.2,-18.1C-59.7,-34.1,-48.5,-48,-35.2,-57.9C-21.8,-67.8,-6.3,-73.7,7,-72.8C20.3,-71.9,34.7,-64.3,47.3,-57.2Z" transform="translate(100 100)" />
+                        <defs>
+                            <linearGradient id="gradient">
+                                <stop offset="0%" stop-color="#2c86f9" stop-opacity="0.3"/>
+                                <stop offset="100%" stop-color="#60a5fa" stop-opacity="0.1"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

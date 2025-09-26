@@ -1,0 +1,360 @@
+/* Navigation Dropdown Fix - Overrides for proper dropdown functionality */
+
+/* CRITICAL: Remove ALL borders from navigation - FORCE OVERRIDE */
+.premium-nav,
+#header,
+header.premium-nav,
+.nav-floating-container,
+.premium-nav .container,
+#header .container,
+#primary-navigation,
+.nav-links,
+.nav-dropdown {
+    border: none !important;
+    outline: none !important;
+    overflow: visible !important;
+}
+
+/* Force remove the white/light border that shows as a thin line */
+.premium-nav {
+    border: 0 !important;
+    border: none !important;
+    outline: none !important;
+}
+
+.nav-floating-container {
+    border: 0 !important;
+    border: none !important;
+    outline: none !important;
+}
+
+/* Remove ALL borders with high specificity */
+header#header.premium-nav {
+    border: none !important;
+}
+
+div.nav-floating-container {
+    border: none !important;
+}
+
+/* Ensure dropdown parent is relative */
+.nav-dropdown {
+    position: relative !important;
+}
+
+/* Reset mega-dropdown initial state */
+.dropdown-menu,
+.mega-dropdown {
+    /* Positioning will be handled by JavaScript */
+    position: fixed !important;
+    z-index: 10000 !important;
+
+    /* Styling - No border, just shadow */
+    background: white !important;
+    border: none !important;
+    border-radius: 16px !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+    padding: 20px !important;
+    min-width: 320px !important;
+    width: max-content !important;
+    max-width: 400px !important;
+
+    /* Initial hidden state */
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+
+    /* Smooth transitions */
+    transition: opacity 0.3s ease,
+                visibility 0.3s ease !important;
+}
+
+/* Active state - controlled by JavaScript */
+.nav-dropdown.active .dropdown-menu,
+.nav-dropdown.active .mega-dropdown {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+}
+
+/* Desktop hover support with smooth transition */
+@media (min-width: 969px) {
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:hover .mega-dropdown {
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+    }
+
+    /* Create invisible bridge between trigger and dropdown to maintain hover */
+    .nav-dropdown::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        height: 15px;
+        z-index: 9999;
+        pointer-events: none;
+    }
+
+    .nav-dropdown:hover::after {
+        pointer-events: auto;
+    }
+}
+
+/* Mega dropdown content styling */
+.mega-dropdown-content {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+}
+
+/* Mega dropdown items */
+.dropdown-item.mega-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px !important;
+    padding: 12px 16px !important;
+    background: transparent !important;
+    border-radius: 12px !important;
+    transition: all 0.3s ease !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    color: var(--pp-gray-700) !important;
+}
+
+.dropdown-item.mega-item:hover {
+    background: rgba(44, 134, 249, 0.05) !important;
+    transform: translateX(5px) !important;
+    color: var(--pp-primary) !important;
+}
+
+/* Mega item icon */
+.mega-item-icon {
+    flex-shrink: 0 !important;
+    width: 40px !important;
+    height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: linear-gradient(135deg, rgba(44, 134, 249, 0.1), rgba(139, 92, 246, 0.1)) !important;
+    border-radius: 10px !important;
+    color: var(--pp-primary) !important;
+    font-size: 1.2rem !important;
+}
+
+/* Mega item content */
+.mega-item-content {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2px !important;
+}
+
+.mega-item-content strong {
+    color: var(--pp-black) !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+}
+
+.mega-item-content span {
+    color: var(--pp-gray-600) !important;
+    font-size: 0.85rem !important;
+    line-height: 1.2 !important;
+}
+
+/* Mega item arrow */
+.mega-item-arrow {
+    flex-shrink: 0 !important;
+    color: var(--pp-gray-400) !important;
+    font-size: 0.8rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.dropdown-item.mega-item:hover .mega-item-arrow {
+    color: var(--pp-primary) !important;
+    transform: translateX(3px) !important;
+}
+
+/* Fix dropdown arrow rotation */
+.nav-dropdown .dropdown-arrow {
+    transition: transform 0.3s ease !important;
+}
+
+.nav-dropdown.active .dropdown-arrow,
+.nav-dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg) !important;
+}
+
+/* Remove focus borders and outlines from navigation items */
+.nav-item,
+.premium-nav-item,
+.nav-links a,
+.nav-links li a,
+.nav-dropdown .nav-item {
+    outline: none !important;
+    border: none !important;
+}
+
+.nav-item:focus,
+.premium-nav-item:focus,
+.nav-links a:focus,
+.nav-links li a:focus,
+.nav-dropdown .nav-item:focus {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.nav-item:focus-visible,
+.premium-nav-item:focus-visible,
+.nav-links a:focus-visible,
+.nav-links li a:focus-visible,
+.nav-dropdown .nav-item:focus-visible {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Remove any active state borders */
+.nav-item.active,
+.premium-nav-item.active,
+.nav-links a.active,
+.nav-dropdown.active .nav-item {
+    border: none !important;
+    outline: none !important;
+}
+
+/* Override any overflow hidden from navigation.css */
+header.premium-nav .container {
+    overflow: visible !important;
+}
+
+.premium-nav .container {
+    overflow: visible !important;
+}
+
+.nav-floating-container {
+    overflow: visible !important;
+}
+
+.nav-floating-container .container {
+    overflow: visible !important;
+}
+
+/* Mobile - disable hover effects */
+@media (max-width: 968px) {
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:hover .mega-dropdown {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+
+    /* Only show on active class (click) */
+    .nav-dropdown.active .dropdown-menu,
+    .nav-dropdown.active .mega-dropdown {
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+    }
+}
+
+/* Z-index management for proper layering */
+.scroll-progress {
+    z-index: 9999 !important;
+}
+
+.premium-nav {
+    z-index: 1000 !important;
+}
+
+.nav-floating-container {
+    z-index: 1001 !important;
+}
+
+.dropdown-menu,
+.mega-dropdown {
+    z-index: 10000 !important;
+}
+
+.mobile-nav-overlay {
+    z-index: 9998 !important;
+}
+
+.mobile-nav {
+    z-index: 9999 !important;
+}
+
+.menu-toggle {
+    z-index: 10001 !important;
+}
+
+/* Fix Contact hover flickering with CTA button */
+.nav-item[data-page="contact"] {
+    position: relative !important;
+    isolation: isolate !important;
+    z-index: 1 !important;
+}
+
+/* Ensure nav items and CTA button don't overlap */
+.nav-links.premium-nav-links {
+    margin-right: 30px !important;
+}
+
+.nav-links.premium-nav-links li:last-child {
+    margin-right: 10px !important;
+}
+
+.nav-cta {
+    position: relative !important;
+    z-index: 1 !important;
+    margin-left: 30px !important;
+    isolation: isolate !important;
+}
+
+/* Prevent hover state conflicts - more specific selectors */
+.nav-item[data-page="contact"]:hover {
+    z-index: 2 !important;
+}
+
+/* Keep CTA stable when hovering nearby items */
+.premium-cta-btn {
+    position: relative !important;
+    z-index: 1 !important;
+    transition: transform 0.3s ease, background-color 0.3s ease !important;
+}
+
+/* Prevent interaction between Contact link and CTA button */
+/* Updated: Contact is now the 5th child after removing Portfolio */
+.nav-links li:nth-child(5) {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Remove pointer events from decorative elements that might cause flickering */
+.nav-pill-bg,
+.premium-cta-glow,
+.nav-accent,
+.logo-accent {
+    pointer-events: none !important;
+}
+
+/* Ensure proper hover areas don't overlap */
+.nav-item {
+    position: relative !important;
+}
+
+/* Active page Contact specific fix */
+.nav-item[data-page="contact"].active {
+    z-index: 3 !important;
+}
+
+/* Ensure consistent nav layout across all pages */
+.premium-nav .container {
+    min-height: 80px !important;
+    display: flex !important;
+    align-items: center !important;
+}

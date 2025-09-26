@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../components/layout/BaseLayout.astro';
+import HeroSection from '../components/sections/HeroSection.astro';
+
+// Page-specific SEO data
+const seoData = {
+  title: "Index | The Profit Platform - Sydney Digital Marketing",
+  description: "Leading Index services in Sydney. Get results with The Profit Platform. ✓ Proven ROI ✓ 127+ Reviews ✓ Free Consultation",
+  keywords: "Index, sydney, digital marketing, seo, google ads, web design",
+  canonicalURL: "https://theprofitplatform.com.au/",
+  pageType: 'homepage' as const
+};
+
+// Hero section data
+const heroData = {
+  title: {
+    line1: "Sydney's Local",
+    line2: "Small Business Marketing Expert",
+    line3: "Fresh Approach, Proven Methods"
+  },
+  subtitle: "Dominate Google searches across Greater Sydney. Founded 2024, I'm helping Sydney businesses get 2x more leads in 60 days with cutting-edge strategies.",
+  locations: ["Bondi", "Parramatta", "Penrith"],
+  stats: {
+    revenueIncrease: "247",
+    clients: "15"
+  },
+  ctaPrimary: {
+    text: "Claim Free $997 Audit",
+    subtext: "Only 5 spots left this week",
+    href: "/contact"
+  },
+  ctaSecondary: {
+    label: "Call Avi directly",
+    phone: "0487 286 451"
+  },
+  trustBadges: {
+    rating: "4.9",
+    noLockIn: true
+  },
+  dashboardImage: "https://storage.googleapis.com/msgsndr/El8AYzrtJG3nVg76QPpa/media/68b56f98291670614001dfbf.png",
+  floatingMetrics: {
+    metric1: { value: "2x", label: "More Leads" },
+    metric2: { value: "67", label: "New Leads/Month" },
+    metric3: { value: "15x", label: "ROI Average" }
+  }
+};
+---
+
+<BaseLayout
+  title={seoData.title}
+  description={seoData.description}
+  keywords={seoData.keywords}
+  canonicalURL={seoData.canonicalURL}
+  pageType={seoData.pageType}
+  currentPage="home"
+>
+  <HeroSection {...heroData} />
+
+  <!-- Trust Signals Section Placeholder -->
+  <section class="trust-signals-section" aria-labelledby="trust-title">
+    <div class="container">
+      <div class="trust-signals-grid">
+        <!-- This would be populated with the TrustSignals component when created -->
+        <p>Trust Signals Section - To be implemented with TrustSignals component</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results Section Placeholder -->
+  <section class="results section animate-on-scroll" id="results" aria-labelledby="results-title">
+    <div class="container">
+      <header class="section-header">
+        <h2 id="results-title">Client Results</h2>
+        <p>See the proven results we deliver for Sydney businesses</p>
+      </header>
+      <!-- This would be populated with the ResultsSection component when created -->
+      <p>Results Section - To be implemented with ResultsSection component</p>
+    </div>
+  </section>
+
+  <!-- Services Section Placeholder -->
+  <section class="services section animate-on-scroll" id="services">
+    <div class="container">
+      <h2>Our Services</h2>
+      <!-- This would be populated with the ServicesSection component when created -->
+      <p>Services Section - To be implemented with ServicesSection component</p>
+    </div>
+  </section>
+
+  <!-- Process Section Placeholder -->
+  <section class="process section animate-on-scroll" id="process">
+    <div class="container">
+      <h2>Our Process</h2>
+      <!-- This would be populated with the ProcessSection component when created -->
+      <p>Process Section - To be implemented with ProcessSection component</p>
+    </div>
+  </section>
+
+  <!-- Pricing Section Placeholder -->
+  <section class="pricing section animate-on-scroll" id="pricing">
+    <div class="container">
+      <h2>Pricing</h2>
+      <!-- This would be populated with the PricingSection component when created -->
+      <p>Pricing Section - To be implemented with PricingSection component</p>
+    </div>
+  </section>
+
+  <!-- FAQ Section Placeholder -->
+  <section class="faq section animate-on-scroll" id="faq">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <!-- This would be populated with the FAQSection component when created -->
+      <p>FAQ Section - To be implemented with FAQSection component</p>
+    </div>
+  </section>
+
+  <!-- CTA Section Placeholder -->
+  <section class="cta section animate-on-scroll" id="cta">
+    <div class="container">
+      <h2>Ready to Get Started?</h2>
+      <!-- This would be populated with the CTASection component when created -->
+      <p>CTA Section - To be implemented with CTASection component</p>
+    </div>
+  </section>
+
+  <!-- Contact Section Placeholder -->
+  <section class="contact section animate-on-scroll" id="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <!-- This would be populated with the ContactSection component when created -->
+      <p>Contact Section - To be implemented with ContactSection component</p>
+    </div>
+  </section>
+</BaseLayout>

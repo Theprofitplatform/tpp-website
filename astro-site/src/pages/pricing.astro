@@ -1,0 +1,552 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "Pricing Plans | The Profit Platform - Transparent Digital Marketing Pricing";
+const description = "Clear, value-driven pricing for SEO, Google Ads, and Web Design services. Starting from $997/month with 90-day money-back guarantee.";
+
+const plans = [
+  {
+    name: "SEO Essentials",
+    price: "$997",
+    period: "/month",
+    description: "Perfect for local businesses ready to dominate search rankings",
+    features: [
+      "Complete SEO Audit & Strategy",
+      "20 Target Keywords",
+      "On-Page Optimization",
+      "Local SEO & Google My Business",
+      "Monthly Content (4 Articles)",
+      "Link Building Campaign",
+      "Monthly Performance Reports",
+      "Dedicated Account Manager"
+    ],
+    cta: "Start SEO Growth",
+    href: "/contact?plan=seo"
+  },
+  {
+    name: "Google Ads Pro",
+    price: "$1,497",
+    period: "/month + ad spend",
+    description: "High-performance PPC campaigns that deliver immediate ROI",
+    popular: true,
+    features: [
+      "Complete Campaign Setup",
+      "Search & Display Ads",
+      "Shopping Campaigns",
+      "Remarketing Setup",
+      "Landing Page Optimization",
+      "A/B Testing & Optimization",
+      "Weekly Performance Calls",
+      "Real-time Dashboard Access"
+    ],
+    cta: "Accelerate Growth",
+    href: "/contact?plan=google-ads"
+  },
+  {
+    name: "Web Design",
+    price: "$2,997",
+    period: "one-time",
+    description: "Stunning, conversion-focused websites that drive results",
+    features: [
+      "Custom Design & Development",
+      "Mobile-Responsive Design",
+      "SEO-Optimized Structure",
+      "Speed Optimization",
+      "CMS Integration",
+      "6 Months Free Hosting",
+      "90-Day Free Maintenance",
+      "Conversion Tracking Setup"
+    ],
+    cta: "Build Your Site",
+    href: "/contact?plan=web-design"
+  }
+];
+
+const comparison = [
+  { feature: "Dedicated Account Manager", seo: true, ads: true, web: true },
+  { feature: "Monthly Performance Reports", seo: true, ads: true, web: false },
+  { feature: "Real-time Dashboard", seo: false, ads: true, web: false },
+  { feature: "Content Creation", seo: true, ads: false, web: true },
+  { feature: "Technical Optimization", seo: true, ads: false, web: true },
+  { feature: "Conversion Tracking", seo: true, ads: true, web: true },
+  { feature: "Competitor Analysis", seo: true, ads: true, web: false },
+  { feature: "90-Day Guarantee", seo: true, ads: true, web: true }
+];
+
+const faqs = [
+  {
+    question: "What's included in the management fee?",
+    answer: "Our management fee covers strategy, implementation, optimization, reporting, and dedicated support. Ad spend for Google Ads is billed separately."
+  },
+  {
+    question: "Can I switch plans later?",
+    answer: "Yes! You can upgrade or change your plan at any time. We'll help you transition smoothly to ensure continuous growth."
+  },
+  {
+    question: "Do you require contracts?",
+    answer: "We offer month-to-month agreements with no lock-in contracts. We earn your business through results, not contracts."
+  },
+  {
+    question: "What if I'm not happy with results?",
+    answer: "We offer a 90-day money-back guarantee. If we don't meet agreed KPIs, we'll refund your management fees."
+  }
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <style>
+    .hero {
+      background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+      padding: 120px 0 100px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .floating-orb {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      animation: float-orb 20s infinite ease-in-out;
+    }
+
+    .orb-1 {
+      width: 300px;
+      height: 300px;
+      top: -150px;
+      left: -100px;
+    }
+
+    .orb-2 {
+      width: 200px;
+      height: 200px;
+      bottom: -100px;
+      right: -50px;
+      animation-delay: -7s;
+    }
+
+    .orb-3 {
+      width: 150px;
+      height: 150px;
+      top: 50%;
+      right: 10%;
+      animation-delay: -14s;
+    }
+
+    @keyframes float-orb {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -30px) scale(1.1); }
+      66% { transform: translate(-20px, 20px) scale(0.9); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .pricing-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 8px 20px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      opacity: 0.95;
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      padding: 80px 0;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+    }
+
+    .pricing-card.popular {
+      border: 3px solid #3b82f6;
+      transform: scale(1.05);
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      color: white;
+      padding: 5px 20px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .plan-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 10px;
+    }
+
+    .plan-price {
+      font-size: 3rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 5px;
+    }
+
+    .plan-period {
+      color: #64748b;
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    .plan-description {
+      color: #64748b;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .plan-features {
+      list-style: none;
+      margin-bottom: 40px;
+    }
+
+    .plan-features li {
+      padding: 12px 0;
+      color: #475569;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .plan-features li::before {
+      content: "✓";
+      color: #10b981;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    .plan-cta {
+      display: block;
+      width: 100%;
+      padding: 18px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+
+    .plan-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+    }
+
+    .guarantee-section {
+      background: #f0fdf4;
+      padding: 60px 0;
+      text-align: center;
+    }
+
+    .guarantee-box {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .guarantee-icon {
+      font-size: 4rem;
+      margin-bottom: 20px;
+    }
+
+    .guarantee-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 15px;
+    }
+
+    .guarantee-text {
+      color: #64748b;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .comparison-section {
+      padding: 80px 0;
+      background: #f8fafc;
+    }
+
+    .comparison-table {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .comparison-table table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .comparison-table th {
+      background: linear-gradient(135deg, #f8fafc, #e0e7ff);
+      padding: 20px;
+      text-align: left;
+      font-weight: 700;
+      color: #1e293b;
+      border-bottom: 2px solid #e2e8f0;
+    }
+
+    .comparison-table td {
+      padding: 20px;
+      border-bottom: 1px solid #e2e8f0;
+      color: #475569;
+    }
+
+    .comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .check-icon {
+      color: #10b981;
+      font-size: 1.5rem;
+    }
+
+    .x-icon {
+      color: #cbd5e1;
+      font-size: 1.5rem;
+    }
+
+    .social-proof {
+      padding: 40px 0;
+      background: white;
+      text-align: center;
+    }
+
+    .proof-stats {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .proof-stat {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .proof-number {
+      font-size: 2.5rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .proof-label {
+      color: #64748b;
+      text-align: left;
+    }
+
+    @media (max-width: 768px) {
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-card.popular {
+        transform: none;
+      }
+
+      .comparison-table {
+        overflow-x: auto;
+      }
+
+      .proof-stats {
+        flex-direction: column;
+        gap: 30px;
+      }
+    }
+  </style>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="floating-orb orb-1"></div>
+    <div class="floating-orb orb-2"></div>
+    <div class="floating-orb orb-3"></div>
+
+    <div class="container hero-content">
+      <span class="pricing-badge">Transparent Pricing • No Hidden Fees</span>
+      <h1>Investment That Delivers ROI</h1>
+      <p>Choose the perfect plan to accelerate your business growth with guaranteed results</p>
+    </div>
+  </section>
+
+  <!-- Social Proof Stats -->
+  <section class="social-proof">
+    <div class="container">
+      <div class="proof-stats">
+        <div class="proof-stat">
+          <div class="proof-number">4.9★</div>
+          <div class="proof-label">Average<br>Rating</div>
+        </div>
+        <div class="proof-stat">
+          <div class="proof-number">150+</div>
+          <div class="proof-label">Happy<br>Clients</div>
+        </div>
+        <div class="proof-stat">
+          <div class="proof-number">280%</div>
+          <div class="proof-label">Average<br>ROI</div>
+        </div>
+        <div class="proof-stat">
+          <div class="proof-number">90</div>
+          <div class="proof-label">Day Money<br>Back Guarantee</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Cards -->
+  <section class="container">
+    <div class="pricing-grid">
+      {plans.map((plan) => (
+        <div class={`pricing-card ${plan.popular ? 'popular' : ''}`}>
+          {plan.popular && <span class="popular-badge">MOST POPULAR</span>}
+          <h3 class="plan-name">{plan.name}</h3>
+          <div class="plan-price">{plan.price}</div>
+          <div class="plan-period">{plan.period}</div>
+          <p class="plan-description">{plan.description}</p>
+          <ul class="plan-features">
+            {plan.features.map((feature) => (
+              <li>{feature}</li>
+            ))}
+          </ul>
+          <a href={plan.href} class="plan-cta">{plan.cta}</a>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Money Back Guarantee -->
+  <section class="guarantee-section">
+    <div class="container">
+      <div class="guarantee-box">
+        <div class="guarantee-icon">🛡️</div>
+        <h2 class="guarantee-title">90-Day Money-Back Guarantee</h2>
+        <p class="guarantee-text">
+          We're so confident in our ability to deliver results that we offer a 90-day money-back guarantee.
+          If we don't meet the agreed-upon KPIs within the first 90 days, we'll refund 100% of your management fees.
+          No questions asked. That's our commitment to your success.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="comparison-section">
+    <div class="container">
+      <h2 class="gradient-text" style="text-align: center; font-size: 2.5rem; margin-bottom: 60px;">
+        Compare Our Services
+      </h2>
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>SEO Essentials</th>
+              <th>Google Ads Pro</th>
+              <th>Web Design</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparison.map((item) => (
+              <tr>
+                <td>{item.feature}</td>
+                <td style="text-align: center;">
+                  {item.seo ? <span class="check-icon">✓</span> : <span class="x-icon">×</span>}
+                </td>
+                <td style="text-align: center;">
+                  {item.ads ? <span class="check-icon">✓</span> : <span class="x-icon">×</span>}
+                </td>
+                <td style="text-align: center;">
+                  {item.web ? <span class="check-icon">✓</span> : <span class="x-icon">×</span>}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="container" style="padding: 80px 20px;">
+    <h2 class="gradient-text" style="text-align: center; font-size: 2.5rem; margin-bottom: 60px;">
+      Pricing FAQs
+    </h2>
+    <div style="max-width: 800px; margin: 0 auto;">
+      {faqs.map((faq) => (
+        <div class="faq-item" style="background: white; padding: 30px; margin-bottom: 20px; border-radius: 16px; box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);">
+          <h3 style="font-size: 1.3rem; margin-bottom: 15px; color: #1e293b;">{faq.question}</h3>
+          <p style="color: #64748b; line-height: 1.8;">{faq.answer}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section style="background: linear-gradient(135deg, #1e293b, #334155); padding: 100px 0; text-align: center; color: white;">
+    <div class="container">
+      <h2 style="font-size: 3rem; margin-bottom: 20px; font-weight: 900;">Ready to Grow?</h2>
+      <p style="font-size: 1.3rem; opacity: 0.9; margin-bottom: 40px;">
+        Join 150+ businesses achieving exceptional ROI
+      </p>
+      <a href="/contact" class="btn btn-primary" style="font-size: 1.2rem; padding: 20px 40px;">
+        Get Your Free Consultation →
+      </a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Template - The Profit Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #f8f9fa;
+        }
+
+        .invoice-container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .invoice-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #667eea;
+            margin-bottom: 30px;
+        }
+
+        .company-info {
+            flex: 1;
+        }
+
+        .company-logo {
+            width: 200px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .company-details {
+            color: #6c757d;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .invoice-title {
+            text-align: right;
+            flex: 1;
+        }
+
+        .invoice-title h1 {
+            color: #667eea;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .invoice-number {
+            background: #667eea;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .invoice-date {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .billing-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .billing-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .billing-box h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .billing-box p {
+            margin: 5px 0;
+            color: #2c3e50;
+        }
+
+        .editable {
+            background: #fffbeb;
+            padding: 2px 5px;
+            border: 1px dashed #fbbf24;
+            min-width: 150px;
+            display: inline-block;
+        }
+
+        .invoice-details {
+            margin: 40px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        tbody tr:hover {
+            background: #f8f9fa;
+        }
+
+        .item-description {
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .item-details {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .invoice-summary {
+            margin-top: 40px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .summary-box {
+            width: 300px;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .summary-line {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 8px 0;
+        }
+
+        .summary-line.subtotal {
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .summary-line.total {
+            border-top: 2px solid #667eea;
+            padding-top: 15px;
+            margin-top: 15px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .payment-info {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 30px;
+            border-radius: 8px;
+            margin: 40px 0;
+        }
+
+        .payment-info h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .payment-method {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #e9ecef;
+        }
+
+        .payment-method h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .payment-method p {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin: 5px 0;
+        }
+
+        .terms-conditions {
+            margin-top: 40px;
+            padding: 20px;
+            background: #fff4e5;
+            border-left: 4px solid #ff9800;
+            border-radius: 5px;
+        }
+
+        .terms-conditions h3 {
+            color: #ff9800;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .terms-conditions ul {
+            margin-left: 20px;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .terms-conditions li {
+            margin: 8px 0;
+        }
+
+        .footer-section {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 2px solid #e9ecef;
+            text-align: center;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .thank-you {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .thank-you h2 {
+            margin-bottom: 10px;
+        }
+
+        .print-button {
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin: 20px 0;
+        }
+
+        .print-button:hover {
+            background: #5a67d8;
+        }
+
+        .add-row-button {
+            background: #10b981;
+            color: white;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        .add-row-button:hover {
+            background: #059669;
+        }
+
+        @media print {
+            body {
+                background: white;
+                max-width: 100%;
+                padding: 20px;
+            }
+            .print-button, .add-row-button {
+                display: none;
+            }
+            .editable {
+                background: none;
+                border: none;
+            }
+            .invoice-container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">📄 Print Invoice</button>
+    <button class="print-button" onclick="downloadPDF()">📥 Download PDF</button>
+
+    <div class="invoice-container">
+        <div class="invoice-header">
+            <div class="company-info">
+                <div class="company-logo">THE PROFIT PLATFORM</div>
+                <div class="company-details">
+                    <p><strong>The Profit Platform</strong></p>
+                    <p>Digital Marketing & Business Consulting</p>
+                    <p>Level 1, 234 George Street</p>
+                    <p>Sydney NSW 2000</p>
+                    <p>Phone: +61 487 286 451</p>
+                    <p>Email: avi@theprofitplatform.com.au</p>
+                    <p>ABN: [TO BE PROVIDED]</p>
+                </div>
+            </div>
+
+            <div class="invoice-title">
+                <h1>INVOICE</h1>
+                <div class="invoice-number">INV-<span contenteditable="true" class="editable">2025001</span></div>
+                <div class="invoice-date">
+                    <p><strong>Invoice Date:</strong> <span contenteditable="true" class="editable">[Date]</span></p>
+                    <p><strong>Due Date:</strong> <span contenteditable="true" class="editable">[Due Date]</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="billing-section">
+            <div class="billing-box">
+                <h3>Bill To:</h3>
+                <p contenteditable="true" class="editable" style="width: 100%; display: block;">[Client Name]</p>
+                <p contenteditable="true" class="editable" style="width: 100%; display: block;">[Company Name]</p>
+                <p contenteditable="true" class="editable" style="width: 100%; display: block;">[Address Line 1]</p>
+                <p contenteditable="true" class="editable" style="width: 100%; display: block;">[Address Line 2]</p>
+                <p contenteditable="true" class="editable" style="width: 100%; display: block;">[City, State ZIP]</p>
+            </div>
+
+            <div class="billing-box">
+                <h3>Project Details:</h3>
+                <p><strong>Project:</strong> <span contenteditable="true" class="editable">[Project Name]</span></p>
+                <p><strong>Period:</strong> <span contenteditable="true" class="editable">[Service Period]</span></p>
+                <p><strong>Reference:</strong> <span contenteditable="true" class="editable">[PO/Reference]</span></p>
+                <p><strong>Terms:</strong> <span contenteditable="true" class="editable">Net 7 Days</span></p>
+            </div>
+        </div>
+
+        <div class="invoice-details">
+            <table id="invoice-table">
+                <thead>
+                    <tr>
+                        <th style="width: 50%;">Description</th>
+                        <th style="width: 15%;" class="text-center">Qty</th>
+                        <th style="width: 15%;" class="text-right">Rate</th>
+                        <th style="width: 20%;" class="text-right">Amount</th>
+                    </tr>
+                </thead>
+                <tbody id="invoice-items">
+                    <tr>
+                        <td>
+                            <div class="item-description" contenteditable="true">Digital Marketing Strategy Development</div>
+                            <div class="item-details" contenteditable="true">Comprehensive market analysis and strategic roadmap</div>
+                        </td>
+                        <td class="text-center" contenteditable="true">1</td>
+                        <td class="text-right" contenteditable="true">$2,500.00</td>
+                        <td class="text-right amount">$2,500.00</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-description" contenteditable="true">Google Ads Campaign Management</div>
+                            <div class="item-details" contenteditable="true">Monthly management fee for PPC campaigns</div>
+                        </td>
+                        <td class="text-center" contenteditable="true">1</td>
+                        <td class="text-right" contenteditable="true">$1,500.00</td>
+                        <td class="text-right amount">$1,500.00</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-description" contenteditable="true">SEO Optimization</div>
+                            <div class="item-details" contenteditable="true">On-page and technical SEO implementation</div>
+                        </td>
+                        <td class="text-center" contenteditable="true">1</td>
+                        <td class="text-right" contenteditable="true">$1,200.00</td>
+                        <td class="text-right amount">$1,200.00</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="add-row-button" onclick="addRow()">+ Add Line Item</button>
+        </div>
+
+        <div class="invoice-summary">
+            <div class="summary-box">
+                <div class="summary-line subtotal">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">$5,200.00</span>
+                </div>
+                <div class="summary-line">
+                    <span>GST (10%):</span>
+                    <span id="tax">$520.00</span>
+                </div>
+                <div class="summary-line total">
+                    <span>Total Due:</span>
+                    <span id="total">$5,720.00</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="payment-info">
+            <h3>Payment Information</h3>
+            <div class="payment-methods">
+                <div class="payment-method">
+                    <h4>🏦 Bank Transfer</h4>
+                    <p><strong>Bank:</strong> Commonwealth Bank</p>
+                    <p><strong>Account Name:</strong> The Profit Platform</p>
+                    <p><strong>BSB:</strong> 062-000</p>
+                    <p><strong>Account:</strong> 1234 5678</p>
+                    <p><strong>Reference:</strong> INV-<span class="invoice-ref">2025001</span></p>
+                </div>
+                <div class="payment-method">
+                    <h4>💳 Online Payment</h4>
+                    <p><strong>PayPal:</strong> payments@theprofitplatform.com.au</p>
+                    <p><strong>Credit Card:</strong> Via secure payment link</p>
+                    <p><strong>Stripe:</strong> Request payment link</p>
+                    <p style="margin-top: 10px; color: #10b981;">✓ All major cards accepted</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="terms-conditions">
+            <h3>Terms & Conditions</h3>
+            <ul>
+                <li>Payment is due within 7 days of invoice date</li>
+                <li>Late payments may incur a 2% monthly fee</li>
+                <li>Services may be suspended for accounts over 30 days overdue</li>
+                <li>All amounts are in Australian Dollars (AUD)</li>
+                <li>This invoice is governed by our Master Service Agreement</li>
+            </ul>
+        </div>
+
+        <div class="thank-you">
+            <h2>Thank You for Your Business!</h2>
+            <p>We appreciate the opportunity to help grow your business online.</p>
+        </div>
+
+        <div class="footer-section">
+            <p><strong>Questions about this invoice?</strong></p>
+            <p>Contact us at avi@theprofitplatform.com.au or call +61 487 286 451</p>
+            <p style="margin-top: 20px;">The Profit Platform | Sydney's Trusted Digital Marketing Partner</p>
+            <p>www.theprofitplatform.com.au</p>
+        </div>
+    </div>
+
+    <script>
+        // Auto-calculate totals
+        function calculateTotals() {
+            let subtotal = 0;
+            const rows = document.querySelectorAll('#invoice-items tr');
+
+            rows.forEach(row => {
+                const qty = parseFloat(row.cells[1].textContent) || 0;
+                const rate = parseFloat(row.cells[2].textContent.replace('$', '').replace(',', '')) || 0;
+                const amount = qty * rate;
+                row.cells[3].textContent = '$' + amount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                subtotal += amount;
+            });
+
+            const tax = subtotal * 0.1; // 10% GST
+            const total = subtotal + tax;
+
+            document.getElementById('subtotal').textContent = '$' + subtotal.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            document.getElementById('tax').textContent = '$' + tax.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            document.getElementById('total').textContent = '$' + total.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+
+        // Add new row
+        function addRow() {
+            const tbody = document.getElementById('invoice-items');
+            const newRow = tbody.insertRow();
+            newRow.innerHTML = `
+                <td>
+                    <div class="item-description" contenteditable="true">[Service Description]</div>
+                    <div class="item-details" contenteditable="true">[Additional Details]</div>
+                </td>
+                <td class="text-center" contenteditable="true">1</td>
+                <td class="text-right" contenteditable="true">$0.00</td>
+                <td class="text-right amount">$0.00</td>
+            `;
+
+            // Add event listeners to new cells
+            newRow.querySelectorAll('[contenteditable]').forEach(cell => {
+                cell.addEventListener('input', calculateTotals);
+            });
+        }
+
+        // Add event listeners for auto-calculation
+        document.querySelectorAll('[contenteditable]').forEach(element => {
+            element.addEventListener('input', calculateTotals);
+        });
+
+        // Update invoice reference in payment section
+        document.querySelector('.invoice-number .editable').addEventListener('input', function() {
+            document.querySelector('.invoice-ref').textContent = this.textContent;
+        });
+
+        // Simple PDF download (would need a library like jsPDF in production)
+        function downloadPDF() {
+            alert('PDF download would be implemented with a library like jsPDF or by sending to a server-side PDF generator.');
+        }
+
+        // Initial calculation
+        calculateTotals();
+    </script>
+</body>
+</html>

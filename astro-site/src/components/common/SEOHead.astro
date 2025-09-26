@@ -1,0 +1,105 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  canonicalURL?: string;
+  twitterTitle?: string;
+  twitterDescription?: string;
+  twitterImage?: string;
+  pageType?: 'website' | 'article' | 'profile';
+}
+
+const {
+  title = "Index | The Profit Platform - Sydney Digital Marketing",
+  description = "Leading Index services in Sydney. Get results with The Profit Platform. ✓ Proven ROI ✓ 127+ Reviews ✓ Free Consultation",
+  keywords = "Index, sydney, digital marketing, seo, google ads, web design",
+  ogTitle = "Index - The Profit Platform Sydney",
+  ogDescription = "Transform your business with expert Index services",
+  ogImage = "https://theprofitplatform.com.au/images/og-index.jpg",
+  canonicalURL = "https://theprofitplatform.com.au/",
+  twitterTitle = "Sydney Digital Marketing Expert | Fresh Approach, Proven Results",
+  twitterDescription = "Sydney's hungry new digital marketing expert. Founded 2024 with fresh strategies & personalised service. 15+ clients already seeing 2x more leads. Serving Bondi, Parramatta, Penrith & Greater Sydney.",
+  twitterImage = "https://theprofitplatform.com.au/wp-content/uploads/2025/08/The-Profit-Platform-Growth-Dashboard-1.png",
+  pageType = 'website'
+} = Astro.props;
+---
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content="Sydney Digital Marketing Expert | Fresh Approach, Proven Results">
+<meta name="description" content={description}>
+<meta name="keywords" content={keywords}>
+<meta name="author" content="The Profit Platform">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="language" content="English">
+<meta name="geo.region" content="AU-NSW">
+<meta name="geo.placename" content="Sydney">
+<meta name="geo.position" content="-33.8688;151.2093">
+<meta name="ICBM" content="-33.8688, 151.2093">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={pageType}>
+<meta property="og:url" content="https://theprofitplatform.com.au/index.html">
+<meta property="og:title" content={ogTitle}>
+<meta property="og:description" content={ogDescription}>
+<meta property="og:image" content={ogImage}>
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Profit Platform - Digital Marketing Dashboard showing growth results">
+<meta property="og:site_name" content="The Profit Platform">
+<meta property="og:locale" content="en_AU">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://theprofitplatform.com.au/">
+<meta property="twitter:title" content={twitterTitle}>
+<meta property="twitter:description" content={twitterDescription}>
+<meta property="twitter:image" content={twitterImage}>
+<meta property="twitter:image:alt" content="The Profit Platform - Digital Marketing Dashboard showing growth results">
+<meta property="twitter:creator" content="@profitplatform">
+<meta property="twitter:site" content="@profitplatform">
+
+<!-- Additional Meta Tags -->
+<meta name="theme-color" content="#4F46E5">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="The Profit Platform">
+<meta name="format-detection" content="telephone=yes">
+<meta name="msapplication-tap-highlight" content="no">
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL}>
+
+<!-- Alternate Language -->
+<link rel="alternate" hreflang="en-au" href="https://theprofitplatform.com.au/">
+<link rel="alternate" hreflang="x-default" href="https://theprofitplatform.com.au/">
+
+<!-- Favicons -->
+<link rel="icon" type="image/x-icon" href="https://theprofitplatform.com.au/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://theprofitplatform.com.au/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://theprofitplatform.com.au/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://theprofitplatform.com.au/apple-touch-icon.png">
+<link rel="manifest" href="assets/manifest.json">
+
+<!-- Performance and Resource Hints -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="dns-prefetch" href="https://www.google-analytics.com">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://www.google.com">
+
+<!-- Preload Critical Resources -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="css/critical.min.css" as="style">
+<link rel="preload" href="css/style.min.css" as="style">
+<link rel="preload" href="js/combined.min.js" as="script">
+<link rel="preload" href="https://storage.googleapis.com/msgsndr/El8AYzrtJG3nVg76QPpa/media/68b56f6e09148075ab5016df.png" as="image" fetchpriority="high">
+<link rel="preload" href="https://storage.googleapis.com/msgsndr/El8AYzrtJG3nVg76QPpa/media/68b56f98291670614001dfbf.png" as="image" fetchpriority="high">
+
+<!-- Fallback for preload -->
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>

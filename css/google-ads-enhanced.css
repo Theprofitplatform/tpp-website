@@ -1,0 +1,1687 @@
+/* ========================================
+   GOOGLE ADS PAGE - ENHANCED UI/UX STYLES
+   Modern, high-converting design system
+   ======================================== */
+
+/* ==========================
+   CSS CUSTOM PROPERTIES
+   ========================== */
+:root {
+    /* Brand Colors */
+    --ga-primary: #dc2626;
+    --ga-primary-dark: #b91c1c;
+    --ga-primary-light: #ef4444;
+    --ga-secondary: #2563eb;
+    --ga-secondary-dark: #1d4ed8;
+    --ga-accent: #f59e0b;
+    --ga-success: #10b981;
+    --ga-warning: #f59e0b;
+    --ga-error: #ef4444;
+
+    /* Neutral Colors */
+    --ga-black: #0f172a;
+    --ga-gray-900: #1e293b;
+    --ga-gray-800: #334155;
+    --ga-gray-700: #475569;
+    --ga-gray-600: #64748b;
+    --ga-gray-500: #94a3b8;
+    --ga-gray-400: #cbd5e1;
+    --ga-gray-300: #e2e8f0;
+    --ga-gray-200: #f1f5f9;
+    --ga-gray-100: #f8fafc;
+    --ga-white: #ffffff;
+
+    /* Gradients */
+    --ga-gradient-primary: linear-gradient(135deg, var(--ga-primary) 0%, var(--ga-primary-dark) 100%);
+    --ga-gradient-secondary: linear-gradient(135deg, var(--ga-secondary) 0%, var(--ga-secondary-dark) 100%);
+    --ga-gradient-hero: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #991b1b 100%);
+    --ga-gradient-mesh: radial-gradient(at 40% 20%, rgba(220, 38, 38, 0.3) 0px, transparent 50%),
+                        radial-gradient(at 80% 0%, rgba(37, 99, 235, 0.2) 0px, transparent 50%),
+                        radial-gradient(at 0% 50%, rgba(245, 158, 11, 0.2) 0px, transparent 50%);
+
+    /* Spacing */
+    --ga-spacing-xs: 0.25rem;
+    --ga-spacing-sm: 0.5rem;
+    --ga-spacing-md: 1rem;
+    --ga-spacing-lg: 1.5rem;
+    --ga-spacing-xl: 2rem;
+    --ga-spacing-2xl: 3rem;
+    --ga-spacing-3xl: 4rem;
+    --ga-spacing-4xl: 6rem;
+
+    /* Typography */
+    --ga-font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --ga-font-mono: 'Fira Code', monospace;
+
+    /* Border Radius */
+    --ga-radius-sm: 0.375rem;
+    --ga-radius-md: 0.5rem;
+    --ga-radius-lg: 0.75rem;
+    --ga-radius-xl: 1rem;
+    --ga-radius-2xl: 1.5rem;
+    --ga-radius-full: 9999px;
+
+    /* Shadows */
+    --ga-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --ga-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --ga-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --ga-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --ga-shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    --ga-shadow-glow: 0 0 40px rgba(220, 38, 38, 0.3);
+
+    /* Transitions */
+    --ga-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --ga-transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --ga-transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    --ga-transition-spring: 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* ==========================
+   ENHANCED HERO SECTION
+   ========================== */
+.google-ads-hero {
+    background: linear-gradient(135deg, #1a0a0e 0%, #2d1418 50%, #1a0a0e 100%);
+    padding: 40px 0 10px 0;
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* Advanced Background Layers */
+.hero-background-layers {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+/* Animated Mesh Gradient Canvas */
+.mesh-gradient-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+}
+
+#gradient-canvas {
+    width: 100%;
+    height: 100%;
+    filter: blur(80px);
+}
+
+/* Particle System */
+.particle-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    background: radial-gradient(circle, rgba(220, 38, 38, 0.8) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: particleFloat 20s infinite linear;
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* 3D Parallax Grid */
+.parallax-grid {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(220, 38, 38, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(220, 38, 38, 0.05) 1px, transparent 1px);
+    background-size: 100px 100px;
+    animation: gridMove 30s linear infinite;
+    transform: perspective(500px) rotateX(60deg) scale(2);
+    transform-origin: center center;
+    opacity: 1;
+    z-index: 2;
+    pointer-events: none;
+    display: block;
+}
+
+@keyframes gridMove {
+    0% {
+        transform: perspective(500px) rotateX(60deg) scale(2) translateY(0);
+    }
+    100% {
+        transform: perspective(500px) rotateX(60deg) scale(2) translateY(100px);
+    }
+}
+
+/* Professional SVG Icons */
+.floating-svg-icons {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.svg-icon-wrapper {
+    position: absolute;
+    opacity: 0;
+    animation: iconFloat 20s infinite ease-in-out, fadeIn 1s forwards;
+    filter: drop-shadow(0 10px 20px rgba(220, 38, 38, 0.3));
+}
+
+.svg-icon-wrapper:nth-child(1) {
+    top: 15%;
+    left: 8%;
+    animation-delay: 0s, 0.2s;
+}
+
+.svg-icon-wrapper:nth-child(2) {
+    top: 35%;
+    right: 10%;
+    animation-delay: 3s, 0.4s;
+}
+
+.svg-icon-wrapper:nth-child(3) {
+    bottom: 35%;
+    left: 15%;
+    animation-delay: 6s, 0.6s;
+}
+
+.svg-icon-wrapper:nth-child(4) {
+    top: 55%;
+    right: 20%;
+    animation-delay: 9s, 0.8s;
+}
+
+.svg-icon-wrapper:nth-child(5) {
+    bottom: 15%;
+    right: 8%;
+    animation-delay: 12s, 1s;
+}
+
+@keyframes iconFloat {
+    0%, 100% {
+        transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+    }
+    25% {
+        transform: translateY(-20px) translateX(10px) rotate(5deg) scale(1.05);
+    }
+    50% {
+        transform: translateY(-30px) translateX(-10px) rotate(-5deg) scale(1.1);
+    }
+    75% {
+        transform: translateY(-15px) translateX(5px) rotate(3deg) scale(1.05);
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 0.15;
+    }
+}
+
+/* Icon-specific animations */
+.icon-rotate {
+    animation: rotate360 15s linear infinite;
+    transform-origin: center center;
+}
+
+@keyframes rotate360 {
+    to { transform: rotate(360deg); }
+}
+
+.icon-pulse {
+    animation: pulseScale 2s ease-in-out infinite;
+    transform-origin: center center;
+}
+
+@keyframes pulseScale {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.icon-bounce {
+    animation: bounceY 3s ease-in-out infinite;
+    transform-origin: center center;
+}
+
+@keyframes bounceY {
+    0%, 100% { transform: translateY(0); }
+    25% { transform: translateY(-5px); }
+    75% { transform: translateY(5px); }
+}
+
+.icon-click .click-dot {
+    animation: clickPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes clickPulse {
+    0%, 100% { r: 3; opacity: 1; }
+    50% { r: 5; opacity: 0.6; }
+}
+
+.icon-click .click-rays {
+    animation: rayExpand 2s ease-in-out infinite;
+    transform-origin: center center;
+}
+
+@keyframes rayExpand {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.5; }
+}
+
+.icon-launch {
+    animation: rocketLaunch 4s ease-in-out infinite;
+    transform-origin: center bottom;
+}
+
+@keyframes rocketLaunch {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.rocket-fire {
+    animation: fireFlicker 0.3s ease-in-out infinite alternate;
+}
+
+@keyframes fireFlicker {
+    0% { opacity: 0.8; stroke-width: 3; }
+    100% { opacity: 1; stroke-width: 4; }
+}
+
+/* 3D Hover Effect for Icons */
+.svg-icon-wrapper:hover {
+    opacity: 0.3 !important;
+    transform: scale(1.2);
+    filter: drop-shadow(0 15px 30px rgba(220, 38, 38, 0.5));
+    transition: all 0.3s ease;
+}
+
+/* Hero Content Enhanced */
+.google-ads-hero .container {
+    position: relative;
+    z-index: 20;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.google-ads-hero-content {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.google-ads-hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.google-ads-hero .highlight-text {
+    background: linear-gradient(90deg, #dc2626, #f59e0b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.google-ads-hero .location-text {
+    color: #fbbf24;
+}
+
+.google-ads-hero .title-underline {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #dc2626, #f59e0b);
+    margin: 20px auto;
+    border-radius: 2px;
+}
+
+.google-ads-hero .hero-subtitle {
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    margin-bottom: 40px;
+    opacity: 0.9;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.google-ads-hero .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin: 40px 0;
+    flex-wrap: wrap;
+}
+
+.google-ads-hero .stat-item {
+    text-align: center;
+}
+
+.google-ads-hero .stat-number {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.google-ads-hero .stat-label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.google-ads-hero .hero-cta-section {
+    margin-top: 3rem;
+}
+
+.google-ads-hero .hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.google-ads-hero .hero-primary-btn {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
+}
+
+.google-ads-hero .hero-primary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(220, 38, 38, 0.4);
+}
+
+.google-ads-hero .btn-text {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.google-ads-hero .btn-subtext {
+    font-size: 0.8rem;
+    opacity: 0.9;
+    margin-top: 0.25rem;
+}
+
+.google-ads-hero .hero-call-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.google-ads-hero .hero-call-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 0.75rem;
+    color: #ffffff !important;
+    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5);
+    animation: titleGlow 3s ease-in-out infinite alternate;
+    position: relative;
+    z-index: 30;
+}
+
+@media (min-width: 1400px) {
+    .hero-title {
+        font-size: clamp(2.5rem, 4.5vw, 3.5rem);
+    }
+}
+
+@keyframes titleGlow {
+    from { text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3); }
+    to { text-shadow: 2px 4px 20px rgba(255, 255, 255, 0.3); }
+}
+
+.hero-subtitle {
+    display: block;
+    font-size: 0.45em;
+    font-weight: 400;
+    margin-top: 0;
+    color: #fbbf24;
+    text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 30;
+}
+
+.hero-description {
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #ffffff !important;
+    margin: 1rem auto;
+    max-width: 700px;
+    text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 30;
+}
+
+@media (min-width: 1400px) {
+    .hero-description {
+        font-size: 1.1rem;
+        line-height: 1.5;
+    }
+}
+
+.hero-actions {
+    position: relative;
+    z-index: 30;
+    margin-top: 1.25rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+@media (min-width: 1400px) {
+    .hero-actions {
+        margin-top: 1.5rem;
+    }
+}
+
+.google-ads-stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    margin: 1rem 0;
+    position: relative;
+    z-index: 30;
+    flex-wrap: nowrap;
+}
+
+@media (min-width: 1024px) and (max-width: 1399px) {
+    .google-ads-hero {
+        padding: 45px 0 15px 0;
+        height: 100vh;
+        max-height: 100vh;
+    }
+
+    .hero-title {
+        font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+    }
+
+    .google-ads-stats {
+        gap: 3rem;
+    }
+
+    .google-ads-stat-number {
+        font-size: 2.25rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .google-ads-hero {
+        padding: 50px 0 20px 0;
+        height: 100vh;
+        max-height: 100vh;
+    }
+}
+
+@media (max-width: 768px) {
+    .google-ads-hero {
+        min-height: 100vh;
+        height: auto;
+        padding: 100px 0 60px 0;
+    }
+
+    .google-ads-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 6vw, 2.5rem);
+    }
+
+    .hero-description {
+        font-size: 1rem;
+        margin: 1.5rem auto;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .btn-google-ads,
+    .hero-phone {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+.google-ads-stat {
+    text-align: center;
+    position: relative;
+    z-index: 30;
+    padding: 1rem;
+    min-width: 140px;
+}
+
+.google-ads-stat-number {
+    font-size: 1.9rem;
+    font-weight: 800;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 2px;
+}
+
+@media (min-width: 1400px) {
+    .google-ads-stat-number {
+        font-size: 2.1rem;
+    }
+}
+
+.google-ads-stat-label {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 0.25rem;
+    font-weight: 500;
+}
+
+@media (min-width: 1400px) {
+    .google-ads-stat-label {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .google-ads-stat-label {
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+    }
+}
+
+@keyframes shimmer {
+    to { background-position: 200% center; }
+}
+
+/* Advanced Magnetic CTA Buttons */
+.btn-google-ads {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    color: white;
+    padding: 0.85rem 1.75rem;
+    border-radius: var(--ga-radius-full);
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+    box-shadow:
+        0 10px 25px rgba(220, 38, 38, 0.3),
+        inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    cursor: pointer;
+}
+
+/* Liquid Effect Background */
+.btn-google-ads::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+    border-radius: 50%;
+}
+
+/* Glow Effect */
+.btn-google-ads::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.5) 50%,
+        transparent 70%
+    );
+    transform: rotate(45deg) translateY(-100%);
+    transition: transform 0.6s;
+}
+
+.btn-google-ads:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.btn-google-ads:hover::after {
+    transform: rotate(45deg) translateY(100%);
+}
+
+/* Magnetic Effect */
+.btn-google-ads.magnetic {
+    transition: transform 0.2s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.btn-google-ads:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 20px 40px rgba(220, 38, 38, 0.4),
+        inset 0 0 0 2px rgba(255, 255, 255, 0.2),
+        0 0 60px rgba(220, 38, 38, 0.3);
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+.btn-arrow {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    will-change: transform;
+}
+
+.btn-google-ads:hover .btn-arrow {
+    transform: translateX(8px) scale(1.2);
+}
+
+/* Pulse Animation on Load */
+@keyframes ctaPulse {
+    0%, 100% {
+        box-shadow:
+            0 10px 25px rgba(220, 38, 38, 0.3),
+            inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+    }
+    50% {
+        box-shadow:
+            0 10px 35px rgba(220, 38, 38, 0.5),
+            inset 0 0 0 2px rgba(255, 255, 255, 0.2),
+            0 0 40px rgba(220, 38, 38, 0.3);
+    }
+}
+
+.btn-google-ads {
+    animation: ctaPulse 2s ease-in-out infinite;
+}
+
+.btn-google-ads:hover {
+    animation: none;
+}
+
+/* Secondary CTA Style */
+.hero-phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--ga-radius-full);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.125rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-phone::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s;
+}
+
+.hero-phone:hover::before {
+    left: 100%;
+}
+
+.hero-phone:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================
+   3D SERVICE CARDS
+   ========================== */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.google-ads-service-card {
+    background: var(--ga-white);
+    border-radius: var(--ga-radius-2xl);
+    padding: 2.5rem;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all var(--ga-transition-base);
+    cursor: pointer;
+    box-shadow: var(--ga-shadow-lg);
+    border: 1px solid var(--ga-gray-200);
+}
+
+.google-ads-service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--ga-gradient-primary);
+    border-radius: var(--ga-radius-2xl) var(--ga-radius-2xl) 0 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--ga-transition-base);
+}
+
+.google-ads-service-card:hover::before {
+    transform: scaleX(1);
+}
+
+.google-ads-service-card:hover {
+    transform: translateY(-10px) rotateX(5deg) rotateY(-5deg);
+    box-shadow:
+        0 30px 60px rgba(220, 38, 38, 0.2),
+        0 0 0 1px rgba(220, 38, 38, 0.1);
+}
+
+.google-ads-service-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--ga-gradient-primary);
+    border-radius: var(--ga-radius-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+    box-shadow: var(--ga-shadow-lg);
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .8;
+        transform: scale(1.05);
+    }
+}
+
+.google-ads-service-card h3 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--ga-black);
+    margin-bottom: 1rem;
+    transition: color var(--ga-transition-base);
+}
+
+.google-ads-service-card:hover h3 {
+    color: var(--ga-primary);
+}
+
+.google-ads-service-card p {
+    color: var(--ga-gray-600);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.google-ads-service-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.google-ads-service-card ul li {
+    position: relative;
+    padding-left: 1.75rem;
+    margin-bottom: 0.75rem;
+    color: var(--ga-gray-700);
+    transition: color var(--ga-transition-base);
+}
+
+.google-ads-service-card ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--ga-success);
+    font-weight: bold;
+}
+
+.google-ads-service-card:hover ul li {
+    color: var(--ga-gray-800);
+}
+
+/* ==========================
+   PRICING SECTION
+   ========================== */
+.pricing-section {
+    padding: var(--ga-spacing-4xl) 0;
+    background: linear-gradient(135deg, var(--ga-gray-100) 0%, var(--ga-white) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.pricing-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(220, 38, 38, 0.05) 0%, transparent 70%);
+    animation: rotate 30s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+.pricing-card {
+    background: var(--ga-white);
+    border-radius: var(--ga-radius-2xl);
+    padding: 3rem;
+    position: relative;
+    box-shadow: var(--ga-shadow-xl);
+    border: 2px solid var(--ga-gray-200);
+    transition: all var(--ga-transition-base);
+    transform-style: preserve-3d;
+}
+
+.pricing-card.featured {
+    transform: scale(1.05);
+    border-color: var(--ga-primary);
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1), var(--ga-shadow-2xl);
+}
+
+.pricing-card.featured::before {
+    content: 'MOST POPULAR';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--ga-gradient-primary);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: var(--ga-radius-full);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--ga-shadow-2xl);
+}
+
+.pricing-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.pricing-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--ga-black);
+    margin-bottom: 0.5rem;
+}
+
+.pricing-subtitle {
+    color: var(--ga-gray-600);
+    font-size: 0.95rem;
+}
+
+.pricing-price {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.price-amount {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--ga-primary);
+    line-height: 1;
+}
+
+.price-currency {
+    font-size: 1.5rem;
+    vertical-align: super;
+    margin-right: 0.25rem;
+}
+
+.price-period {
+    color: var(--ga-gray-600);
+    font-size: 1rem;
+    margin-left: 0.5rem;
+}
+
+.pricing-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+}
+
+.pricing-features li {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--ga-gray-200);
+}
+
+.pricing-features li:last-child {
+    border-bottom: none;
+}
+
+.feature-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(16, 185, 129, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.feature-icon svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--ga-success);
+    stroke-width: 3;
+}
+
+.pricing-cta {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background: var(--ga-gradient-primary);
+    color: white;
+    text-align: center;
+    border-radius: var(--ga-radius-lg);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--ga-transition-base);
+}
+
+.pricing-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
+}
+
+/* ==========================
+   LIVE PERFORMANCE DASHBOARD
+   ========================== */
+.performance-dashboard {
+    padding: var(--ga-spacing-4xl) 0;
+    background: var(--ga-gray-900);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.metric-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--ga-radius-xl);
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--ga-primary), var(--ga-accent));
+}
+
+.metric-label {
+    font-size: 0.875rem;
+    color: var(--ga-gray-400);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+.metric-value {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: white;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.metric-change {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--ga-radius-full);
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--ga-success);
+}
+
+.metric-change.negative {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--ga-error);
+}
+
+.metric-chart {
+    margin-top: 1rem;
+    height: 60px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20'%3E%3Cpath d='M0,15 L10,14 L20,10 L30,12 L40,8 L50,10 L60,5 L70,8 L80,6 L90,4 L100,2' stroke='%2310b981' fill='none' stroke-width='2'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+}
+
+/* ==========================
+   TRUST & CERTIFICATION
+   ========================== */
+.trust-section {
+    padding: var(--ga-spacing-3xl) 0;
+    background: white;
+    border-top: 1px solid var(--ga-gray-200);
+    border-bottom: 1px solid var(--ga-gray-200);
+}
+
+.trust-grid {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.trust-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all var(--ga-transition-base);
+}
+
+.trust-item:hover {
+    transform: scale(1.1);
+}
+
+.trust-badge {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all var(--ga-transition-base);
+}
+
+.trust-item:hover .trust-badge {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+.trust-label {
+    font-size: 0.875rem;
+    color: var(--ga-gray-600);
+    font-weight: 600;
+}
+
+/* ==========================
+   ENHANCED CASE STUDIES
+   ========================== */
+.case-study-carousel {
+    position: relative;
+    overflow: hidden;
+    padding: 2rem 0;
+}
+
+.case-study-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    gap: 2rem;
+}
+
+.case-study-slide {
+    flex: 0 0 100%;
+    background: white;
+    border-radius: var(--ga-radius-2xl);
+    overflow: hidden;
+    box-shadow: var(--ga-shadow-xl);
+}
+
+.case-study-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 400px;
+}
+
+.case-study-info {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.case-study-metrics {
+    background: var(--ga-gradient-primary);
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+
+.metric-highlight {
+    margin-bottom: 2rem;
+}
+
+.metric-highlight-value {
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.metric-highlight-label {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.carousel-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--ga-gray-300);
+    border: none;
+    cursor: pointer;
+    transition: all var(--ga-transition-base);
+}
+
+.carousel-dot.active {
+    background: var(--ga-primary);
+    transform: scale(1.3);
+}
+
+/* ==========================
+   ENHANCED FAQ ACCORDION
+   ========================== */
+.faq-accordion {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: white;
+    border: 2px solid var(--ga-gray-200);
+    border-radius: var(--ga-radius-xl);
+    margin-bottom: 1rem;
+    overflow: hidden;
+    transition: all var(--ga-transition-base);
+}
+
+.faq-item.active {
+    border-color: var(--ga-primary);
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1);
+}
+
+.faq-question {
+    width: 100%;
+    padding: 1.5rem;
+    background: transparent;
+    border: none;
+    text-align: left;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--ga-black);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all var(--ga-transition-base);
+}
+
+.faq-question:hover {
+    background: var(--ga-gray-50);
+}
+
+.faq-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--ga-gray-200);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--ga-transition-base);
+}
+
+.faq-item.active .faq-icon {
+    background: var(--ga-primary);
+    color: white;
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--ga-transition-base);
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+}
+
+.faq-answer-content {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    color: var(--ga-gray-600);
+    line-height: 1.7;
+}
+
+/* ==========================
+   ADVANCED CTA SECTION
+   ========================== */
+.cta-section {
+    padding: var(--ga-spacing-4xl) 0;
+    background: var(--ga-gradient-hero);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-content {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.cta-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.cta-subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+}
+
+.cta-countdown {
+    display: inline-flex;
+    gap: 2rem;
+    padding: 1.5rem 3rem;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: var(--ga-radius-xl);
+    margin-bottom: 2rem;
+}
+
+.countdown-item {
+    text-align: center;
+}
+
+.countdown-value {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--ga-accent);
+    line-height: 1;
+}
+
+.countdown-label {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+}
+
+/* ==========================
+   RESPONSIVE DESIGN
+   ========================== */
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .case-study-content {
+        grid-template-columns: 1fr;
+    }
+
+    .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    .pricing-card.featured {
+        transform: scale(1);
+    }
+
+    .cta-countdown {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+}
+
+/* ==========================
+   LOADING STATES
+   ========================== */
+.skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* ==========================
+   MICRO-INTERACTIONS
+   ========================== */
+.hover-lift {
+    transition: transform var(--ga-transition-base);
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+}
+
+.hover-scale {
+    transition: transform var(--ga-transition-base);
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+.hover-glow {
+    transition: all var(--ga-transition-base);
+}
+
+.hover-glow:hover {
+    box-shadow: 0 0 30px rgba(220, 38, 38, 0.3);
+}
+
+/* ==========================
+   ACCESSIBILITY
+   ========================== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .google-ads-service-card,
+    .pricing-card,
+    .faq-item {
+        border-width: 3px;
+    }
+
+    .btn-google-ads {
+        border: 2px solid currentColor;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --ga-white: #0f172a;
+        --ga-black: #ffffff;
+        --ga-gray-100: #1e293b;
+        --ga-gray-200: #334155;
+        --ga-gray-300: #475569;
+        --ga-gray-400: #64748b;
+        --ga-gray-500: #94a3b8;
+        --ga-gray-600: #cbd5e1;
+        --ga-gray-700: #e2e8f0;
+        --ga-gray-800: #f1f5f9;
+        --ga-gray-900: #f8fafc;
+    }
+}
+/* FAQ Section Enhanced Styles */
+.faq-section {
+    background: linear-gradient(180deg, #ffffff 0%, #f9fafb 100%);
+}
+
+.faq-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: white;
+}
+
+.faq-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.faq-question {
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+}
+
+.faq-question:hover {
+    background-color: #f3f4f6 !important;
+}
+
+.faq-question:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: -2px;
+}
+
+.faq-item.active .faq-question {
+    background: linear-gradient(90deg, #fef3c7 0%, #fde68a 100%) !important;
+    color: #92400e !important;
+}
+
+.faq-icon {
+    display: inline-block;
+    transition: transform 0.3s ease, color 0.3s ease;
+    font-size: 1.5rem;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(45deg);
+    color: #dc2626;
+}
+
+.faq-answer {
+    background: white;
+}
+
+.faq-answer p {
+    margin: 0;
+    padding: 20px 0;
+}
+
+/* Google Ads Services Grid - 4 columns on desktop */
+.google-ads-services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+}
+
+/* Make service cards more compact for 4-column layout */
+.google-ads-services-grid .google-ads-service-card {
+    padding: 2rem;
+    background: white;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.google-ads-services-grid .google-ads-service-card h3 {
+    font-size: 1.25rem;
+    color: #1f2937;
+    margin-bottom: 0.75rem;
+}
+
+.google-ads-services-grid .google-ads-service-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #4b5563;
+}
+
+.google-ads-services-grid .google-ads-service-card ul {
+    font-size: 0.85rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1400px) {
+    .google-ads-services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .google-ads-services-grid {
+        grid-template-columns: 1fr;
+    }
+}

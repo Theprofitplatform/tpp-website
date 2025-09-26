@@ -1,0 +1,415 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "Google Ads Management | The Profit Platform - Sydney PPC Experts";
+const description = "Expert Google Ads management delivering 12:1 average ROAS. Get more leads, sales, and ROI with Sydney's top PPC agency.";
+
+const services = [
+  {
+    icon: "🔍",
+    title: "Search Campaigns",
+    description: "Dominate search results when customers are ready to buy",
+    features: ["Keyword research", "Ad copywriting", "Bid optimization"]
+  },
+  {
+    icon: "🌐",
+    title: "Display Network",
+    description: "Build brand awareness with visual ads across millions of websites",
+    features: ["Audience targeting", "Responsive ads", "Remarketing"]
+  },
+  {
+    icon: "🛍️",
+    title: "Shopping Ads",
+    description: "Showcase your products directly in search results",
+    features: ["Product feed optimization", "Smart bidding", "Performance Max"]
+  },
+  {
+    icon: "📹",
+    title: "YouTube Ads",
+    description: "Engage audiences with video ads on the world's second-largest search engine",
+    features: ["Video campaigns", "Audience targeting", "Brand awareness"]
+  }
+];
+
+const process = [
+  { step: "1", title: "Audit & Strategy", description: "Complete account audit and custom strategy development" },
+  { step: "2", title: "Campaign Setup", description: "Professional campaign structure and targeting setup" },
+  { step: "3", title: "Launch & Monitor", description: "Go live with real-time monitoring and adjustments" },
+  { step: "4", title: "Optimize & Scale", description: "Continuous optimization for maximum ROI" },
+  { step: "5", title: "Report & Refine", description: "Detailed reporting and strategy refinement" }
+];
+
+const benefits = [
+  "Immediate visibility in search results",
+  "Pay only for actual clicks",
+  "Precise audience targeting",
+  "Real-time performance tracking",
+  "Flexible budget control",
+  "Faster results than SEO"
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <style>
+    .hero {
+      background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+      padding: 120px 0 100px;
+      position: relative;
+      overflow: hidden;
+      color: white;
+    }
+
+    .floating-shape {
+      position: absolute;
+      opacity: 0.1;
+      animation: float 20s infinite ease-in-out;
+    }
+
+    .shape-1 {
+      width: 300px;
+      height: 300px;
+      background: white;
+      border-radius: 50%;
+      top: -150px;
+      right: -100px;
+    }
+
+    .shape-2 {
+      width: 200px;
+      height: 200px;
+      background: white;
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      bottom: -100px;
+      left: -50px;
+      animation-delay: -5s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      25% { transform: translate(20px, -30px) rotate(90deg); }
+      50% { transform: translate(-20px, 20px) rotate(180deg); }
+      75% { transform: translate(30px, 10px) rotate(270deg); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      opacity: 0.95;
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 80px 0;
+    }
+
+    .service-card {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(220, 38, 38, 0.15);
+    }
+
+    .service-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      display: inline-block;
+      background: linear-gradient(135deg, #dc2626, #ef4444);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .service-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 15px;
+    }
+
+    .service-description {
+      color: #64748b;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .service-features {
+      list-style: none;
+    }
+
+    .service-features li {
+      padding: 8px 0;
+      color: #475569;
+      font-size: 0.95rem;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .service-features li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #dc2626;
+      font-weight: 700;
+    }
+
+    .benefits-section {
+      background: #fef2f2;
+      padding: 80px 0;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 60px;
+    }
+
+    .benefit-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+    }
+
+    .benefit-icon {
+      font-size: 2rem;
+      color: #dc2626;
+    }
+
+    .benefit-text {
+      color: #1e293b;
+      font-weight: 500;
+      line-height: 1.6;
+    }
+
+    .process-section {
+      padding: 80px 0;
+    }
+
+    .process-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
+      position: relative;
+    }
+
+    .process-item {
+      text-align: center;
+      position: relative;
+    }
+
+    .process-number {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #dc2626, #ef4444);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 900;
+      margin: 0 auto 20px;
+    }
+
+    .process-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 10px;
+    }
+
+    .process-description {
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    .stats-section {
+      background: linear-gradient(135deg, #1e293b, #334155);
+      padding: 80px 0;
+      color: white;
+      text-align: center;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
+    }
+
+    .stat-item {
+      padding: 20px;
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    .stat-label {
+      opacity: 0.9;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 768px) {
+      .process-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="floating-shape shape-1"></div>
+    <div class="floating-shape shape-2"></div>
+    <div class="container hero-content">
+      <h1>Google Ads That Actually Convert</h1>
+      <p>Stop wasting ad spend. Start generating real ROI with data-driven PPC campaigns managed by Sydney's top experts.</p>
+      <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+        <a href="/free-audit" class="btn btn-primary" style="background: white; color: #dc2626; font-size: 1.1rem; padding: 18px 36px;">
+          Get Free Audit
+        </a>
+        <a href="/contact" class="btn btn-secondary" style="border-color: white; color: white; font-size: 1.1rem; padding: 18px 36px;">
+          Start Campaign
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="container">
+    <h2 class="gradient-text" style="text-align: center; font-size: 2.5rem; margin-bottom: 20px;">
+      Full-Service Google Ads Management
+    </h2>
+    <p style="text-align: center; color: #64748b; font-size: 1.2rem; max-width: 600px; margin: 0 auto 60px;">
+      Every type of campaign, optimized for maximum performance
+    </p>
+
+    <div class="services-grid">
+      {services.map((service) => (
+        <div class="service-card">
+          <div class="service-icon">{service.icon}</div>
+          <h3 class="service-title">{service.title}</h3>
+          <p class="service-description">{service.description}</p>
+          <ul class="service-features">
+            {service.features.map((feature) => (
+              <li>{feature}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="benefits-section">
+    <div class="container">
+      <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px; color: #1e293b;">
+        Why Google Ads?
+      </h2>
+      <p style="text-align: center; color: #64748b; font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
+        The fastest way to reach customers actively searching for your products and services
+      </p>
+
+      <div class="benefits-grid">
+        {benefits.map((benefit) => (
+          <div class="benefit-item">
+            <span class="benefit-icon">✓</span>
+            <span class="benefit-text">{benefit}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="process-section">
+    <div class="container">
+      <h2 class="gradient-text" style="text-align: center; font-size: 2.5rem; margin-bottom: 20px;">
+        Our Proven Process
+      </h2>
+      <p style="text-align: center; color: #64748b; font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
+        From strategy to scale, we handle everything
+      </p>
+
+      <div class="process-container">
+        {process.map((item) => (
+          <div class="process-item">
+            <div class="process-number">{item.step}</div>
+            <h3 class="process-title">{item.title}</h3>
+            <p class="process-description">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="container">
+      <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Results That Speak Volumes</h2>
+      <p style="font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto;">
+        Our Google Ads campaigns consistently deliver exceptional returns
+      </p>
+
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">12:1</div>
+          <div class="stat-label">Average ROAS</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">-68%</div>
+          <div class="stat-label">Cost Per Acquisition</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">+340%</div>
+          <div class="stat-label">Conversion Rate</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">$25M+</div>
+          <div class="stat-label">Ad Spend Managed</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section style="background: linear-gradient(135deg, #dc2626, #ef4444); padding: 100px 0; text-align: center; color: white;">
+    <div class="container">
+      <h2 style="font-size: 3rem; margin-bottom: 20px; font-weight: 900;">Ready to Maximize Your Ad Spend?</h2>
+      <p style="font-size: 1.3rem; opacity: 0.95; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+        Get a free audit and see exactly how much more ROI your campaigns could be generating
+      </p>
+      <a href="/contact" class="btn btn-primary" style="background: white; color: #dc2626; font-size: 1.2rem; padding: 20px 40px;">
+        Get Your Free Audit →
+      </a>
+    </div>
+  </section>
+</BaseLayout>

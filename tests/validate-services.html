@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services Page Validator</title>
+    <style>
+        body {
+            font-family: monospace;
+            background: #1a1a1a;
+            color: #00ff00;
+            padding: 20px;
+        }
+        .issue {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid #ff0000;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .warning {
+            background: rgba(255, 255, 0, 0.1);
+            border: 1px solid #ffff00;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .success {
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid #00ff00;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: 2px solid #333;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Services Page Design Validator</h1>
+
+    <div id="results"></div>
+
+    <h2>Page Preview:</h2>
+    <iframe id="preview" src="../services.html"></iframe>
+
+    <script>
+        const results = document.getElementById('results');
+        const iframe = document.getElementById('preview');
+
+        iframe.onload = function() {
+            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+            let issues = [];
+            let warnings = [];
+            let successes = [];
+
+            // Check for required elements
+            const header = iframeDoc.querySelector('header');
+            if (!header) {
+                issues.push('❌ Missing header element');
+            } else {
+                successes.push('✅ Header found');
+            }
+
+            // Check for main content
+            const main = iframeDoc.querySelector('main, [id="main-content"]');
+            if (!main) {
+                issues.push('❌ Missing main content area');
+            } else {
+                successes.push('✅ Main content area found');
+            }
+
+            // Check for hero section
+            const hero = iframeDoc.querySelector('.services-hero, .hero, [class*="hero"]');
+            if (!hero) {
+                warnings.push('⚠️ No hero section found');
+            } else {
+                successes.push('✅ Hero section found');
+
+                // Check hero visibility
+                const heroStyles = window.getComputedStyle(hero);
+                if (heroStyles.display === 'none' || heroStyles.visibility === 'hidden') {
+                    issues.push('❌ Hero section is hidden');
+                }
+            }
+
+            // Check for service cards
+            const serviceCards = iframeDoc.querySelectorAll('.service-card');
+            if (serviceCards.length === 0) {
+                issues.push('❌ No service cards found');
+            } else {
+                successes.push(`✅ Found ${serviceCards.length} service cards`);
+
+                // Check each card
+                serviceCards.forEach((card, index) => {
+                    const cardStyles = window.getComputedStyle(card);
+                    if (cardStyles.display === 'none' || cardStyles.visibility === 'hidden') {
+                        issues.push(`❌ Service card ${index + 1} is hidden`);
+                    }
+                });
+            }
+
+            // Check for CSS files
+            const stylesheets = iframeDoc.querySelectorAll('link[rel="stylesheet"]');
+            const cssFiles = Array.from(stylesheets).map(link => link.href);
+
+            cssFiles.forEach(file => {
+                if (file.includes('style.css') || file.includes('critical.css')) {
+                    successes.push(`✅ CSS file loaded: ${file.split('/').pop()}`);
+                }
+            });
+
+            // Check for images
+            const images = iframeDoc.querySelectorAll('img');
+            images.forEach(img => {
+                if (img.naturalWidth === 0 && img.src) {
+                    warnings.push(`⚠️ Broken image: ${img.src}`);
+                }
+            });
+
+            // Check for horizontal overflow
+            if (iframeDoc.documentElement.scrollWidth > iframeDoc.documentElement.clientWidth) {
+                issues.push('❌ Page has horizontal overflow (horizontal scrollbar)');
+            } else {
+                successes.push('✅ No horizontal overflow detected');
+            }
+
+            // Check for z-index issues
+            const allElements = iframeDoc.querySelectorAll('*');
+            let highZIndexElements = [];
+            allElements.forEach(el => {
+                const zIndex = window.getComputedStyle(el).zIndex;
+                if (zIndex !== 'auto' && parseInt(zIndex) > 1000) {
+                    highZIndexElements.push({
+                        element: el.className || el.id || el.tagName,
+                        zIndex: zIndex
+                    });
+                }
+            });
+
+            if (highZIndexElements.length > 0) {
+                warnings.push(`⚠️ Found ${highZIndexElements.length} elements with very high z-index values`);
+            }
+
+            // Check for sections
+            const sections = iframeDoc.querySelectorAll('section');
+            if (sections.length > 0) {
+                successes.push(`✅ Found ${sections.length} sections`);
+            } else {
+                warnings.push('⚠️ No section elements found');
+            }
+
+            // Check for container elements
+            const containers = iframeDoc.querySelectorAll('.container');
+            if (containers.length > 0) {
+                successes.push(`✅ Found ${containers.length} container elements`);
+            } else {
+                issues.push('❌ No container elements found - possible layout issue');
+            }
+
+            // Display results
+            let html = '';
+
+            if (issues.length > 0) {
+                html += '<h2>Critical Issues:</h2>';
+                issues.forEach(issue => {
+                    html += `<div class="issue">${issue}</div>`;
+                });
+            }
+
+            if (warnings.length > 0) {
+                html += '<h2>Warnings:</h2>';
+                warnings.forEach(warning => {
+                    html += `<div class="warning">${warning}</div>`;
+                });
+            }
+
+            if (successes.length > 0) {
+                html += '<h2>Checks Passed:</h2>';
+                successes.forEach(success => {
+                    html += `<div class="success">${success}</div>`;
+                });
+            }
+
+            results.innerHTML = html;
+
+            // Check specific layout issues
+            setTimeout(() => {
+                // Check if service cards are visible
+                const visibleCards = iframeDoc.querySelectorAll('.service-card:not([style*="display: none"])');
+                console.log('Visible service cards:', visibleCards.length);
+
+                // Check sections height
+                sections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.height === 0) {
+                        console.warn('Section has 0 height:', section.className);
+                    }
+                });
+            }, 1000);
+        };
+    </script>
+</body>
+</html>

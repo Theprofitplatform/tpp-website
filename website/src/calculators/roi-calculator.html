@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROI Calculator - Marketing Investment Returns | The Profit Platform</title>
+    <meta name="description" content="Calculate your marketing ROI with our advanced calculator. Track investment returns, payback periods, and optimize your marketing budget for maximum profitability.">
+    <meta name="keywords" content="ROI calculator, marketing ROI, investment returns, profit calculator, marketing budget optimizer">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared/calculator-styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="calculator-container">
+        <div class="calculator-card">
+            <div class="calculator-header">
+                <h1 class="calculator-title">ROI Calculator</h1>
+                <p class="calculator-subtitle">Calculate your marketing investment returns and optimize your budget for maximum profitability</p>
+            </div>
+
+            <div class="tabs-container">
+                <div class="tabs-nav">
+                    <button class="tab-button active" class="interactive-element">Simple ROI</button>
+                    <button class="tab-button" class="interactive-element">Advanced Analysis</button>
+                    <button class="tab-button" class="interactive-element">Campaign Comparison</button>
+                </div>
+
+                <!-- Simple ROI Tab -->
+                <div class="tab-content active">
+                    <form id="simple-roi-form" class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label" for="initial-investment">Initial Investment ($)</label>
+                            <input type="number" id="initial-investment" class="form-input" min="0" step="0.01" required placeholder="10000">
+                            <small class="tooltip" data-tooltip="Total amount invested in marketing campaign">ℹ</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="revenue-generated">Revenue Generated ($)</label>
+                            <input type="number" id="revenue-generated" class="form-input" min="0" step="0.01" required placeholder="25000">
+                            <small class="tooltip" data-tooltip="Total revenue attributed to this campaign">ℹ</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="time-period">Time Period (Months)</label>
+                            <select id="time-period" class="form-select" required>
+                                <option value="1">1 Month</option>
+                                <option value="3">3 Months</option>
+                                <option value="6">6 Months</option>
+                                <option value="12" selected>12 Months</option>
+                                <option value="24">24 Months</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="additional-costs">Additional Costs ($)</label>
+                            <input type="number" id="additional-costs" class="form-input" min="0" step="0.01" placeholder="2000">
+                            <small class="tooltip" data-tooltip="Management fees, tools, additional resources">ℹ</small>
+                        </div>
+                    </form>
+
+                    <button type="button" class="calculate-btn" onclick="calculateSimpleROI()" class="interactive-element">
+                        Calculate ROI
+                    </button>
+
+                    <div id="simple-results" class="results-container" style="display: none;">
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <div id="roi-percentage" class="result-value success">0%</div>
+                                <div class="result-label">ROI Percentage</div>
+                            </div>
+                            <div class="result-item">
+                                <div id="net-profit" class="result-value info">$0</div>
+                                <div class="result-label">Net Profit</div>
+                            </div>
+                            <div class="result-item">
+                                <div id="payback-period" class="result-value warning">0</div>
+                                <div class="result-label">Payback Period (Months)</div>
+                            </div>
+                            <div class="result-item">
+                                <div id="profit-margin" class="result-value">0%</div>
+                                <div class="result-label">Profit Margin</div>
+                            </div>
+                        </div>
+
+                        <div class="chart-container">
+                            <canvas id="roi-chart" width="400" height="200"></canvas>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>ROI Analysis:</strong> <span id="roi-analysis"></span>
+                        </div>
+
+                        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                            <button class="calculate-btn" style="flex: 1;" onclick="generateReport()" class="interactive-element">Generate Report</button>
+                            <button class="calculate-btn" style="flex: 1;" onclick="shareResults()" class="interactive-element">Share Results</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Advanced Analysis Tab -->
+                <div class="tab-content">
+                    <form id="advanced-roi-form" class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label" for="adv-investment">Total Investment ($)</label>
+                            <input type="number" id="adv-investment" class="form-input" min="0" step="0.01" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="monthly-revenue">Monthly Revenue ($)</label>
+                            <input type="number" id="monthly-revenue" class="form-input" min="0" step="0.01" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="customer-lifetime-value">Customer Lifetime Value ($)</label>
+                            <input type="number" id="customer-lifetime-value" class="form-input" min="0" step="0.01">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="conversion-rate">Conversion Rate (%)</label>
+                            <input type="number" id="conversion-rate" class="form-input" min="0" max="100" step="0.01">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="monthly-visitors">Monthly Visitors</label>
+                            <input type="number" id="monthly-visitors" class="form-input" min="0">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="cost-per-acquisition">Cost Per Acquisition ($)</label>
+                            <input type="number" id="cost-per-acquisition" class="form-input" min="0" step="0.01">
+                        </div>
+                    </form>
+
+                    <button type="button" class="calculate-btn" onclick="calculateAdvancedROI()" class="interactive-element">
+                        Calculate Advanced ROI
+                    </button>
+
+                    <div id="advanced-results" class="results-container" style="display: none;">
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <div id="adv-roi" class="result-value success">0%</div>
+                                <div class="result-label">Total ROI</div>
+                            </div>
+                            <div class="result-item">
+                                <div id="customer-value" class="result-value info">$0</div>
+                                <div class="result-label">Customer Value</div>
+                            </div>
+                            <div class="result-item">
+                                <div id="acquisition-efficiency" class="result-value">0</div>
+                                <div class="result-label">Acquisition Efficiency</div>
+                            </div>
+                            <div class="result-item">
+                                <div id="scalability-score" class="result-value warning">0</div>
+                                <div class="result-label">Scalability Score</div>
+                            </div>
+                        </div>
+
+                        <div class="chart-container">
+                            <canvas id="advanced-chart" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Campaign Comparison Tab -->
+                <div class="tab-content">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <h3>Campaign A</h3>
+                            <label class="form-label" for="campaign-a-investment">Investment ($)</label>
+                            <input type="number" id="campaign-a-investment" class="form-input" min="0" step="0.01">
+                            <label class="form-label" for="campaign-a-revenue">Revenue ($)</label>
+                            <input type="number" id="campaign-a-revenue" class="form-input" min="0" step="0.01">
+                        </div>
+
+                        <div class="form-group">
+                            <h3>Campaign B</h3>
+                            <label class="form-label" for="campaign-b-investment">Investment ($)</label>
+                            <input type="number" id="campaign-b-investment" class="form-input" min="0" step="0.01">
+                            <label class="form-label" for="campaign-b-revenue">Revenue ($)</label>
+                            <input type="number" id="campaign-b-revenue" class="form-input" min="0" step="0.01">
+                        </div>
+                    </div>
+
+                    <button type="button" class="calculate-btn" onclick="compareCampaigns()" class="interactive-element">
+                        Compare Campaigns
+                    </button>
+
+                    <div id="comparison-results" class="results-container" style="display: none;">
+                        <div class="chart-container">
+                            <canvas id="comparison-chart" width="400" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../shared/calculator-utils.js"></script>
+    <script>
+        // Initialize tabs
+        CalculatorUtils.initializeTabs('.tabs-container');
+
+        let roiChart, advancedChart, comparisonChart;
+
+        function calculateSimpleROI() {
+            const investment = parseFloat(document.getElementById('initial-investment').value) || 0;
+            const revenue = parseFloat(document.getElementById('revenue-generated').value) || 0;
+            const additionalCosts = parseFloat(document.getElementById('additional-costs').value) || 0;
+            const timePeriod = parseInt(document.getElementById('time-period').value) || 12;
+
+            if (investment <= 0) {
+                CalculatorUtils.showNotification('Please enter a valid investment amount', 'warning');
+                return;
+            }
+
+            const totalCosts = investment + additionalCosts;
+            const netProfit = revenue - totalCosts;
+            const roiPercentage = (netProfit / totalCosts) * 100;
+            const paybackPeriod = totalCosts / (revenue / timePeriod);
+            const profitMargin = (netProfit / revenue) * 100;
+
+            // Update results with animation
+            const resultsContainer = document.getElementById('simple-results');
+            resultsContainer.style.display = 'block';
+            resultsContainer.scrollIntoView({ behavior: 'smooth' });
+
+            setTimeout(() => {
+                CalculatorUtils.animateValue(
+                    document.getElementById('roi-percentage'),
+                    0, roiPercentage, 1000,
+                    (val) => val.toFixed(1) + '%'
+                );
+
+                CalculatorUtils.animateValue(
+                    document.getElementById('net-profit'),
+                    0, netProfit, 1000,
+                    (val) => CalculatorUtils.formatCurrency(val)
+                );
+
+                CalculatorUtils.animateValue(
+                    document.getElementById('payback-period'),
+                    0, paybackPeriod, 1000,
+                    (val) => val.toFixed(1) + ' months'
+                );
+
+                CalculatorUtils.animateValue(
+                    document.getElementById('profit-margin'),
+                    0, profitMargin, 1000,
+                    (val) => val.toFixed(1) + '%'
+                );
+
+                // Update ROI analysis
+                let analysis = '';
+                if (roiPercentage >= 300) analysis = 'Exceptional ROI! Your campaign is highly profitable.';
+                else if (roiPercentage >= 150) analysis = 'Excellent ROI! This is a strong performing campaign.';
+                else if (roiPercentage >= 50) analysis = 'Good ROI! Consider optimizing for even better results.';
+                else if (roiPercentage >= 0) analysis = 'Positive ROI, but there\'s room for improvement.';
+                else analysis = 'Negative ROI. Review and optimize your campaign strategy.';
+
+                document.getElementById('roi-analysis').textContent = analysis;
+
+                // Create chart
+                createROIChart(investment, revenue, netProfit);
+            }, 300);
+        }
+
+        function calculateAdvancedROI() {
+            const investment = parseFloat(document.getElementById('adv-investment').value) || 0;
+            const monthlyRevenue = parseFloat(document.getElementById('monthly-revenue').value) || 0;
+            const clv = parseFloat(document.getElementById('customer-lifetime-value').value) || 0;
+            const conversionRate = parseFloat(document.getElementById('conversion-rate').value) || 0;
+            const visitors = parseFloat(document.getElementById('monthly-visitors').value) || 0;
+            const cpa = parseFloat(document.getElementById('cost-per-acquisition').value) || 0;
+
+            const annualRevenue = monthlyRevenue * 12;
+            const roiPercentage = ((annualRevenue - investment) / investment) * 100;
+            const conversions = (visitors * conversionRate) / 100;
+            const customerValue = clv || (monthlyRevenue / conversions);
+            const acquisitionEfficiency = customerValue / cpa || 0;
+            const scalabilityScore = Math.min((roiPercentage / 100) * acquisitionEfficiency, 100);
+
+            const resultsContainer = document.getElementById('advanced-results');
+            resultsContainer.style.display = 'block';
+            resultsContainer.scrollIntoView({ behavior: 'smooth' });
+
+            setTimeout(() => {
+                CalculatorUtils.animateValue(
+                    document.getElementById('adv-roi'),
+                    0, roiPercentage, 1000,
+                    (val) => val.toFixed(1) + '%'
+                );
+
+                CalculatorUtils.animateValue(
+                    document.getElementById('customer-value'),
+                    0, customerValue, 1000,
+                    (val) => CalculatorUtils.formatCurrency(val)
+                );
+
+                CalculatorUtils.animateValue(
+                    document.getElementById('acquisition-efficiency'),
+                    0, acquisitionEfficiency, 1000,
+                    (val) => val.toFixed(1) + 'x'
+                );
+
+                CalculatorUtils.animateValue(
+                    document.getElementById('scalability-score'),
+                    0, scalabilityScore, 1000,
+                    (val) => val.toFixed(0)
+                );
+
+                createAdvancedChart(roiPercentage, acquisitionEfficiency, scalabilityScore);
+            }, 300);
+        }
+
+        function compareCampaigns() {
+            const campaignA = {
+                investment: parseFloat(document.getElementById('campaign-a-investment').value) || 0,
+                revenue: parseFloat(document.getElementById('campaign-a-revenue').value) || 0
+            };
+
+            const campaignB = {
+                investment: parseFloat(document.getElementById('campaign-b-investment').value) || 0,
+                revenue: parseFloat(document.getElementById('campaign-b-revenue').value) || 0
+            };
+
+            campaignA.roi = ((campaignA.revenue - campaignA.investment) / campaignA.investment) * 100;
+            campaignB.roi = ((campaignB.revenue - campaignB.investment) / campaignB.investment) * 100;
+
+            const resultsContainer = document.getElementById('comparison-results');
+            resultsContainer.style.display = 'block';
+
+            createComparisonChart(campaignA, campaignB);
+        }
+
+        function createROIChart(investment, revenue, netProfit) {
+            const ctx = document.getElementById('roi-chart').getContext('2d');
+
+            if (roiChart) roiChart.destroy();
+
+            roiChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Investment', 'Net Profit', 'Additional Costs'],
+                    datasets: [{
+                        data: [investment, Math.max(netProfit, 0), Math.max(-netProfit, 0)],
+                        backgroundColor: CalculatorUtils.generateChartColors(3),
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'ROI Breakdown'
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+
+        function createAdvancedChart(roi, efficiency, scalability) {
+            const ctx = document.getElementById('advanced-chart').getContext('2d');
+
+            if (advancedChart) advancedChart.destroy();
+
+            advancedChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['ROI %', 'Efficiency', 'Scalability', 'Sustainability', 'Growth Potential'],
+                    datasets: [{
+                        label: 'Performance Metrics',
+                        data: [Math.min(roi, 100), efficiency * 10, scalability, roi * 0.8, efficiency * scalability],
+                        backgroundColor: 'rgba(37, 99, 235, 0.2)',
+                        borderColor: '#2563eb',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#2563eb'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        r: {
+                            min: 0,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        }
+
+        function createComparisonChart(campaignA, campaignB) {
+            const ctx = document.getElementById('comparison-chart').getContext('2d');
+
+            if (comparisonChart) comparisonChart.destroy();
+
+            comparisonChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Investment', 'Revenue', 'ROI %'],
+                    datasets: [{
+                        label: 'Campaign A',
+                        data: [campaignA.investment, campaignA.revenue, campaignA.roi],
+                        backgroundColor: '#2563eb'
+                    }, {
+                        label: 'Campaign B',
+                        data: [campaignB.investment, campaignB.revenue, campaignB.roi],
+                        backgroundColor: '#10b981'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Campaign Comparison'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        function generateReport() {
+            const data = {
+                'ROI Percentage': document.getElementById('roi-percentage').textContent,
+                'Net Profit': document.getElementById('net-profit').textContent,
+                'Payback Period': document.getElementById('payback-period').textContent,
+                'Profit Margin': document.getElementById('profit-margin').textContent
+            };
+
+            CalculatorUtils.generatePDFReport('ROI Calculator', data);
+        }
+
+        function shareResults() {
+            const data = {
+                'ROI': document.getElementById('roi-percentage').textContent,
+                'Net Profit': document.getElementById('net-profit').textContent,
+                'Payback Period': document.getElementById('payback-period').textContent
+            };
+
+            CalculatorUtils.shareResults('My ROI Analysis', data);
+        }
+
+        // Initialize with sample data
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('initial-investment').value = '10000';
+            document.getElementById('revenue-generated').value = '25000';
+            document.getElementById('additional-costs').value = '2000';
+        });
+    </script>
+</body>
+</html>

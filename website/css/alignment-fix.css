@@ -1,0 +1,112 @@
+/* Smart Alignment Fix - Centers content properly */
+
+/* Base reset */
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Container centering - this is the key */
+.container {
+    max-width: 1280px !important;
+    width: 100%;
+    margin: 0 auto !important;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* Ensure main content area is centered */
+main,
+#main-content {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation specific alignment */
+header .container,
+nav .container,
+.navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Sections should be full width with centered content */
+section {
+    width: 100%;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Hero areas */
+.hero,
+.hero-section,
+.services-hero-enhanced,
+.about-hero {
+    width: 100%;
+    margin: 0;
+}
+
+/* Footer */
+footer {
+    width: 100%;
+    margin: 0;
+}
+
+footer .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Remove any transform or position that might shift content */
+.container,
+main,
+section {
+    position: static !important;
+    transform: none !important;
+    left: auto !important;
+    right: auto !important;
+}
+
+/* Media queries for responsive padding */
+@media (max-width: 1400px) {
+    .container {
+        padding: 0 30px;
+    }
+}
+
+@media (max-width: 968px) {
+    .container {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+}
+
+/* Prevent images from breaking layout */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Fix if wrapper divs are causing issues */
+.wrapper,
+.page-wrapper,
+.content-wrapper {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Test</title>
+</head>
+<body>
+    <h1>Test FAQ Functionality</h1>
+
+    <p>Open the Google Ads page and test the FAQ:</p>
+    <a href="website/google-ads.html" target="_blank">Open Google Ads Page</a>
+
+    <h2>Test Steps:</h2>
+    <ol>
+        <li>Scroll to FAQ section</li>
+        <li>Click on first question - it should expand</li>
+        <li>Click on second question - first should collapse, second should expand</li>
+        <li>Click same question again - it should collapse</li>
+    </ol>
+
+    <h2>Quick Test:</h2>
+    <iframe src="website/google-ads.html#faq-section" width="100%" height="600" style="border: 1px solid #ccc;"></iframe>
+
+    <script>
+        // Test if FAQ is working
+        setTimeout(() => {
+            console.log('FAQ Test Instructions:');
+            console.log('1. Scroll to FAQ section in iframe');
+            console.log('2. Click questions to test expand/collapse');
+        }, 1000);
+    </script>
+</body>
+</html>

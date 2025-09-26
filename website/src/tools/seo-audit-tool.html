@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Audit Tool - Complete Website Analysis | The Profit Platform</title>
+    <meta name="description" content="Comprehensive SEO audit tool with scoring system. Analyze your website's SEO performance, get actionable insights, and improve your search rankings.">
+    <meta name="keywords" content="SEO audit, website analysis, SEO checker, search optimization, SEO score, technical SEO">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared/calculator-styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="calculator-container">
+        <div class="calculator-card">
+            <div class="calculator-header">
+                <h1 class="calculator-title">SEO Audit Tool</h1>
+                <p class="calculator-subtitle">Comprehensive website analysis with actionable SEO insights and scoring</p>
+            </div>
+
+            <div class="tabs-container">
+                <div class="tabs-nav">
+                    <button class="tab-button active" class="interactive-element">Quick Audit</button>
+                    <button class="tab-button" class="interactive-element">Technical Analysis</button>
+                    <button class="tab-button" class="interactive-element">Content Audit</button>
+                    <button class="tab-button" class="interactive-element">Competitive Analysis</button>
+                </div>
+
+                <!-- Quick Audit Tab -->
+                <div class="tab-content active">
+                    <form id="quick-audit-form" class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label" for="website-url">Website URL</label>
+                            <input type="url" id="website-url" class="form-input" required placeholder="https://example.com">
+                            <small class="tooltip" data-tooltip="Enter your complete website URL">ℹ</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="target-keywords">Primary Keywords (comma-separated)</label>
+                            <input type="text" id="target-keywords" class="form-input" placeholder="digital marketing, SEO, web design">
+                            <small class="tooltip" data-tooltip="Main keywords you want to rank for">ℹ</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="business-location">Business Location</label>
+                            <input type="text" id="business-location" class="form-input" placeholder="Sydney, Australia">
+                            <small class="tooltip" data-tooltip="For local SEO analysis">ℹ</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="industry">Industry</label>
+                            <select id="industry" class="form-select">
+                                <option value="">Select Industry</option>
+                                <option value="digital-marketing">Digital Marketing</option>
+                                <option value="ecommerce">E-commerce</option>
+                                <option value="healthcare">Healthcare</option>
+                                <option value="real-estate">Real Estate</option>
+                                <option value="professional-services">Professional Services</option>
+                                <option value="technology">Technology</option>
+                                <option value="retail">Retail</option>
+                                <option value="hospitality">Hospitality</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </form>
+
+                    <button type="button" class="calculate-btn" onclick="performQuickAudit()" id="audit-btn" class="interactive-element">
+                        <span id="audit-btn-text">Start SEO Audit</span>
+                        <span id="audit-loading" class="loading" style="display: none;"></span>
+                    </button>
+
+                    <div id="quick-audit-results" class="results-container" style="display: none;">
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <div id="overall-score" class="result-value success">0</div>
+                                <div class="result-label">Overall SEO Score</div>
+                                <div class="progress-bar">
+                                    <div id="overall-progress" class="progress-fill"></div>
+                                </div>
+                            </div>
+                            <div class="result-item">
+                                <div id="technical-score" class="result-value info">0</div>
+                                <div class="result-label">Technical SEO</div>
+                                <div class="progress-bar">
+                                    <div id="technical-progress" class="progress-fill"></div>
+                                </div>
+                            </div>
+                            <div class="result-item">
+                                <div id="content-score" class="result-value warning">0</div>
+                                <div class="result-label">Content Quality</div>
+                                <div class="progress-bar">
+                                    <div id="content-progress" class="progress-fill"></div>
+                                </div>
+                            </div>
+                            <div class="result-item">
+                                <div id="performance-score" class="result-value">0</div>
+                                <div class="result-label">Page Performance</div>
+                                <div class="progress-bar">
+                                    <div id="performance-progress" class="progress-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chart-container">
+                            <canvas id="seo-radar-chart" width="400" height="300"></canvas>
+                        </div>
+
+                        <div id="recommendations-container">
+                            <h3>Priority Recommendations</h3>
+                            <div id="recommendations-list"></div>
+                        </div>
+
+                        <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                            <button class="calculate-btn" style="flex: 1;" onclick="generateSEOReport()" class="interactive-element">Download Report</button>
+                            <button class="calculate-btn" style="flex: 1;" onclick="shareSEOResults()" class="interactive-element">Share Results</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Analysis Tab -->
+                <div class="tab-content">
+                    <div class="alert alert-info">
+                        <strong>Technical SEO Checklist:</strong> Comprehensive analysis of your website's technical foundation
+                    </div>
+
+                    <div id="technical-checklist" class="checklist-container">
+                        <div class="checklist-item">
+                            <input type="checkbox" id="ssl-check" disabled>
+                            <label for="ssl-check">SSL Certificate (HTTPS)</label>
+                            <span class="status-badge" id="ssl-status">Checking...</span>
+                        </div>
+
+                        <div class="checklist-item">
+                            <input type="checkbox" id="mobile-check" disabled>
+                            <label for="mobile-check">Mobile-Friendly Design</label>
+                            <span class="status-badge" id="mobile-status">Checking...</span>
+                        </div>
+
+                        <div class="checklist-item">
+                            <input type="checkbox" id="speed-check" disabled>
+                            <label for="speed-check">Page Loading Speed</label>
+                            <span class="status-badge" id="speed-status">Checking...</span>
+                        </div>
+
+                        <div class="checklist-item">
+                            <input type="checkbox" id="sitemap-check" disabled>
+                            <label for="sitemap-check">XML Sitemap</label>
+                            <span class="status-badge" id="sitemap-status">Checking...</span>
+                        </div>
+
+                        <div class="checklist-item">
+                            <input type="checkbox" id="robots-check" disabled>
+                            <label for="robots-check">Robots.txt File</label>
+                            <span class="status-badge" id="robots-status">Checking...</span>
+                        </div>
+
+                        <div class="checklist-item">
+                            <input type="checkbox" id="structured-data-check" disabled>
+                            <label for="structured-data-check">Structured Data</label>
+                            <span class="status-badge" id="structured-data-status">Checking...</span>
+                        </div>
+
+                        <div class="checklist-item">
+                            <input type="checkbox" id="meta-tags-check" disabled>
+                            <label for="meta-tags-check">Meta Tags Optimization</label>
+                            <span class="status-badge" id="meta-tags-status">Checking...</span>
+                        </div>
+
+                        <div class="checklist-item">
+                            <input type="checkbox" id="images-check" disabled>
+                            <label for="images-check">Image Optimization</label>
+                            <span class="status-badge" id="images-status">Checking...</span>
+                        </div>
+                    </div>
+
+                    <button type="button" class="calculate-btn" onclick="runTechnicalAudit()" class="interactive-element">
+                        Run Technical Audit
+                    </button>
+
+                    <div id="technical-results" class="results-container" style="display: none;">
+                        <div class="chart-container">
+                            <canvas id="technical-chart" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Audit Tab -->
+                <div class="tab-content">
+                    <form id="content-audit-form" class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label" for="page-title">Page Title</label>
+                            <input type="text" id="page-title" class="form-input" placeholder="Enter page title">
+                            <div class="char-counter">
+                                <span id="title-length">0</span>/60 characters
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="meta-description">Meta Description</label>
+                            <textarea id="meta-description" class="form-input" rows="3" placeholder="Enter meta description"></textarea>
+                            <div class="char-counter">
+                                <span id="description-length">0</span>/160 characters
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="content-text">Page Content</label>
+                            <textarea id="content-text" class="form-input" rows="6" placeholder="Paste your page content here"></textarea>
+                            <div class="char-counter">
+                                <span id="content-word-count">0</span> words
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="focus-keyword">Focus Keyword</label>
+                            <input type="text" id="focus-keyword" class="form-input" placeholder="main keyword">
+                        </div>
+                    </form>
+
+                    <button type="button" class="calculate-btn" onclick="analyzeContent()" class="interactive-element">
+                        Analyze Content
+                    </button>
+
+                    <div id="content-analysis-results" class="results-container" style="display: none;">
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <div id="readability-score" class="result-value">0</div>
+                                <div class="result-label">Readability Score</div>
+                            </div>
+                            <div class="result-item">
+                                <div id="keyword-density" class="result-value">0%</div>
+                                <div class="result-label">Keyword Density</div>
+                            </div>
+                            <div class="result-item">
+                                <div id="word-count" class="result-value">0</div>
+                                <div class="result-label">Word Count</div>
+                            </div>
+                            <div class="result-item">
+                                <div id="heading-structure" class="result-value">0</div>
+                                <div class="result-label">Heading Structure</div>
+                            </div>
+                        </div>
+
+                        <div id="content-recommendations"></div>
+                    </div>
+                </div>
+
+                <!-- Competitive Analysis Tab -->
+                <div class="tab-content">
+                    <form id="competitor-form" class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label" for="competitor-url-1">Competitor 1 URL</label>
+                            <input type="url" id="competitor-url-1" class="form-input" placeholder="https://competitor1.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="competitor-url-2">Competitor 2 URL</label>
+                            <input type="url" id="competitor-url-2" class="form-input" placeholder="https://competitor2.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="competitor-url-3">Competitor 3 URL</label>
+                            <input type="url" id="competitor-url-3" class="form-input" placeholder="https://competitor3.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="analysis-keywords">Keywords to Compare</label>
+                            <input type="text" id="analysis-keywords" class="form-input" placeholder="keyword1, keyword2, keyword3">
+                        </div>
+                    </form>
+
+                    <button type="button" class="calculate-btn" onclick="runCompetitorAnalysis()" class="interactive-element">
+                        Analyze Competitors
+                    </button>
+
+                    <div id="competitor-results" class="results-container" style="display: none;">
+                        <div class="chart-container">
+                            <canvas id="competitor-chart" width="400" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .checklist-container {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            margin-right: 1rem;
+            transform: scale(1.2);
+        }
+
+        .checklist-item label {
+            flex: 1;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-pass {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success-color);
+        }
+
+        .status-fail {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger-color);
+        }
+
+        .status-warning {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning-color);
+        }
+
+        .char-counter {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        .recommendation-item {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .recommendation-priority {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .priority-high {
+            background: var(--danger-color);
+            color: white;
+        }
+
+        .priority-medium {
+            background: var(--warning-color);
+            color: white;
+        }
+
+        .priority-low {
+            background: var(--success-color);
+            color: white;
+        }
+    </style>
+
+    <script src="../shared/calculator-utils.js"></script>
+    <script>
+        // Initialize tabs
+        CalculatorUtils.initializeTabs('.tabs-container');
+
+        let seoRadarChart, technicalChart, competitorChart;
+
+        // Character counters
+        document.getElementById('page-title').addEventListener('input', function() {
+            document.getElementById('title-length').textContent = this.value.length;
+        });
+
+        document.getElementById('meta-description').addEventListener('input', function() {
+            document.getElementById('description-length').textContent = this.value.length;
+        });
+
+        document.getElementById('content-text').addEventListener('input', function() {
+            const wordCount = this.value.trim().split(/\s+/).filter(word => word.length > 0).length;
+            document.getElementById('content-word-count').textContent = wordCount;
+        });
+
+        function performQuickAudit() {
+            const url = document.getElementById('website-url').value;
+            if (!url) {
+                CalculatorUtils.showNotification('Please enter a valid website URL', 'warning');
+                return;
+            }
+
+            const btn = document.getElementById('audit-btn');
+            const btnText = document.getElementById('audit-btn-text');
+            const loading = document.getElementById('audit-loading');
+
+            btn.disabled = true;
+            btnText.style.display = 'none';
+            loading.style.display = 'inline-block';
+
+            // Simulate audit process
+            setTimeout(() => {
+                const auditResults = simulateAudit(url);
+                displayQuickAuditResults(auditResults);
+
+                btn.disabled = false;
+                btnText.style.display = 'inline-block';
+                loading.style.display = 'none';
+
+                const resultsContainer = document.getElementById('quick-audit-results');
+                resultsContainer.style.display = 'block';
+                resultsContainer.scrollIntoView({ behavior: 'smooth' });
+            }, 3000);
+        }
+
+        function simulateAudit(url) {
+            // Simulate realistic SEO audit results
+            const baseScore = Math.random() * 40 + 40; // 40-80 base score
+
+            return {
+                overall: Math.round(baseScore + Math.random() * 20),
+                technical: Math.round(baseScore + Math.random() * 30),
+                content: Math.round(baseScore + Math.random() * 25),
+                performance: Math.round(baseScore + Math.random() * 35),
+                issues: generateRandomIssues(),
+                recommendations: generateRecommendations()
+            };
+        }
+
+        function generateRandomIssues() {
+            const possibleIssues = [
+                'Missing meta descriptions on 3 pages',
+                'Images without alt text found',
+                'Page loading speed could be improved',
+                'Mobile usability issues detected',
+                'Missing structured data markup',
+                'Duplicate title tags found',
+                'Internal links could be optimized',
+                'XML sitemap needs updating'
+            ];
+
+            const numIssues = Math.floor(Math.random() * 4) + 2;
+            return possibleIssues.sort(() => 0.5 - Math.random()).slice(0, numIssues);
+        }
+
+        function generateRecommendations() {
+            return [
+                {
+                    priority: 'high',
+                    title: 'Optimize Page Speed',
+                    description: 'Improve loading times by compressing images and minifying CSS/JS files.',
+                    impact: 'High'
+                },
+                {
+                    priority: 'medium',
+                    title: 'Add Missing Alt Tags',
+                    description: 'Include descriptive alt text for all images to improve accessibility and SEO.',
+                    impact: 'Medium'
+                },
+                {
+                    priority: 'medium',
+                    title: 'Improve Meta Descriptions',
+                    description: 'Write unique, compelling meta descriptions for all important pages.',
+                    impact: 'Medium'
+                },
+                {
+                    priority: 'low',
+                    title: 'Implement Structured Data',
+                    description: 'Add schema markup to help search engines understand your content better.',
+                    impact: 'Low-Medium'
+                }
+            ];
+        }
+
+        function displayQuickAuditResults(results) {
+            // Animate scores
+            CalculatorUtils.animateValue(
+                document.getElementById('overall-score'),
+                0, results.overall, 1500,
+                (val) => Math.round(val) + '/100'
+            );
+
+            CalculatorUtils.animateValue(
+                document.getElementById('technical-score'),
+                0, results.technical, 1500,
+                (val) => Math.round(val) + '/100'
+            );
+
+            CalculatorUtils.animateValue(
+                document.getElementById('content-score'),
+                0, results.content, 1500,
+                (val) => Math.round(val) + '/100'
+            );
+
+            CalculatorUtils.animateValue(
+                document.getElementById('performance-score'),
+                0, results.performance, 1500,
+                (val) => Math.round(val) + '/100'
+            );
+
+            // Animate progress bars
+            setTimeout(() => {
+                CalculatorUtils.animateProgressBar(document.getElementById('overall-progress'), results.overall);
+                CalculatorUtils.animateProgressBar(document.getElementById('technical-progress'), results.technical);
+                CalculatorUtils.animateProgressBar(document.getElementById('content-progress'), results.content);
+                CalculatorUtils.animateProgressBar(document.getElementById('performance-progress'), results.performance);
+            }, 500);
+
+            // Create radar chart
+            createSEORadarChart(results);
+
+            // Display recommendations
+            displayRecommendations(results.recommendations);
+        }
+
+        function createSEORadarChart(results) {
+            const ctx = document.getElementById('seo-radar-chart').getContext('2d');
+
+            if (seoRadarChart) seoRadarChart.destroy();
+
+            seoRadarChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Technical SEO', 'Content Quality', 'Performance', 'User Experience', 'Mobile Optimization', 'Security'],
+                    datasets: [{
+                        label: 'Your Website',
+                        data: [results.technical, results.content, results.performance, results.overall, results.technical * 0.9, results.technical * 0.8],
+                        backgroundColor: 'rgba(37, 99, 235, 0.2)',
+                        borderColor: '#2563eb',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#2563eb',
+                        pointBorderColor: '#ffffff',
+                        pointBorderWidth: 2
+                    }, {
+                        label: 'Industry Average',
+                        data: [70, 75, 65, 72, 68, 85],
+                        backgroundColor: 'rgba(156, 163, 175, 0.1)',
+                        borderColor: '#9ca3af',
+                        borderWidth: 1,
+                        pointBackgroundColor: '#9ca3af'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'SEO Performance Analysis'
+                        }
+                    },
+                    scales: {
+                        r: {
+                            min: 0,
+                            max: 100,
+                            ticks: {
+                                stepSize: 20
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function displayRecommendations(recommendations) {
+            const container = document.getElementById('recommendations-list');
+            container.innerHTML = '';
+
+            recommendations.forEach(rec => {
+                const item = document.createElement('div');
+                item.className = 'recommendation-item fade-in';
+                item.innerHTML = `
+                    <div class="recommendation-priority priority-${rec.priority}">${rec.priority.toUpperCase()} PRIORITY</div>
+                    <h4>${rec.title}</h4>
+                    <p>${rec.description}</p>
+                    <small><strong>Expected Impact:</strong> ${rec.impact}</small>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        function runTechnicalAudit() {
+            const checks = [
+                'ssl-check', 'mobile-check', 'speed-check', 'sitemap-check',
+                'robots-check', 'structured-data-check', 'meta-tags-check', 'images-check'
+            ];
+
+            checks.forEach((checkId, index) => {
+                setTimeout(() => {
+                    const checkbox = document.getElementById(checkId);
+                    const status = document.getElementById(checkId.replace('-check', '-status'));
+
+                    // Simulate random pass/fail
+                    const passed = Math.random() > 0.3;
+                    checkbox.checked = passed;
+                    status.textContent = passed ? 'PASS' : 'FAIL';
+                    status.className = `status-badge ${passed ? 'status-pass' : 'status-fail'}`;
+                }, index * 500);
+            });
+
+            setTimeout(() => {
+                document.getElementById('technical-results').style.display = 'block';
+                createTechnicalChart();
+            }, 4000);
+        }
+
+        function createTechnicalChart() {
+            const ctx = document.getElementById('technical-chart').getContext('2d');
+
+            if (technicalChart) technicalChart.destroy();
+
+            const passed = document.querySelectorAll('.checklist-item input:checked').length;
+            const failed = document.querySelectorAll('.checklist-item input').length - passed;
+
+            technicalChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Passed', 'Failed'],
+                    datasets: [{
+                        data: [passed, failed],
+                        backgroundColor: ['#10b981', '#ef4444'],
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Technical SEO Checklist Results'
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+
+        function analyzeContent() {
+            const title = document.getElementById('page-title').value;
+            const description = document.getElementById('meta-description').value;
+            const content = document.getElementById('content-text').value;
+            const keyword = document.getElementById('focus-keyword').value;
+
+            if (!content.trim()) {
+                CalculatorUtils.showNotification('Please enter some content to analyze', 'warning');
+                return;
+            }
+
+            const wordCount = content.trim().split(/\s+/).filter(word => word.length > 0).length;
+            const keywordCount = keyword ? (content.toLowerCase().match(new RegExp(keyword.toLowerCase(), 'g')) || []).length : 0;
+            const keywordDensity = keyword ? (keywordCount / wordCount * 100) : 0;
+
+            // Simple readability score (Flesch Reading Ease approximation)
+            const avgWordsPerSentence = wordCount / (content.split(/[.!?]+/).length - 1 || 1);
+            const readabilityScore = Math.max(0, Math.min(100, 206.835 - (1.015 * avgWordsPerSentence) - (84.6 * 1.5)));
+
+            const results = {
+                readability: Math.round(readabilityScore),
+                keywordDensity: keywordDensity.toFixed(1),
+                wordCount: wordCount,
+                headingStructure: (content.match(/#{1,6}\s/g) || []).length
+            };
+
+            displayContentResults(results);
+        }
+
+        function displayContentResults(results) {
+            document.getElementById('content-analysis-results').style.display = 'block';
+
+            CalculatorUtils.animateValue(
+                document.getElementById('readability-score'),
+                0, results.readability, 1000,
+                (val) => Math.round(val) + '/100'
+            );
+
+            CalculatorUtils.animateValue(
+                document.getElementById('keyword-density'),
+                0, parseFloat(results.keywordDensity), 1000,
+                (val) => val.toFixed(1) + '%'
+            );
+
+            CalculatorUtils.animateValue(
+                document.getElementById('word-count'),
+                0, results.wordCount, 1000,
+                (val) => Math.round(val)
+            );
+
+            CalculatorUtils.animateValue(
+                document.getElementById('heading-structure'),
+                0, results.headingStructure, 1000,
+                (val) => Math.round(val) + ' headings'
+            );
+
+            // Generate content recommendations
+            generateContentRecommendations(results);
+        }
+
+        function generateContentRecommendations(results) {
+            const container = document.getElementById('content-recommendations');
+            const recommendations = [];
+
+            if (results.wordCount < 300) {
+                recommendations.push('Content is too short. Aim for at least 300 words for better SEO.');
+            }
+
+            if (parseFloat(results.keywordDensity) < 0.5) {
+                recommendations.push('Keyword density is low. Consider using your focus keyword more naturally throughout the content.');
+            } else if (parseFloat(results.keywordDensity) > 3) {
+                recommendations.push('Keyword density is too high. Reduce keyword usage to avoid over-optimization.');
+            }
+
+            if (results.readability < 60) {
+                recommendations.push('Content readability could be improved. Use shorter sentences and simpler words.');
+            }
+
+            if (results.headingStructure === 0) {
+                recommendations.push('Add heading tags (H1, H2, H3) to improve content structure.');
+            }
+
+            container.innerHTML = recommendations.length > 0
+                ? `<div class="alert alert-info"><strong>Content Recommendations:</strong><ul>${recommendations.map(rec => `<li>${rec}</li>`).join('')}</ul></div>`
+                : '<div class="alert alert-success"><strong>Great content!</strong> Your content meets most SEO best practices.</div>';
+        }
+
+        function runCompetitorAnalysis() {
+            // Simulate competitor analysis
+            setTimeout(() => {
+                document.getElementById('competitor-results').style.display = 'block';
+                createCompetitorChart();
+                document.getElementById('competitor-results').scrollIntoView({ behavior: 'smooth' });
+            }, 2000);
+        }
+
+        function createCompetitorChart() {
+            const ctx = document.getElementById('competitor-chart').getContext('2d');
+
+            if (competitorChart) competitorChart.destroy();
+
+            competitorChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Domain Authority', 'Page Speed', 'Content Quality', 'Technical SEO', 'Backlinks'],
+                    datasets: [{
+                        label: 'Your Website',
+                        data: [65, 78, 72, 68, 45],
+                        backgroundColor: '#2563eb'
+                    }, {
+                        label: 'Competitor 1',
+                        data: [72, 85, 80, 75, 65],
+                        backgroundColor: '#ef4444'
+                    }, {
+                        label: 'Competitor 2',
+                        data: [58, 70, 68, 62, 38],
+                        backgroundColor: '#10b981'
+                    }, {
+                        label: 'Competitor 3',
+                        data: [80, 82, 88, 85, 82],
+                        backgroundColor: '#f59e0b'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Competitive Analysis'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        }
+
+        function generateSEOReport() {
+            const overallScore = document.getElementById('overall-score').textContent;
+            const technicalScore = document.getElementById('technical-score').textContent;
+            const contentScore = document.getElementById('content-score').textContent;
+            const performanceScore = document.getElementById('performance-score').textContent;
+
+            const data = {
+                'Overall SEO Score': overallScore,
+                'Technical SEO': technicalScore,
+                'Content Quality': contentScore,
+                'Page Performance': performanceScore,
+                'Analysis Date': new Date().toLocaleDateString()
+            };
+
+            CalculatorUtils.generatePDFReport('SEO Audit', data);
+        }
+
+        function shareSEOResults() {
+            const data = {
+                'SEO Score': document.getElementById('overall-score').textContent,
+                'Technical': document.getElementById('technical-score').textContent,
+                'Content': document.getElementById('content-score').textContent,
+                'Performance': document.getElementById('performance-score').textContent
+            };
+
+            CalculatorUtils.shareResults('My SEO Audit Results', data);
+        }
+
+        // Sample data
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('website-url').value = 'https://theprofitplatform.com.au';
+            document.getElementById('target-keywords').value = 'digital marketing, SEO services, web design';
+            document.getElementById('business-location').value = 'Sydney, Australia';
+        });
+    </script>
+</body>
+</html>

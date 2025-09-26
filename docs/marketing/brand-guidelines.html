@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand Guidelines - The Profit Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Primary Brand Colors */
+            --pp-primary: #667eea;
+            --pp-primary-dark: #5a67d8;
+            --pp-primary-light: #7c8ef8;
+            --pp-secondary: #764ba2;
+            --pp-secondary-dark: #6b4699;
+            --pp-secondary-light: #8b5cf6;
+
+            /* Supporting Colors */
+            --pp-success: #10b981;
+            --pp-warning: #f59e0b;
+            --pp-danger: #ef4444;
+            --pp-info: #3b82f6;
+
+            /* Neutral Colors */
+            --pp-gray-900: #1f2937;
+            --pp-gray-800: #374151;
+            --pp-gray-700: #4b5563;
+            --pp-gray-600: #6b7280;
+            --pp-gray-500: #9ca3af;
+            --pp-gray-400: #d1d5db;
+            --pp-gray-300: #e5e7eb;
+            --pp-gray-200: #f3f4f6;
+            --pp-gray-100: #f9fafb;
+            --pp-white: #ffffff;
+
+            /* Typography */
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-display: 'Poppins', 'Inter', sans-serif;
+            --font-mono: 'Monaco', 'Courier New', monospace;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            color: var(--pp-gray-900);
+            background: var(--pp-white);
+        }
+
+        .guidelines-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 280px;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--pp-primary) 0%, var(--pp-secondary) 100%);
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 40px 30px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .logo-display {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 20px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--pp-primary);
+        }
+
+        .sidebar-title {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .sidebar-nav {
+            padding: 20px 0;
+        }
+
+        .nav-section {
+            margin-bottom: 20px;
+        }
+
+        .nav-section-title {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 10px 30px;
+        }
+
+        .nav-item {
+            display: block;
+            padding: 12px 30px;
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-item:hover {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .nav-item.active {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border-left: 4px solid white;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 280px;
+            padding: 60px;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-header {
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid var(--pp-gray-200);
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--pp-primary) 0%, var(--pp-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: var(--pp-gray-600);
+        }
+
+        /* Logo Section */
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .logo-card {
+            background: var(--pp-gray-100);
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .logo-preview {
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-preview.dark {
+            background: var(--pp-gray-900);
+            border-radius: 10px;
+        }
+
+        .logo-specs {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--pp-gray-200);
+        }
+
+        .spec-item:last-child {
+            border-bottom: none;
+        }
+
+        .spec-label {
+            color: var(--pp-gray-600);
+            font-size: 0.9rem;
+        }
+
+        .spec-value {
+            font-weight: 600;
+            color: var(--pp-gray-900);
+        }
+
+        /* Color Palette */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .color-card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .color-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .color-preview {
+            height: 150px;
+            position: relative;
+        }
+
+        .color-code {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(255,255,255,0.9);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .color-info {
+            background: white;
+            padding: 20px;
+        }
+
+        .color-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .color-usage {
+            color: var(--pp-gray-600);
+            font-size: 0.9rem;
+        }
+
+        .color-values {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--pp-gray-200);
+        }
+
+        .color-value {
+            text-align: center;
+        }
+
+        .value-label {
+            font-size: 0.75rem;
+            color: var(--pp-gray-500);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .value-text {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            margin-top: 3px;
+        }
+
+        /* Typography */
+        .typography-samples {
+            margin: 40px 0;
+        }
+
+        .font-family {
+            background: var(--pp-gray-100);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .font-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--pp-primary);
+        }
+
+        .font-weights {
+            display: grid;
+            gap: 15px;
+        }
+
+        .weight-sample {
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .weight-text {
+            font-size: 1.2rem;
+        }
+
+        .weight-info {
+            color: var(--pp-gray-600);
+            font-size: 0.9rem;
+        }
+
+        .type-scale {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .scale-item {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--pp-gray-200);
+        }
+
+        .scale-item:last-child {
+            border-bottom: none;
+        }
+
+        .scale-label {
+            color: var(--pp-gray-600);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .scale-example {
+            margin-bottom: 10px;
+        }
+
+        .scale-specs {
+            font-family: var(--font-mono);
+            color: var(--pp-gray-500);
+            font-size: 0.85rem;
+        }
+
+        /* Voice & Tone */
+        .voice-principles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .principle-card {
+            background: linear-gradient(135deg, var(--pp-gray-100) 0%, white 100%);
+            border-radius: 15px;
+            padding: 30px;
+            border-left: 5px solid var(--pp-primary);
+        }
+
+        .principle-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--pp-primary);
+        }
+
+        .principle-description {
+            color: var(--pp-gray-700);
+            margin-bottom: 20px;
+        }
+
+        .principle-examples {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .example-do {
+            color: var(--pp-success);
+            margin-bottom: 10px;
+        }
+
+        .example-dont {
+            color: var(--pp-danger);
+        }
+
+        .example-do::before {
+            content: "✓ DO: ";
+            font-weight: 700;
+        }
+
+        .example-dont::before {
+            content: "✗ DON'T: ";
+            font-weight: 700;
+        }
+
+        /* Applications */
+        .application-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .application-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .application-preview {
+            height: 250px;
+            background: var(--pp-gray-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .application-info {
+            padding: 30px;
+        }
+
+        .application-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .application-specs {
+            color: var(--pp-gray-600);
+        }
+
+        /* Download Section */
+        .download-section {
+            background: linear-gradient(135deg, var(--pp-primary) 0%, var(--pp-secondary) 100%);
+            border-radius: 20px;
+            padding: 50px;
+            margin: 60px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .download-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .download-btn {
+            background: white;
+            color: var(--pp-primary);
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Usage Guidelines */
+        .usage-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .usage-column {
+            background: var(--pp-gray-100);
+            border-radius: 15px;
+            padding: 30px;
+        }
+
+        .usage-column.do {
+            border-top: 5px solid var(--pp-success);
+        }
+
+        .usage-column.dont {
+            border-top: 5px solid var(--pp-danger);
+        }
+
+        .usage-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .usage-list {
+            list-style: none;
+        }
+
+        .usage-list li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            color: var(--pp-gray-700);
+        }
+
+        .usage-list li::before {
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+        }
+
+        .usage-column.do .usage-list li::before {
+            content: "✓";
+            color: var(--pp-success);
+        }
+
+        .usage-column.dont .usage-list li::before {
+            content: "✗";
+            color: var(--pp-danger);
+        }
+
+        /* Print Styles */
+        @media print {
+            .sidebar {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .section {
+                display: block !important;
+                page-break-after: always;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 40px 20px;
+            }
+
+            .menu-toggle {
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                z-index: 101;
+                background: var(--pp-primary);
+                color: white;
+                border: none;
+                padding: 10px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="guidelines-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-display">TPP</div>
+                <h1 class="sidebar-title">Brand Guidelines</h1>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">Foundation</div>
+                    <a class="nav-item active" onclick="showSection('overview')">Overview</a>
+                    <a class="nav-item" onclick="showSection('mission')">Mission & Values</a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Visual Identity</div>
+                    <a class="nav-item" onclick="showSection('logo')">Logo & Usage</a>
+                    <a class="nav-item" onclick="showSection('colors')">Color Palette</a>
+                    <a class="nav-item" onclick="showSection('typography')">Typography</a>
+                    <a class="nav-item" onclick="showSection('imagery')">Imagery & Icons</a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Communication</div>
+                    <a class="nav-item" onclick="showSection('voice')">Voice & Tone</a>
+                    <a class="nav-item" onclick="showSection('messaging')">Key Messages</a>
+                    <a class="nav-item" onclick="showSection('writing')">Writing Style</a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Applications</div>
+                    <a class="nav-item" onclick="showSection('digital')">Digital Assets</a>
+                    <a class="nav-item" onclick="showSection('social')">Social Media</a>
+                    <a class="nav-item" onclick="showSection('print')">Print Materials</a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Resources</div>
+                    <a class="nav-item" onclick="showSection('downloads')">Downloads</a>
+                    <a class="nav-item" onclick="showSection('contact')">Brand Contact</a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="menu-toggle" onclick="toggleSidebar()" style="display: none;">☰</button>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Overview Section -->
+            <section class="section active" id="overview">
+                <div class="section-header">
+                    <h1 class="section-title">Brand Overview</h1>
+                    <p class="section-subtitle">The foundation of The Profit Platform's visual and verbal identity</p>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 40px; border-radius: 20px; margin-bottom: 40px;">
+                    <h2 style="color: var(--pp-primary); margin-bottom: 20px;">About Our Brand</h2>
+                    <p style="font-size: 1.2rem; line-height: 1.8; color: var(--pp-gray-700);">
+                        The Profit Platform represents trust, expertise, and results-driven digital marketing solutions.
+                        Our brand embodies professionalism with a personal touch, combining cutting-edge strategies with
+                        genuine care for our clients' success. We're not just another agency – we're your dedicated partner
+                        in digital growth.
+                    </p>
+                </div>
+
+                <div class="voice-principles">
+                    <div class="principle-card">
+                        <h3 class="principle-title">🎯 Professional</h3>
+                        <p class="principle-description">We maintain high standards in everything we do, from communication to execution.</p>
+                    </div>
+
+                    <div class="principle-card">
+                        <h3 class="principle-title">💡 Innovative</h3>
+                        <p class="principle-description">We stay ahead of digital trends and bring fresh solutions to traditional challenges.</p>
+                    </div>
+
+                    <div class="principle-card">
+                        <h3 class="principle-title">🤝 Personal</h3>
+                        <p class="principle-description">We build genuine relationships and provide the personal attention big agencies can't.</p>
+                    </div>
+
+                    <div class="principle-card">
+                        <h3 class="principle-title">📊 Results-Focused</h3>
+                        <p class="principle-description">We measure success by your success, with data-driven strategies and transparent reporting.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mission & Values Section -->
+            <section class="section" id="mission">
+                <div class="section-header">
+                    <h1 class="section-title">Mission & Values</h1>
+                    <p class="section-subtitle">Our purpose and the principles that guide us</p>
+                </div>
+
+                <div style="background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 40px;">
+                    <h2 style="color: var(--pp-primary); margin-bottom: 20px;">Our Mission</h2>
+                    <p style="font-size: 1.5rem; line-height: 1.8; color: var(--pp-gray-800); font-weight: 500;">
+                        To empower Sydney businesses with personalised digital marketing strategies that deliver
+                        measurable growth, without the complexity and lock-in contracts of traditional agencies.
+                    </p>
+                </div>
+
+                <h2 style="margin: 40px 0 30px; color: var(--pp-gray-900);">Core Values</h2>
+                <div class="voice-principles">
+                    <div class="principle-card">
+                        <h3 class="principle-title">Transparency</h3>
+                        <p class="principle-description">Clear communication, honest pricing, and open reporting.</p>
+                        <div class="principle-examples">
+                            <p class="example-do">Share detailed performance metrics</p>
+                            <p class="example-dont">Hide behind industry jargon</p>
+                        </div>
+                    </div>
+
+                    <div class="principle-card">
+                        <h3 class="principle-title">Excellence</h3>
+                        <p class="principle-description">Delivering exceptional quality in every project.</p>
+                        <div class="principle-examples">
+                            <p class="example-do">Go above and beyond expectations</p>
+                            <p class="example-dont">Settle for "good enough"</p>
+                        </div>
+                    </div>
+
+                    <div class="principle-card">
+                        <h3 class="principle-title">Innovation</h3>
+                        <p class="principle-description">Embracing new technologies and strategies.</p>
+                        <div class="principle-examples">
+                            <p class="example-do">Test and adopt new approaches</p>
+                            <p class="example-dont">Stick to outdated methods</p>
+                        </div>
+                    </div>
+
+                    <div class="principle-card">
+                        <h3 class="principle-title">Partnership</h3>
+                        <p class="principle-description">Building long-term relationships, not transactions.</p>
+                        <div class="principle-examples">
+                            <p class="example-do">Understand client goals deeply</p>
+                            <p class="example-dont">Push one-size-fits-all solutions</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Logo Section -->
+            <section class="section" id="logo">
+                <div class="section-header">
+                    <h1 class="section-title">Logo & Usage</h1>
+                    <p class="section-subtitle">Our visual mark and how to use it correctly</p>
+                </div>
+
+                <div class="logo-grid">
+                    <div class="logo-card">
+                        <h3 style="margin-bottom: 20px;">Primary Logo</h3>
+                        <div class="logo-preview" style="background: white;">
+                            <div style="font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, var(--pp-primary) 0%, var(--pp-secondary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                                THE PROFIT<br>PLATFORM
+                            </div>
+                        </div>
+                        <div class="logo-specs">
+                            <div class="spec-item">
+                                <span class="spec-label">Minimum Size</span>
+                                <span class="spec-value">120px width</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Clear Space</span>
+                                <span class="spec-value">50% of logo height</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">File Format</span>
+                                <span class="spec-value">SVG, PNG, PDF</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="logo-card">
+                        <h3 style="margin-bottom: 20px;">Logo Mark</h3>
+                        <div class="logo-preview" style="background: var(--pp-gray-100);">
+                            <div style="width: 100px; height: 100px; background: linear-gradient(135deg, var(--pp-primary) 0%, var(--pp-secondary) 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5rem; font-weight: 800;">
+                                TPP
+                            </div>
+                        </div>
+                        <div class="logo-specs">
+                            <div class="spec-item">
+                                <span class="spec-label">Minimum Size</span>
+                                <span class="spec-value">40px × 40px</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Use Case</span>
+                                <span class="spec-value">Social media, favicon</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Border Radius</span>
+                                <span class="spec-value">20% of width</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="logo-card">
+                        <h3 style="margin-bottom: 20px;">Reversed Logo</h3>
+                        <div class="logo-preview dark">
+                            <div style="font-size: 2rem; font-weight: 800; color: white;">
+                                THE PROFIT<br>PLATFORM
+                            </div>
+                        </div>
+                        <div class="logo-specs">
+                            <div class="spec-item">
+                                <span class="spec-label">Background</span>
+                                <span class="spec-value">Dark only</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Contrast Ratio</span>
+                                <span class="spec-value">4.5:1 minimum</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Use Case</span>
+                                <span class="spec-value">Dark backgrounds</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="usage-grid">
+                    <div class="usage-column do">
+                        <h3 class="usage-title" style="color: var(--pp-success);">✓ Correct Usage</h3>
+                        <ul class="usage-list">
+                            <li>Use approved color variations</li>
+                            <li>Maintain minimum clear space</li>
+                            <li>Use on contrasting backgrounds</li>
+                            <li>Scale proportionally</li>
+                            <li>Use provided logo files</li>
+                        </ul>
+                    </div>
+
+                    <div class="usage-column dont">
+                        <h3 class="usage-title" style="color: var(--pp-danger);">✗ Incorrect Usage</h3>
+                        <ul class="usage-list">
+                            <li>Don't rotate or skew the logo</li>
+                            <li>Don't change logo colors</li>
+                            <li>Don't add effects or shadows</li>
+                            <li>Don't place on busy backgrounds</li>
+                            <li>Don't recreate or modify</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Colors Section -->
+            <section class="section" id="colors">
+                <div class="section-header">
+                    <h1 class="section-title">Color Palette</h1>
+                    <p class="section-subtitle">Our carefully selected colors that represent our brand</p>
+                </div>
+
+                <h3 style="margin: 40px 0 20px;">Primary Colors</h3>
+                <div class="color-grid">
+                    <div class="color-card">
+                        <div class="color-preview" style="background: linear-gradient(135deg, #667eea 0%, #5a67d8 100%);">
+                            <span class="color-code">#667eea</span>
+                        </div>
+                        <div class="color-info">
+                            <div class="color-name">Profit Purple</div>
+                            <div class="color-usage">Primary brand color, CTAs, links</div>
+                            <div class="color-values">
+                                <div class="color-value">
+                                    <div class="value-label">HEX</div>
+                                    <div class="value-text">#667eea</div>
+                                </div>
+                                <div class="color-value">
+                                    <div class="value-label">RGB</div>
+                                    <div class="value-text">102, 126, 234</div>
+                                </div>
+                                <div class="color-value">
+                                    <div class="value-label">HSL</div>
+                                    <div class="value-text">229°, 76%, 66%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="color-card">
+                        <div class="color-preview" style="background: linear-gradient(135deg, #764ba2 0%, #6b4699 100%);">
+                            <span class="color-code">#764ba2</span>
+                        </div>
+                        <div class="color-info">
+                            <div class="color-name">Platform Purple</div>
+                            <div class="color-usage">Secondary brand color, gradients</div>
+                            <div class="color-values">
+                                <div class="color-value">
+                                    <div class="value-label">HEX</div>
+                                    <div class="value-text">#764ba2</div>
+                                </div>
+                                <div class="color-value">
+                                    <div class="value-label">RGB</div>
+                                    <div class="value-text">118, 75, 162</div>
+                                </div>
+                                <div class="color-value">
+                                    <div class="value-label">HSL</div>
+                                    <div class="value-text">270°, 37%, 46%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="margin: 40px 0 20px;">Supporting Colors</h3>
+                <div class="color-grid">
+                    <div class="color-card">
+                        <div class="color-preview" style="background: #10b981;">
+                            <span class="color-code">#10b981</span>
+                        </div>
+                        <div class="color-info">
+                            <div class="color-name">Success Green</div>
+                            <div class="color-usage">Success states, positive metrics</div>
+                        </div>
+                    </div>
+
+                    <div class="color-card">
+                        <div class="color-preview" style="background: #f59e0b;">
+                            <span class="color-code">#f59e0b</span>
+                        </div>
+                        <div class="color-info">
+                            <div class="color-name">Warning Amber</div>
+                            <div class="color-usage">Warnings, highlights</div>
+                        </div>
+                    </div>
+
+                    <div class="color-card">
+                        <div class="color-preview" style="background: #ef4444;">
+                            <span class="color-code">#ef4444</span>
+                        </div>
+                        <div class="color-info">
+                            <div class="color-name">Danger Red</div>
+                            <div class="color-usage">Errors, urgent CTAs</div>
+                        </div>
+                    </div>
+
+                    <div class="color-card">
+                        <div class="color-preview" style="background: #3b82f6;">
+                            <span class="color-code">#3b82f6</span>
+                        </div>
+                        <div class="color-info">
+                            <div class="color-name">Info Blue</div>
+                            <div class="color-usage">Information, links</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="margin: 40px 0 20px;">Neutral Palette</h3>
+                <div class="color-grid">
+                    <div class="color-card">
+                        <div class="color-preview" style="background: #1f2937;">
+                            <span class="color-code">#1f2937</span>
+                        </div>
+                        <div class="color-info">
+                            <div class="color-name">Dark Gray</div>
+                            <div class="color-usage">Primary text, headings</div>
+                        </div>
+                    </div>
+
+                    <div class="color-card">
+                        <div class="color-preview" style="background: #6b7280;">
+                            <span class="color-code">#6b7280</span>
+                        </div>
+                        <div class="color-info">
+                            <div class="color-name">Medium Gray</div>
+                            <div class="color-usage">Secondary text</div>
+                        </div>
+                    </div>
+
+                    <div class="color-card">
+                        <div class="color-preview" style="background: #f3f4f6;">
+                            <span class="color-code">#f3f4f6</span>
+                        </div>
+                        <div class="color-info">
+                            <div class="color-name">Light Gray</div>
+                            <div class="color-usage">Backgrounds, borders</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Typography Section -->
+            <section class="section" id="typography">
+                <div class="section-header">
+                    <h1 class="section-title">Typography</h1>
+                    <p class="section-subtitle">Our typeface choices and typographic system</p>
+                </div>
+
+                <div class="typography-samples">
+                    <div class="font-family">
+                        <h3 class="font-name">Inter - Primary Typeface</h3>
+                        <div class="font-weights">
+                            <div class="weight-sample">
+                                <span class="weight-text" style="font-weight: 300;">The quick brown fox jumps over the lazy dog</span>
+                                <span class="weight-info">Light 300</span>
+                            </div>
+                            <div class="weight-sample">
+                                <span class="weight-text" style="font-weight: 400;">The quick brown fox jumps over the lazy dog</span>
+                                <span class="weight-info">Regular 400</span>
+                            </div>
+                            <div class="weight-sample">
+                                <span class="weight-text" style="font-weight: 500;">The quick brown fox jumps over the lazy dog</span>
+                                <span class="weight-info">Medium 500</span>
+                            </div>
+                            <div class="weight-sample">
+                                <span class="weight-text" style="font-weight: 600;">The quick brown fox jumps over the lazy dog</span>
+                                <span class="weight-info">SemiBold 600</span>
+                            </div>
+                            <div class="weight-sample">
+                                <span class="weight-text" style="font-weight: 700;">The quick brown fox jumps over the lazy dog</span>
+                                <span class="weight-info">Bold 700</span>
+                            </div>
+                            <div class="weight-sample">
+                                <span class="weight-text" style="font-weight: 800;">The quick brown fox jumps over the lazy dog</span>
+                                <span class="weight-info">ExtraBold 800</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="type-scale">
+                    <h3 style="margin-bottom: 30px; color: var(--pp-primary);">Type Scale</h3>
+
+                    <div class="scale-item">
+                        <div class="scale-label">Display Large</div>
+                        <div class="scale-example" style="font-size: 3.5rem; font-weight: 800; line-height: 1.1;">
+                            Empowering Digital Growth
+                        </div>
+                        <div class="scale-specs">font-size: 3.5rem (56px) / line-height: 1.1 / weight: 800</div>
+                    </div>
+
+                    <div class="scale-item">
+                        <div class="scale-label">Heading 1</div>
+                        <div class="scale-example" style="font-size: 2.5rem; font-weight: 700; line-height: 1.2;">
+                            Professional Digital Marketing
+                        </div>
+                        <div class="scale-specs">font-size: 2.5rem (40px) / line-height: 1.2 / weight: 700</div>
+                    </div>
+
+                    <div class="scale-item">
+                        <div class="scale-label">Heading 2</div>
+                        <div class="scale-example" style="font-size: 2rem; font-weight: 600; line-height: 1.3;">
+                            Results That Matter
+                        </div>
+                        <div class="scale-specs">font-size: 2rem (32px) / line-height: 1.3 / weight: 600</div>
+                    </div>
+
+                    <div class="scale-item">
+                        <div class="scale-label">Heading 3</div>
+                        <div class="scale-example" style="font-size: 1.5rem; font-weight: 600; line-height: 1.4;">
+                            Strategic Solutions
+                        </div>
+                        <div class="scale-specs">font-size: 1.5rem (24px) / line-height: 1.4 / weight: 600</div>
+                    </div>
+
+                    <div class="scale-item">
+                        <div class="scale-label">Body Large</div>
+                        <div class="scale-example" style="font-size: 1.125rem; font-weight: 400; line-height: 1.6;">
+                            We deliver personalized digital marketing strategies that drive measurable results for Sydney businesses.
+                        </div>
+                        <div class="scale-specs">font-size: 1.125rem (18px) / line-height: 1.6 / weight: 400</div>
+                    </div>
+
+                    <div class="scale-item">
+                        <div class="scale-label">Body Regular</div>
+                        <div class="scale-example" style="font-size: 1rem; font-weight: 400; line-height: 1.6;">
+                            Our approach combines data-driven insights with creative strategies to help your business grow online.
+                        </div>
+                        <div class="scale-specs">font-size: 1rem (16px) / line-height: 1.6 / weight: 400</div>
+                    </div>
+
+                    <div class="scale-item">
+                        <div class="scale-label">Caption</div>
+                        <div class="scale-example" style="font-size: 0.875rem; font-weight: 400; line-height: 1.5; color: var(--pp-gray-600);">
+                            *Results may vary based on industry and market conditions
+                        </div>
+                        <div class="scale-specs">font-size: 0.875rem (14px) / line-height: 1.5 / weight: 400</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Voice & Tone Section -->
+            <section class="section" id="voice">
+                <div class="section-header">
+                    <h1 class="section-title">Voice & Tone</h1>
+                    <p class="section-subtitle">How we communicate with our audience</p>
+                </div>
+
+                <div style="background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 40px;">
+                    <h2 style="color: var(--pp-primary); margin-bottom: 20px;">Our Brand Voice</h2>
+                    <p style="font-size: 1.2rem; line-height: 1.8; color: var(--pp-gray-700);">
+                        The Profit Platform speaks with confidence and clarity, balancing professionalism with approachability.
+                        We're experts who don't talk down to our audience. We're friendly but not casual, authoritative but not
+                        arrogant, and always focused on providing value.
+                    </p>
+                </div>
+
+                <h3 style="margin: 40px 0 30px;">Voice Attributes</h3>
+                <div class="voice-principles">
+                    <div class="principle-card">
+                        <h3 class="principle-title">Confident</h3>
+                        <p class="principle-description">We know our stuff and it shows in how we communicate.</p>
+                        <div class="principle-examples">
+                            <p class="example-do">"We'll boost your online visibility with proven SEO strategies"</p>
+                            <p class="example-dont">"We might be able to help with SEO"</p>
+                        </div>
+                    </div>
+
+                    <div class="principle-card">
+                        <h3 class="principle-title">Clear</h3>
+                        <p class="principle-description">We explain complex concepts in simple terms.</p>
+                        <div class="principle-examples">
+                            <p class="example-do">"Your ads will appear when people search for your services"</p>
+                            <p class="example-dont">"Leverage synergistic SEM methodologies"</p>
+                        </div>
+                    </div>
+
+                    <div class="principle-card">
+                        <h3 class="principle-title">Personal</h3>
+                        <p class="principle-description">We speak directly to our audience's needs.</p>
+                        <div class="principle-examples">
+                            <p class="example-do">"Your business deserves better than generic solutions"</p>
+                            <p class="example-dont">"Businesses require customized approaches"</p>
+                        </div>
+                    </div>
+
+                    <div class="principle-card">
+                        <h3 class="principle-title">Action-Oriented</h3>
+                        <p class="principle-description">We inspire action with clear next steps.</p>
+                        <div class="principle-examples">
+                            <p class="example-do">"Start growing your business today"</p>
+                            <p class="example-dont">"Growth opportunities may be available"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="margin: 40px 0 30px;">Tone Variations</h3>
+                <div style="background: var(--pp-gray-100); padding: 30px; border-radius: 15px;">
+                    <p style="margin-bottom: 20px;"><strong>Professional Context:</strong> "The Profit Platform delivers comprehensive digital marketing solutions designed to maximize your ROI."</p>
+                    <p style="margin-bottom: 20px;"><strong>Friendly Context:</strong> "Hey there! Ready to take your digital marketing to the next level? Let's chat about how we can help."</p>
+                    <p style="margin-bottom: 20px;"><strong>Urgent Context:</strong> "Don't let your competitors dominate online. Act now to secure your digital presence."</p>
+                    <p><strong>Educational Context:</strong> "Did you know that 93% of online experiences begin with a search engine? Here's how to make sure you're found."</p>
+                </div>
+            </section>
+
+            <!-- Downloads Section -->
+            <section class="section" id="downloads">
+                <div class="section-header">
+                    <h1 class="section-title">Brand Assets</h1>
+                    <p class="section-subtitle">Download official brand resources</p>
+                </div>
+
+                <div class="download-section">
+                    <h2 class="download-title">📦 Download Brand Package</h2>
+                    <p>Get all the assets you need to represent The Profit Platform correctly</p>
+
+                    <div class="download-grid">
+                        <a href="#" class="download-btn">
+                            <span>📎 Logo Package</span>
+                        </a>
+                        <a href="#" class="download-btn">
+                            <span>🎨 Color Swatches</span>
+                        </a>
+                        <a href="#" class="download-btn">
+                            <span>📝 Typography Guide</span>
+                        </a>
+                        <a href="#" class="download-btn">
+                            <span>📐 Templates</span>
+                        </a>
+                        <a href="#" class="download-btn">
+                            <span>📱 Social Media Kit</span>
+                        </a>
+                        <a href="#" class="download-btn">
+                            <span>📄 Full Guidelines PDF</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div style="background: var(--pp-gray-100); padding: 40px; border-radius: 20px; margin-top: 40px; text-align: center;">
+                    <h3 style="margin-bottom: 20px;">Need Custom Assets?</h3>
+                    <p style="color: var(--pp-gray-700); margin-bottom: 20px;">
+                        If you need specific brand assets or have questions about brand usage, contact our brand team.
+                    </p>
+                    <a href="mailto:brand@theprofitplatform.com.au" style="display: inline-block; padding: 12px 30px; background: var(--pp-primary); color: white; border-radius: 8px; text-decoration: none; font-weight: 600;">
+                        Contact Brand Team
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+
+            // Update navigation
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('open');
+        }
+
+        // Show menu toggle on mobile
+        if (window.innerWidth <= 1024) {
+            document.querySelector('.menu-toggle').style.display = 'block';
+        }
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth <= 1024) {
+                document.querySelector('.menu-toggle').style.display = 'block';
+            } else {
+                document.querySelector('.menu-toggle').style.display = 'none';
+                document.getElementById('sidebar').classList.remove('open');
+            }
+        });
+    </script>
+</body>
+</html>

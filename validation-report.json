@@ -1,0 +1,41 @@
+{
+  "timestamp": "2025-09-23T14:25:26.705Z",
+  "score": 97,
+  "successes": [
+    "🔍 Validating HTML structure...",
+    "✅ Page title correctly set: \"The Profit Platform - Sydney Digital Marketing Agency | SEO, Google Ads & Web Design\"",
+    "✅ CSS files consolidated to 4 files",
+    "✅ Combined CSS file properly linked",
+    "✅ Critical CSS inlined",
+    "✅ combined.min.js properly linked",
+    "✅ Scripts using proper defer/async loading",
+    "✅ Open Graph image meta tag present",
+    "✅ 1 structured data blocks found",
+    "✅ Forms have validation attributes",
+    "✅ All images have alt text",
+    "✅ <noscript> fallback present",
+    "🔍 Validating file existence...",
+    "✅ website/css/combined.min.css exists (404.28KB)",
+    "✅ website/js/combined.min.js exists (16.80KB)",
+    "✅ website/images/og-index.jpg exists (40.39KB)",
+    "✅ website/images/twitter-index.jpg exists (40.72KB)",
+    "✅ website/manifest.json exists (2.53KB)",
+    "✅ website/sw.js exists (6.93KB)",
+    "✅ website/favicon.ico exists (0.20KB)",
+    "🔍 Checking performance optimizations...",
+    "✅ Resource hints implemented",
+    "✅ Lazy loading implemented for images",
+    "✅ WebP images in use",
+    "✅ Combined JS is optimized at 16.80KB",
+    "🔍 Checking functionality...",
+    "✅ Error handling implemented",
+    "✅ Form has fallback submission method",
+    "✅ Service worker has error handling"
+  ],
+  "warnings": [
+    "Some interactive elements missing ARIA labels",
+    "Combined CSS is 404.28KB (consider further optimization)"
+  ],
+  "errors": [],
+  "status": "READY"
+}

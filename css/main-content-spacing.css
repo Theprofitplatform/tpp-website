@@ -1,0 +1,133 @@
+/* Main Content Top Spacing - Ensures proper padding below fixed navigation */
+
+/* Base padding for all main content */
+main,
+#main-content,
+[role="main"] {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* Hero sections need additional consideration */
+.hero,
+.hero-modern,
+.about-hero,
+.pricing-hero,
+.pricing-hero-enhanced,
+.portfolio-hero,
+.contact-hero,
+.services-hero,
+.web-design-hero,
+.google-ads-hero,
+.seo-hero {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    min-height: 100vh;
+}
+
+/* Ensure first section after nav has proper spacing */
+body > main > section:first-child,
+body > #main-content > section:first-child,
+main > section:first-child,
+#main-content > section:first-child {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* For pages without hero sections */
+main > .container:first-child,
+#main-content > .container:first-child {
+    padding-top: 40px !important;
+}
+
+/* Mobile responsiveness - slightly less padding on smaller screens */
+@media (max-width: 768px) {
+    main,
+    #main-content,
+    [role="main"] {
+        padding-top: 0 !important;
+    }
+
+    .hero,
+    .hero-modern,
+    .about-hero,
+    .pricing-hero,
+    .pricing-hero-enhanced,
+    .portfolio-hero,
+    .contact-hero,
+    .services-hero,
+    .web-design-hero,
+    .google-ads-hero,
+    .seo-hero {
+        padding-top: 0 !important;
+    }
+
+    body > main > section:first-child,
+    body > #main-content > section:first-child,
+    main > section:first-child,
+    #main-content > section:first-child {
+        padding-top: 0 !important;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+    main,
+    #main-content,
+    [role="main"] {
+        padding-top: 0 !important;
+    }
+
+    .hero,
+    .hero-modern,
+    .about-hero,
+    .pricing-hero,
+    .pricing-hero-enhanced,
+    .portfolio-hero,
+    .contact-hero,
+    .services-hero {
+        padding-top: 0 !important;
+    }
+}
+
+/* Ensure navigation doesn't overlap content */
+.premium-nav {
+    position: fixed !important;
+    top: 15px !important;
+    z-index: 1000 !important;
+}
+
+/* Account for scroll progress bar */
+.scroll-progress {
+    position: fixed !important;
+    top: 0 !important;
+    z-index: 9999 !important;
+}
+
+/* Remove any negative margins that might cause overlap */
+body > *:first-child:not(.scroll-progress):not(.skip-link):not(.premium-nav):not(header) {
+    margin-top: 0 !important;
+}
+
+/* Special handling for specific page types */
+body[data-page="home"] main {
+    padding-top: 0 !important;
+}
+
+body[data-page="about"] main,
+body[data-page="pricing"] main,
+body[data-page="portfolio"] main,
+body[data-page="contact"] main,
+body[data-page="services"] main {
+    padding-top: 0 !important;
+}
+
+/* Ensure smooth scroll accounts for fixed header */
+html {
+    scroll-padding-top: 100px;
+}
+
+/* Fix for any absolutely positioned elements at top */
+main > [style*="position: absolute"]:first-child {
+    top: 0 !important;
+}

@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Templates - The Profit Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .template-nav {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            padding: 12px 25px;
+            background: white;
+            color: #667eea;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .nav-btn.active {
+            background: #1f2937;
+            color: white;
+        }
+
+        .template-section {
+            display: none;
+        }
+
+        .template-section.active {
+            display: block;
+        }
+
+        .template-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            margin-bottom: 40px;
+        }
+
+        .template-header {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 30px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .template-title {
+            font-size: 1.8rem;
+            color: #1f2937;
+            margin-bottom: 10px;
+        }
+
+        .template-description {
+            color: #6b7280;
+        }
+
+        .template-controls {
+            padding: 20px 30px;
+            background: #f8f9fa;
+            display: flex;
+            gap: 15px;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .control-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5a67d8;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .personalization-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 5px 12px;
+            background: #e0f2fe;
+            color: #3b82f6;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tag:hover {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .email-preview {
+            padding: 30px;
+            background: #f9fafb;
+        }
+
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .email-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .email-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .email-body {
+            padding: 40px 30px;
+            color: #374151;
+            line-height: 1.8;
+        }
+
+        .email-body h2 {
+            color: #1f2937;
+            margin-bottom: 20px;
+        }
+
+        .email-body p {
+            margin-bottom: 20px;
+        }
+
+        .email-cta {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .email-footer {
+            background: #f3f4f6;
+            padding: 30px;
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        .email-footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .stats-bar {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .subject-lines {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .subject-lines h3 {
+            color: #1f2937;
+            margin-bottom: 20px;
+        }
+
+        .subject-line-item {
+            padding: 15px;
+            background: #f9fafb;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .subject-text {
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .subject-stats {
+            display: flex;
+            gap: 15px;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        .best-practices {
+            background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .best-practices h3 {
+            color: #92400e;
+            margin-bottom: 20px;
+        }
+
+        .practice-list {
+            list-style: none;
+        }
+
+        .practice-list li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #78350f;
+        }
+
+        .practice-list li::before {
+            content: "💡";
+            position: absolute;
+            left: 0;
+        }
+
+        .variable-input {
+            padding: 8px 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            width: 200px;
+        }
+
+        @media (max-width: 768px) {
+            .template-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .control-group {
+                flex-direction: column;
+            }
+        }
+
+        .copy-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            display: none;
+            animation: slideIn 0.3s;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📧 Email Templates Collection</h1>
+            <p>High-converting email templates for every stage of your customer journey</p>
+        </div>
+
+        <div class="template-nav">
+            <button class="nav-btn active" onclick="showTemplate('cold-outreach')">🎯 Cold Outreach</button>
+            <button class="nav-btn" onclick="showTemplate('follow-up')">🔄 Follow-Up</button>
+            <button class="nav-btn" onclick="showTemplate('check-in')">👋 Check-In</button>
+            <button class="nav-btn" onclick="showTemplate('win-back')">💎 Win-Back</button>
+            <button class="nav-btn" onclick="showTemplate('welcome')">🎉 Welcome</button>
+            <button class="nav-btn" onclick="showTemplate('proposal')">📋 Proposal</button>
+        </div>
+
+        <!-- Cold Outreach Template -->
+        <div class="template-section active" id="cold-outreach">
+            <div class="template-card">
+                <div class="template-header">
+                    <h2 class="template-title">🎯 Cold Outreach Email</h2>
+                    <p class="template-description">Personalized first contact email designed to start conversations with potential clients</p>
+                </div>
+
+                <div class="stats-bar">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">42%</div>
+                            <div class="stat-label">Open Rate</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">18%</div>
+                            <div class="stat-label">Reply Rate</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">8%</div>
+                            <div class="stat-label">Conversion</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">150-200</div>
+                            <div class="stat-label">Word Count</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subject-lines">
+                    <h3>🎯 Proven Subject Lines</h3>
+                    <div class="subject-line-item">
+                        <span class="subject-text">Quick question about [Company]'s digital marketing</span>
+                        <div class="subject-stats">
+                            <span>📧 45% Open</span>
+                            <span>💬 20% Reply</span>
+                        </div>
+                    </div>
+                    <div class="subject-line-item">
+                        <span class="subject-text">[First Name], noticed you're competing with [Competitor]</span>
+                        <div class="subject-stats">
+                            <span>📧 48% Open</span>
+                            <span>💬 22% Reply</span>
+                        </div>
+                    </div>
+                    <div class="subject-line-item">
+                        <span class="subject-text">Ideas to increase [Company]'s online visibility</span>
+                        <div class="subject-stats">
+                            <span>📧 38% Open</span>
+                            <span>💬 15% Reply</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="template-controls">
+                    <div class="control-group">
+                        <span>Personalization:</span>
+                        <input type="text" class="variable-input" placeholder="First Name" id="firstName" value="Sarah">
+                        <input type="text" class="variable-input" placeholder="Company" id="company" value="ABC Corp">
+                    </div>
+                    <div class="control-group">
+                        <button class="btn btn-primary" onclick="copyEmail('cold-outreach')">📋 Copy Email</button>
+                        <button class="btn btn-secondary" onclick="downloadEmail('cold-outreach')">💾 Download</button>
+                    </div>
+                </div>
+
+                <div class="email-preview">
+                    <div class="email-container">
+                        <div class="email-header">
+                            <div class="email-logo">THE PROFIT PLATFORM</div>
+                            <p>Digital Marketing That Delivers</p>
+                        </div>
+
+                        <div class="email-body" id="cold-outreach-content">
+                            <h2>Hi <span class="var-firstName">Sarah</span> 👋</h2>
+
+                            <p>I came across <span class="var-company">ABC Corp</span> while researching successful businesses in Sydney, and I'm impressed with what you've built. Your commitment to quality really stands out in the market.</p>
+
+                            <p>However, I noticed a few quick wins that could significantly boost your online visibility and bring in more qualified leads. Specifically:</p>
+
+                            <ul style="margin: 20px 0; padding-left: 20px;">
+                                <li style="margin-bottom: 10px;">Your Google My Business listing could be optimized to appear higher in local searches</li>
+                                <li style="margin-bottom: 10px;">There are high-value keywords your competitors are missing that you could dominate</li>
+                                <li style="margin-bottom: 10px;">A few simple website tweaks could double your conversion rate</li>
+                            </ul>
+
+                            <p>I've helped 15+ Sydney businesses increase their online revenue by an average of 40% in the first 6 months, and I'd love to share some specific ideas for <span class="var-company">ABC Corp</span>.</p>
+
+                            <p><strong>Would you be open to a brief 15-minute call next week to discuss how we could help you capture more of your market?</strong></p>
+
+                            <p>I have some time on Tuesday or Thursday afternoon if that works for you.</p>
+
+                            <div class="email-cta">
+                                <a href="#" class="cta-button">Schedule a Quick Call</a>
+                            </div>
+
+                            <p>Best regards,<br>
+                            <strong>Avi</strong><br>
+                            Founder, The Profit Platform<br>
+                            📱 0487 286 451</p>
+
+                            <p style="font-size: 0.9rem; color: #6b7280; margin-top: 20px;">
+                            P.S. I've attached a free quick-win checklist that you can implement today to start seeing results immediately - no strings attached!
+                            </p>
+                        </div>
+
+                        <div class="email-footer">
+                            <p>The Profit Platform | Level 1, 234 George Street, Sydney NSW 2000</p>
+                            <p><a href="#">Unsubscribe</a> | <a href="#">View in Browser</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="best-practices">
+                    <h3>✨ Best Practices for Cold Outreach</h3>
+                    <ul class="practice-list">
+                        <li>Research the recipient and personalize beyond just their name</li>
+                        <li>Lead with value, not with what you want</li>
+                        <li>Keep it under 200 words for better response rates</li>
+                        <li>Include specific, relevant observations about their business</li>
+                        <li>End with a clear, low-commitment call-to-action</li>
+                        <li>Send between Tuesday-Thursday, 10am-11am or 2pm-3pm</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Follow-Up Template -->
+        <div class="template-section" id="follow-up">
+            <div class="template-card">
+                <div class="template-header">
+                    <h2 class="template-title">🔄 Follow-Up Email</h2>
+                    <p class="template-description">Strategic follow-up to re-engage prospects who haven't responded</p>
+                </div>
+
+                <div class="stats-bar">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">55%</div>
+                            <div class="stat-label">Open Rate</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">28%</div>
+                            <div class="stat-label">Reply Rate</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">3-5</div>
+                            <div class="stat-label">Optimal Follows</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">3-4 days</div>
+                            <div class="stat-label">Best Timing</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="template-controls">
+                    <div class="control-group">
+                        <button class="btn btn-primary" onclick="copyEmail('follow-up')">📋 Copy Email</button>
+                        <button class="btn btn-secondary" onclick="downloadEmail('follow-up')">💾 Download</button>
+                    </div>
+                </div>
+
+                <div class="email-preview">
+                    <div class="email-container">
+                        <div class="email-header">
+                            <div class="email-logo">THE PROFIT PLATFORM</div>
+                        </div>
+
+                        <div class="email-body">
+                            <h2>Hi [First Name],</h2>
+
+                            <p>I wanted to circle back on my previous email about helping [Company] increase its online visibility.</p>
+
+                            <p>I understand you're busy running [Company], so I'll keep this brief.</p>
+
+                            <p>Since my last email, I've noticed that [Competitor] just launched a major Google Ads campaign targeting your key services. This could impact your market share if we don't act quickly.</p>
+
+                            <p><strong>I've put together a quick competitive analysis showing exactly what they're doing and how we can help you stay ahead.</strong></p>
+
+                            <p>Would you have 10 minutes this week for a brief call? I can share the analysis and some immediate action steps you can take.</p>
+
+                            <p>Here's my calendar if you'd like to pick a time that works: [Calendar Link]</p>
+
+                            <p>Best,<br>
+                            Avi</p>
+
+                            <p style="font-size: 0.9rem; color: #6b7280; margin-top: 20px;">
+                            P.S. If now isn't the right time, just let me know when would be better, or if you'd prefer I stop reaching out.
+                            </p>
+                        </div>
+
+                        <div class="email-footer">
+                            <p>The Profit Platform | Sydney's Digital Marketing Experts</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Check-In Template -->
+        <div class="template-section" id="check-in">
+            <div class="template-card">
+                <div class="template-header">
+                    <h2 class="template-title">👋 Client Check-In Email</h2>
+                    <p class="template-description">Regular touchpoint to maintain relationships and identify opportunities</p>
+                </div>
+
+                <div class="template-controls">
+                    <div class="control-group">
+                        <button class="btn btn-primary" onclick="copyEmail('check-in')">📋 Copy Email</button>
+                        <button class="btn btn-secondary" onclick="downloadEmail('check-in')">💾 Download</button>
+                    </div>
+                </div>
+
+                <div class="email-preview">
+                    <div class="email-container">
+                        <div class="email-header">
+                            <div class="email-logo">THE PROFIT PLATFORM</div>
+                        </div>
+
+                        <div class="email-body">
+                            <h2>Hi [First Name]! 🌟</h2>
+
+                            <p>Hope you're having a great week! I wanted to check in and see how everything's going with your digital marketing.</p>
+
+                            <p><strong>Quick wins from last month:</strong></p>
+                            <ul style="margin: 20px 0; padding-left: 20px;">
+                                <li>Your website traffic increased by 32%</li>
+                                <li>Google Ads generated 45 qualified leads</li>
+                                <li>Social media engagement up 28%</li>
+                            </ul>
+
+                            <p>I've been monitoring your campaigns and noticed a few opportunities to boost performance even further. Specifically, there are some new keywords showing promise that we should target.</p>
+
+                            <p><strong>Also, I wanted to check:</strong></p>
+                            <ul style="margin: 20px 0; padding-left: 20px;">
+                                <li>Any new products or services launching soon?</li>
+                                <li>Any seasonal campaigns we should prepare for?</li>
+                                <li>How are the leads quality - anything we should adjust?</li>
+                            </ul>
+
+                            <p>Would you like to hop on a quick call this week to discuss? Always here to help!</p>
+
+                            <p>Cheers,<br>
+                            Avi</p>
+                        </div>
+
+                        <div class="email-footer">
+                            <p>The Profit Platform | Your Digital Growth Partner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Win-Back Template -->
+        <div class="template-section" id="win-back">
+            <div class="template-card">
+                <div class="template-header">
+                    <h2 class="template-title">💎 Win-Back Campaign</h2>
+                    <p class="template-description">Re-engage past clients or lost opportunities with compelling offers</p>
+                </div>
+
+                <div class="template-controls">
+                    <div class="control-group">
+                        <button class="btn btn-primary" onclick="copyEmail('win-back')">📋 Copy Email</button>
+                        <button class="btn btn-secondary" onclick="downloadEmail('win-back')">💾 Download</button>
+                    </div>
+                </div>
+
+                <div class="email-preview">
+                    <div class="email-container">
+                        <div class="email-header">
+                            <div class="email-logo">THE PROFIT PLATFORM</div>
+                            <p>We Miss Working With You!</p>
+                        </div>
+
+                        <div class="email-body">
+                            <h2>[First Name], We've Made Some Exciting Changes! 🚀</h2>
+
+                            <p>It's been a while since we worked together, and I wanted to personally reach out to share some exciting updates that could benefit [Company].</p>
+
+                            <p><strong>Since we last spoke, we've:</strong></p>
+                            <ul style="margin: 20px 0; padding-left: 20px;">
+                                <li>Launched AI-powered campaign optimization (averaging 40% better ROI)</li>
+                                <li>Added TikTok and LinkedIn advertising to our services</li>
+                                <li>Introduced flexible month-to-month contracts (no lock-ins!)</li>
+                                <li>Reduced our pricing by 20% while improving results</li>
+                            </ul>
+
+                            <p>I've been following [Company]'s growth, and I'm impressed with your progress! I also noticed some opportunities where our new capabilities could really accelerate your success.</p>
+
+                            <p><strong>As a valued past client, I'd like to offer you:</strong></p>
+                            <div style="background: #f0f9ff; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                                <p style="margin: 0;"><strong>✅ 50% off your first month back</strong></p>
+                                <p style="margin: 10px 0 0;"><strong>✅ Free comprehensive digital audit ($500 value)</strong></p>
+                                <p style="margin: 10px 0 0;"><strong>✅ No setup fees</strong></p>
+                            </div>
+
+                            <p>Would you be interested in a quick coffee to catch up and discuss how we could help [Company] reach its next milestone?</p>
+
+                            <div class="email-cta">
+                                <a href="#" class="cta-button">Let's Reconnect</a>
+                            </div>
+
+                            <p>Looking forward to hearing from you!<br>
+                            Avi</p>
+
+                            <p style="font-size: 0.9rem; color: #6b7280; margin-top: 20px;">
+                            P.S. This special offer is only available until [Date] - I'd hate for you to miss out!
+                            </p>
+                        </div>
+
+                        <div class="email-footer">
+                            <p>The Profit Platform | Sydney NSW | 0487 286 451</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Welcome Template -->
+        <div class="template-section" id="welcome">
+            <div class="template-card">
+                <div class="template-header">
+                    <h2 class="template-title">🎉 Welcome Email</h2>
+                    <p class="template-description">Onboard new clients with enthusiasm and clear next steps</p>
+                </div>
+
+                <div class="template-controls">
+                    <div class="control-group">
+                        <button class="btn btn-primary" onclick="copyEmail('welcome')">📋 Copy Email</button>
+                        <button class="btn btn-secondary" onclick="downloadEmail('welcome')">💾 Download</button>
+                    </div>
+                </div>
+
+                <div class="email-preview">
+                    <div class="email-container">
+                        <div class="email-header">
+                            <div class="email-logo">THE PROFIT PLATFORM</div>
+                            <p>Welcome to The Family! 🎉</p>
+                        </div>
+
+                        <div class="email-body">
+                            <h2>Welcome Aboard, [First Name]! 🚀</h2>
+
+                            <p>I'm absolutely thrilled to welcome you to The Profit Platform family! This is the beginning of an exciting journey to transform [Company]'s digital presence.</p>
+
+                            <p><strong>Here's what happens next:</strong></p>
+
+                            <div style="background: #f9fafb; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                                <p><strong>📅 Next 24 Hours:</strong> You'll receive your onboarding packet and account access</p>
+                                <p style="margin-top: 15px;"><strong>📊 Days 2-3:</strong> We'll conduct our initial audit and competitor analysis</p>
+                                <p style="margin-top: 15px;"><strong>🎯 Day 5:</strong> Strategy presentation and campaign kickoff call</p>
+                                <p style="margin-top: 15px;"><strong>🚀 Week 2:</strong> Campaigns go live and optimization begins!</p>
+                            </div>
+
+                            <p><strong>In the meantime, here's what you can expect from us:</strong></p>
+                            <ul style="margin: 20px 0; padding-left: 20px;">
+                                <li>Direct access to me (Avi) - your dedicated strategist</li>
+                                <li>Weekly progress updates every Monday</li>
+                                <li>Complete transparency with real-time reporting dashboard</li>
+                                <li>Proactive recommendations to maximize your ROI</li>
+                            </ul>
+
+                            <p><strong>Quick action items for you:</strong></p>
+                            <ol style="margin: 20px 0; padding-left: 20px;">
+                                <li>Save my number: 0487 286 451 (for urgent matters)</li>
+                                <li>Add avi@theprofitplatform.com.au to your contacts</li>
+                                <li>Gather any brand assets (logos, images, brand guide)</li>
+                                <li>Think about your top 3 business goals for the next 6 months</li>
+                            </ol>
+
+                            <div class="email-cta">
+                                <a href="#" class="cta-button">Access Your Dashboard</a>
+                            </div>
+
+                            <p>I'm here to make this journey as smooth and successful as possible. Don't hesitate to reach out with any questions!</p>
+
+                            <p>Excited to grow your business together!<br>
+                            <strong>Avi</strong><br>
+                            Your Digital Growth Partner</p>
+                        </div>
+
+                        <div class="email-footer">
+                            <p>The Profit Platform | Let's Grow Together</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Proposal Template -->
+        <div class="template-section" id="proposal">
+            <div class="template-card">
+                <div class="template-header">
+                    <h2 class="template-title">📋 Proposal Follow-Up</h2>
+                    <p class="template-description">Professional follow-up after sending a proposal</p>
+                </div>
+
+                <div class="template-controls">
+                    <div class="control-group">
+                        <button class="btn btn-primary" onclick="copyEmail('proposal')">📋 Copy Email</button>
+                        <button class="btn btn-secondary" onclick="downloadEmail('proposal')">💾 Download</button>
+                    </div>
+                </div>
+
+                <div class="email-preview">
+                    <div class="email-container">
+                        <div class="email-header">
+                            <div class="email-logo">THE PROFIT PLATFORM</div>
+                        </div>
+
+                        <div class="email-body">
+                            <h2>Hi [First Name],</h2>
+
+                            <p>Thank you for taking the time to review our proposal for [Company]'s digital marketing strategy.</p>
+
+                            <p>I wanted to follow up to ensure you received everything clearly and see if you have any questions about:</p>
+
+                            <ul style="margin: 20px 0; padding-left: 20px;">
+                                <li>The recommended strategy and timeline</li>
+                                <li>Expected ROI and performance metrics</li>
+                                <li>Investment options and payment terms</li>
+                                <li>Our guarantee and no lock-in contract</li>
+                            </ul>
+
+                            <p><strong>Just to recap the key benefits:</strong></p>
+                            <div style="background: #f0f9ff; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                                <p>✅ Projected 300% ROI within 6 months</p>
+                                <p style="margin-top: 10px;">✅ Dedicated account manager (me!)</p>
+                                <p style="margin-top: 10px;">✅ Month-to-month flexibility</p>
+                                <p style="margin-top: 10px;">✅ 100% transparent reporting</p>
+                            </div>
+
+                            <p>I'm confident this strategy will deliver exceptional results for [Company], and I'm excited about the possibility of working together.</p>
+
+                            <p><strong>Would you like to schedule a quick call to discuss any questions or move forward?</strong></p>
+
+                            <div class="email-cta">
+                                <a href="#" class="cta-button">Schedule Discussion</a>
+                            </div>
+
+                            <p>Looking forward to your thoughts!</p>
+
+                            <p>Best regards,<br>
+                            Avi<br>
+                            The Profit Platform</p>
+
+                            <p style="font-size: 0.9rem; color: #6b7280; margin-top: 20px;">
+                            P.S. If you're ready to move forward, I can have everything set up within 48 hours!
+                            </p>
+                        </div>
+
+                        <div class="email-footer">
+                            <p>The Profit Platform | Digital Excellence</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copy Notification -->
+    <div class="copy-notification" id="copyNotification">
+        ✅ Email template copied to clipboard!
+    </div>
+
+    <script>
+        function showTemplate(templateId) {
+            // Hide all templates
+            document.querySelectorAll('.template-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show selected template
+            document.getElementById(templateId).classList.add('active');
+
+            // Update navigation
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        function copyEmail(templateId) {
+            const content = document.getElementById(templateId + '-content') ||
+                          document.querySelector(`#${templateId} .email-body`);
+
+            if (content) {
+                // Get text content and clean it up
+                let text = content.innerText;
+
+                // Copy to clipboard
+                navigator.clipboard.writeText(text).then(() => {
+                    showNotification();
+                });
+            }
+        }
+
+        function showNotification() {
+            const notification = document.getElementById('copyNotification');
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+
+        function downloadEmail(templateId) {
+            const content = document.getElementById(templateId + '-content') ||
+                          document.querySelector(`#${templateId} .email-body`);
+
+            if (content) {
+                const text = content.innerText;
+                const blob = new Blob([text], { type: 'text/plain' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${templateId}-email-template.txt`;
+                a.click();
+                window.URL.revokeObjectURL(url);
+            }
+        }
+
+        // Update personalization variables in real-time
+        document.addEventListener('input', function(e) {
+            if (e.target.id === 'firstName') {
+                document.querySelectorAll('.var-firstName').forEach(el => {
+                    el.textContent = e.target.value || '[First Name]';
+                });
+            }
+            if (e.target.id === 'company') {
+                document.querySelectorAll('.var-company').forEach(el => {
+                    el.textContent = e.target.value || '[Company]';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

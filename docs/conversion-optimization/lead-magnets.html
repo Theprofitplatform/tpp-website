@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lead Magnets Collection - The Profit Platform</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #F9FAFB;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .lead-magnet {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .lead-magnet:hover {
+            border-color: #6366F1;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .magnet-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .magnet-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #6366F1, #8B5CF6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+            flex-shrink: 0;
+        }
+
+        .magnet-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1F2937;
+            margin: 0 0 8px 0;
+        }
+
+        .magnet-value {
+            color: #10B981;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .magnet-description {
+            color: #6B7280;
+            margin-bottom: 24px;
+            font-size: 16px;
+        }
+
+        .magnet-benefits {
+            list-style: none;
+            padding: 0;
+            margin: 24px 0;
+        }
+
+        .magnet-benefits li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: #374151;
+        }
+
+        .magnet-benefits li::before {
+            content: '✓';
+            width: 20px;
+            height: 20px;
+            background: #10B981;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        .magnet-preview {
+            background: #F3F4F6;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #6366F1;
+        }
+
+        .magnet-cta {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            margin-top: 24px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6366F1, #8B5CF6);
+            color: white;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #6366F1;
+            padding: 16px 32px;
+            border: 2px solid #6366F1;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #6366F1;
+            color: white;
+        }
+
+        .stats {
+            display: flex;
+            gap: 24px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #6366F1;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #6B7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .feature-item {
+            background: #F9FAFB;
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .social-proof {
+            background: #F0FDF4;
+            border: 1px solid #BBF7D0;
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 20px;
+        }
+
+        .testimonial {
+            font-style: italic;
+            color: #166534;
+            margin-bottom: 8px;
+        }
+
+        .author {
+            font-weight: 600;
+            color: #15803D;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .magnet-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .magnet-cta {
+                flex-direction: column;
+            }
+
+            .stats {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center; font-size: 2.5rem; margin-bottom: 16px; color: #1F2937;">Lead Magnet Collection</h1>
+        <p style="text-align: center; color: #6B7280; font-size: 1.1rem; margin-bottom: 48px;">High-converting lead magnets designed specifically for Sydney businesses</p>
+
+        <!-- Lead Magnet 1: Local SEO Checklist -->
+        <div class="lead-magnet">
+            <div class="magnet-header">
+                <div class="magnet-icon">📍</div>
+                <div>
+                    <h2 class="magnet-title">The Sydney SEO Domination Checklist</h2>
+                    <div class="magnet-value">Value: $497 - FREE Today</div>
+                </div>
+            </div>
+
+            <p class="magnet-description">
+                A comprehensive 37-point checklist that's helped 15+ Sydney businesses achieve first-page Google rankings in 90 days or less. No fluff, just actionable steps you can implement immediately.
+            </p>
+
+            <ul class="magnet-benefits">
+                <li><strong>Local SEO Quick Wins:</strong> Get results in the first 7 days</li>
+                <li><strong>Google My Business Optimization:</strong> Dominate local search results</li>
+                <li><strong>Sydney-Specific Keywords:</strong> Target what your customers actually search for</li>
+                <li><strong>Technical SEO Made Simple:</strong> Fix the issues that hurt your rankings</li>
+                <li><strong>Competitor Analysis Template:</strong> Spy on your competition legally</li>
+                <li><strong>Monthly Action Plan:</strong> Know exactly what to do each month</li>
+            </ul>
+
+            <div class="magnet-preview">
+                <strong>Preview: What's Inside</strong><br>
+                ✓ Complete Google My Business optimization guide<br>
+                ✓ 200+ Sydney local keywords by industry<br>
+                ✓ Step-by-step citation building process<br>
+                ✓ Review generation system that actually works<br>
+                ✓ Local link building opportunities map
+            </div>
+
+            <div class="social-proof">
+                <div class="testimonial">"This checklist helped us jump from page 3 to the top 3 Google results in just 6 weeks. Best investment we've made this year!"</div>
+                <div class="author">- Sarah Mitchell, Bondi Dental Practice</div>
+            </div>
+
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number">37</span>
+                    <span class="stat-label">Action Items</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">15</span>
+                    <span class="stat-label">Pages</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">90%</span>
+                    <span class="stat-label">Success Rate</span>
+                </div>
+            </div>
+
+            <div class="magnet-cta">
+                <a href="contact.html?utm_source=lead_magnet&utm_campaign=seo_checklist" class="btn-primary">
+                    Download FREE Checklist
+                </a>
+                <a href="#" class="btn-secondary" onclick="showPreview('seo-checklist')">
+                    Preview Sample
+                </a>
+            </div>
+        </div>
+
+        <!-- Lead Magnet 2: Marketing Audit Template -->
+        <div class="lead-magnet">
+            <div class="magnet-header">
+                <div class="magnet-icon" style="background: linear-gradient(135deg, #10B981, #059669);">🔍</div>
+                <div>
+                    <h2 class="magnet-title">DIY Marketing Audit Kit</h2>
+                    <div class="magnet-value">Value: $997 - FREE Today</div>
+                </div>
+            </div>
+
+            <p class="magnet-description">
+                The exact same audit framework I use for my $997 marketing audits. Discover the hidden opportunities in your current marketing that could triple your leads in 90 days.
+            </p>
+
+            <ul class="magnet-benefits">
+                <li><strong>Website Conversion Analysis:</strong> Find out why visitors aren't converting</li>
+                <li><strong>SEO Gap Analysis:</strong> Discover missed keyword opportunities</li>
+                <li><strong>Competitor Intelligence:</strong> See what's working for your competition</li>
+                <li><strong>Google Ads Audit:</strong> Stop wasting money on poor-performing ads</li>
+                <li><strong>Social Media Assessment:</strong> Maximize your social ROI</li>
+                <li><strong>Lead Generation Review:</strong> Plug the holes in your sales funnel</li>
+            </ul>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <strong>🎯 Website Audit</strong><br>
+                    <small>20-point checklist</small>
+                </div>
+                <div class="feature-item">
+                    <strong>📊 Analytics Setup</strong><br>
+                    <small>Track what matters</small>
+                </div>
+                <div class="feature-item">
+                    <strong>🔍 SEO Analysis</strong><br>
+                    <small>Technical + Content</small>
+                </div>
+                <div class="feature-item">
+                    <strong>💰 ROI Calculator</strong><br>
+                    <small>Measure success</small>
+                </div>
+            </div>
+
+            <div class="social-proof">
+                <div class="testimonial">"Used this audit kit and found 3 major issues we never knew existed. Fixed them and saw a 180% increase in leads within 30 days."</div>
+                <div class="author">- Mike Rodriguez, Parramatta Plumbing</div>
+            </div>
+
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number">47</span>
+                    <span class="stat-label">Audit Points</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">6</span>
+                    <span class="stat-label">Categories</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">85%</span>
+                    <span class="stat-label">Find Issues</span>
+                </div>
+            </div>
+
+            <div class="magnet-cta">
+                <a href="contact.html?utm_source=lead_magnet&utm_campaign=audit_kit" class="btn-primary">
+                    Get FREE Audit Kit
+                </a>
+                <a href="#" class="btn-secondary" onclick="showPreview('audit-kit')">
+                    View Sample Page
+                </a>
+            </div>
+        </div>
+
+        <!-- Lead Magnet 3: Google Ads Templates -->
+        <div class="lead-magnet">
+            <div class="magnet-header">
+                <div class="magnet-icon" style="background: linear-gradient(135deg, #F59E0B, #D97706);">📢</div>
+                <div>
+                    <h2 class="magnet-title">Profitable Google Ads Templates</h2>
+                    <div class="magnet-value">Value: $697 - FREE Today</div>
+                </div>
+            </div>
+
+            <p class="magnet-description">
+                Copy-paste Google Ads campaigns that have generated over 10,000 leads for Sydney businesses. Stop the guesswork and use proven ad templates that convert.
+            </p>
+
+            <ul class="magnet-benefits">
+                <li><strong>High-Converting Ad Copy:</strong> Tested on $100,000+ ad spend</li>
+                <li><strong>Keyword Lists by Industry:</strong> 500+ profitable Sydney keywords</li>
+                <li><strong>Landing Page Templates:</strong> Pages that convert at 25%+</li>
+                <li><strong>Bidding Strategies:</strong> Get maximum ROI from day one</li>
+                <li><strong>Negative Keyword Lists:</strong> Stop wasting money on bad clicks</li>
+                <li><strong>Tracking Setup Guide:</strong> Measure every conversion accurately</li>
+            </ul>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <strong>🎯 Search Campaigns</strong><br>
+                    <small>10 industries covered</small>
+                </div>
+                <div class="feature-item">
+                    <strong>📱 Mobile Ads</strong><br>
+                    <small>Optimized for mobile</small>
+                </div>
+                <div class="feature-item">
+                    <strong>🛍️ Shopping Campaigns</strong><br>
+                    <small>E-commerce ready</small>
+                </div>
+                <div class="feature-item">
+                    <strong>📍 Local Campaigns</strong><br>
+                    <small>Sydney geo-targeting</small>
+                </div>
+            </div>
+
+            <div class="social-proof">
+                <div class="testimonial">"Finally, Google Ads that actually work! These templates helped us achieve 4:1 ROAS from day one instead of losing money for months."</div>
+                <div class="author">- Lisa Thompson, Penrith Fitness Studio</div>
+            </div>
+
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number">25</span>
+                    <span class="stat-label">Ad Templates</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Keywords</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">4.2x</span>
+                    <span class="stat-label">Avg ROAS</span>
+                </div>
+            </div>
+
+            <div class="magnet-cta">
+                <a href="contact.html?utm_source=lead_magnet&utm_campaign=ads_templates" class="btn-primary">
+                    Download Templates
+                </a>
+                <a href="#" class="btn-secondary" onclick="showPreview('ads-templates')">
+                    See Examples
+                </a>
+            </div>
+        </div>
+
+        <!-- Lead Magnet 4: Crisis-Proof Business Guide -->
+        <div class="lead-magnet">
+            <div class="magnet-header">
+                <div class="magnet-icon" style="background: linear-gradient(135deg, #EF4444, #DC2626);">🛡️</div>
+                <div>
+                    <h2 class="magnet-title">The Crisis-Proof Business Blueprint</h2>
+                    <div class="magnet-value">Value: $397 - FREE Today</div>
+                </div>
+            </div>
+
+            <p class="magnet-description">
+                How to recession-proof your Sydney business using digital marketing strategies that actually increase revenue during economic downturns. Based on real data from the 2020-2022 challenges.
+            </p>
+
+            <ul class="magnet-benefits">
+                <li><strong>Economic Downturn Strategies:</strong> What works when budgets are tight</li>
+                <li><strong>Customer Retention System:</strong> Keep existing customers buying more</li>
+                <li><strong>Low-Cost Acquisition:</strong> Get new customers for less</li>
+                <li><strong>Pivot Planning Guide:</strong> Adapt your business model quickly</li>
+                <li><strong>Cash Flow Optimization:</strong> Improve your financial position</li>
+                <li><strong>Digital-First Approach:</strong> Reduce physical overheads</li>
+            </ul>
+
+            <div class="magnet-preview">
+                <strong>Case Study Preview:</strong><br>
+                How a Bondi restaurant increased revenue 150% during lockdowns using these exact strategies.
+            </div>
+
+            <div class="social-proof">
+                <div class="testimonial">"This guide saved our business during the tough times. We're now stronger than ever and completely recession-proof."</div>
+                <div class="author">- David Chen, Sydney Consulting Firm</div>
+            </div>
+
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number">32</span>
+                    <span class="stat-label">Strategies</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">18</span>
+                    <span class="stat-label">Case Studies</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">150%</span>
+                    <span class="stat-label">Avg Growth</span>
+                </div>
+            </div>
+
+            <div class="magnet-cta">
+                <a href="contact.html?utm_source=lead_magnet&utm_campaign=crisis_proof" class="btn-primary">
+                    Get Blueprint FREE
+                </a>
+                <a href="#" class="btn-secondary" onclick="showPreview('crisis-proof')">
+                    Read Case Study
+                </a>
+            </div>
+        </div>
+
+        <!-- Lead Magnet 5: Social Proof Collection System -->
+        <div class="lead-magnet">
+            <div class="magnet-header">
+                <div class="magnet-icon" style="background: linear-gradient(135deg, #8B5CF6, #7C3AED);">⭐</div>
+                <div>
+                    <h2 class="magnet-title">5-Star Review Generation System</h2>
+                    <div class="magnet-value">Value: $297 - FREE Today</div>
+                </div>
+            </div>
+
+            <p class="magnet-description">
+                The complete system to generate 50+ genuine 5-star Google reviews in 90 days. Includes email templates, follow-up sequences, and response strategies that build trust and attract more customers.
+            </p>
+
+            <ul class="magnet-benefits">
+                <li><strong>Email Templates:</strong> 10 proven review request templates</li>
+                <li><strong>SMS Sequences:</strong> Mobile-optimized review campaigns</li>
+                <li><strong>Timing Guide:</strong> When to ask for maximum response</li>
+                <li><strong>Response Templates:</strong> Handle all types of reviews professionally</li>
+                <li><strong>Incentive System:</strong> Ethical ways to encourage reviews</li>
+                <li><strong>Review Funnel:</strong> Turn reviews into more business</li>
+            </ul>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <strong>📧 Email Templates</strong><br>
+                    <small>10 different styles</small>
+                </div>
+                <div class="feature-item">
+                    <strong>📱 SMS Templates</strong><br>
+                    <small>Mobile optimized</small>
+                </div>
+                <div class="feature-item">
+                    <strong>⏰ Timing Guide</strong><br>
+                    <small>When to ask</small>
+                </div>
+                <div class="feature-item">
+                    <strong>🎯 Follow-up System</strong><br>
+                    <small>Automated sequences</small>
+                </div>
+            </div>
+
+            <div class="social-proof">
+                <div class="testimonial">"Went from 8 reviews to 67 five-star reviews in 3 months using this system. Our phone hasn't stopped ringing!"</div>
+                <div class="author">- Amanda Walsh, Manly Beauty Salon</div>
+            </div>
+
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Reviews in 90 Days</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">35%</span>
+                    <span class="stat-label">Response Rate</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">4.8★</span>
+                    <span class="stat-label">Average Rating</span>
+                </div>
+            </div>
+
+            <div class="magnet-cta">
+                <a href="contact.html?utm_source=lead_magnet&utm_campaign=review_system" class="btn-primary">
+                    Get Review System
+                </a>
+                <a href="#" class="btn-secondary" onclick="showPreview('review-system')">
+                    Preview Templates
+                </a>
+            </div>
+        </div>
+
+        <!-- Lead Magnet 6: Competition Analysis Toolkit -->
+        <div class="lead-magnet">
+            <div class="magnet-header">
+                <div class="magnet-icon" style="background: linear-gradient(135deg, #06B6D4, #0891B2);">🎯</div>
+                <div>
+                    <h2 class="magnet-title">Sydney Competition Intelligence Report</h2>
+                    <div class="magnet-value">Value: $797 - FREE Today</div>
+                </div>
+            </div>
+
+            <p class="magnet-description">
+                Legally spy on your Sydney competitors and discover exactly what's working for them. Includes tools, templates, and strategies to stay ahead of the competition in your local market.
+            </p>
+
+            <ul class="magnet-benefits">
+                <li><strong>Competitor Analysis Templates:</strong> Systematic competitive research</li>
+                <li><strong>SEO Gap Analysis:</strong> Find keywords your competitors rank for</li>
+                <li><strong>Ad Spy Techniques:</strong> See their Google Ads and Facebook campaigns</li>
+                <li><strong>Pricing Intelligence:</strong> Know their pricing strategies</li>
+                <li><strong>Content Calendar Ideas:</strong> 100+ content ideas from competitor analysis</li>
+                <li><strong>Market Positioning Map:</strong> Find your unique advantage</li>
+            </ul>
+
+            <div class="social-proof">
+                <div class="testimonial">"This toolkit revealed that our main competitor was missing a huge keyword opportunity. We jumped on it and now dominate that search term!"</div>
+                <div class="author">- James Park, North Shore Real Estate</div>
+            </div>
+
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number">12</span>
+                    <span class="stat-label">Analysis Tools</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">25</span>
+                    <span class="stat-label">Templates</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">100+</span>
+                    <span class="stat-label">Content Ideas</span>
+                </div>
+            </div>
+
+            <div class="magnet-cta">
+                <a href="contact.html?utm_source=lead_magnet&utm_campaign=competition_intel" class="btn-primary">
+                    Get Intelligence Report
+                </a>
+                <a href="#" class="btn-secondary" onclick="showPreview('competition-intel')">
+                    See Sample Analysis
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Lead Magnet Tracking and Preview System
+        function showPreview(magnetType) {
+            // Track preview views
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'lead_magnet_preview', {
+                    'event_category': 'Lead_Generation',
+                    'event_label': magnetType
+                });
+            }
+
+            // Show preview modal or redirect to preview page
+            alert(`Preview functionality for ${magnetType} would open here. In production, this would show a modal with actual content preview.`);
+        }
+
+        // Track scroll depth for lead magnet engagement
+        let maxScrollPercentage = 0;
+
+        window.addEventListener('scroll', function() {
+            const scrollPercentage = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+
+            if (scrollPercentage > maxScrollPercentage) {
+                maxScrollPercentage = scrollPercentage;
+
+                // Track scroll milestones
+                if (maxScrollPercentage >= 25 && typeof gtag !== 'undefined') {
+                    gtag('event', 'scroll_depth_25', {
+                        'event_category': 'Lead_Magnet_Engagement'
+                    });
+                }
+
+                if (maxScrollPercentage >= 50 && typeof gtag !== 'undefined') {
+                    gtag('event', 'scroll_depth_50', {
+                        'event_category': 'Lead_Magnet_Engagement'
+                    });
+                }
+
+                if (maxScrollPercentage >= 75 && typeof gtag !== 'undefined') {
+                    gtag('event', 'scroll_depth_75', {
+                        'event_category': 'Lead_Magnet_Engagement'
+                    });
+                }
+            }
+        });
+
+        // Time on page tracking
+        let timeOnPage = 0;
+        setInterval(() => {
+            timeOnPage++;
+
+            // Track engagement milestones
+            if (timeOnPage === 30 && typeof gtag !== 'undefined') {
+                gtag('event', 'time_on_page_30s', {
+                    'event_category': 'Lead_Magnet_Engagement'
+                });
+            }
+
+            if (timeOnPage === 60 && typeof gtag !== 'undefined') {
+                gtag('event', 'time_on_page_1min', {
+                    'event_category': 'Lead_Magnet_Engagement'
+                });
+            }
+
+            if (timeOnPage === 120 && typeof gtag !== 'undefined') {
+                gtag('event', 'time_on_page_2min', {
+                    'event_category': 'Lead_Magnet_Engagement'
+                });
+            }
+        }, 1000);
+
+        // Track clicks on download buttons
+        document.querySelectorAll('.btn-primary').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const magnetType = this.href.includes('seo_checklist') ? 'seo_checklist' :
+                                 this.href.includes('audit_kit') ? 'audit_kit' :
+                                 this.href.includes('ads_templates') ? 'ads_templates' :
+                                 this.href.includes('crisis_proof') ? 'crisis_proof' :
+                                 this.href.includes('review_system') ? 'review_system' :
+                                 this.href.includes('competition_intel') ? 'competition_intel' : 'unknown';
+
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'lead_magnet_download', {
+                        'event_category': 'Lead_Generation',
+                        'event_label': magnetType,
+                        'value': 1
+                    });
+                }
+
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'Lead', {
+                        content_name: magnetType,
+                        content_category: 'lead_magnet'
+                    });
+                }
+            });
+        });
+
+        // A/B test different value propositions
+        const valuePropVariations = {
+            'seo_checklist': [
+                'Value: $497 - FREE Today',
+                'Worth $497 - Yours FREE',
+                'Normally $497 - FREE for Sydney Businesses',
+                'RRP $497 - Limited Time FREE'
+            ],
+            'audit_kit': [
+                'Value: $997 - FREE Today',
+                'Professional Audit Worth $997 - FREE',
+                'Save $997 - Get it FREE Today',
+                'Exclusive $997 Value - FREE Download'
+            ]
+        };
+
+        // Randomly assign variation on page load
+        Object.keys(valuePropVariations).forEach(magnetType => {
+            const variations = valuePropVariations[magnetType];
+            const selectedVariation = variations[Math.floor(Math.random() * variations.length)];
+
+            // Find and update the value display for this magnet
+            const elements = document.querySelectorAll('.magnet-value');
+            // This would need more specific targeting in production
+        });
+    </script>
+</body>
+</html>

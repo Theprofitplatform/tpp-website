@@ -1,0 +1,51 @@
+---
+export interface Props {
+  value: string;
+  label: string;
+  icon?: string;
+  color?: 'blue' | 'green' | 'purple' | 'orange' | 'red';
+  prefix?: string;
+  suffix?: string;
+  class?: string;
+}
+
+const {
+  value,
+  label,
+  icon,
+  color = 'blue',
+  prefix = '',
+  suffix = '',
+  class: additionalClass = ''
+} = Astro.props;
+
+const colorClasses = {
+  blue: 'text-blue-600 bg-blue-50 border-blue-200',
+  green: 'text-green-600 bg-green-50 border-green-200',
+  purple: 'text-purple-600 bg-purple-50 border-purple-200',
+  orange: 'text-orange-600 bg-orange-50 border-orange-200',
+  red: 'text-red-600 bg-red-50 border-red-200'
+};
+
+const iconColorClasses = {
+  blue: 'text-blue-500',
+  green: 'text-green-500',
+  purple: 'text-purple-500',
+  orange: 'text-orange-500',
+  red: 'text-red-500'
+};
+---
+
+<div class={`stat-card p-6 rounded-lg border-2 ${colorClasses[color]} text-center ${additionalClass}`}>
+  {icon && (
+    <div class={`inline-flex items-center justify-center w-12 h-12 mb-3 rounded-full bg-white ${iconColorClasses[color]}`}>
+      <i class={`${icon} text-xl`} aria-hidden="true"></i>
+    </div>
+  )}
+  <div class={`text-3xl font-bold mb-2 ${iconColorClasses[color]}`}>
+    {prefix}{value}{suffix}
+  </div>
+  <div class="text-gray-600 font-medium">
+    {label}
+  </div>
+</div>

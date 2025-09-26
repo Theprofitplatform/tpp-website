@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Index Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .pass { color: green; }
+        .fail { color: red; }
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: 2px solid #333;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Testing Index.html CSS</h1>
+
+    <div class="test-section">
+        <h2>Live Preview</h2>
+        <iframe src="http://127.0.0.1:8080/index.html"></iframe>
+    </div>
+
+    <div class="test-section">
+        <h2>CSS Loading Tests</h2>
+        <div id="css-tests"></div>
+    </div>
+
+    <script>
+        async function testCSS() {
+            const testsDiv = document.getElementById('css-tests');
+            const tests = [];
+
+            // Test if CSS files are accessible
+            const cssFiles = [
+                'css/critical.css',
+                'css/style.min.css',
+                'css/services-fix.css',
+                'css/index-nav-fix.css'
+            ];
+
+            for (const file of cssFiles) {
+                try {
+                    const response = await fetch(`http://127.0.0.1:8080/${file}`);
+                    const status = response.ok ? 'pass' : 'fail';
+                    tests.push({
+                        name: `${file} loads`,
+                        status: status,
+                        code: response.status
+                    });
+                } catch (error) {
+                    tests.push({
+                        name: `${file} loads`,
+                        status: 'fail',
+                        error: error.message
+                    });
+                }
+            }
+
+            // Test main page
+            try {
+                const response = await fetch('http://127.0.0.1:8080/index.html');
+                const html = await response.text();
+
+                tests.push({
+                    name: 'Index.html loads',
+                    status: response.ok ? 'pass' : 'fail',
+                    code: response.status
+                });
+
+                // Check for navigation
+                tests.push({
+                    name: 'Navigation present',
+                    status: html.includes('navbar') ? 'pass' : 'fail'
+                });
+
+                // Check for hero section
+                tests.push({
+                    name: 'Hero section present',
+                    status: html.includes('hero') ? 'pass' : 'fail'
+                });
+
+            } catch (error) {
+                tests.push({
+                    name: 'Index.html loads',
+                    status: 'fail',
+                    error: error.message
+                });
+            }
+
+            // Display results
+            let html = '<ul>';
+            tests.forEach(test => {
+                const statusClass = test.status === 'pass' ? 'pass' : 'fail';
+                const statusIcon = test.status === 'pass' ? '✓' : '✗';
+                html += `<li class="${statusClass}">${statusIcon} ${test.name} ${test.code ? `(${test.code})` : ''} ${test.error || ''}</li>`;
+            });
+            html += '</ul>';
+            testsDiv.innerHTML = html;
+        }
+
+        // Run tests on load
+        testCSS();
+    </script>
+</body>
+</html>

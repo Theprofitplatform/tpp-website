@@ -1,0 +1,1613 @@
+{
+  "generated": "2025-09-21T14:38:09.613Z",
+  "totalStyles": 844,
+  "uniqueStyles": 321,
+  "cssFile": "/home/abhi/projects/tpp/website/css/extracted-inline-styles.css",
+  "mappings": [
+    {
+      "originalStyle": "display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #4F46E5, #6366F1); padding: 0.75rem 1.5rem; border-radius: 50px; margin-bottom: 0.5rem; box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);",
+      "className": "tpp-bg-p-3ae25b",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: #ffffff;",
+      "className": "tpp-text-33e85a",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: #ffffff; font-weight: 600; font-size: 0.95rem; letter-spacing: 0.5px;",
+      "className": "tpp-text-fw-fs-fdc9d8",
+      "usage": 1
+    },
+    {
+      "originalStyle": "padding: 100px 0; background: #f8fafc;",
+      "className": "tpp-p-bg-14f1fa",
+      "usage": 3
+    },
+    {
+      "originalStyle": "padding: 100px 0;",
+      "className": "tpp-p-f933ea",
+      "usage": 4
+    },
+    {
+      "originalStyle": "display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center;",
+      "className": "tpp-7c5b97",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: #1f2937; margin-bottom: 1.5rem; font-size: 1.5rem;",
+      "className": "tpp-text-fs-923da4",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: #6b7280; line-height: 1.8; margin-bottom: 1.5rem;",
+      "className": "tpp-text-66d1b4",
+      "usage": 2
+    },
+    {
+      "originalStyle": "color: #6b7280; line-height: 1.8; margin: 0;",
+      "className": "tpp-text-m-39c4cc",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;",
+      "className": "tpp-e0a9ef",
+      "usage": 2
+    },
+    {
+      "originalStyle": "color: #1f2937; margin-bottom: 1rem;",
+      "className": "tpp-text-3ff553",
+      "usage": 6
+    },
+    {
+      "originalStyle": "color: #6b7280; line-height: 1.6;",
+      "className": "tpp-text-44b087",
+      "usage": 15
+    },
+    {
+      "originalStyle": "display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem;",
+      "className": "tpp-f24bbd",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: #1f2937; margin-bottom: 0.5rem;",
+      "className": "tpp-text-ab24ad",
+      "usage": 10
+    },
+    {
+      "originalStyle": "color: #0891b2; font-weight: 600; margin-bottom: 1rem;",
+      "className": "tpp-text-fw-f01cfe",
+      "usage": 4
+    },
+    {
+      "originalStyle": "margin-top: 4rem;",
+      "className": "tpp-e4a16c",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: #6b7280; margin: 0;",
+      "className": "tpp-text-m-6b929a",
+      "usage": 12
+    },
+    {
+      "originalStyle": "position: relative; z-index: 1;",
+      "className": "tpp-83d7ea",
+      "usage": 11
+    },
+    {
+      "originalStyle": "color: white; margin-bottom: 1rem;",
+      "className": "tpp-text-206407",
+      "usage": 3
+    },
+    {
+      "originalStyle": "color: rgba(255,255,255,0.9); font-size: 1.25rem; margin-bottom: 2rem;",
+      "className": "tpp-text-fs-50602f",
+      "usage": 3
+    },
+    {
+      "originalStyle": "display: flex; gap: 1rem; justify-content: center; align-items: center; flex-wrap: wrap;",
+      "className": "tpp-flex-6e3662",
+      "usage": 3
+    },
+    {
+      "originalStyle": "font-size: 1.1rem; padding: 1.25rem 2.5rem;",
+      "className": "tpp-fs-p-aa3739",
+      "usage": 3
+    },
+    {
+      "originalStyle": "color: white; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 0.5rem;",
+      "className": "tpp-text-fw-flex-4f0bcc",
+      "usage": 3
+    },
+    {
+      "originalStyle": "color: rgba(255,255,255,0.7); margin-top: 1.5rem; font-size: 0.9rem;",
+      "className": "tpp-text-fs-72ae9e",
+      "usage": 3
+    },
+    {
+      "originalStyle": "color: white; margin-top: 30px;",
+      "className": "tpp-text-4e25da",
+      "usage": 1
+    },
+    {
+      "originalStyle": "padding: 150px 0 80px; background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%); position: relative; overflow: hidden;",
+      "className": "tpp-p-bg-790df4",
+      "usage": 1
+    },
+    {
+      "originalStyle": "position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.1;",
+      "className": "tpp-390fb0",
+      "usage": 1
+    },
+    {
+      "originalStyle": "position: absolute; top: 20%; left: 10%; width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%); border-radius: 50%; animation: float 6s ease-in-out infinite;",
+      "className": "tpp-bg-e25425",
+      "usage": 1
+    },
+    {
+      "originalStyle": "position: absolute; top: 60%; right: 15%; width: 150px; height: 150px; background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%); border-radius: 50%; animation: float 4s ease-in-out infinite reverse;",
+      "className": "tpp-bg-84fd31",
+      "usage": 1
+    },
+    {
+      "originalStyle": "position: absolute; bottom: 20%; left: 20%; width: 100px; height: 100px; background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%); border-radius: 50%; animation: float 5s ease-in-out infinite;",
+      "className": "tpp-bg-a1c3ed",
+      "usage": 1
+    },
+    {
+      "originalStyle": "position: relative; z-index: 2;",
+      "className": "tpp-c962d7",
+      "usage": 1
+    },
+    {
+      "originalStyle": "text-align: center; max-width: 900px; margin: 0 auto;",
+      "className": "tpp-text-center-m-b3543c",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: inline-block; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; padding: 8px 20px; margin-bottom: 24px; font-size: 14px; font-weight: 600; color: white;",
+      "className": "tpp-bg-p-fs-fw-text-2ecc9a",
+      "usage": 1
+    },
+    {
+      "originalStyle": "margin-right: 8px;",
+      "className": "tpp-7f4ee4",
+      "usage": 9
+    },
+    {
+      "originalStyle": "color: #FFD700;",
+      "className": "tpp-text-8b9122",
+      "usage": 1
+    },
+    {
+      "originalStyle": "font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; margin-bottom: 24px; color: white; letter-spacing: -0.02em; text-shadow: 0 2px 4px rgba(0,0,0,0.1);",
+      "className": "tpp-fs-fw-text-ecbf6d",
+      "usage": 1
+    },
+    {
+      "originalStyle": "font-size: 1.3rem; line-height: 1.6; color: rgba(255,255,255,0.95); margin-bottom: 48px; max-width: 700px; margin-left: auto; margin-right: auto; font-weight: 400;",
+      "className": "tpp-fs-text-fw-c97e3a",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 40px;",
+      "className": "tpp-flex-8c78fd",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: inline-flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.15); backdrop-filter: blur(15px); color: white; padding: 18px 32px; border-radius: 14px; text-decoration: none; font-weight: 600; border: 2px solid rgba(255,255,255,0.3); transition: all 0.4s; position: relative; overflow: hidden;",
+      "className": "tpp-bg-text-p-fw-eac3a8",
+      "usage": 2
+    },
+    {
+      "originalStyle": "font-size: 18px;",
+      "className": "tpp-fs-768e1f",
+      "usage": 4
+    },
+    {
+      "originalStyle": "display: inline-flex; align-items: center; gap: 12px; background: linear-gradient(135deg, #25D366, #128C7E); color: white; padding: 18px 32px; border-radius: 14px; text-decoration: none; font-weight: 600; transition: all 0.4s; box-shadow: 0 8px 25px rgba(37,211,102,0.4); position: relative; overflow: hidden;",
+      "className": "tpp-bg-text-p-fw-aa012d",
+      "usage": 1
+    },
+    {
+      "originalStyle": "font-size: 20px;",
+      "className": "tpp-fs-af18ea",
+      "usage": 2
+    },
+    {
+      "originalStyle": "display: flex; justify-content: center; align-items: center; gap: 32px; flex-wrap: wrap; padding: 24px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 16px; border: 1px solid rgba(255,255,255,0.2);",
+      "className": "tpp-flex-p-bg-d83df5",
+      "usage": 1
+    },
+    {
+      "originalStyle": "text-align: center;",
+      "className": "tpp-text-center-cdd8ca",
+      "usage": 14
+    },
+    {
+      "originalStyle": "font-size: 1.8rem; font-weight: 800; color: #FFD700; margin-bottom: 4px;",
+      "className": "tpp-fs-fw-text-ed3c99",
+      "usage": 4
+    },
+    {
+      "originalStyle": "font-size: 14px; color: rgba(255,255,255,0.9);",
+      "className": "tpp-fs-text-46198d",
+      "usage": 4
+    },
+    {
+      "originalStyle": "width: 1px; height: 30px; background: rgba(255,255,255,0.3);",
+      "className": "tpp-bg-17438f",
+      "usage": 3
+    },
+    {
+      "originalStyle": "padding: 80px 0;",
+      "className": "tpp-p-2b3963",
+      "usage": 2
+    },
+    {
+      "originalStyle": "font-size: 2rem; margin-bottom: 8px; color: var(--pp-gray-800);",
+      "className": "tpp-fs-text-999952",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: var(--pp-gray-600); margin-bottom: 32px; line-height: 1.6;",
+      "className": "tpp-text-1407d8",
+      "usage": 1
+    },
+    {
+      "originalStyle": "background: linear-gradient(135deg, #f8faff, #e7f3ff); border: 2px solid #e3f2fd; border-radius: 16px; padding: 24px; margin-bottom: 32px;",
+      "className": "tpp-bg-p-0bf613",
+      "usage": 1
+    },
+    {
+      "originalStyle": "font-size: 1.2rem; font-weight: 600; color: var(--pp-gray-800); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;",
+      "className": "tpp-fs-fw-text-flex-62daab",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: var(--pp-primary);",
+      "className": "tpp-text-3cadcd",
+      "usage": 5
+    },
+    {
+      "originalStyle": "display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;",
+      "className": "tpp-d8974d",
+      "usage": 1
+    },
+    {
+      "originalStyle": "background: white; border: 2px solid #e3f2fd; border-radius: 12px; padding: 20px; cursor: pointer; transition: all 0.3s; text-align: center;",
+      "className": "tpp-bg-p-text-center-fab5fa",
+      "usage": 4
+    },
+    {
+      "originalStyle": "font-size: 2rem; color: var(--pp-primary); margin-bottom: 12px;",
+      "className": "tpp-fs-text-338ea5",
+      "usage": 4
+    },
+    {
+      "originalStyle": "font-size: 16px; font-weight: 600; margin-bottom: 8px; color: var(--pp-gray-800);",
+      "className": "tpp-fs-fw-text-9748ab",
+      "usage": 4
+    },
+    {
+      "originalStyle": "font-size: 14px; color: var(--pp-gray-600); margin: 0; line-height: 1.4;",
+      "className": "tpp-fs-text-m-8b24c7",
+      "usage": 4
+    },
+    {
+      "originalStyle": "display: none;",
+      "className": "tpp-224b51",
+      "usage": 1
+    },
+    {
+      "originalStyle": "font-size: 14px; color: var(--pp-gray-500); margin-top: 8px;",
+      "className": "tpp-fs-text-1e8d46",
+      "usage": 1
+    },
+    {
+      "originalStyle": "background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border: 2px solid #bae6fd; border-radius: 16px; padding: 24px; margin: 32px 0;",
+      "className": "tpp-bg-p-m-9d4ba1",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: flex; align-items: center; gap: 16px; margin-bottom: 16px;",
+      "className": "tpp-flex-474f22",
+      "usage": 1
+    },
+    {
+      "originalStyle": "width: 48px; height: 48px; background: linear-gradient(135deg, var(--pp-primary), var(--pp-primary-dark)); border-radius: 12px; display: flex; align-items: center; justify-content: center;",
+      "className": "tpp-bg-flex-342e79",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: white; font-size: 20px;",
+      "className": "tpp-text-fs-bab6b6",
+      "usage": 1
+    },
+    {
+      "originalStyle": "font-size: 18px; font-weight: 600; color: var(--pp-gray-800); margin-bottom: 4px;",
+      "className": "tpp-fs-fw-text-ac2785",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: var(--pp-gray-600); margin: 0; font-size: 15px;",
+      "className": "tpp-text-m-fs-3e390c",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: flex; gap: 12px; flex-wrap: wrap;",
+      "className": "tpp-flex-e75308",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: inline-flex; align-items: center; gap: 8px; background: var(--pp-primary); color: white; padding: 12px 24px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 15px; transition: all 0.3s;",
+      "className": "tpp-bg-text-p-fw-fs-f2ea18",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: inline-flex; align-items: center; gap: 8px; color: var(--pp-gray-600); font-size: 14px; padding: 12px 0;",
+      "className": "tpp-text-fs-p-6e3027",
+      "usage": 1
+    },
+    {
+      "originalStyle": "background: linear-gradient(135deg, #6366F1, #8B5CF6, #EC4899); position: relative; overflow: hidden;",
+      "className": "tpp-bg-b13884",
+      "usage": 1
+    },
+    {
+      "originalStyle": "position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: left 0.6s;",
+      "className": "tpp-bg-7ec5b5",
+      "usage": 2
+    },
+    {
+      "originalStyle": "background: linear-gradient(135deg, #f0fdf4, #dcfce7); border: 2px solid #bbf7d0; border-radius: 12px; padding: 20px; margin-top: 24px; text-align: center;",
+      "className": "tpp-bg-p-text-center-4a579b",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 12px;",
+      "className": "tpp-flex-f3cd83",
+      "usage": 1
+    },
+    {
+      "originalStyle": "width: 40px; height: 40px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 50%; display: flex; align-items: center; justify-content: center;",
+      "className": "tpp-bg-flex-f68a22",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: white; font-size: 16px;",
+      "className": "tpp-text-fs-2effc2",
+      "usage": 1
+    },
+    {
+      "originalStyle": "font-size: 18px; font-weight: 600; color: var(--pp-gray-800); margin: 0;",
+      "className": "tpp-fs-fw-text-m-12f21e",
+      "usage": 1
+    },
+    {
+      "originalStyle": "font-size: 15px; color: var(--pp-gray-700); margin-bottom: 16px; line-height: 1.5;",
+      "className": "tpp-fs-text-b1f61b",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; font-size: 14px; color: var(--pp-gray-600);",
+      "className": "tpp-flex-fs-text-0fe062",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: flex; align-items: center; gap: 6px;",
+      "className": "tpp-flex-650e12",
+      "usage": 3
+    },
+    {
+      "originalStyle": "color: #10b981;",
+      "className": "tpp-text-20bb59",
+      "usage": 3
+    },
+    {
+      "originalStyle": "font-size: 1.5rem; margin-bottom: 32px; color: var(--pp-gray-800);",
+      "className": "tpp-fs-text-31a526",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: var(--pp-primary); margin-right: 8px;",
+      "className": "tpp-text-782553",
+      "usage": 1
+    },
+    {
+      "originalStyle": "font-size: 18px; font-weight: 600; margin-bottom: 4px; color: var(--pp-gray-800);",
+      "className": "tpp-fs-fw-text-7bd803",
+      "usage": 3
+    },
+    {
+      "originalStyle": "color: var(--pp-primary); text-decoration: none; font-weight: 600; font-size: 18px;",
+      "className": "tpp-text-fw-fs-63992b",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: var(--pp-gray-600); font-size: 14px; margin: 4px 0 0 0;",
+      "className": "tpp-text-fs-m-bd2963",
+      "usage": 2
+    },
+    {
+      "originalStyle": "color: var(--pp-primary); text-decoration: none;",
+      "className": "tpp-text-290ed3",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: var(--pp-gray-600); line-height: 1.4; margin: 0;",
+      "className": "tpp-text-m-c715e4",
+      "usage": 1
+    },
+    {
+      "originalStyle": "font-size: 14px;",
+      "className": "tpp-fs-267f6d",
+      "usage": 1
+    },
+    {
+      "originalStyle": "font-size: 18px; font-weight: 600; margin-bottom: 12px; color: var(--pp-gray-800);",
+      "className": "tpp-fs-fw-text-8470b4",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: var(--pp-gray-500); font-size: 14px; margin: 12px 0 0 0;",
+      "className": "tpp-text-fs-m-b7714c",
+      "usage": 1
+    },
+    {
+      "originalStyle": "position: relative;",
+      "className": "tpp-d85c4e",
+      "usage": 1
+    },
+    {
+      "originalStyle": "position: absolute; top: 16px; left: 16px; z-index: 10; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-radius: 12px; padding: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); max-width: 280px;",
+      "className": "tpp-bg-p-3da59e",
+      "usage": 1
+    },
+    {
+      "originalStyle": "font-size: 16px; font-weight: 600; color: var(--pp-gray-800); margin-bottom: 8px; display: flex; align-items: center; gap: 8px;",
+      "className": "tpp-fs-fw-text-flex-4df1f8",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 13px;",
+      "className": "tpp-fs-e22775",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: var(--pp-gray-700); font-weight: 500;",
+      "className": "tpp-text-fw-95bf9a",
+      "usage": 6
+    },
+    {
+      "originalStyle": "margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--pp-gray-200);",
+      "className": "tpp-df3807",
+      "usage": 1
+    },
+    {
+      "originalStyle": "font-size: 12px; color: var(--pp-gray-600;",
+      "className": "tpp-fs-text-62b23c",
+      "usage": 1
+    },
+    {
+      "originalStyle": "width: 100%; height: 350px; border: none; border-radius: 16px;",
+      "className": "tpp-4c424f",
+      "usage": 1
+    },
+    {
+      "originalStyle": "position: absolute; bottom: 16px; right: 16px; z-index: 10;",
+      "className": "tpp-525464",
+      "usage": 1
+    },
+    {
+      "originalStyle": "background: var(--pp-primary); color: white; border: none; padding: 12px 20px; border-radius: 10px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: all 0.3s;",
+      "className": "tpp-bg-text-p-fw-11c662",
+      "usage": 1
+    },
+    {
+      "originalStyle": "padding: 80px 0; background: var(--pp-gray-50);",
+      "className": "tpp-p-bg-525870",
+      "usage": 1
+    },
+    {
+      "originalStyle": "text-align: center; margin-bottom: 60px;",
+      "className": "tpp-text-center-096de2",
+      "usage": 4
+    },
+    {
+      "originalStyle": "font-size: 2.5rem; font-weight: 700; margin-bottom: 16px; color: var(--pp-gray-800);",
+      "className": "tpp-fs-fw-text-26134c",
+      "usage": 3
+    },
+    {
+      "originalStyle": "font-size: 1.125rem; color: var(--pp-gray-600); max-width: 600px; margin: 0 auto;",
+      "className": "tpp-fs-text-m-b8c746",
+      "usage": 3
+    },
+    {
+      "originalStyle": "max-width: 800px; margin: 0 auto;",
+      "className": "tpp-m-eb46d9",
+      "usage": 3
+    },
+    {
+      "originalStyle": "transition: var(--pp-transition);",
+      "className": "tpp-205bbb",
+      "usage": 6
+    },
+    {
+      "originalStyle": "text-align: center; margin-top: 60px; padding: 40px; background: white; border-radius: 20px; box-shadow: var(--pp-shadow);",
+      "className": "tpp-text-center-p-bg-3c2e57",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap;",
+      "className": "tpp-flex-4df149",
+      "usage": 1
+    },
+    {
+      "originalStyle": "font-size: 2.5rem; font-weight: 800; color: var(--pp-primary); margin-bottom: 4px;",
+      "className": "tpp-fs-fw-text-2778d3",
+      "usage": 4
+    },
+    {
+      "originalStyle": "color: var(--pp-gray-600); font-size: 14px;",
+      "className": "tpp-text-fs-d7a6fd",
+      "usage": 4
+    },
+    {
+      "originalStyle": "width: 1px; height: 40px; background: var(--pp-gray-200);",
+      "className": "tpp-bg-4b5d35",
+      "usage": 3
+    },
+    {
+      "originalStyle": "display: flex; align-items: center; gap: 12px;",
+      "className": "tpp-flex-1c20bb",
+      "usage": 1
+    },
+    {
+      "originalStyle": "font-size: 16px; margin-bottom: 4px;",
+      "className": "tpp-fs-2f6488",
+      "usage": 1
+    },
+    {
+      "originalStyle": "font-size: 14px; opacity: 0.9;",
+      "className": "tpp-fs-84a7a5",
+      "usage": 1
+    },
+    {
+      "originalStyle": "margin-top: 20px; font-size: 0.95rem;",
+      "className": "tpp-fs-3c7297",
+      "usage": 1
+    },
+    {
+      "originalStyle": "width: 100%;",
+      "className": "tpp-199b6f",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display:none",
+      "className": "tpp-cb4589",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); padding: 0.75rem 1.5rem; border-radius: 50px; margin-bottom: 0.5rem; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);",
+      "className": "tpp-bg-p-cf9e49",
+      "usage": 3
+    },
+    {
+      "originalStyle": "color: #ffffff; text-shadow: 0 2px 4px rgba(0,0,0,0.1);",
+      "className": "tpp-text-a7e5f4",
+      "usage": 3
+    },
+    {
+      "originalStyle": "color: #ffffff; font-weight: 600; font-size: 0.95rem; letter-spacing: 0.5px; text-shadow: 0 2px 4px rgba(0,0,0,0.1);",
+      "className": "tpp-text-fw-fs-36c194",
+      "usage": 3
+    },
+    {
+      "originalStyle": "padding: 100px 0; background: #f8f9fa;",
+      "className": "tpp-p-bg-a0cf2d",
+      "usage": 1
+    },
+    {
+      "originalStyle": "margin-bottom: 60px;",
+      "className": "tpp-68378f",
+      "usage": 7
+    },
+    {
+      "originalStyle": "color: #1f2937; font-size: 2.5rem; font-weight: 800; margin-bottom: 20px;",
+      "className": "tpp-text-fs-fw-6faae7",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: #4b5563; font-size: 1.2rem; max-width: 700px; margin: 0 auto;",
+      "className": "tpp-text-fs-m-71e7ac",
+      "usage": 1
+    },
+    {
+      "originalStyle": "text-align: left; margin-top: 1rem; color: #4b5563;",
+      "className": "tpp-text-left-text-fe34e0",
+      "usage": 4
+    },
+    {
+      "originalStyle": "padding: 100px 0; background: #f9fafb;",
+      "className": "tpp-p-bg-54930c",
+      "usage": 3
+    },
+    {
+      "originalStyle": "margin-bottom: 0.5rem; color: #1f2937;",
+      "className": "tpp-text-87e2fd",
+      "usage": 6
+    },
+    {
+      "originalStyle": "padding: 100px 0; background: linear-gradient(135deg, #1f2937 0%, #111827 100%); position: relative; overflow: hidden;",
+      "className": "tpp-p-bg-c60f14",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: inline-block; background: linear-gradient(135deg, #dc2626, #fbbf24); color: white; padding: 8px 20px; border-radius: 50px; font-size: 0.9rem; font-weight: 600; margin-bottom: 20px;",
+      "className": "tpp-bg-text-p-fs-fw-0d00d1",
+      "usage": 1
+    },
+    {
+      "originalStyle": "font-size: 2.5rem; font-weight: 800; margin-bottom: 20px; color: white;",
+      "className": "tpp-fs-fw-text-9634aa",
+      "usage": 1
+    },
+    {
+      "originalStyle": "font-size: 1.25rem; color: #9ca3af; max-width: 600px; margin: 0 auto;",
+      "className": "tpp-fs-text-m-c447a4",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto;",
+      "className": "tpp-m-817ad9",
+      "usage": 1
+    },
+    {
+      "originalStyle": "background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 30px; position: relative; overflow: hidden;",
+      "className": "tpp-bg-p-33b771",
+      "usage": 6
+    },
+    {
+      "originalStyle": "position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: linear-gradient(135deg, #dc2626, #b91c1c); opacity: 0.1; border-radius: 50%;",
+      "className": "tpp-bg-c909aa",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: #9ca3af; font-size: 0.9rem; margin-bottom: 10px;",
+      "className": "tpp-text-fs-394e5d",
+      "usage": 6
+    },
+    {
+      "originalStyle": "color: white; font-size: 2.5rem; font-weight: 800; margin-bottom: 10px;",
+      "className": "tpp-text-fs-fw-61ba03",
+      "usage": 6
+    },
+    {
+      "originalStyle": "display: flex; align-items: center; gap: 5px;",
+      "className": "tpp-flex-37e43d",
+      "usage": 6
+    },
+    {
+      "originalStyle": "color: #16a34a; font-size: 0.9rem;",
+      "className": "tpp-text-fs-7f9c17",
+      "usage": 6
+    },
+    {
+      "originalStyle": "color: #9ca3af; font-size: 0.85rem;",
+      "className": "tpp-text-fs-79c932",
+      "usage": 6
+    },
+    {
+      "originalStyle": "position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: linear-gradient(135deg, #2c86f9, #1e6ee8); opacity: 0.1; border-radius: 50%;",
+      "className": "tpp-bg-48c448",
+      "usage": 1
+    },
+    {
+      "originalStyle": "position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: linear-gradient(135deg, #fbbf24, #f59e0b); opacity: 0.1; border-radius: 50%;",
+      "className": "tpp-bg-c4d151",
+      "usage": 1
+    },
+    {
+      "originalStyle": "position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: linear-gradient(135deg, #16a34a, #15803d); opacity: 0.1; border-radius: 50%;",
+      "className": "tpp-bg-871b18",
+      "usage": 1
+    },
+    {
+      "originalStyle": "position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: linear-gradient(135deg, #8b5cf6, #7c3aed); opacity: 0.1; border-radius: 50%;",
+      "className": "tpp-bg-c94387",
+      "usage": 1
+    },
+    {
+      "originalStyle": "position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: linear-gradient(135deg, #ec4899, #db2777); opacity: 0.1; border-radius: 50%;",
+      "className": "tpp-bg-96e45d",
+      "usage": 1
+    },
+    {
+      "originalStyle": "margin-top: 60px; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 40px;",
+      "className": "tpp-bg-p-e9ee7c",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: white; font-size: 1.5rem; font-weight: 700; margin-bottom: 30px;",
+      "className": "tpp-text-fs-fw-c42204",
+      "usage": 1
+    },
+    {
+      "originalStyle": "height: 300px; background: rgba(255, 255, 255, 0.02); border-radius: 12px; display: flex; align-items: flex-end; padding: 20px; gap: 15px;",
+      "className": "tpp-bg-flex-p-87d83c",
+      "usage": 1
+    },
+    {
+      "originalStyle": "flex: 1; background: linear-gradient(to top, #dc2626, #fbbf24); height: 60%; border-radius: 8px 8px 0 0; position: relative;",
+      "className": "tpp-bg-0ddcc7",
+      "usage": 1
+    },
+    {
+      "originalStyle": "position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); color: #9ca3af; font-size: 0.8rem;",
+      "className": "tpp-text-fs-3f448a",
+      "usage": 6
+    },
+    {
+      "originalStyle": "flex: 1; background: linear-gradient(to top, #dc2626, #fbbf24); height: 70%; border-radius: 8px 8px 0 0; position: relative;",
+      "className": "tpp-bg-cb30d0",
+      "usage": 1
+    },
+    {
+      "originalStyle": "flex: 1; background: linear-gradient(to top, #dc2626, #fbbf24); height: 85%; border-radius: 8px 8px 0 0; position: relative;",
+      "className": "tpp-bg-3a1ca1",
+      "usage": 1
+    },
+    {
+      "originalStyle": "flex: 1; background: linear-gradient(to top, #dc2626, #fbbf24); height: 75%; border-radius: 8px 8px 0 0; position: relative;",
+      "className": "tpp-bg-e3bc57",
+      "usage": 1
+    },
+    {
+      "originalStyle": "flex: 1; background: linear-gradient(to top, #dc2626, #fbbf24); height: 90%; border-radius: 8px 8px 0 0; position: relative;",
+      "className": "tpp-bg-02a0f1",
+      "usage": 1
+    },
+    {
+      "originalStyle": "flex: 1; background: linear-gradient(to top, #dc2626, #fbbf24); height: 95%; border-radius: 8px 8px 0 0; position: relative;",
+      "className": "tpp-bg-a253be",
+      "usage": 1
+    },
+    {
+      "originalStyle": "text-align: center; margin-top: 40px;",
+      "className": "tpp-text-center-09c03d",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: inline-flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.1); padding: 12px 25px; border-radius: 50px;",
+      "className": "tpp-bg-p-cf1671",
+      "usage": 1
+    },
+    {
+      "originalStyle": "width: 8px; height: 8px; background: #16a34a; border-radius: 50%; animation: pulse 2s infinite;",
+      "className": "tpp-bg-d2ed3c",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: white; font-size: 0.9rem;",
+      "className": "tpp-text-fs-541dcc",
+      "usage": 1
+    },
+    {
+      "originalStyle": "margin: 2rem 0 1rem; color: #1f2937;",
+      "className": "tpp-m-text-340560",
+      "usage": 5
+    },
+    {
+      "originalStyle": "font-size: 2.5rem; font-weight: 800; margin-bottom: 20px; color: #1f2937;",
+      "className": "tpp-fs-fw-text-df8c19",
+      "usage": 6
+    },
+    {
+      "originalStyle": "font-size: 1.25rem; color: #6b7280; max-width: 600px; margin: 0 auto;",
+      "className": "tpp-fs-text-m-1f3aa1",
+      "usage": 5
+    },
+    {
+      "originalStyle": "display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; margin-bottom: 60px;",
+      "className": "tpp-1cac45",
+      "usage": 1
+    },
+    {
+      "originalStyle": "background: white; border-radius: 20px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s ease;",
+      "className": "tpp-bg-p-02f0b0",
+      "usage": 3
+    },
+    {
+      "originalStyle": "display: flex; align-items: center; margin-bottom: 20px;",
+      "className": "tpp-flex-cf49a4",
+      "usage": 3
+    },
+    {
+      "originalStyle": "width: 60px; height: 60px; background: linear-gradient(135deg, #2c86f9, #1e6ee8); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-right: 20px;",
+      "className": "tpp-bg-flex-2ff214",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: white; font-size: 24px;",
+      "className": "tpp-text-fs-b505c3",
+      "usage": 3
+    },
+    {
+      "originalStyle": "font-size: 1.5rem; font-weight: 700; color: #1f2937; margin-bottom: 5px;",
+      "className": "tpp-fs-fw-text-eef859",
+      "usage": 3
+    },
+    {
+      "originalStyle": "color: #6b7280; font-size: 1rem;",
+      "className": "tpp-text-fs-187904",
+      "usage": 6
+    },
+    {
+      "originalStyle": "margin-bottom: 30px;",
+      "className": "tpp-95500a",
+      "usage": 6
+    },
+    {
+      "originalStyle": "color: #4b5563; line-height: 1.6; margin-bottom: 20px;",
+      "className": "tpp-text-7ae202",
+      "usage": 3
+    },
+    {
+      "originalStyle": "display: grid; grid-template-columns: 1fr 1fr; gap: 20px;",
+      "className": "tpp-f91ad4",
+      "usage": 3
+    },
+    {
+      "originalStyle": "text-align: center; padding: 20px; background: #f0f9ff; border-radius: 12px;",
+      "className": "tpp-text-center-p-bg-a749c9",
+      "usage": 3
+    },
+    {
+      "originalStyle": "font-size: 2rem; font-weight: 800; color: #2c86f9;",
+      "className": "tpp-fs-fw-text-a57f24",
+      "usage": 3
+    },
+    {
+      "originalStyle": "color: #6b7280; font-size: 0.9rem;",
+      "className": "tpp-text-fs-7be6fb",
+      "usage": 12
+    },
+    {
+      "originalStyle": "text-align: center; padding: 20px; background: #f0fdf4; border-radius: 12px;",
+      "className": "tpp-text-center-p-bg-6cef75",
+      "usage": 3
+    },
+    {
+      "originalStyle": "font-size: 2rem; font-weight: 800; color: #16a34a;",
+      "className": "tpp-fs-fw-text-d11b13",
+      "usage": 3
+    },
+    {
+      "originalStyle": "border-top: 1px solid #e5e7eb; padding-top: 20px;",
+      "className": "tpp-5027ed",
+      "usage": 3
+    },
+    {
+      "originalStyle": "color: #2c86f9; font-weight: 600; font-size: 0.95rem;",
+      "className": "tpp-text-fw-fs-07cc49",
+      "usage": 3
+    },
+    {
+      "originalStyle": "width: 60px; height: 60px; background: linear-gradient(135deg, #16a34a, #15803d); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-right: 20px;",
+      "className": "tpp-bg-flex-406fd7",
+      "usage": 1
+    },
+    {
+      "originalStyle": "width: 60px; height: 60px; background: linear-gradient(135deg, #dc2626, #b91c1c); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-right: 20px;",
+      "className": "tpp-bg-flex-7e3517",
+      "usage": 1
+    },
+    {
+      "originalStyle": "font-size: 1.1rem; color: #4b5563; margin-bottom: 30px;",
+      "className": "tpp-fs-text-13128e",
+      "usage": 3
+    },
+    {
+      "originalStyle": "display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #2c86f9, #1e6ee8); color: white; padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: transform 0.3s ease;",
+      "className": "tpp-bg-text-p-fw-fs-56e401",
+      "usage": 2
+    },
+    {
+      "originalStyle": "padding: 100px 0; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);",
+      "className": "tpp-p-bg-7f7fe1",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: inline-block; background: linear-gradient(135deg, #dc2626, #b91c1c); color: white; padding: 8px 20px; border-radius: 50px; font-size: 0.9rem; font-weight: 600; margin-bottom: 20px;",
+      "className": "tpp-bg-text-p-fs-fw-c7418b",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;",
+      "className": "tpp-m-9ded9b",
+      "usage": 1
+    },
+    {
+      "originalStyle": "background: white; border-radius: 20px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative; transition: transform 0.3s ease, box-shadow 0.3s ease;",
+      "className": "tpp-bg-p-11838e",
+      "usage": 2
+    },
+    {
+      "originalStyle": "font-size: 1.8rem; font-weight: 700; color: #1f2937; margin-bottom: 10px;",
+      "className": "tpp-fs-fw-text-5088eb",
+      "usage": 3
+    },
+    {
+      "originalStyle": "color: #6b7280; margin-bottom: 20px;",
+      "className": "tpp-text-a77100",
+      "usage": 6
+    },
+    {
+      "originalStyle": "display: flex; align-items: baseline; margin-bottom: 20px;",
+      "className": "tpp-flex-6ec236",
+      "usage": 3
+    },
+    {
+      "originalStyle": "font-size: 2.5rem; font-weight: 800; color: #dc2626;",
+      "className": "tpp-fs-fw-text-c1fea5",
+      "usage": 3
+    },
+    {
+      "originalStyle": "color: #6b7280; margin-left: 10px;",
+      "className": "tpp-text-8ad072",
+      "usage": 2
+    },
+    {
+      "originalStyle": "list-style: none; padding: 0; margin-bottom: 30px;",
+      "className": "tpp-p-9aad0d",
+      "usage": 3
+    },
+    {
+      "originalStyle": "display: flex; align-items: center; margin-bottom: 15px;",
+      "className": "tpp-flex-130579",
+      "usage": 20
+    },
+    {
+      "originalStyle": "color: #16a34a; margin-right: 12px; font-size: 1.2rem;",
+      "className": "tpp-text-fs-92ae45",
+      "usage": 20
+    },
+    {
+      "originalStyle": "color: #4b5563;",
+      "className": "tpp-text-8b9e7e",
+      "usage": 42
+    },
+    {
+      "originalStyle": "display: block; text-align: center; background: linear-gradient(135deg, #dc2626, #b91c1c); color: white; padding: 16px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: transform 0.3s ease;",
+      "className": "tpp-text-center-bg-text-p-fw-fs-007aff",
+      "usage": 2
+    },
+    {
+      "originalStyle": "background: white; border-radius: 20px; padding: 40px; box-shadow: 0 20px 40px rgba(220, 38, 38, 0.15); position: relative; border: 3px solid #dc2626; transform: scale(1.05);",
+      "className": "tpp-bg-p-ca763e",
+      "usage": 1
+    },
+    {
+      "originalStyle": "position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #dc2626, #b91c1c); color: white; padding: 8px 25px; border-radius: 50px; font-size: 0.85rem; font-weight: 600;",
+      "className": "tpp-bg-text-p-fs-fw-6f8e72",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: block; text-align: center; background: linear-gradient(135deg, #1f2937, #111827); color: white; padding: 16px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: transform 0.3s ease;",
+      "className": "tpp-text-center-bg-text-p-fw-fs-2fb2ac",
+      "usage": 1
+    },
+    {
+      "originalStyle": "margin-top: 60px;",
+      "className": "tpp-408788",
+      "usage": 3
+    },
+    {
+      "originalStyle": "color: #6b7280; font-size: 1.1rem; margin-bottom: 20px;",
+      "className": "tpp-text-fs-99de70",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: #16a34a; margin-right: 8px;",
+      "className": "tpp-text-0e3f73",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: #6b7280; font-size: 0.95rem;",
+      "className": "tpp-text-fs-9296ea",
+      "usage": 1
+    },
+    {
+      "originalStyle": "padding: 100px 0; background: white;",
+      "className": "tpp-p-bg-6b25a1",
+      "usage": 2
+    },
+    {
+      "originalStyle": "margin-bottom: 20px; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden;",
+      "className": "tpp-e5decc",
+      "usage": 6
+    },
+    {
+      "originalStyle": "width: 100%; text-align: left; padding: 25px; background: #f9fafb; border: none; font-size: 1.1rem; font-weight: 600; color: #1f2937; cursor: pointer; display: flex; justify-content: space-between; align-items: center;",
+      "className": "tpp-text-left-p-bg-fs-fw-text-flex-1b4cef",
+      "usage": 6
+    },
+    {
+      "originalStyle": "font-size: 1.2rem; transition: transform 0.3s ease;",
+      "className": "tpp-fs-a791cf",
+      "usage": 6
+    },
+    {
+      "originalStyle": "padding: 0 25px; max-height: 0; overflow: hidden; transition: all 0.3s ease; background: white;",
+      "className": "tpp-p-bg-14548b",
+      "usage": 6
+    },
+    {
+      "originalStyle": "padding: 20px 0;",
+      "className": "tpp-p-689163",
+      "usage": 6
+    },
+    {
+      "originalStyle": "color: #4b5563; line-height: 1.6; margin: 0;",
+      "className": "tpp-text-m-423610",
+      "usage": 6
+    },
+    {
+      "originalStyle": "margin-top: 50px;",
+      "className": "tpp-51625c",
+      "usage": 1
+    },
+    {
+      "originalStyle": "font-size: 1.1rem; color: #4b5563; margin-bottom: 20px;",
+      "className": "tpp-fs-text-0c48ed",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #dc2626, #b91c1c); color: white; padding: 14px 28px; border-radius: 12px; text-decoration: none; font-weight: 600; transition: transform 0.3s ease;",
+      "className": "tpp-bg-text-p-fw-742431",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: #64748b; font-size: 1.2rem;",
+      "className": "tpp-text-fs-d65f9c",
+      "usage": 1
+    },
+    {
+      "originalStyle": "background: linear-gradient(135deg, #3b82f6, #1e40af); box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4); position: relative; overflow: visible;",
+      "className": "tpp-bg-6e9f6c",
+      "usage": 2
+    },
+    {
+      "originalStyle": "transform: rotate(-45deg);",
+      "className": "tpp-eb723e",
+      "usage": 3
+    },
+    {
+      "originalStyle": "stop-color:#ffffff;stop-opacity:1",
+      "className": "tpp-fd96c3",
+      "usage": 4
+    },
+    {
+      "originalStyle": "stop-color:#dbeafe;stop-opacity:1",
+      "className": "tpp-2a9fb7",
+      "usage": 2
+    },
+    {
+      "originalStyle": "background: linear-gradient(135deg, #6366f1, #4f46e5); box-shadow: 0 15px 40px rgba(99, 102, 241, 0.5); position: relative; overflow: visible;",
+      "className": "tpp-bg-ceabef",
+      "usage": 2
+    },
+    {
+      "originalStyle": "stop-color:#fbbf24;stop-opacity:1",
+      "className": "tpp-983ef6",
+      "usage": 2
+    },
+    {
+      "originalStyle": "stop-color:#f59e0b;stop-opacity:1",
+      "className": "tpp-a47b6b",
+      "usage": 2
+    },
+    {
+      "originalStyle": "stop-color:#dc2626;stop-opacity:1",
+      "className": "tpp-ae0ec3",
+      "usage": 2
+    },
+    {
+      "originalStyle": "background: linear-gradient(135deg, #0ea5e9, #0284c7); box-shadow: 0 15px 40px rgba(14, 165, 233, 0.4); position: relative; overflow: visible;",
+      "className": "tpp-bg-d6c869",
+      "usage": 2
+    },
+    {
+      "originalStyle": "stop-color:#bfdbfe;stop-opacity:1",
+      "className": "tpp-1ab690",
+      "usage": 2
+    },
+    {
+      "originalStyle": "stop-color:#60a5fa;stop-opacity:1",
+      "className": "tpp-752e0d",
+      "usage": 2
+    },
+    {
+      "originalStyle": "stop-color:#ffffff;stop-opacity:0.8",
+      "className": "tpp-20a755",
+      "usage": 2
+    },
+    {
+      "originalStyle": "stop-color:#ffffff;stop-opacity:0",
+      "className": "tpp-015eab",
+      "usage": 2
+    },
+    {
+      "originalStyle": "text-align: center; margin-top: 50px; padding: 30px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1);",
+      "className": "tpp-text-center-p-bg-2fe3a8",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: #1e293b; margin-bottom: 15px;",
+      "className": "tpp-text-50bb92",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: #64748b; margin-bottom: 20px;",
+      "className": "tpp-text-731852",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: flex; gap: 20px; justify-content: center;",
+      "className": "tpp-flex-a2bc28",
+      "usage": 1
+    },
+    {
+      "originalStyle": "padding: 12px 24px; background: linear-gradient(135deg, #2563eb, #1e40af); color: white; text-decoration: none; border-radius: 50px; font-weight: 600;",
+      "className": "tpp-p-bg-text-fw-95eb95",
+      "usage": 1
+    },
+    {
+      "originalStyle": "padding: 12px 24px; background: #f0f7ff; color: #1e40af; border-radius: 50px; font-weight: 600;",
+      "className": "tpp-p-bg-text-fw-2480d2",
+      "usage": 1
+    },
+    {
+      "originalStyle": "background: linear-gradient(135deg, #3b82f6, #1e40af);",
+      "className": "tpp-bg-ac9727",
+      "usage": 1
+    },
+    {
+      "originalStyle": "background: linear-gradient(135deg, #6366f1, #4f46e5);",
+      "className": "tpp-bg-58ccfe",
+      "usage": 2
+    },
+    {
+      "originalStyle": "background: linear-gradient(135deg, #0ea5e9, #0284c7);",
+      "className": "tpp-bg-77bf82",
+      "usage": 2
+    },
+    {
+      "originalStyle": "font-size: 2rem; margin-bottom: 15px;",
+      "className": "tpp-fs-b34650",
+      "usage": 1
+    },
+    {
+      "originalStyle": "opacity: 0.95; font-size: 1.1rem;",
+      "className": "tpp-fs-bc525e",
+      "usage": 1
+    },
+    {
+      "originalStyle": "margin-top: 30px; opacity: 0.9;",
+      "className": "tpp-bfd943",
+      "usage": 1
+    },
+    {
+      "originalStyle": "animation-delay: 0.2s",
+      "className": "tpp-b3158a",
+      "usage": 1
+    },
+    {
+      "originalStyle": "animation-delay: 0.4s",
+      "className": "tpp-4cbaad",
+      "usage": 1
+    },
+    {
+      "originalStyle": "position:absolute;left:-9999px;",
+      "className": "tpp-7ba671",
+      "usage": 2
+    },
+    {
+      "originalStyle": "margin-top: 30px; color: var(--gray-600);",
+      "className": "tpp-text-2a2015",
+      "usage": 1
+    },
+    {
+      "originalStyle": "margin-top: 20px; opacity: 0.5;",
+      "className": "tpp-246d71",
+      "usage": 1
+    },
+    {
+      "originalStyle": "position: fixed; bottom: 100px; left: 30px; background: var(--accent); color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 5px 20px rgba(0,0,0,0.3); z-index: 999;",
+      "className": "tpp-bg-text-p-fw-cabb3e",
+      "usage": 1
+    },
+    {
+      "originalStyle": "text-align: center; max-width: 800px; margin: 0 auto;",
+      "className": "tpp-text-center-m-e7108b",
+      "usage": 2
+    },
+    {
+      "originalStyle": "font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 700; margin-bottom: 24px; color: white; letter-spacing: -0.02em;",
+      "className": "tpp-fs-fw-text-3f4229",
+      "usage": 2
+    },
+    {
+      "originalStyle": "font-size: 1.25rem; line-height: 1.6; color: rgba(255,255,255,0.95); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;",
+      "className": "tpp-fs-text-3d0747",
+      "usage": 2
+    },
+    {
+      "originalStyle": "display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;",
+      "className": "tpp-flex-51361e",
+      "usage": 1
+    },
+    {
+      "originalStyle": "font-size: 2.5rem; font-weight: 800; color: white; margin-bottom: 8px;",
+      "className": "tpp-fs-fw-text-62a4ec",
+      "usage": 3
+    },
+    {
+      "originalStyle": "color: rgba(255,255,255,0.9); font-size: 14px; text-transform: uppercase; letter-spacing: 1px;",
+      "className": "tpp-text-fs-cf77e2",
+      "usage": 3
+    },
+    {
+      "originalStyle": "background: #1e40af;",
+      "className": "tpp-bg-017742",
+      "usage": 1
+    },
+    {
+      "originalStyle": "background: #2563eb;",
+      "className": "tpp-bg-db9f4e",
+      "usage": 1
+    },
+    {
+      "originalStyle": "background: #3b82f6;",
+      "className": "tpp-bg-ed0fe5",
+      "usage": 1
+    },
+    {
+      "originalStyle": "background: #0ea5e9;",
+      "className": "tpp-bg-48aaa2",
+      "usage": 1
+    },
+    {
+      "originalStyle": "background: linear-gradient(135deg, #e6f2ff, #f0f7ff);",
+      "className": "tpp-bg-1738ae",
+      "usage": 1
+    },
+    {
+      "originalStyle": "margin-top: 20px; color: #64748b;",
+      "className": "tpp-text-1e4739",
+      "usage": 1
+    },
+    {
+      "originalStyle": "background: #e6f2ff; padding: 5px 10px; border-radius: 5px; color: #1e40af;",
+      "className": "tpp-bg-p-text-4d0586",
+      "usage": 1
+    },
+    {
+      "originalStyle": "text-align: left; color: #6b7280;",
+      "className": "tpp-text-left-text-f8db6a",
+      "usage": 1
+    },
+    {
+      "originalStyle": "margin-top: 30px;",
+      "className": "tpp-bc9cee",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: #9ca3af; margin-top: 20px; font-size: 0.9rem;",
+      "className": "tpp-text-fs-2787a8",
+      "usage": 1
+    },
+    {
+      "originalStyle": "background: #f3f4f6; padding: 5px; border-radius: 4px;",
+      "className": "tpp-bg-p-0e7d2e",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: #1e40af; font-weight: 700;",
+      "className": "tpp-text-fw-09f69c",
+      "usage": 1
+    },
+    {
+      "originalStyle": "width: 24px; height: 24px; color: #2563eb;",
+      "className": "tpp-text-d27a83",
+      "usage": 3
+    },
+    {
+      "originalStyle": "color: #1e40af; font-weight: 600;",
+      "className": "tpp-text-fw-4586f7",
+      "usage": 3
+    },
+    {
+      "originalStyle": "text-align: center; margin: 4rem 0;",
+      "className": "tpp-text-center-m-395e9b",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: flex; justify-content: center; align-items: center; gap: 3rem; flex-wrap: wrap; margin-bottom: 3rem;",
+      "className": "tpp-flex-9084db",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: flex; align-items: center; gap: 1rem;",
+      "className": "tpp-flex-ee8a4b",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: flex; color: #fbbf24;",
+      "className": "tpp-flex-text-29f6db",
+      "usage": 1
+    },
+    {
+      "originalStyle": "font-weight: 700; color: #1f2937; font-size: 1.1rem;",
+      "className": "tpp-fw-text-fs-fb007d",
+      "usage": 1
+    },
+    {
+      "originalStyle": "font-weight: 700; color: #1f2937; font-size: 1.5rem;",
+      "className": "tpp-fw-text-fs-e2bb2f",
+      "usage": 2
+    },
+    {
+      "originalStyle": "background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(6, 182, 212, 0.05)); border: 2px solid rgba(16, 185, 129, 0.2); border-radius: 20px; padding: 3rem; text-align: center; margin: 4rem auto; position: relative; overflow: hidden;",
+      "className": "tpp-bg-p-text-center-m-831695",
+      "usage": 1
+    },
+    {
+      "originalStyle": "position: absolute; top: -50px; right: -50px; width: 100px; height: 100px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(6, 182, 212, 0.1)); border-radius: 50%; filter: blur(20px);",
+      "className": "tpp-bg-7fa633",
+      "usage": 1
+    },
+    {
+      "originalStyle": "width: 80px; height: 80px; background: linear-gradient(135deg, #10b981, #06b6d4); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; font-size: 2rem; box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);",
+      "className": "tpp-bg-flex-m-fs-51b5be",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: #1f2937; margin-bottom: 1.5rem; font-size: 1.75rem; font-weight: 800;",
+      "className": "tpp-text-fs-fw-8a86a8",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: #374151; margin: 0; max-width: 700px; margin: 0 auto 2rem; font-size: 1.125rem; line-height: 1.6;",
+      "className": "tpp-text-m-m-fs-4c7127",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 2rem;",
+      "className": "tpp-flex-45d0e3",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: flex; align-items: center; gap: 0.5rem; color: #059669; font-weight: 600;",
+      "className": "tpp-flex-text-fw-d0fe6e",
+      "usage": 3
+    },
+    {
+      "originalStyle": "text-align: center; margin-bottom: 2rem; color: #1f2937;",
+      "className": "tpp-text-center-text-2a3394",
+      "usage": 1
+    },
+    {
+      "originalStyle": "max-width: 800px; margin: 0 auto; margin-top: 3rem;",
+      "className": "tpp-m-0fbccd",
+      "usage": 1
+    },
+    {
+      "originalStyle": "padding: 150px 0 80px; background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);",
+      "className": "tpp-p-bg-55a200",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;",
+      "className": "tpp-flex-cf6ef6",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: inline-flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); color: white; padding: 16px 28px; border-radius: 12px; text-decoration: none; font-weight: 600; border: 2px solid rgba(255,255,255,0.3); transition: all 0.3s;",
+      "className": "tpp-bg-text-p-fw-db9257",
+      "usage": 2
+    },
+    {
+      "originalStyle": "margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--pp-gray-200);",
+      "className": "tpp-6b4551",
+      "usage": 1
+    },
+    {
+      "originalStyle": "margin-bottom: 8px;",
+      "className": "tpp-ccd7dd",
+      "usage": 3
+    },
+    {
+      "originalStyle": "margin-bottom: 0;",
+      "className": "tpp-c42e0e",
+      "usage": 1
+    },
+    {
+      "originalStyle": "background: white;",
+      "className": "tpp-bg-e9c493",
+      "usage": 1
+    },
+    {
+      "originalStyle": "font-size: 1.125rem; color: #6b7280; max-width: 600px; margin: 0 auto;",
+      "className": "tpp-fs-text-m-d3d19e",
+      "usage": 1
+    },
+    {
+      "originalStyle": "margin: 2rem 0; display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; align-items: center;",
+      "className": "tpp-m-flex-9045ed",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: flex; align-items: center; gap: 0.5rem; background: rgba(16, 185, 129, 0.1); color: #059669; padding: 0.75rem 1.5rem; border-radius: 50px; font-weight: 600; font-size: 0.9rem; border: 1px solid rgba(16, 185, 129, 0.3);",
+      "className": "tpp-flex-bg-text-p-fw-fs-a61991",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: #059669;",
+      "className": "tpp-text-12461c",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: flex; align-items: center; gap: 0.5rem; background: rgba(59, 130, 246, 0.1); color: #1d4ed8; padding: 0.75rem 1.5rem; border-radius: 50px; font-weight: 600; font-size: 0.9rem; border: 1px solid rgba(59, 130, 246, 0.3);",
+      "className": "tpp-flex-bg-text-p-fw-fs-b4efde",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: #1d4ed8;",
+      "className": "tpp-text-acc834",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: flex; align-items: center; gap: 0.5rem; background: rgba(245, 158, 11, 0.1); color: #d97706; padding: 0.75rem 1.5rem; border-radius: 50px; font-weight: 600; font-size: 0.9rem; border: 1px solid rgba(245, 158, 11, 0.3);",
+      "className": "tpp-flex-bg-text-p-fw-fs-2817df",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: #d97706;",
+      "className": "tpp-text-b6e0ed",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: var(--pp-primary); text-decoration: underline;",
+      "className": "tpp-text-25e648",
+      "usage": 6
+    },
+    {
+      "originalStyle": "border: 1px solid #e5e7eb; border-radius: 16px; margin-bottom: 20px; overflow: hidden;",
+      "className": "tpp-6ce107",
+      "usage": 6
+    },
+    {
+      "originalStyle": "width: 100%; padding: 30px; background: #f9fafb; border: none; text-align: left; font-size: 1.25rem; font-weight: 600; color: #1f2937; cursor: pointer; display: flex; justify-content: space-between; align-items: center;",
+      "className": "tpp-p-bg-text-left-fs-fw-text-flex-933e44",
+      "usage": 6
+    },
+    {
+      "originalStyle": "color: #6b7280; transition: transform 0.3s ease;",
+      "className": "tpp-text-22bd4a",
+      "usage": 6
+    },
+    {
+      "originalStyle": "padding: 0 30px 30px; color: #4b5563; line-height: 1.6; font-size: 1rem;",
+      "className": "tpp-p-text-fs-e8500c",
+      "usage": 6
+    },
+    {
+      "originalStyle": "display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto;",
+      "className": "tpp-m-157723",
+      "usage": 1
+    },
+    {
+      "originalStyle": "background: white; border-radius: 20px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative; border: 2px solid #e5e7eb; transition: transform 0.3s ease;",
+      "className": "tpp-bg-p-08b70b",
+      "usage": 2
+    },
+    {
+      "originalStyle": "text-align: center; margin-bottom: 30px;",
+      "className": "tpp-text-center-7f5ca6",
+      "usage": 3
+    },
+    {
+      "originalStyle": "font-size: 1.5rem; font-weight: 700; color: #1f2937; margin-bottom: 10px;",
+      "className": "tpp-fs-fw-text-6b790e",
+      "usage": 3
+    },
+    {
+      "originalStyle": "margin-bottom: 20px;",
+      "className": "tpp-7002f9",
+      "usage": 3
+    },
+    {
+      "originalStyle": "font-size: 3rem; font-weight: 800; color: #2c86f9;",
+      "className": "tpp-fs-fw-text-bda140",
+      "usage": 3
+    },
+    {
+      "originalStyle": "color: #16a34a; font-weight: 600; background: #f0fdf4; padding: 8px 16px; border-radius: 6px; display: inline-block;",
+      "className": "tpp-text-fw-bg-p-dea169",
+      "usage": 1
+    },
+    {
+      "originalStyle": "margin-bottom: 30px; padding: 0; list-style: none;",
+      "className": "tpp-p-999264",
+      "usage": 3
+    },
+    {
+      "originalStyle": "display: flex; align-items: center; margin-bottom: 12px;",
+      "className": "tpp-flex-dc62ae",
+      "usage": 22
+    },
+    {
+      "originalStyle": "color: #16a34a; margin-right: 12px; width: 16px;",
+      "className": "tpp-text-38c489",
+      "usage": 22
+    },
+    {
+      "originalStyle": "display: block; text-align: center; background: linear-gradient(135deg, #2c86f9, #1e6ee8); color: white; padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: 600; transition: transform 0.3s ease;",
+      "className": "tpp-text-center-bg-text-p-fw-786dd6",
+      "usage": 3
+    },
+    {
+      "originalStyle": "background: white; border-radius: 20px; padding: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); position: relative; border: 2px solid #2c86f9; transform: scale(1.05); transition: transform 0.3s ease;",
+      "className": "tpp-bg-p-0eba92",
+      "usage": 1
+    },
+    {
+      "originalStyle": "position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #2c86f9, #1e6ee8); color: white; padding: 8px 24px; border-radius: 20px; font-weight: 600; font-size: 0.9rem;",
+      "className": "tpp-bg-text-p-fw-fs-776324",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 30px;",
+      "className": "tpp-flex-467ab8",
+      "usage": 1
+    },
+    {
+      "originalStyle": "display: flex; align-items: center; gap: 10px;",
+      "className": "tpp-flex-b512c9",
+      "usage": 3
+    },
+    {
+      "originalStyle": "color: #16a34a; font-size: 1.2rem;",
+      "className": "tpp-text-fs-7c0fd7",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: #4b5563; font-weight: 500;",
+      "className": "tpp-text-fw-0b58e3",
+      "usage": 3
+    },
+    {
+      "originalStyle": "color: #2c86f9; font-size: 1.2rem;",
+      "className": "tpp-text-fs-75af24",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: #dc2626; font-size: 1.2rem;",
+      "className": "tpp-text-fs-be273f",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: #6b7280; font-size: 0.95rem; margin-bottom: 20px;",
+      "className": "tpp-text-fs-d3759d",
+      "usage": 1
+    },
+    {
+      "originalStyle": "color: #2c86f9; font-weight: 600;",
+      "className": "tpp-text-fw-b2aa00",
+      "usage": 1
+    }
+  ]
+}

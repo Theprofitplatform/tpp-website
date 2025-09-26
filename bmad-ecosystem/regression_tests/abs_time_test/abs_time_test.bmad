@@ -1,0 +1,28 @@
+no_digested
+beginning[beta_a]  = 10  
+beginning[beta_b]  = 12
+
+parameter[geometry] = open
+beginning[p0c]  = 1e6
+
+particle_start[x] = 1e-3
+particle_start[px] = 1e-4
+particle_start[y] = 2e-3
+particle_start[py] = 1e-4
+particle_start[z] = 3e-4
+particle_start[pz] = 1e-2
+
+!
+
+d: drift, l = 1
+lc_old: lcavity, l = 1, rf_frequency = 1e9, gradient = 1e5, voltage_err = 0.2e5, 
+              phi0 = 0.1, phi0_err = -0.2, num_steps = 1
+lc_new: lc_old, n_rf_steps = 10
+
+line_m: line[multipass] = (d, lc_new)
+aline: line = (d, lc_new)
+
+br_m: line = (line_m, line_m)
+abr: line = (aline, aline)
+
+use, br_m, abr

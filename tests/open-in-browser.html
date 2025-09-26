@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Visual Comparison</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .page-preview {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .page-title {
+            background: #2c86f9;
+            color: white;
+            padding: 10px 15px;
+            font-weight: bold;
+        }
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .status {
+            padding: 10px 15px;
+            background: #f8f9fa;
+            border-top: 1px solid #dee2e6;
+        }
+        .status.pass {
+            background: #d4edda;
+            color: #155724;
+        }
+        .status.fail {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .controls {
+            text-align: center;
+            margin: 20px 0;
+        }
+        button {
+            background: #2c86f9;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+        button:hover {
+            background: #1e5fc8;
+        }
+    </style>
+</head>
+<body>
+    <h1>Navigation Visual Comparison Tool</h1>
+
+    <div class="controls">
+        <button onclick="loadPage('index.html')">Homepage</button>
+        <button onclick="loadPage('about.html')">About</button>
+        <button onclick="loadPage('services.html')">Services</button>
+        <button onclick="loadPage('blog/blog.html')">Blog</button>
+        <button onclick="loadPage('web-design.html')">Web Design</button>
+    </div>
+
+    <div class="comparison-grid">
+        <div class="page-preview">
+            <div class="page-title">Current Page View</div>
+            <div class="iframe-container">
+                <iframe id="preview-frame" src="../index.html"></iframe>
+            </div>
+            <div class="status" id="status">
+                Click a button above to load a page
+            </div>
+        </div>
+
+        <div class="page-preview">
+            <div class="page-title">Reference (Blog Page)</div>
+            <div class="iframe-container">
+                <iframe src="../blog/blog.html"></iframe>
+            </div>
+            <div class="status pass">
+                ✅ Working navigation template
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function loadPage(page) {
+            const iframe = document.getElementById('preview-frame');
+            const status = document.getElementById('status');
+
+            iframe.src = '../' + page;
+
+            // Check navigation status
+            iframe.onload = function() {
+                try {
+                    const doc = iframe.contentDocument || iframe.contentWindow.document;
+                    const hasPremiumNav = doc.querySelector('.premium-nav');
+                    const hasUniversalCSS = Array.from(doc.querySelectorAll('link')).some(
+                        link => link.href.includes('universal-nav.css')
+                    );
+
+                    if (hasPremiumNav && hasUniversalCSS) {
+                        status.className = 'status pass';
+                        status.innerHTML = `✅ ${page} - Navigation properly configured`;
+                    } else {
+                        status.className = 'status fail';
+                        const issues = [];
+                        if (!hasPremiumNav) issues.push('Missing premium-nav');
+                        if (!hasUniversalCSS) issues.push('Missing universal-nav.css');
+                        status.innerHTML = `❌ ${page} - Issues: ${issues.join(', ')}`;
+                    }
+                } catch(e) {
+                    status.className = 'status';
+                    status.innerHTML = `Loaded: ${page}`;
+                }
+            };
+        }
+
+        // Load homepage by default
+        loadPage('index.html');
+    </script>
+</body>
+</html>

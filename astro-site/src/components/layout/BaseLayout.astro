@@ -1,0 +1,105 @@
+---
+import SEOHead from '../common/SEOHead.astro';
+import StructuredData from '../common/StructuredData.astro';
+import Analytics from '../common/Analytics.astro';
+import Navigation from './Navigation.astro';
+import Footer from './Footer.astro';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string;
+  currentPage?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  canonicalURL?: string;
+  pageType?: 'homepage' | 'service' | 'about' | 'contact';
+  includeNavigation?: boolean;
+  includeFooter?: boolean;
+}
+
+const {
+  title = "Index | The Profit Platform - Sydney Digital Marketing",
+  description = "Leading Index services in Sydney. Get results with The Profit Platform. ✓ Proven ROI ✓ 127+ Reviews ✓ Free Consultation",
+  keywords = "Index, sydney, digital marketing, seo, google ads, web design",
+  currentPage = 'home',
+  ogTitle,
+  ogDescription,
+  ogImage,
+  canonicalURL = "https://theprofitplatform.com.au/",
+  pageType = 'homepage',
+  includeNavigation = true,
+  includeFooter = true
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- SEO Meta Tags -->
+    <SEOHead
+        title={title}
+        description={description}
+        keywords={keywords}
+        ogTitle={ogTitle}
+        ogDescription={ogDescription}
+        ogImage={ogImage}
+        canonicalURL={canonicalURL}
+        pageType="website"
+    />
+
+    <!-- Critical CSS inline for faster rendering -->
+    <link rel="stylesheet" href="/css/critical.min.css">
+    <link rel="stylesheet" href="/css/loading-states.css">
+
+    <!-- External Resources - Load asynchronously -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" media="all">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" media="all">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    </noscript>
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="/css/style.min.css" media="all">
+
+    <!-- Consolidated Navigation & Layout Styles -->
+    <link rel="stylesheet" href="/css/modern-theme-variables.css" media="all">
+    <link rel="stylesheet" href="/css/navigation.css" media="all">
+    <link rel="stylesheet" href="/css/skip-links-fix.css" media="all">
+    <link rel="stylesheet" href="/css/main-content-spacing.css" media="all">
+    <link rel="stylesheet" href="/css/modern-theme-components.css" media="all">
+    <link rel="stylesheet" href="/css/dropdown-fix.css" media="all">
+    <link rel="stylesheet" href="/css/layout.css" media="all">
+    <link rel="stylesheet" href="/css/navigation-glass-enhanced.css" media="all">
+    <link rel="stylesheet" href="/css/hero-content-spacing.css" media="all">
+    <link rel="stylesheet" href="/css/trust-signals-enhanced.css" media="all">
+    <link rel="stylesheet" href="/css/trust-signals-homepage-theme.css" media="all">
+
+    <!-- Structured Data -->
+    <StructuredData pageType={pageType} />
+
+    <!-- Analytics -->
+    <Analytics />
+</head>
+<body>
+    {includeNavigation && <Navigation currentPage={currentPage} />}
+
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        <slot />
+    </main>
+
+    {includeFooter && <Footer />}
+
+    <!-- JavaScript Resources -->
+    <script src="/js/combined.min.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    <script src="/js/homepage.js" defer></script>
+</body>
+</html>

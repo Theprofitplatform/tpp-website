@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index.html Navigation Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: monospace;
+            background: #0a0a0a;
+            color: #00ff00;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .test-panel {
+            width: 400px;
+            background: #1a1a1a;
+            padding: 20px;
+            overflow-y: auto;
+            border-right: 2px solid #00ff00;
+        }
+
+        .preview-panel {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        h1 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #00ff00;
+        }
+
+        .test-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            background: #2a2a2a;
+            color: #00ff00;
+            border: 1px solid #00ff00;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .test-btn:hover {
+            background: #00ff00;
+            color: #000;
+        }
+
+        .result {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+
+        .pass {
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid #00ff00;
+        }
+
+        .fail {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid #ff0000;
+            color: #ff0000;
+        }
+
+        .warning {
+            background: rgba(255, 255, 0, 0.1);
+            border: 1px solid #ffff00;
+            color: #ffff00;
+        }
+
+        .section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #333;
+            border-radius: 5px;
+        }
+
+        .section h2 {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #ffff00;
+        }
+
+        .detail {
+            font-size: 11px;
+            color: #888;
+            margin: 5px 0;
+        }
+
+        .value {
+            color: #00ff00;
+        }
+
+        .error-value {
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="test-panel">
+            <h1>🔧 Index.html Navigation Test</h1>
+
+            <button class="test-btn" onclick="testStructure()">Test Navigation Structure</button>
+            <button class="test-btn" onclick="testVisibility()">Test Visibility & Position</button>
+            <button class="test-btn" onclick="testInteraction()">Test Interaction</button>
+            <button class="test-btn" onclick="testResponsive()">Test Responsive</button>
+            <button class="test-btn" onclick="testZIndex()">Test Z-Index Layers</button>
+            <button class="test-btn" onclick="testScrolling()">Test Scroll Behavior</button>
+            <button class="test-btn" onclick="testAccessibility()">Test Accessibility</button>
+            <button class="test-btn" onclick="runAllTests()">🚀 Run All Tests</button>
+
+            <div id="results"></div>
+
+            <div class="section">
+                <h2>Navigation Details</h2>
+                <div id="details"></div>
+            </div>
+        </div>
+
+        <div class="preview-panel">
+            <iframe id="preview" src="../index.html"></iframe>
+        </div>
+    </div>
+
+    <script>
+        const iframe = document.getElementById('preview');
+        const results = document.getElementById('results');
+        const details = document.getElementById('details');
+
+        function clearResults() {
+            results.innerHTML = '';
+        }
+
+        function addResult(message, type = 'pass') {
+            const div = document.createElement('div');
+            div.className = `result ${type}`;
+            const icon = type === 'pass' ? '✅' : type === 'fail' ? '❌' : '⚠️';
+            div.innerHTML = `${icon} ${message}`;
+            results.insertBefore(div, results.firstChild);
+        }
+
+        function getDoc() {
+            return iframe.contentDocument || iframe.contentWindow.document;
+        }
+
+        function getWin() {
+            return iframe.contentWindow;
+        }
+
+        function testStructure() {
+            clearResults();
+            const doc = getDoc();
+
+            // Test for header
+            const header = doc.querySelector('header.premium-nav');
+            if (header) {
+                addResult('Header with premium-nav class found', 'pass');
+            } else {
+                addResult('Header with premium-nav class missing', 'fail');
+                return;
+            }
+
+            // Test for nav container
+            const navContainer = doc.querySelector('.nav-floating-container');
+            if (navContainer) {
+                addResult('Nav floating container found', 'pass');
+            } else {
+                addResult('Nav floating container missing', 'fail');
+            }
+
+            // Test for container
+            const container = doc.querySelector('.nav-floating-container .container');
+            if (container) {
+                addResult('Container inside nav found', 'pass');
+            } else {
+                addResult('Container missing', 'fail');
+            }
+
+            // Test for logo
+            const logo = doc.querySelector('.logo.premium-logo');
+            if (logo) {
+                addResult('Logo found', 'pass');
+            } else {
+                addResult('Logo missing', 'fail');
+            }
+
+            // Test for nav links
+            const navLinks = doc.querySelectorAll('.nav-item.premium-nav-item');
+            if (navLinks.length > 0) {
+                addResult(`${navLinks.length} navigation links found`, 'pass');
+            } else {
+                addResult('No navigation links found', 'fail');
+            }
+
+            // Test for mobile toggle
+            const mobileToggle = doc.querySelector('.menu-toggle, #menuToggle');
+            if (mobileToggle) {
+                addResult('Mobile menu toggle found', 'pass');
+            } else {
+                addResult('Mobile menu toggle missing', 'fail');
+            }
+
+            // Test for mobile nav
+            const mobileNav = doc.querySelector('.mobile-nav');
+            if (mobileNav) {
+                addResult('Mobile navigation container found', 'pass');
+            } else {
+                addResult('Mobile navigation missing', 'fail');
+            }
+
+            // Update details
+            updateDetails(doc);
+        }
+
+        function testVisibility() {
+            clearResults();
+            const doc = getDoc();
+            const win = getWin();
+            const header = doc.querySelector('header.premium-nav');
+
+            if (!header) {
+                addResult('Header not found', 'fail');
+                return;
+            }
+
+            const styles = win.getComputedStyle(header);
+
+            // Check visibility
+            if (styles.display !== 'none' && styles.visibility !== 'hidden') {
+                addResult('Header is visible', 'pass');
+            } else {
+                addResult('Header is hidden', 'fail');
+            }
+
+            // Check position
+            if (styles.position === 'fixed') {
+                addResult('Header has fixed position', 'pass');
+            } else {
+                addResult(`Header position: ${styles.position}`, 'fail');
+            }
+
+            // Check z-index
+            const zIndex = parseInt(styles.zIndex) || 0;
+            if (zIndex >= 1000) {
+                addResult(`Z-index is correct: ${zIndex}`, 'pass');
+            } else {
+                addResult(`Z-index too low: ${zIndex}`, 'fail');
+            }
+
+            // Check background
+            if (styles.backgroundColor || styles.background) {
+                addResult('Header has background', 'pass');
+            } else {
+                addResult('Header missing background', 'warning');
+            }
+
+            // Check height
+            const rect = header.getBoundingClientRect();
+            if (rect.height > 0) {
+                addResult(`Header height: ${rect.height}px`, 'pass');
+            } else {
+                addResult('Header has no height', 'fail');
+            }
+
+            // Check top position
+            if (rect.top === 0) {
+                addResult('Header positioned at top', 'pass');
+            } else {
+                addResult(`Header offset from top: ${rect.top}px`, 'warning');
+            }
+        }
+
+        function testInteraction() {
+            clearResults();
+            const doc = getDoc();
+
+            // Test dropdown functionality
+            const dropdown = doc.querySelector('.nav-dropdown');
+            if (dropdown) {
+                const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+                if (dropdownMenu) {
+                    addResult('Dropdown menu structure present', 'pass');
+                } else {
+                    addResult('Dropdown menu missing', 'fail');
+                }
+            } else {
+                addResult('No dropdown navigation found', 'warning');
+            }
+
+            // Test links
+            const links = doc.querySelectorAll('.nav-item');
+            let workingLinks = 0;
+            links.forEach(link => {
+                if (link.href) workingLinks++;
+            });
+            addResult(`${workingLinks}/${links.length} navigation links have hrefs`, workingLinks === links.length ? 'pass' : 'warning');
+
+            // Test CTA button
+            const cta = doc.querySelector('.premium-cta-btn');
+            if (cta) {
+                addResult('CTA button found', 'pass');
+            } else {
+                addResult('CTA button missing', 'warning');
+            }
+        }
+
+        function testResponsive() {
+            clearResults();
+            const win = getWin();
+            const doc = getDoc();
+
+            // Store original size
+            const originalWidth = win.innerWidth;
+
+            // Test desktop
+            win.resizeTo(1920, 1080);
+            setTimeout(() => {
+                const desktopNav = doc.querySelector('.nav-links');
+                const desktopToggle = doc.querySelector('.menu-toggle');
+                if (desktopNav) {
+                    const desktopStyles = win.getComputedStyle(desktopNav);
+                    addResult(`Desktop: Nav links display: ${desktopStyles.display}`, desktopStyles.display !== 'none' ? 'pass' : 'fail');
+                }
+
+                // Test mobile
+                win.resizeTo(375, 667);
+                setTimeout(() => {
+                    const mobileToggle = doc.querySelector('.menu-toggle');
+                    if (mobileToggle) {
+                        const mobileStyles = win.getComputedStyle(mobileToggle);
+                        addResult(`Mobile: Toggle display: ${mobileStyles.display}`, mobileStyles.display !== 'none' ? 'pass' : 'fail');
+                    }
+
+                    // Restore size
+                    win.resizeTo(originalWidth, win.innerHeight);
+                }, 100);
+            }, 100);
+        }
+
+        function testZIndex() {
+            clearResults();
+            const doc = getDoc();
+            const win = getWin();
+
+            const elements = [
+                { selector: 'header.premium-nav', name: 'Header', expected: 9999 },
+                { selector: '.nav-floating-container', name: 'Nav Container', expected: 9999 },
+                { selector: '.dropdown-menu', name: 'Dropdown', expected: 10000 },
+                { selector: '.mobile-nav', name: 'Mobile Nav', expected: 9998 },
+                { selector: '.mobile-nav-overlay', name: 'Overlay', expected: 9997 }
+            ];
+
+            elements.forEach(({ selector, name, expected }) => {
+                const el = doc.querySelector(selector);
+                if (el) {
+                    const styles = win.getComputedStyle(el);
+                    const zIndex = styles.zIndex;
+                    if (zIndex !== 'auto') {
+                        const value = parseInt(zIndex);
+                        if (value >= expected - 100) {
+                            addResult(`${name} z-index: ${zIndex} ✓`, 'pass');
+                        } else {
+                            addResult(`${name} z-index: ${zIndex} (expected ~${expected})`, 'warning');
+                        }
+                    } else {
+                        addResult(`${name} z-index: auto`, 'warning');
+                    }
+                } else {
+                    addResult(`${name} not found`, 'warning');
+                }
+            });
+        }
+
+        function testScrolling() {
+            clearResults();
+            const doc = getDoc();
+            const win = getWin();
+            const header = doc.querySelector('header.premium-nav');
+
+            if (!header) {
+                addResult('Header not found', 'fail');
+                return;
+            }
+
+            // Test initial position
+            const initialRect = header.getBoundingClientRect();
+            addResult(`Initial header position: top=${initialRect.top}`, 'pass');
+
+            // Scroll down
+            win.scrollTo(0, 200);
+            setTimeout(() => {
+                const scrolledRect = header.getBoundingClientRect();
+                if (scrolledRect.top === 0) {
+                    addResult('Header stays fixed on scroll', 'pass');
+                } else {
+                    addResult(`Header moved on scroll: top=${scrolledRect.top}`, 'fail');
+                }
+
+                // Check for scroll class
+                if (header.classList.contains('scrolled')) {
+                    addResult('Scroll class applied', 'pass');
+                }
+
+                // Reset scroll
+                win.scrollTo(0, 0);
+            }, 100);
+        }
+
+        function testAccessibility() {
+            clearResults();
+            const doc = getDoc();
+
+            // Test ARIA attributes
+            const ariaElements = doc.querySelectorAll('[aria-label], [aria-expanded], [aria-controls], [role]');
+            addResult(`${ariaElements.length} elements with ARIA attributes`, ariaElements.length > 5 ? 'pass' : 'warning');
+
+            // Test skip links
+            const skipLinks = doc.querySelectorAll('.skip-link, [href^="#main"], [href^="#content"]');
+            if (skipLinks.length > 0) {
+                addResult(`${skipLinks.length} skip link(s) found`, 'pass');
+            } else {
+                addResult('No skip links found', 'warning');
+            }
+
+            // Test semantic HTML
+            const nav = doc.querySelector('nav, [role="navigation"]');
+            if (nav) {
+                addResult('Semantic navigation element found', 'pass');
+            } else {
+                addResult('No semantic nav element', 'warning');
+            }
+
+            // Test focus states
+            const focusableElements = doc.querySelectorAll('a, button, [tabindex]');
+            addResult(`${focusableElements.length} focusable elements`, 'pass');
+        }
+
+        function updateDetails(doc) {
+            const win = getWin();
+            const header = doc.querySelector('header.premium-nav');
+
+            if (!header) {
+                details.innerHTML = '<div class="detail">No header found</div>';
+                return;
+            }
+
+            const styles = win.getComputedStyle(header);
+            const rect = header.getBoundingClientRect();
+
+            details.innerHTML = `
+                <div class="detail">Position: <span class="value">${styles.position}</span></div>
+                <div class="detail">Z-Index: <span class="value">${styles.zIndex}</span></div>
+                <div class="detail">Height: <span class="value">${rect.height}px</span></div>
+                <div class="detail">Width: <span class="value">${rect.width}px</span></div>
+                <div class="detail">Top: <span class="value">${rect.top}px</span></div>
+                <div class="detail">Background: <span class="value">${styles.backgroundColor}</span></div>
+                <div class="detail">Display: <span class="value">${styles.display}</span></div>
+                <div class="detail">Visibility: <span class="value">${styles.visibility}</span></div>
+            `;
+        }
+
+        function runAllTests() {
+            clearResults();
+            addResult('Running all tests...', 'warning');
+
+            setTimeout(() => {
+                testStructure();
+                setTimeout(() => {
+                    testVisibility();
+                    setTimeout(() => {
+                        testInteraction();
+                        setTimeout(() => {
+                            testResponsive();
+                            setTimeout(() => {
+                                testZIndex();
+                                setTimeout(() => {
+                                    testScrolling();
+                                    setTimeout(() => {
+                                        testAccessibility();
+                                        addResult('All tests complete!', 'pass');
+                                    }, 500);
+                                }, 500);
+                            }, 500);
+                        }, 500);
+                    }, 500);
+                }, 500);
+            }, 500);
+        }
+
+        // Auto-run structure test on load
+        iframe.onload = function() {
+            setTimeout(() => {
+                testStructure();
+            }, 1000);
+        };
+    </script>
+</body>
+</html>

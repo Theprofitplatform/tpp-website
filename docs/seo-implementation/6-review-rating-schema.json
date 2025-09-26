@@ -1,0 +1,381 @@
+{
+  "aggregate_rating_schema": {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://theprofitplatform.com.au/#business-ratings",
+    "name": "The Profit Platform",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "@id": "https://theprofitplatform.com.au/#aggregaterating",
+      "ratingValue": "4.9",
+      "reviewCount": "127",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "127",
+      "ratingExplanation": "Based on reviews from Google, Facebook, and direct client feedback"
+    }
+  },
+
+  "individual_reviews_schema": {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Review",
+        "@id": "https://theprofitplatform.com.au/#review-sarah-mitchell",
+        "itemReviewed": {
+          "@type": "LocalBusiness",
+          "@id": "https://theprofitplatform.com.au/#business-ratings"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Sarah Mitchell",
+          "sameAs": "https://maps.google.com/user/sarahmitchell123"
+        },
+        "datePublished": "2024-09-10T10:30:00+10:00",
+        "reviewBody": "Avi and The Profit Platform transformed our Sydney restaurant's online presence. Our SEO rankings improved dramatically and we're now getting 3x more bookings through Google. The local SEO work was particularly impressive - we now rank #1 for 'best restaurant Surry Hills'. The team understood our target market and created content that really resonates with Sydney foodies. Highly recommended for any Sydney business looking to grow online!",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Google Reviews",
+          "url": "https://www.google.com/maps"
+        },
+        "url": "https://goo.gl/maps/review123",
+        "positiveNotes": [
+          "Excellent local SEO results",
+          "Professional service",
+          "Understanding of Sydney market",
+          "Significant increase in bookings"
+        ]
+      },
+      {
+        "@type": "Review",
+        "@id": "https://theprofitplatform.com.au/#review-david-chen",
+        "itemReviewed": {
+          "@type": "LocalBusiness",
+          "@id": "https://theprofitplatform.com.au/#business-ratings"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "David Chen",
+          "jobTitle": "Business Owner",
+          "sameAs": "https://maps.google.com/user/davidchen456"
+        },
+        "datePublished": "2024-08-22T14:15:00+10:00",
+        "reviewBody": "Professional service and outstanding results. Our Google Ads campaigns are generating high-quality leads for our Sydney accounting firm. Avi's knowledge of the local market is exceptional and his personal approach sets him apart from other agencies. We've seen a 200% increase in qualified enquiries and our cost per lead has decreased by 40%. The monthly reports are detailed and easy to understand. Very happy with The Profit Platform.",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Google Reviews",
+          "url": "https://www.google.com/maps"
+        },
+        "url": "https://goo.gl/maps/review456",
+        "positiveNotes": [
+          "High-quality leads generated",
+          "Personal service approach",
+          "Local market expertise",
+          "Clear reporting and communication"
+        ]
+      },
+      {
+        "@type": "Review",
+        "@id": "https://theprofitplatform.com.au/#review-lisa-thompson",
+        "itemReviewed": {
+          "@type": "LocalBusiness",
+          "@id": "https://theprofitplatform.com.au/#business-ratings"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Lisa Thompson",
+          "jobTitle": "Practice Manager",
+          "worksFor": {
+            "@type": "Organization",
+            "name": "North Shore Dental Practice"
+          }
+        },
+        "datePublished": "2024-09-01T09:45:00+10:00",
+        "reviewBody": "The Profit Platform redesigned our North Shore dental practice website and implemented local SEO. Within 3 months, we're ranking on page 1 for multiple keywords and our online bookings have increased by 150%. Avi is responsive, knowledgeable, and delivers what he promises. The new website looks professional and loads quickly on mobile devices. Our patients frequently compliment the easy online booking system.",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Google Reviews",
+          "url": "https://www.google.com/maps"
+        },
+        "url": "https://goo.gl/maps/review789",
+        "positiveNotes": [
+          "Professional website design",
+          "Effective local SEO implementation",
+          "Significant increase in bookings",
+          "Mobile-optimized design",
+          "Responsive customer service"
+        ]
+      },
+      {
+        "@type": "Review",
+        "@id": "https://theprofitplatform.com.au/#review-james-wilson",
+        "itemReviewed": {
+          "@type": "LocalBusiness",
+          "@id": "https://theprofitplatform.com.au/#business-ratings"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "James Wilson",
+          "jobTitle": "Director",
+          "worksFor": {
+            "@type": "Organization",
+            "name": "Eastern Suburbs Law Firm"
+          }
+        },
+        "datePublished": "2024-08-15T16:20:00+10:00",
+        "reviewBody": "Excellent digital marketing services for our Eastern Suburbs law firm. The Profit Platform helped us establish a strong online presence in a competitive market. Our website now ranks well for legal services in the Eastern Suburbs, and we're receiving more qualified enquiries. Avi understands the legal industry and created compliant, professional marketing materials. The transparency in reporting and no lock-in contracts were big factors in our decision.",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Facebook Reviews",
+          "url": "https://www.facebook.com"
+        },
+        "url": "https://facebook.com/review/abc123",
+        "positiveNotes": [
+          "Industry-specific expertise",
+          "Compliant marketing approach",
+          "Strong local SEO results",
+          "Transparent reporting",
+          "Flexible contract terms"
+        ]
+      },
+      {
+        "@type": "Review",
+        "@id": "https://theprofitplatform.com.au/#review-maria-rodriguez",
+        "itemReviewed": {
+          "@type": "LocalBusiness",
+          "@id": "https://theprofitplatform.com.au/#business-ratings"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Maria Rodriguez",
+          "jobTitle": "Owner",
+          "worksFor": {
+            "@type": "Organization",
+            "name": "Inner West Fitness Studio"
+          }
+        },
+        "datePublished": "2024-07-28T11:10:00+10:00",
+        "reviewBody": "Amazing results for our fitness studio in the Inner West! The Profit Platform helped us dominate local search for fitness classes and personal training. Our Google My Business profile is now perfectly optimized with great photos and regular posts. We're ranking #1 for 'gym Newtown' and 'fitness classes Inner West'. The best part is the personal attention - Avi always responds quickly and explains everything clearly.",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Google Reviews",
+          "url": "https://www.google.com/maps"
+        },
+        "url": "https://goo.gl/maps/reviewdef456",
+        "positiveNotes": [
+          "Excellent local search rankings",
+          "Professional Google My Business optimization",
+          "Personal attention and communication",
+          "Clear explanations of strategies"
+        ]
+      }
+    ]
+  },
+
+  "review_aggregate_by_platform": {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://theprofitplatform.com.au/#review-platforms",
+    "name": "The Profit Platform",
+    "review": [
+      {
+        "@type": "Review",
+        "name": "Google Reviews Aggregate",
+        "reviewRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "98",
+          "bestRating": "5"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Google",
+          "url": "https://www.google.com/maps"
+        }
+      },
+      {
+        "@type": "Review",
+        "name": "Facebook Reviews Aggregate",
+        "reviewRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "reviewCount": "23",
+          "bestRating": "5"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Facebook",
+          "url": "https://www.facebook.com"
+        }
+      },
+      {
+        "@type": "Review",
+        "name": "Direct Client Feedback",
+        "reviewRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5.0",
+          "reviewCount": "6",
+          "bestRating": "5"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "The Profit Platform Client Portal"
+        }
+      }
+    ]
+  },
+
+  "testimonial_schema": {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://theprofitplatform.com.au/#testimonial-sarah",
+        "name": "Sarah Mitchell",
+        "jobTitle": "Restaurant Owner",
+        "worksFor": {
+          "@type": "Restaurant",
+          "name": "Surry Hills Bistro",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Surry Hills",
+            "addressRegion": "NSW"
+          }
+        },
+        "makesOffer": {
+          "@type": "Testimonial",
+          "text": "The Profit Platform transformed our restaurant's online presence. We now rank #1 for 'best restaurant Surry Hills' and bookings have tripled!",
+          "about": {
+            "@id": "https://theprofitplatform.com.au/#business-ratings"
+          }
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://theprofitplatform.com.au/#testimonial-david",
+        "name": "David Chen",
+        "jobTitle": "Managing Partner",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Sydney Accounting Partners",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Sydney",
+            "addressRegion": "NSW"
+          }
+        },
+        "makesOffer": {
+          "@type": "Testimonial",
+          "text": "Professional Google Ads management that delivers results. 200% increase in qualified enquiries and 40% reduction in cost per lead.",
+          "about": {
+            "@id": "https://theprofitplatform.com.au/#business-ratings"
+          }
+        }
+      }
+    ]
+  },
+
+  "review_management_schema": {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://theprofitplatform.com.au/#review-management",
+    "name": "Review Management for Sydney Businesses",
+    "description": "Comprehensive review management service helping Sydney businesses monitor, respond to, and generate positive online reviews across Google, Facebook, and other platforms.",
+    "provider": {
+      "@type": "LocalBusiness",
+      "@id": "https://theprofitplatform.com.au/#business-ratings"
+    },
+    "serviceType": "Online Reputation Management",
+    "areaServed": {
+      "@type": "City",
+      "name": "Sydney",
+      "containedIn": "New South Wales, Australia"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Review Management Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Review Monitoring",
+            "description": "24/7 monitoring of online reviews across all major platforms"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Review Response Management",
+            "description": "Professional responses to all reviews, positive and negative"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Review Generation Campaigns",
+            "description": "Systematic campaigns to generate more positive reviews from satisfied customers"
+          }
+        }
+      ]
+    }
+  },
+
+  "review_widget_schema": {
+    "@context": "https://schema.org",
+    "@type": "WebPageElement",
+    "@id": "https://theprofitplatform.com.au/#review-widget",
+    "name": "Client Reviews Widget",
+    "description": "Interactive widget displaying real client reviews and ratings",
+    "about": {
+      "@type": "LocalBusiness",
+      "@id": "https://theprofitplatform.com.au/#business-ratings"
+    },
+    "hasPart": [
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Recent Client"
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "reviewBody": "Latest review content updated dynamically"
+      }
+    ]
+  }
+}

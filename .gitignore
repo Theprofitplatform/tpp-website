@@ -1,0 +1,72 @@
+# Dependencies
+node_modules/
+bmad_env/
+
+# Build outputs
+dist/
+build/
+*.cache
+.vite/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Testing
+coverage/
+playwright-report/
+test-results/
+.nyc_output/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+.DS_Store
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+tmp/
+temp/
+
+# Archives and backups
+backup/
+archive/
+*.backup
+*.bak
+*.old
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Monitoring
+monitoring.log
+revenue-alerts.log
+opportunities.log
+deployment.log
+24hour-metrics.log
+
+# Generated files
+sitemap.xml
+robots.txt
+
+# Local development
+.claude-flow/
+*.local.*

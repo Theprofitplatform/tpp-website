@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Marketing Services Sydney | SEO, Google Ads & Web Design - The Profit Platform</title>
+    <meta name="description" content="Comprehensive digital marketing services in Sydney: SEO, Google Ads, web design, social media marketing. Proven 3-Layer System gets results in 30-60 days. Free consultation.">
+    <meta name="keywords" content="digital marketing services sydney, seo sydney, google ads sydney, web design sydney, social media marketing, marketing agency sydney, local seo, ppc management">
+
+    <!-- Geo-targeting -->
+    <meta name="geo.region" content="AU-NSW">
+    <meta name="geo.placename" content="Sydney">
+    <meta name="geo.position" content="-33.8688;151.2093">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Digital Marketing Services Sydney | SEO, Google Ads & Web Design">
+    <meta property="og:description" content="Comprehensive digital marketing services in Sydney: SEO, Google Ads, web design, social media marketing. Proven 3-Layer System gets results in 30-60 days.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://theprofitplatform.com.au/services">
+    <meta property="og:image" content="https://theprofitplatform.com.au/images/optimized/logo.webp">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://theprofitplatform.com.au/services">
+
+    <!-- Performance Optimizations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/service-animations.css">
+
+    <!-- Structured Data for Services -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "The Profit Platform",
+      "url": "https://theprofitplatform.com.au",
+      "logo": "https://theprofitplatform.com.au/logo.png",
+      "description": "Digital marketing agency in Sydney specializing in SEO, Google Ads, and web design for local businesses",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Sydney",
+        "addressRegion": "NSW",
+        "addressCountry": "AU"
+      },
+      "telephone": "+61487286451",
+      "areaServed": ["Sydney", "Bondi", "Parramatta", "Penrith", "North Shore", "Eastern Suburbs", "Western Sydney"],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Digital Marketing Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Search Engine Optimization (SEO)",
+              "description": "Local SEO and organic search optimization for Sydney businesses"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Google Ads Management",
+              "description": "Professional Google Ads campaign management and optimization"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Web Design & Development",
+              "description": "Conversion-focused website design and development"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+
+    <style>
+        /* Services Page Specific Styles */
+        .services-hero {
+            background: linear-gradient(135deg, var(--pp-primary) 0%, var(--pp-primary-dark) 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 8rem 0 6rem;
+            margin-top: 80px;
+        }
+
+        .services-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .services-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .services-hero-content {
+            text-align: center;
+            color: var(--pp-white);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .services-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            color: var(--pp-white);
+            letter-spacing: -0.02em;
+        }
+
+        .services-hero-subtitle {
+            font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+            opacity: 0.95;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .services-hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--pp-white);
+            color: var(--pp-primary);
+            padding: 1rem 2rem;
+            border-radius: var(--pp-radius);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.125rem;
+            transition: var(--pp-transition);
+            box-shadow: var(--pp-shadow-lg);
+        }
+
+        .services-hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--pp-shadow-xl);
+        }
+
+        /* Services Grid */
+        .services-section {
+            padding: 6rem 0;
+            background: var(--pp-gray-50);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background: var(--pp-white);
+            border-radius: var(--pp-radius-lg);
+            padding: 2.5rem;
+            box-shadow: var(--pp-shadow);
+            transition: var(--pp-transition);
+            border: 1px solid var(--pp-gray-200);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--pp-primary), var(--pp-primary-light));
+            transform: scaleX(0);
+            transition: var(--pp-transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--pp-shadow-xl);
+            border-color: var(--pp-primary);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card.featured {
+            border: 2px solid var(--pp-primary);
+            position: relative;
+        }
+
+        .service-card.featured::after {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--pp-primary);
+            color: var(--pp-white);
+            padding: 0.5rem 1.5rem;
+            border-radius: var(--pp-radius);
+            font-size: 0.875rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--pp-primary), var(--pp-primary-light));
+            border-radius: var(--pp-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--pp-white);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .service-icon::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, var(--pp-primary), var(--pp-primary-light));
+            border-radius: var(--pp-radius);
+            z-index: -1;
+            opacity: 0.2;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--pp-black);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .service-description {
+            color: var(--pp-gray-600);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .service-features li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+            color: var(--pp-gray-700);
+            font-size: 0.95rem;
+        }
+
+        .service-features li::before {
+            content: "✓";
+            color: var(--pp-success);
+            font-weight: 700;
+            margin-right: 0.75rem;
+            margin-top: 0.125rem;
+            flex-shrink: 0;
+        }
+
+        .service-price {
+            font-size: 1.375rem;
+            font-weight: 700;
+            color: var(--pp-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: var(--pp-primary);
+            color: var(--pp-white);
+            padding: 1rem 1.5rem;
+            border-radius: var(--pp-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--pp-transition);
+            width: 100%;
+            min-height: var(--pp-touch-comfortable);
+        }
+
+        .service-cta:hover {
+            background: var(--pp-primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 6rem 0;
+            background: var(--pp-white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: var(--pp-black);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+            color: var(--pp-gray-600);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+            padding: 2rem 1rem;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--pp-primary), var(--pp-primary-light));
+            color: var(--pp-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            font-weight: 900;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            box-shadow: var(--pp-shadow);
+        }
+
+        .step-title {
+            font-size: 1.375rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--pp-black);
+            line-height: 1.3;
+        }
+
+        .step-description {
+            color: var(--pp-gray-600);
+            line-height: 1.6;
+        }
+
+        /* Industries Section */
+        .industries-section {
+            padding: 6rem 0;
+            background: var(--pp-gray-50);
+        }
+
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .industry-item {
+            background: var(--pp-white);
+            padding: 2rem 1.5rem;
+            border-radius: var(--pp-radius);
+            text-align: center;
+            box-shadow: var(--pp-shadow-sm);
+            transition: var(--pp-transition);
+            border: 1px solid var(--pp-gray-200);
+        }
+
+        .industry-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--pp-shadow-lg);
+            border-color: var(--pp-primary);
+        }
+
+        .industry-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .industry-name {
+            font-weight: 600;
+            color: var(--pp-gray-800);
+            font-size: 1rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--pp-black) 0%, var(--pp-gray-800) 100%);
+            color: var(--pp-white);
+            padding: 5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 80% 20%, rgba(44, 134, 249, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .cta-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--pp-white);
+        }
+
+        .cta-subtitle {
+            font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+            opacity: 0.9;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--pp-primary);
+            color: var(--pp-white);
+            padding: 1.25rem 2.5rem;
+            border-radius: var(--pp-radius);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.125rem;
+            transition: var(--pp-transition);
+            box-shadow: var(--pp-shadow-lg);
+            min-height: var(--pp-touch-large);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--pp-shadow-xl);
+            background: var(--pp-primary-light);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .services-hero {
+                padding: 6rem 0 4rem;
+                margin-top: 70px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .service-card {
+                padding: 2rem;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .industries-grid {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            }
+
+            .section-header {
+                margin-bottom: 3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            .process-step {
+                padding: 1rem 0.5rem;
+            }
+
+            .industry-item {
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION INTEGRATION -->
+    <!-- Header Navigation -->
+    <header id="header" role="banner" class="premium-nav">
+        <div class="progress-indicator"></div>
+        <div class="nav-floating-container">
+            <div class="container">
+                <a href="index.html" class="logo premium-logo" aria-label="The Profit Platform - Home">
+                    <div class="logo-content">
+                        <picture>
+                            <source srcset="images/optimized/logo.webp" type="image/webp">
+                            <img src="images/optimized/logo.png"
+                                 alt="The Profit Platform Logo"
+                                 class="logo-img"
+                                 width="150"
+                                 height="50"
+                                 loading="eager"
+                                 fetchpriority="high"
+                                 decoding="async">
+                        </picture>
+                        <div class="logo-tagline">
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="logo-accent"></div>
+                </a>
+
+                <nav id="primary-navigation" role="navigation" aria-label="Main navigation">
+                    <ul class="nav-links premium-nav-links" role="menubar">
+                        <li role="none">
+                            <a href="index.html" class="nav-item premium-nav-item" role="menuitem">
+                                <i class="fas fa-home nav-icon" aria-hidden="true"></i>
+                                <span>Home</span>
+                                <div class="nav-pill-bg"></div>
+                            </a>
+                        </li>
+                        <li class="nav-dropdown premium-dropdown" role="none">
+                            <a href="services.html"
+                               class="nav-item premium-nav-item active"
+                               role="menuitem"
+                               aria-expanded="false"
+                               aria-haspopup="true"
+                               aria-controls="services-dropdown">
+                                <i class="fas fa-rocket nav-icon" aria-hidden="true"></i>
+                                <span>Services</span>
+                                <i class="fas fa-chevron-down dropdown-arrow" aria-hidden="true"></i>
+                                <div class="nav-pill-bg"></div>
+                            </a>
+                            <div class="dropdown-menu mega-dropdown" role="menu" id="services-dropdown" aria-label="Services submenu">
+                                <div class="mega-dropdown-content">
+                                    <a href="seo.html" class="dropdown-item mega-item" role="menuitem">
+                                        <div class="mega-item-icon">
+                                            <i class="fas fa-search" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="mega-item-content">
+                                            <strong>SEO Services</strong>
+                                            <span>Dominate Google search results</span>
+                                        </div>
+                                        <div class="mega-item-arrow">
+                                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                                        </div>
+                                    </a>
+                                    <a href="web-design.html" class="dropdown-item mega-item" role="menuitem">
+                                        <div class="mega-item-icon">
+                                            <i class="fas fa-laptop-code" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="mega-item-content">
+                                            <strong>Website Design</strong>
+                                            <span>Convert visitors to customers</span>
+                                        </div>
+                                        <div class="mega-item-arrow">
+                                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                                        </div>
+                                    </a>
+                                    <a href="google-ads.html" class="dropdown-item mega-item" role="menuitem">
+                                        <div class="mega-item-icon">
+                                            <i class="fas fa-bullhorn" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="mega-item-content">
+                                            <strong>Google Ads</strong>
+                                            <span>Instant traffic and leads</span>
+                                        </div>
+                                        <div class="mega-item-arrow">
+                                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li role="none">
+                            <a href="pricing.html" class="nav-item premium-nav-item" role="menuitem">
+                                <i class="fas fa-dollar-sign nav-icon" aria-hidden="true"></i>
+                                <span>Pricing</span>
+                                <div class="nav-pill-bg"></div>
+                            </a>
+                        </li>
+                        <li role="none">
+                            <a href="about.html" class="nav-item premium-nav-item" role="menuitem">
+                                <i class="fas fa-users nav-icon" aria-hidden="true"></i>
+                                <span>About</span>
+                                <div class="nav-pill-bg"></div>
+                            </a>
+                        </li>
+                        <li role="none">
+                            <a href="blog/blog.html" class="nav-item premium-nav-item" role="menuitem">
+                                <i class="fas fa-blog nav-icon" aria-hidden="true"></i>
+                                <span>Blog</span>
+                                <div class="nav-pill-bg"></div>
+                            </a>
+                        </li>
+                        <li role="none">
+                            <a href="contact.html" class="cta-link interactive-element nav-item premium-nav-item" role="menuitem">
+                                <i class="fas fa-envelope nav-icon" aria-hidden="true"></i>
+                                <span>Contact</span>
+                                <div class="nav-pill-bg"></div>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="nav-cta">
+                    <a href="contact.html" class="cta-link interactive-element btn btn-primary premium-cta-btn" aria-label="Get Free Chat - Contact us">
+                        <i class="fas fa-comments premium-cta-icon" aria-hidden="true"></i>
+                        <span>Let's Chat</span>
+                        <div class="premium-cta-glow"></div>
+                    </a>
+                </div>
+
+                <button class="menu-toggle"
+                        id="menuToggle"
+                        aria-label="Open mobile menu"
+                        aria-expanded="false"
+                        aria-controls="mobileNav"
+                        type="button">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay" aria-hidden="true"></div>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav"
+         id="mobileNav"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="mobile-nav-title"
+         aria-hidden="true">
+        <button class="mobile-nav-close"
+                id="mobileNavClose"
+                aria-label="Close mobile menu">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="mobile-nav-header">
+            <div class="mobile-logo">
+                <img src="images/optimized/logo.png" alt="The Profit Platform" width="120" height="40">
+            </div>
+        </div>
+        <nav aria-label="Mobile navigation">
+            <h2 id="mobile-nav-title" class="sr-only">Navigation Menu</h2>
+            <div class="mobile-nav-links" role="list">
+                <a href="index.html" role="listitem">
+                    <span aria-hidden="true">🏠</span> Home
+                </a>
+                <a href="services.html" role="listitem" class="active">
+                    <span aria-hidden="true">🎯</span> Services
+                </a>
+                <a href="seo.html" role="listitem" class="mobile-sub-item">
+                    <span aria-hidden="true">📍</span> SEO & Local Search
+                </a>
+                <a href="web-design.html" role="listitem" class="mobile-sub-item">
+                    <span aria-hidden="true">🎨</span> Web Design
+                </a>
+                <a href="google-ads.html" role="listitem" class="mobile-sub-item">
+                    <span aria-hidden="true">📢</span> Google & Meta Ads
+                </a>
+                <a href="pricing.html" role="listitem">
+                    <span aria-hidden="true">💰</span> Pricing
+                </a>
+                <a href="about.html" role="listitem">
+                    <span aria-hidden="true">👥</span> About Us
+                </a>
+                <a href="blog/blog.html" role="listitem">
+                    <span aria-hidden="true">📝</span> Blog
+                </a>
+                <a href="contact.html" class="cta-link interactive-element" role="listitem">
+                    <span aria-hidden="true">📞</span> Contact
+                </a>
+            </div>
+        </nav>
+        <div class="mobile-nav-cta">
+            <a href="tel:+61487286451"
+               class="phone-number"
+               aria-label="Call us at 0487 286 451">
+                0487 286 451
+            </a>
+            <a href="contact.html" class="cta-link interactive-element btn btn-primary"
+               aria-label="Get Free Chat - Contact us">
+                Let's Chat
+            </a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="services-hero" role="banner">
+        <div class="container">
+            <div class="services-hero-content">
+                <h1>Stop Wasting Money on Digital Marketing That Doesn't Work</h1>
+                <p class="services-hero-subtitle">Get guaranteed 3x lead growth with our proven 3-Layer System™. Personal daily management, direct access to me, and measurable results in 30-60 days or your money back.</p>
+                <a href="#services" class="services-hero-cta" aria-label="View our services below">
+                    <i class="fas fa-arrow-down" aria-hidden="true"></i>
+                    <span>View Our Services</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <main>
+        <section class="services-section" id="services" aria-labelledby="services-title">
+            <div class="container">
+                <header class="section-header">
+                    <h2 id="services-title" class="section-title">Our Services</h2>
+                    <p class="section-subtitle">Everything you need to dominate your market and grow your business</p>
+                </header>
+
+                <div class="services-grid">
+                    <!-- SEO Service -->
+                    <article class="service-card" aria-labelledby="seo-title">
+                        <div class="service-icon" aria-hidden="true">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3 id="seo-title" class="service-title">Local SEO That Actually Gets You Found</h3>
+                        <p class="service-description">Stop being invisible to customers searching for your services. Our local SEO gets you to page 1 of Google for "[your service] near me" searches. Sarah's Bakery went from invisible to #1 for "fresh bakery Bondi" in 3 weeks.</p>
+
+                        <ul class="service-features" aria-label="SEO service features">
+                            <li>Local SEO optimization for Sydney markets</li>
+                            <li>Google My Business optimization</li>
+                            <li>Keyword research & content strategy</li>
+                            <li>Technical SEO & site speed optimization</li>
+                            <li>Monthly reporting & rankings tracking</li>
+                            <li>Citation building & local directories</li>
+                        </ul>
+
+                        <div class="service-price" aria-label="Starting price">Starting from $1,500/month</div>
+                        <a href="tel:+61487286451" class="phone-link interactive-element service-cta" aria-label="Call to get SEO quote">
+                            <i class="fas fa-phone" aria-hidden="true"></i>
+                            <span>Get SEO Quote</span>
+                        </a>
+                    </article>
+
+                    <!-- Google Ads Service -->
+                    <article class="service-card" aria-labelledby="ads-title">
+                        <div class="service-icon" aria-hidden="true">
+                            <i class="fab fa-google"></i>
+                        </div>
+                        <h3 id="ads-title" class="service-title">Google Ads That Pay for Themselves</h3>
+                        <p class="service-description">Stop hemorrhaging money on Google Ads that don't convert. Get qualified leads at $18.90 each (our average) instead of $80+ that most agencies deliver. Michael's plumbing went from 2 to 47 leads per month in 30 days.</p>
+
+                        <ul class="service-features" aria-label="Google Ads service features">
+                            <li>Search & display campaign setup</li>
+                            <li>Keyword research & bid optimization</li>
+                            <li>Landing page optimization</li>
+                            <li>Conversion tracking & analytics</li>
+                            <li>A/B testing of ads & landing pages</li>
+                            <li>Daily campaign monitoring & optimization</li>
+                        </ul>
+
+                        <div class="service-price" aria-label="Starting price">Starting from $1,200/month + ad spend</div>
+                        <a href="tel:+61487286451" class="phone-link interactive-element service-cta" aria-label="Call to get Google Ads quote">
+                            <i class="fas fa-phone" aria-hidden="true"></i>
+                            <span>Get Ads Quote</span>
+                        </a>
+                    </article>
+
+                    <!-- Web Design Service -->
+                    <article class="service-card" aria-labelledby="web-design-title">
+                        <div class="service-icon" aria-hidden="true">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3 id="web-design-title" class="service-title">Websites That Turn Visitors Into Paying Customers</h3>
+                        <p class="service-description">Stop losing customers to slow, confusing websites. Get a conversion-optimized site that loads in under 2 seconds and guides visitors to become customers. Our average client sees 73% conversion improvement.</p>
+
+                        <ul class="service-features" aria-label="Web design service features">
+                            <li>Mobile-responsive design</li>
+                            <li>Conversion optimization</li>
+                            <li>Fast loading speeds (under 3 seconds)</li>
+                            <li>SEO-optimized structure</li>
+                            <li>Lead capture forms & CTAs</li>
+                            <li>Content management system</li>
+                        </ul>
+
+                        <div class="service-price" aria-label="Starting price">Starting from $3,500</div>
+                        <a href="tel:+61487286451" class="phone-link interactive-element service-cta" aria-label="Call to get web design quote">
+                            <i class="fas fa-phone" aria-hidden="true"></i>
+                            <span>Get Design Quote</span>
+                        </a>
+                    </article>
+
+                    <!-- Social Media Marketing -->
+                    <article class="service-card" aria-labelledby="social-title">
+                        <div class="service-icon" aria-hidden="true">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <h3 id="social-title" class="service-title">Social Media That Actually Drives Sales</h3>
+                        <p class="service-description">Stop posting content that gets likes but no sales. Our social media strategy turns followers into customers. Bella's Beauty Studio booked 240 more treatments per month through our targeted social campaigns.</p>
+
+                        <ul class="service-features" aria-label="Social media service features">
+                            <li>Content creation & scheduling</li>
+                            <li>Facebook & Instagram advertising</li>
+                            <li>Community management</li>
+                            <li>Influencer partnership coordination</li>
+                            <li>Performance tracking & reporting</li>
+                            <li>Brand voice development</li>
+                        </ul>
+
+                        <div class="service-price" aria-label="Starting price">Starting from $800/month</div>
+                        <a href="tel:+61487286451" class="phone-link interactive-element service-cta" aria-label="Call to get social media quote">
+                            <i class="fas fa-phone" aria-hidden="true"></i>
+                            <span>Get Social Quote</span>
+                        </a>
+                    </article>
+
+                    <!-- Email Marketing -->
+                    <article class="service-card" aria-labelledby="email-title">
+                        <div class="service-icon" aria-hidden="true">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3 id="email-title" class="service-title">Email Marketing That Sells While You Sleep</h3>
+                        <p class="service-description">Stop leaving money on the table with leads that go cold. Our automated email sequences nurture prospects into customers 24/7. Average client sees $4.20 return for every $1 spent on email marketing.</p>
+
+                        <ul class="service-features" aria-label="Email marketing service features">
+                            <li>Email automation sequences</li>
+                            <li>Newsletter design & delivery</li>
+                            <li>List building strategies</li>
+                            <li>Segmentation & personalization</li>
+                            <li>A/B testing & optimization</li>
+                            <li>Performance analytics</li>
+                        </ul>
+
+                        <div class="service-price" aria-label="Starting price">Starting from $600/month</div>
+                        <a href="tel:+61487286451" class="phone-link interactive-element service-cta" aria-label="Call to get email marketing quote">
+                            <i class="fas fa-phone" aria-hidden="true"></i>
+                            <span>Get Email Quote</span>
+                        </a>
+                    </article>
+
+                    <!-- Complete Marketing Package -->
+                    <article class="service-card featured" aria-labelledby="complete-title">
+                        <div class="service-icon" aria-hidden="true">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 id="complete-title" class="service-title">Complete 3-Layer System™</h3>
+                        <p class="service-description">Stop dealing with multiple agencies who don't talk to each other. Get our proven 3-Layer System that combines SEO, Google Ads, and conversion optimization. 23 Sydney businesses achieved 3x+ lead growth in 60 days.</p>
+
+                        <ul class="service-features" aria-label="Complete package features">
+                            <li>Complete SEO optimization</li>
+                            <li>Google Ads management</li>
+                            <li>Website optimization</li>
+                            <li>Social media marketing</li>
+                            <li>Email marketing automation</li>
+                            <li>Weekly performance calls</li>
+                            <li>Dedicated account manager</li>
+                            <li>24/7 support access</li>
+                        </ul>
+
+                        <div class="service-price" aria-label="Package price">$3,500/month + ad spend</div>
+                        <a href="tel:+61487286451" class="phone-link interactive-element service-cta" aria-label="Call to get complete package quote">
+                            <i class="fas fa-phone" aria-hidden="true"></i>
+                            <span>Get Complete Package Quote</span>
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="process-section" aria-labelledby="process-title">
+            <div class="container">
+                <header class="section-header">
+                    <h2 id="process-title" class="section-title">Why Our 3-Layer System™ Gets Results When Others Fail</h2>
+                    <p class="section-subtitle">The battle-tested framework that's generated over $2.3M in new revenue for Sydney businesses</p>
+                </header>
+
+                <div class="process-steps">
+                    <article class="process-step">
+                        <div class="step-number" aria-label="Step 1">1</div>
+                        <h3 class="step-title">Foundation Layer: Fix What's Broken</h3>
+                        <p class="step-description">Most agencies build on a broken foundation. We fix your website speed (under 2 seconds), Google presence, and tracking first. This alone increases conversions by 40-60% before we even start advertising.</p>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="step-number" aria-label="Step 2">2</div>
+                        <h3 class="step-title">Acceleration Layer: Get Immediate Results</h3>
+                        <p class="step-description">While SEO builds (2-3 months), targeted ads get you leads in 24-48 hours. We don't make you wait for results. Average client gets their first qualified lead within 48 hours of launch.</p>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="step-number" aria-label="Step 3">3</div>
+                        <h3 class="step-title">Domination Layer: Scale What Works</h3>
+                        <p class="step-description">Daily optimization based on real data, not gut feelings. We kill what's not working and double down on what converts. This is where we typically see the 3x lead growth happen.</p>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="step-number" aria-label="Step 4">4</div>
+                        <h3 class="step-title">Growth Layer: Dominate Your Market</h3>
+                        <p class="step-description">Once you're crushing it locally, we expand into new suburbs, services, and channels. This is where businesses go from surviving to thriving, often doubling their service area.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Industries Section -->
+        <section class="industries-section" aria-labelledby="industries-title">
+            <div class="container">
+                <header class="section-header">
+                    <h2 id="industries-title" class="section-title">Industries We Serve</h2>
+                    <p class="section-subtitle">Specialized expertise across Sydney's key business sectors</p>
+                </header>
+
+                <div class="industries-grid" role="list">
+                    <div class="industry-item" role="listitem">
+                        <div class="industry-icon" aria-hidden="true">🏠</div>
+                        <div class="industry-name">Home Services</div>
+                    </div>
+                    <div class="industry-item" role="listitem">
+                        <div class="industry-icon" aria-hidden="true">🍽️</div>
+                        <div class="industry-name">Restaurants & Cafes</div>
+                    </div>
+                    <div class="industry-item" role="listitem">
+                        <div class="industry-icon" aria-hidden="true">💪</div>
+                        <div class="industry-name">Fitness & Wellness</div>
+                    </div>
+                    <div class="industry-item" role="listitem">
+                        <div class="industry-icon" aria-hidden="true">⚖️</div>
+                        <div class="industry-name">Legal Services</div>
+                    </div>
+                    <div class="industry-item" role="listitem">
+                        <div class="industry-icon" aria-hidden="true">🏥</div>
+                        <div class="industry-name">Healthcare</div>
+                    </div>
+                    <div class="industry-item" role="listitem">
+                        <div class="industry-icon" aria-hidden="true">💻</div>
+                        <div class="industry-name">Professional Services</div>
+                    </div>
+                    <div class="industry-item" role="listitem">
+                        <div class="industry-icon" aria-hidden="true">🏗️</div>
+                        <div class="industry-name">Construction</div>
+                    </div>
+                    <div class="industry-item" role="listitem">
+                        <div class="industry-icon" aria-hidden="true">🚗</div>
+                        <div class="industry-name">Automotive</div>
+                    </div>
+                    <div class="industry-item" role="listitem">
+                        <div class="industry-icon" aria-hidden="true">💄</div>
+                        <div class="industry-name">Beauty & Cosmetics</div>
+                    </div>
+                    <div class="industry-item" role="listitem">
+                        <div class="industry-icon" aria-hidden="true">🏢</div>
+                        <div class="industry-name">Real Estate</div>
+                    </div>
+                    <div class="industry-item" role="listitem">
+                        <div class="industry-icon" aria-hidden="true">🎓</div>
+                        <div class="industry-name">Education & Training</div>
+                    </div>
+                    <div class="industry-item" role="listitem">
+                        <div class="industry-icon" aria-hidden="true">🛍️</div>
+                        <div class="industry-name">Retail & E-commerce</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section" aria-labelledby="cta-title">
+            <div class="container">
+                <h2 id="cta-title" class="cta-title">Ready to Grow Your Business?</h2>
+                <p class="cta-subtitle">Get a free consultation and custom strategy for your business</p>
+                <a href="tel:+61487286451" class="phone-link interactive-element cta-button" aria-label="Call us now at 0487 286 451">
+                    <i class="fas fa-phone" aria-hidden="true"></i>
+                    <span>Call Now: 0487 286 451</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- NAVIGATION JAVASCRIPT -->
+    <script>
+        // Mobile navigation functionality
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const mobileNav = document.getElementById('mobileNav');
+            const overlay = document.getElementById('mobileNavOverlay');
+
+            mobileNav.classList.toggle('active');
+            overlay.classList.toggle('active');
+            this.classList.toggle('active');
+
+            // Update ARIA attributes
+            const isOpen = mobileNav.classList.contains('active');
+            this.setAttribute('aria-expanded', isOpen);
+            mobileNav.setAttribute('aria-hidden', !isOpen);
+        });
+
+        document.getElementById('mobileNavClose').addEventListener('click', function() {
+            const mobileNav = document.getElementById('mobileNav');
+            const overlay = document.getElementById('mobileNavOverlay');
+            const menuToggle = document.getElementById('menuToggle');
+
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            menuToggle.classList.remove('active');
+
+            // Update ARIA attributes
+            menuToggle.setAttribute('aria-expanded', false);
+            mobileNav.setAttribute('aria-hidden', true);
+        });
+
+        // Close mobile nav when overlay is clicked
+        document.getElementById('mobileNavOverlay').addEventListener('click', function() {
+            document.getElementById('mobileNavClose').click();
+        });
+
+        // Enhanced smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    // Account for fixed header height
+                    const headerHeight = document.getElementById('header').offsetHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Enhanced Intersection Observer for animations with stagger effect
+        const observerOptions = {
+            threshold: [0, 0.1, 0.5],
+            rootMargin: '50px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    // Stagger animation delay
+                    setTimeout(() => {
+                        entry.target.classList.add('animate-in');
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        // Initialize animations when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Observe elements for animations
+            document.querySelectorAll('.service-card, .process-step, .industry-item').forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                el.style.transitionDelay = `${index * 0.1}s`;
+                observer.observe(el);
+            });
+
+            // Add hover effects to service cards
+            document.querySelectorAll('.service-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.willChange = 'transform';
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    this.style.willChange = 'auto';
+                });
+            });
+
+            // Progress indicator functionality
+            window.addEventListener('scroll', () => {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+
+                const progressBar = document.querySelector('.progress-indicator');
+                if (progressBar) {
+                    progressBar.style.width = scrolled + '%';
+                }
+            });
+
+            console.log('🚀 Services page enhanced interactions initialized');
+        });
+
+        // Performance optimization: cleanup on page unload
+        window.addEventListener('beforeunload', () => {
+            // Clean up will-change properties to free GPU memory
+            document.querySelectorAll('[style*="will-change"]').forEach(el => {
+                el.style.willChange = 'auto';
+            });
+        });
+    </script>
+
+    <!-- Service Animations JavaScript -->
+    <script src="js/service-animations.js"></script>
+</body>
+</html>

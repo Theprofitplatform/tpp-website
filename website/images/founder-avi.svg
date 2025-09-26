@@ -1,0 +1,41 @@
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#4F46E5"/>
+            <stop offset="100%" style="stop-color:#7C3AED"/>
+        </linearGradient>
+        <linearGradient id="shirtGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#1F2937"/>
+            <stop offset="100%" style="stop-color:#374151"/>
+        </linearGradient>
+    </defs>
+
+    <!-- Background -->
+    <rect width="300" height="300" fill="url(#bgGradient)" rx="12"/>
+
+    <!-- Professional silhouette -->
+    <!-- Shirt/suit -->
+    <path d="M75 250 L75 200 C85 190, 110 185, 150 185 C190 185, 215 190, 225 200 L225 250 Z" fill="url(#shirtGradient)"/>
+
+    <!-- Head/face -->
+    <circle cx="150" cy="130" r="45" fill="#F3E8C7" stroke="#E5D4A1" stroke-width="2"/>
+
+    <!-- Hair -->
+    <path d="M105 110 C105 85, 125 75, 150 75 C175 75, 195 85, 195 110 C195 105, 185 100, 175 102 C165 95, 155 95, 150 100 C145 95, 135 95, 125 102 C115 100, 105 105, 105 110 Z" fill="#2D1810"/>
+
+    <!-- Eyes -->
+    <circle cx="135" cy="125" r="3" fill="#1F2937"/>
+    <circle cx="165" cy="125" r="3" fill="#1F2937"/>
+
+    <!-- Nose -->
+    <path d="M148 135 L152 135 L150 140 Z" fill="#E5D4A1"/>
+
+    <!-- Mouth -->
+    <path d="M145 145 Q150 150 155 145" stroke="#1F2937" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+    <!-- Professional text overlay -->
+    <rect x="20" y="220" width="260" height="60" fill="rgba(0,0,0,0.8)" rx="8"/>
+    <text x="150" y="240" fill="white" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" text-anchor="middle">AVI</text>
+    <text x="150" y="260" fill="#10B981" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600" text-anchor="middle">FOUNDER &amp; CEO</text>
+    <text x="150" y="275" fill="rgba(255,255,255,0.8)" font-family="Inter, Arial, sans-serif" font-size="12" text-anchor="middle">The Profit Platform</text>
+</svg>

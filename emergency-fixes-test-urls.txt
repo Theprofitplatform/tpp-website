@@ -1,0 +1,29 @@
+Test URLs for Emergency Fixes:
+
+1. Contact Form Test:
+   http://localhost/contact.html
+   - Fill and submit form
+   - Check email notification
+   - Verify success message
+
+2. Exit Intent Popup Test:
+   http://localhost/index.html
+   - Wait 5 seconds
+   - Move mouse to browser tab
+   - Should see popup
+
+3. Tracking Test:
+   http://localhost/services.html
+   - Open browser console
+   - Look for "Event tracked" messages
+   - Check Network tab for GA/FB calls
+
+4. Component Loading Test:
+   http://localhost/about.html
+   - Check if footer loads
+   - Look for "Component Loader initialized"
+
+5. Performance Test:
+   http://localhost/
+   - Check page load time
+   - Should be <3 seconds

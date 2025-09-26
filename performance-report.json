@@ -1,0 +1,403 @@
+{
+  "timestamp": "2025-09-25T21:32:59.229Z",
+  "pages": [
+    {
+      "page": "/",
+      "url": "http://localhost:4321/",
+      "status": 200,
+      "ttfb": 21.537788999999997,
+      "totalTime": 22.059294,
+      "contentLength": 47460,
+      "chunks": 3,
+      "headers": {
+        "vary": "Origin",
+        "content-type": "text/html",
+        "date": "Thu, 25 Sep 2025 21:32:58 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      },
+      "analysis": {
+        "ttfb": {
+          "value": "21.54",
+          "rating": "excellent"
+        },
+        "totalLoad": {
+          "value": "22.06",
+          "rating": "excellent"
+        },
+        "contentSize": {
+          "value": "46.35",
+          "unit": "KB"
+        }
+      }
+    },
+    {
+      "page": "/about",
+      "url": "http://localhost:4321/about",
+      "status": 200,
+      "ttfb": 14.565635,
+      "totalTime": 14.906351,
+      "contentLength": 58510,
+      "chunks": 3,
+      "headers": {
+        "vary": "Origin",
+        "content-type": "text/html",
+        "date": "Thu, 25 Sep 2025 21:32:58 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      },
+      "analysis": {
+        "ttfb": {
+          "value": "14.57",
+          "rating": "excellent"
+        },
+        "totalLoad": {
+          "value": "14.91",
+          "rating": "excellent"
+        },
+        "contentSize": {
+          "value": "57.14",
+          "unit": "KB"
+        }
+      }
+    },
+    {
+      "page": "/portfolio",
+      "url": "http://localhost:4321/portfolio",
+      "status": 200,
+      "ttfb": 19.182995999999996,
+      "totalTime": 19.635016999999998,
+      "contentLength": 66437,
+      "chunks": 4,
+      "headers": {
+        "vary": "Origin",
+        "content-type": "text/html",
+        "date": "Thu, 25 Sep 2025 21:32:58 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      },
+      "analysis": {
+        "ttfb": {
+          "value": "19.18",
+          "rating": "excellent"
+        },
+        "totalLoad": {
+          "value": "19.64",
+          "rating": "excellent"
+        },
+        "contentSize": {
+          "value": "64.88",
+          "unit": "KB"
+        }
+      }
+    },
+    {
+      "page": "/pricing",
+      "url": "http://localhost:4321/pricing",
+      "status": 200,
+      "ttfb": 14.631266999999994,
+      "totalTime": 14.973590000000002,
+      "contentLength": 69692,
+      "chunks": 4,
+      "headers": {
+        "vary": "Origin",
+        "content-type": "text/html",
+        "date": "Thu, 25 Sep 2025 21:32:58 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      },
+      "analysis": {
+        "ttfb": {
+          "value": "14.63",
+          "rating": "excellent"
+        },
+        "totalLoad": {
+          "value": "14.97",
+          "rating": "excellent"
+        },
+        "contentSize": {
+          "value": "68.06",
+          "unit": "KB"
+        }
+      }
+    },
+    {
+      "page": "/google-ads",
+      "url": "http://localhost:4321/google-ads",
+      "status": 200,
+      "ttfb": 19.356410999999994,
+      "totalTime": 19.46927199999999,
+      "contentLength": 57416,
+      "chunks": 3,
+      "headers": {
+        "vary": "Origin",
+        "content-type": "text/html",
+        "date": "Thu, 25 Sep 2025 21:32:58 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      },
+      "analysis": {
+        "ttfb": {
+          "value": "19.36",
+          "rating": "excellent"
+        },
+        "totalLoad": {
+          "value": "19.47",
+          "rating": "excellent"
+        },
+        "contentSize": {
+          "value": "56.07",
+          "unit": "KB"
+        }
+      }
+    },
+    {
+      "page": "/seo-services",
+      "url": "http://localhost:4321/seo-services",
+      "status": 200,
+      "ttfb": 22.311593000000002,
+      "totalTime": 22.421420999999995,
+      "contentLength": 61663,
+      "chunks": 3,
+      "headers": {
+        "vary": "Origin",
+        "content-type": "text/html",
+        "date": "Thu, 25 Sep 2025 21:32:58 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      },
+      "analysis": {
+        "ttfb": {
+          "value": "22.31",
+          "rating": "excellent"
+        },
+        "totalLoad": {
+          "value": "22.42",
+          "rating": "excellent"
+        },
+        "contentSize": {
+          "value": "60.22",
+          "unit": "KB"
+        }
+      }
+    },
+    {
+      "page": "/web-design",
+      "url": "http://localhost:4321/web-design",
+      "status": 200,
+      "ttfb": 16.636889000000025,
+      "totalTime": 16.738117000000017,
+      "contentLength": 61300,
+      "chunks": 3,
+      "headers": {
+        "vary": "Origin",
+        "content-type": "text/html",
+        "date": "Thu, 25 Sep 2025 21:32:58 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      },
+      "analysis": {
+        "ttfb": {
+          "value": "16.64",
+          "rating": "excellent"
+        },
+        "totalLoad": {
+          "value": "16.74",
+          "rating": "excellent"
+        },
+        "contentSize": {
+          "value": "59.86",
+          "unit": "KB"
+        }
+      }
+    },
+    {
+      "page": "/contact",
+      "url": "http://localhost:4321/contact",
+      "status": 200,
+      "ttfb": 14.32426799999999,
+      "totalTime": 14.490351999999973,
+      "contentLength": 51907,
+      "chunks": 3,
+      "headers": {
+        "vary": "Origin",
+        "content-type": "text/html",
+        "date": "Thu, 25 Sep 2025 21:32:58 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      },
+      "analysis": {
+        "ttfb": {
+          "value": "14.32",
+          "rating": "excellent"
+        },
+        "totalLoad": {
+          "value": "14.49",
+          "rating": "excellent"
+        },
+        "contentSize": {
+          "value": "50.69",
+          "unit": "KB"
+        }
+      }
+    }
+  ],
+  "concurrentTest": {
+    "results": [
+      {
+        "url": "http://localhost:4321/",
+        "status": 200,
+        "ttfb": 10.081705,
+        "totalTime": 10.211914000000007,
+        "contentLength": 47460,
+        "chunks": 3,
+        "headers": {
+          "vary": "Origin",
+          "content-type": "text/html",
+          "date": "Thu, 25 Sep 2025 21:32:58 GMT",
+          "connection": "keep-alive",
+          "keep-alive": "timeout=5",
+          "transfer-encoding": "chunked"
+        }
+      },
+      {
+        "url": "http://localhost:4321/about",
+        "status": 200,
+        "ttfb": 23.34613999999999,
+        "totalTime": 23.456986,
+        "contentLength": 58510,
+        "chunks": 3,
+        "headers": {
+          "vary": "Origin",
+          "content-type": "text/html",
+          "date": "Thu, 25 Sep 2025 21:32:58 GMT",
+          "connection": "keep-alive",
+          "keep-alive": "timeout=5",
+          "transfer-encoding": "chunked"
+        }
+      },
+      {
+        "url": "http://localhost:4321/portfolio",
+        "status": 200,
+        "ttfb": 36.487499000000014,
+        "totalTime": 36.67228800000001,
+        "contentLength": 66437,
+        "chunks": 4,
+        "headers": {
+          "vary": "Origin",
+          "content-type": "text/html",
+          "date": "Thu, 25 Sep 2025 21:32:58 GMT",
+          "connection": "keep-alive",
+          "keep-alive": "timeout=5",
+          "transfer-encoding": "chunked"
+        }
+      },
+      {
+        "url": "http://localhost:4321/pricing",
+        "status": 200,
+        "ttfb": 49.778569000000005,
+        "totalTime": 49.98898600000001,
+        "contentLength": 69692,
+        "chunks": 4,
+        "headers": {
+          "vary": "Origin",
+          "content-type": "text/html",
+          "date": "Thu, 25 Sep 2025 21:32:58 GMT",
+          "connection": "keep-alive",
+          "keep-alive": "timeout=5",
+          "transfer-encoding": "chunked"
+        }
+      },
+      {
+        "url": "http://localhost:4321/google-ads",
+        "status": 200,
+        "ttfb": 63.460035000000005,
+        "totalTime": 63.559218000000016,
+        "contentLength": 57416,
+        "chunks": 3,
+        "headers": {
+          "vary": "Origin",
+          "content-type": "text/html",
+          "date": "Thu, 25 Sep 2025 21:32:58 GMT",
+          "connection": "keep-alive",
+          "keep-alive": "timeout=5",
+          "transfer-encoding": "chunked"
+        }
+      },
+      {
+        "url": "http://localhost:4321/seo-services",
+        "status": 200,
+        "ttfb": 78.308683,
+        "totalTime": 78.56847300000001,
+        "contentLength": 61663,
+        "chunks": 3,
+        "headers": {
+          "vary": "Origin",
+          "content-type": "text/html",
+          "date": "Thu, 25 Sep 2025 21:32:58 GMT",
+          "connection": "keep-alive",
+          "keep-alive": "timeout=5",
+          "transfer-encoding": "chunked"
+        }
+      },
+      {
+        "url": "http://localhost:4321/web-design",
+        "status": 200,
+        "ttfb": 94.41028599999999,
+        "totalTime": 94.51900599999999,
+        "contentLength": 61300,
+        "chunks": 3,
+        "headers": {
+          "vary": "Origin",
+          "content-type": "text/html",
+          "date": "Thu, 25 Sep 2025 21:32:58 GMT",
+          "connection": "keep-alive",
+          "keep-alive": "timeout=5",
+          "transfer-encoding": "chunked"
+        }
+      },
+      {
+        "url": "http://localhost:4321/contact",
+        "status": 200,
+        "ttfb": 107.641977,
+        "totalTime": 107.83565399999998,
+        "contentLength": 51907,
+        "chunks": 3,
+        "headers": {
+          "vary": "Origin",
+          "content-type": "text/html",
+          "date": "Thu, 25 Sep 2025 21:32:58 GMT",
+          "connection": "keep-alive",
+          "keep-alive": "timeout=5",
+          "transfer-encoding": "chunked"
+        }
+      }
+    ],
+    "totalTime": 109.52739700000004,
+    "concurrent": 8
+  },
+  "stressTest": {
+    "totalRequests": 50,
+    "successful": 50,
+    "failed": 0,
+    "totalTime": 339.86421799999994,
+    "requestsPerSecond": "147.12",
+    "averageResponseTime": "37.06",
+    "minResponseTime": "6.28",
+    "maxResponseTime": "70.22"
+  },
+  "summary": {
+    "avgTTFB": 17.818355999999998,
+    "avgLoad": 18.086676749999995,
+    "totalSize": 474385,
+    "grade": "A+"
+  }
+}

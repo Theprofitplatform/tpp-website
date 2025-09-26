@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exit-Intent Popup - 90-Day Growth Sprint</title>
+    <style>
+        /* Exit Intent Popup Styles */
+        .exit-intent-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .exit-intent-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .exit-intent-popup {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background: white;
+            border-radius: 24px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .exit-intent-overlay.active .exit-intent-popup {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .popup-header {
+            background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 24px 24px 0 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .popup-close:hover {
+            opacity: 1;
+        }
+
+        .popup-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+        }
+
+        .popup-headline {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .popup-subheadline {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 0;
+        }
+
+        .popup-body {
+            padding: 40px 32px;
+        }
+
+        .offer-highlight {
+            background: linear-gradient(135deg, #FEF3C7, #FCD34D);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            margin-bottom: 32px;
+            border: 2px solid #F59E0B;
+        }
+
+        .offer-value {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #D97706;
+            margin: 0;
+            line-height: 1;
+        }
+
+        .offer-description {
+            color: #92400E;
+            font-weight: 600;
+            margin: 8px 0 0 0;
+            font-size: 1.1rem;
+        }
+
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+            margin: 24px 0;
+        }
+
+        .benefits-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-size: 16px;
+            color: #374151;
+        }
+
+        .benefits-list li::before {
+            content: '✓';
+            width: 24px;
+            height: 24px;
+            background: #10B981;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .urgency-timer {
+            background: #FEE2E2;
+            border: 2px solid #F87171;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .timer-text {
+            color: #DC2626;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .countdown {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #B91C1C;
+            font-family: monospace;
+        }
+
+        .popup-cta {
+            background: linear-gradient(135deg, #10B981, #059669);
+            color: white;
+            border: none;
+            padding: 20px 32px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
+        }
+
+        .popup-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(16, 185, 129, 0.4);
+        }
+
+        .trust-signals {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid #E5E7EB;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .trust-item {
+            text-align: center;
+            font-size: 14px;
+            color: #6B7280;
+        }
+
+        .trust-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #6366F1;
+            display: block;
+        }
+
+        .no-thanks {
+            text-align: center;
+            margin-top: 16px;
+        }
+
+        .no-thanks a {
+            color: #6B7280;
+            text-decoration: underline;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .no-thanks a:hover {
+            color: #374151;
+        }
+
+        @media (max-width: 768px) {
+            .exit-intent-popup {
+                width: 95%;
+                margin: 20px;
+            }
+
+            .popup-header {
+                padding: 24px 20px;
+            }
+
+            .popup-body {
+                padding: 24px 20px;
+            }
+
+            .popup-headline {
+                font-size: 1.8rem;
+            }
+
+            .offer-value {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Exit Intent Popup -->
+    <div class="exit-intent-overlay" id="exitIntentOverlay">
+        <div class="exit-intent-popup">
+            <div class="popup-header">
+                <button class="popup-close" onclick="closeExitIntent()">&times;</button>
+                <div class="popup-icon">🚀</div>
+                <h2 class="popup-headline">Wait! Don't Leave Empty-Handed</h2>
+                <p class="popup-subheadline">Get Sydney's most powerful 90-day business growth system - absolutely FREE</p>
+            </div>
+
+            <div class="popup-body">
+                <div class="offer-highlight">
+                    <div class="offer-value">$2,997</div>
+                    <div class="offer-description">90-Day Growth Sprint - FREE Today</div>
+                </div>
+
+                <div class="urgency-timer">
+                    <div class="timer-text">This offer expires in:</div>
+                    <div class="countdown" id="countdownTimer">14:59</div>
+                </div>
+
+                <p style="font-size: 18px; font-weight: 600; color: #374151; margin-bottom: 24px; text-align: center;">
+                    Transform your Sydney business in 90 days with our proven system that's helped 50+ local businesses double their revenue
+                </p>
+
+                <ul class="benefits-list">
+                    <li><strong>Immediate Action Plan:</strong> Get a complete 90-day roadmap customized for your Sydney business within 48 hours</li>
+                    <li><strong>Weekly Strategy Calls:</strong> 12 weeks of direct access to me for guidance and optimization (valued at $1,200)</li>
+                    <li><strong>Competitor Intelligence Report:</strong> See exactly what your Sydney competitors are doing wrong (valued at $497)</li>
+                    <li><strong>Local SEO Quick-Win Checklist:</strong> 37-point checklist to dominate Sydney search results (valued at $297)</li>
+                    <li><strong>Google Ads Templates:</strong> Proven ad campaigns that have generated 10,000+ Sydney leads (valued at $697)</li>
+                    <li><strong>Crisis-Proof Revenue System:</strong> Never worry about economic downturns again (valued at $397)</li>
+                </ul>
+
+                <button class="popup-cta" onclick="claimGrowthSprint()">
+                    🎯 Yes! Get My FREE 90-Day Growth Sprint
+                </button>
+
+                <div class="trust-signals">
+                    <div class="trust-item">
+                        <span class="trust-number">50+</span>
+                        Sydney Businesses
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-number">287%</span>
+                        Average Growth
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-number">90</span>
+                        Days to Results
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-number">$0</span>
+                        Lock-in Contracts
+                    </div>
+                </div>
+
+                <div class="no-thanks">
+                    <a onclick="closeExitIntent()">No thanks, I'll figure it out myself</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Exit Intent Detection
+        let exitIntentShown = false;
+        let mouseY = 0;
+
+        function showExitIntent() {
+            if (!exitIntentShown) {
+                exitIntentShown = true;
+                document.getElementById('exitIntentOverlay').classList.add('active');
+                startCountdown();
+
+                // Track event
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'exit_intent_popup_shown', {
+                        'event_category': 'Conversion',
+                        'event_label': '90-Day Growth Sprint'
+                    });
+                }
+            }
+        }
+
+        function closeExitIntent() {
+            document.getElementById('exitIntentOverlay').classList.remove('active');
+
+            // Track event
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'exit_intent_popup_closed', {
+                    'event_category': 'Conversion',
+                    'event_label': '90-Day Growth Sprint'
+                });
+            }
+        }
+
+        function claimGrowthSprint() {
+            // Track conversion
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'exit_intent_conversion', {
+                    'event_category': 'Conversion',
+                    'event_label': '90-Day Growth Sprint',
+                    'value': 2997
+                });
+            }
+
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Lead', {
+                    value: 2997,
+                    currency: 'AUD',
+                    content_name: '90-Day Growth Sprint'
+                });
+            }
+
+            // Redirect to contact form with UTM parameters
+            window.location.href = 'contact.html?utm_source=exit_intent&utm_campaign=90day_growth_sprint&utm_content=popup';
+        }
+
+        // Exit intent detection for desktop
+        document.addEventListener('mouseleave', function(e) {
+            if (e.clientY <= 0) {
+                showExitIntent();
+            }
+        });
+
+        // Mobile exit intent - detect when user tries to go back or close tab
+        window.addEventListener('beforeunload', function(e) {
+            if (window.innerWidth <= 768 && !exitIntentShown) {
+                e.preventDefault();
+                e.returnValue = '';
+                setTimeout(showExitIntent, 100);
+                return '';
+            }
+        });
+
+        // Alternative mobile trigger - scroll to top rapidly
+        let lastScrollY = window.scrollY;
+        let scrollDirection = 0;
+
+        window.addEventListener('scroll', function() {
+            if (window.innerWidth <= 768) {
+                const currentScrollY = window.scrollY;
+
+                if (currentScrollY < lastScrollY) {
+                    scrollDirection++;
+                    if (scrollDirection > 5 && currentScrollY < 100) {
+                        showExitIntent();
+                    }
+                } else {
+                    scrollDirection = 0;
+                }
+
+                lastScrollY = currentScrollY;
+            }
+        });
+
+        // Time-based trigger (backup) - show after 45 seconds if not already shown
+        setTimeout(() => {
+            if (!exitIntentShown) {
+                showExitIntent();
+            }
+        }, 45000);
+
+        // Countdown timer
+        function startCountdown() {
+            let minutes = 14;
+            let seconds = 59;
+
+            const timer = setInterval(() => {
+                const display = document.getElementById('countdownTimer');
+                if (display) {
+                    display.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                }
+
+                if (seconds === 0) {
+                    if (minutes === 0) {
+                        clearInterval(timer);
+                        // Close popup after timer expires
+                        closeExitIntent();
+                        return;
+                    }
+                    minutes--;
+                    seconds = 59;
+                } else {
+                    seconds--;
+                }
+            }, 1000);
+        }
+
+        // Close popup when clicking overlay
+        document.getElementById('exitIntentOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeExitIntent();
+            }
+        });
+
+        // Close popup with ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeExitIntent();
+            }
+        });
+    </script>
+</body>
+</html>

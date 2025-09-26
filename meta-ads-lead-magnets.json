@@ -1,0 +1,58 @@
+{
+  "campaigns": [
+    {
+      "name": "Free Audit Tool - High Intent",
+      "objective": "LEAD_GENERATION",
+      "budget": 50,
+      "targeting": {
+        "locations": ["Sydney", "Melbourne", "Brisbane", "Perth", "Adelaide"],
+        "interests": ["Small Business", "Digital Marketing", "SEO", "Website Optimization"],
+        "behaviors": ["Small Business Owners", "Business Page Admins"]
+      },
+      "ads": [
+        {
+          "headline": "Is Your Website Losing You Money?",
+          "primary_text": "Get a FREE $500 website audit that reveals exactly why you're losing 67% of potential customers. 1,247 Australian businesses already fixed their sites.",
+          "cta": "GET FREE AUDIT",
+          "link": "https://theprofitplatform.com.au/free-audit.html"
+        }
+      ]
+    },
+    {
+      "name": "ROI Calculator - Decision Stage",
+      "objective": "CONVERSIONS",
+      "budget": 40,
+      "targeting": {
+        "custom_audiences": ["Website Visitors", "Lookalike - Converters"],
+        "interests": ["Google Ads", "PPC Marketing", "ROI", "Business Analytics"]
+      },
+      "ads": [
+        {
+          "headline": "Calculate Your Exact Google Ads Profit",
+          "primary_text": "See your ROI before spending $1. Our calculator shows exactly how much profit you'll make from Google Ads.",
+          "cta": "CALCULATE NOW",
+          "link": "https://theprofitplatform.com.au/roi-calculator.html"
+        }
+      ]
+    },
+    {
+      "name": "SEO Checklist - Content Seekers",
+      "objective": "TRAFFIC",
+      "budget": 35,
+      "targeting": {
+        "interests": ["SEO", "Content Marketing", "Google Rankings", "Organic Traffic"],
+        "behaviors": ["Engaged Shoppers", "Technology Early Adopters"]
+      },
+      "ads": [
+        {
+          "headline": "The 47-Step SEO Checklist for #1 Rankings",
+          "primary_text": "The exact checklist we use to rank clients #1 on Google. 3,847 marketers already downloaded it.",
+          "cta": "GET CHECKLIST",
+          "link": "https://theprofitplatform.com.au/seo-checklist.html"
+        }
+      ]
+    }
+  ],
+  "total_daily_budget": 125,
+  "expected_leads_per_day": 25
+}

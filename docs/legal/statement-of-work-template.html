@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statement of Work Template - The Profit Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #f8f9fa;
+        }
+
+        .document-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .document-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .sow-number {
+            background: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .document-meta {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .document-content {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #667eea;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            color: #2c3e50;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        p, li {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+
+        ul {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #dee2e6;
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .deliverable-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #667eea;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+
+        .timeline-date {
+            background: #667eea;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            margin-right: 20px;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .cost-summary {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .cost-line {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 10px 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .cost-total {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #667eea;
+            border-top: 2px solid #667eea;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        .signature-section {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px dashed #dee2e6;
+        }
+
+        .signature-block {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+        }
+
+        .signature-field {
+            width: 45%;
+        }
+
+        .signature-line {
+            border-bottom: 2px solid #dee2e6;
+            margin-bottom: 5px;
+            height: 40px;
+        }
+
+        .field-label {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .editable {
+            background: #fffbeb;
+            padding: 2px 5px;
+            border: 1px dashed #fbbf24;
+            min-width: 100px;
+            display: inline-block;
+        }
+
+        .print-button {
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin: 20px 0;
+        }
+
+        .print-button:hover {
+            background: #5a67d8;
+        }
+
+        @media print {
+            body {
+                background: white;
+                max-width: 100%;
+            }
+            .print-button {
+                display: none;
+            }
+            .document-header {
+                background: none;
+                color: black;
+                border: 2px solid black;
+            }
+            .editable {
+                background: none;
+                border: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">📄 Print SOW</button>
+
+    <div class="document-header">
+        <h1>Statement of Work</h1>
+        <p>Project Deliverables & Timeline</p>
+        <div class="sow-number">SOW #<span contenteditable="true" class="editable">2025-001</span></div>
+    </div>
+
+    <div class="document-meta">
+        <h3>Project Information</h3>
+        <div class="meta-grid">
+            <div>
+                <p><strong>Client Name:</strong> <span contenteditable="true" class="editable">[Client Name]</span></p>
+                <p><strong>Project Name:</strong> <span contenteditable="true" class="editable">[Project Name]</span></p>
+                <p><strong>Start Date:</strong> <span contenteditable="true" class="editable">[Start Date]</span></p>
+            </div>
+            <div>
+                <p><strong>Company:</strong> <span contenteditable="true" class="editable">[Company Name]</span></p>
+                <p><strong>Project Type:</strong> <span contenteditable="true" class="editable">[Service Type]</span></p>
+                <p><strong>End Date:</strong> <span contenteditable="true" class="editable">[End Date]</span></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="document-content">
+        <h2>1. Project Overview</h2>
+        <p contenteditable="true" class="editable" style="width: 100%; min-height: 80px;">
+            [Provide a comprehensive overview of the project, including background, current situation, and desired outcomes. This should clearly articulate what the client wants to achieve and why.]
+        </p>
+
+        <h2>2. Scope of Work</h2>
+        <p>The Profit Platform will provide the following services:</p>
+
+        <div class="deliverable-item">
+            <h3>Phase 1: Discovery & Strategy</h3>
+            <ul contenteditable="true" class="editable" style="width: 100%;">
+                <li>Comprehensive market analysis and competitor research</li>
+                <li>Target audience identification and persona development</li>
+                <li>Current digital presence audit</li>
+                <li>Strategic roadmap development</li>
+            </ul>
+        </div>
+
+        <div class="deliverable-item">
+            <h3>Phase 2: Implementation</h3>
+            <ul contenteditable="true" class="editable" style="width: 100%;">
+                <li>Campaign setup and configuration</li>
+                <li>Content creation and optimization</li>
+                <li>Technical implementation</li>
+                <li>Platform integration</li>
+            </ul>
+        </div>
+
+        <div class="deliverable-item">
+            <h3>Phase 3: Optimization & Management</h3>
+            <ul contenteditable="true" class="editable" style="width: 100%;">
+                <li>Ongoing campaign management</li>
+                <li>Performance monitoring and reporting</li>
+                <li>A/B testing and optimization</li>
+                <li>Monthly strategy reviews</li>
+            </ul>
+        </div>
+
+        <h2>3. Deliverables</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Deliverable</th>
+                    <th>Description</th>
+                    <th>Due Date</th>
+                    <th>Format</th>
+                </tr>
+            </thead>
+            <tbody contenteditable="true" class="editable">
+                <tr>
+                    <td>Strategy Document</td>
+                    <td>Comprehensive digital marketing strategy</td>
+                    <td>Week 2</td>
+                    <td>PDF Report</td>
+                </tr>
+                <tr>
+                    <td>Campaign Setup</td>
+                    <td>Complete campaign configuration</td>
+                    <td>Week 3</td>
+                    <td>Live Campaign</td>
+                </tr>
+                <tr>
+                    <td>Monthly Reports</td>
+                    <td>Performance analytics and insights</td>
+                    <td>Monthly</td>
+                    <td>PDF/Dashboard</td>
+                </tr>
+                <tr>
+                    <td>Optimization Recommendations</td>
+                    <td>Strategic improvements based on data</td>
+                    <td>Bi-weekly</td>
+                    <td>Email/Call</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>4. Project Timeline</h2>
+
+        <div class="timeline-item">
+            <div class="timeline-date">Week 1-2</div>
+            <div contenteditable="true" class="editable">Discovery & Research Phase</div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-date">Week 3-4</div>
+            <div contenteditable="true" class="editable">Strategy Development & Approval</div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-date">Week 5-6</div>
+            <div contenteditable="true" class="editable">Implementation & Launch</div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-date">Ongoing</div>
+            <div contenteditable="true" class="editable">Management & Optimization</div>
+        </div>
+
+        <h2>5. Success Metrics</h2>
+        <p>Project success will be measured by:</p>
+        <ul contenteditable="true" class="editable" style="width: 100%;">
+            <li>Increase in website traffic by X%</li>
+            <li>Improvement in conversion rate by X%</li>
+            <li>Reduction in cost per acquisition by X%</li>
+            <li>Achievement of X qualified leads per month</li>
+            <li>ROI of X:1 on advertising spend</li>
+        </ul>
+
+        <h2>6. Investment & Payment Terms</h2>
+
+        <div class="cost-summary">
+            <h3>Service Fees</h3>
+
+            <div class="cost-line">
+                <span>Setup & Strategy Development</span>
+                <span contenteditable="true" class="editable">$[Amount]</span>
+            </div>
+
+            <div class="cost-line">
+                <span>Monthly Management Fee</span>
+                <span contenteditable="true" class="editable">$[Amount]</span>
+            </div>
+
+            <div class="cost-line">
+                <span>Ad Spend Budget (Monthly)</span>
+                <span contenteditable="true" class="editable">$[Amount]</span>
+            </div>
+
+            <div class="cost-line cost-total">
+                <span>Total Monthly Investment</span>
+                <span contenteditable="true" class="editable">$[Total]</span>
+            </div>
+        </div>
+
+        <h3>Payment Schedule</h3>
+        <ul>
+            <li>Setup fee due upon signing</li>
+            <li>Monthly fees billed on the 1st of each month</li>
+            <li>Ad spend billed directly to client's payment method</li>
+        </ul>
+
+        <h2>7. Client Responsibilities</h2>
+        <ul>
+            <li>Provide access to necessary accounts and platforms</li>
+            <li>Supply marketing materials and brand assets</li>
+            <li>Review and approve deliverables within 3 business days</li>
+            <li>Participate in scheduled strategy calls</li>
+            <li>Maintain ad spend budget as agreed</li>
+        </ul>
+
+        <h2>8. Assumptions & Dependencies</h2>
+        <ul contenteditable="true" class="editable" style="width: 100%;">
+            <li>Client will provide timely feedback and approvals</li>
+            <li>All necessary accounts and access will be provided</li>
+            <li>Budget remains consistent throughout the engagement</li>
+            <li>No major website technical issues exist</li>
+        </ul>
+
+        <h2>9. Communication Plan</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Communication Type</th>
+                    <th>Frequency</th>
+                    <th>Participants</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Strategy Review Call</td>
+                    <td>Monthly</td>
+                    <td>Client + Avi</td>
+                </tr>
+                <tr>
+                    <td>Performance Reports</td>
+                    <td>Monthly</td>
+                    <td>Email to stakeholders</td>
+                </tr>
+                <tr>
+                    <td>Quick Updates</td>
+                    <td>As needed</td>
+                    <td>Email/Phone</td>
+                </tr>
+                <tr>
+                    <td>Optimization Recommendations</td>
+                    <td>Bi-weekly</td>
+                    <td>Email to client</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>10. Terms & Conditions</h2>
+        <p>This Statement of Work is governed by the Master Service Agreement between The Profit Platform and the Client. Any modifications to this SOW must be agreed upon in writing by both parties.</p>
+
+        <div class="signature-section">
+            <h2>Approval</h2>
+            <p>By signing below, both parties agree to the scope, deliverables, timeline, and terms outlined in this Statement of Work.</p>
+
+            <div class="signature-block">
+                <div class="signature-field">
+                    <p><strong>Client:</strong></p>
+                    <div class="signature-line"></div>
+                    <p class="field-label">Signature</p>
+                    <div class="signature-line"></div>
+                    <p class="field-label">Print Name</p>
+                    <div class="signature-line"></div>
+                    <p class="field-label">Date</p>
+                </div>
+
+                <div class="signature-field">
+                    <p><strong>The Profit Platform:</strong></p>
+                    <div class="signature-line"></div>
+                    <p class="field-label">Signature</p>
+                    <p style="margin-top: 10px;">Avi [Last Name]</p>
+                    <p class="field-label">Founder & Lead Consultant</p>
+                    <div class="signature-line"></div>
+                    <p class="field-label">Date</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Make editable fields more user-friendly
+        document.querySelectorAll('.editable').forEach(element => {
+            element.addEventListener('focus', function() {
+                if (this.textContent.includes('[') && this.textContent.includes(']')) {
+                    this.style.color = '#999';
+                }
+            });
+
+            element.addEventListener('blur', function() {
+                this.style.color = '';
+            });
+        });
+    </script>
+</body>
+</html>

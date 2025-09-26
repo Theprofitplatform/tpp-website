@@ -1,0 +1,62 @@
+name: Bmad Ecosystem - Build & Test
+
+on:
+  # Run on demand, push, or pull request
+  workflow_dispatch:
+  push:
+  pull_request:
+
+  ## Future Ideas:
+  ## PR make it 10 or less
+  ## For main and time based we can run something bigger
+
+  ## Run when releases are published
+  ## release:
+  ##   types:
+  ##     - "published"
+
+# Configuration for the version of external packages
+# We do this so we can cache them and avoid checking out that big
+# repository at all times.
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  EXTERNAL_PACKAGES_VERSION: main
+
+#
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    #
+    defaults:
+      run:
+        shell: bash
+
+    strategy:
+      matrix:
+        # Future Ideas:
+        # add macOS - check if GH Actions can make intel and arm
+        os: [ubuntu-latest]
+        shared: ["Y"]
+        openmp_mpi: ["N", "Y"]
+
+    steps:
+      # Check out the code from GitHub
+      - uses: actions/checkout@v4
+
+      - uses: ./.github/actions/setup-dependencies
+        with:
+          external-packages-version: ${{ env.EXTERNAL_PACKAGES_VERSION }}
+
+      - name: Build Bmad
+        env:
+          USE_MPI: ${{ matrix.openmp_mpi }}
+          SHARED: ${{ matrix.shared }}
+        run: .github/scripts/install_bmad.sh
+
+      - name: Run Tests
+        shell: bash -eo pipefail -l {0}
+        run: .github/scripts/run_tests.sh 2>&1 | tee -a "$GITHUB_STEP_SUMMARY"

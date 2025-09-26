@@ -1,0 +1,452 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "Web Design & Development | The Profit Platform - Sydney Web Design";
+const description = "Stunning websites that convert. Custom web design and development services in Sydney. Mobile-responsive, SEO-optimized, and built for results.";
+
+const services = [
+  {
+    icon: "🎨",
+    title: "Custom Design",
+    description: "Unique designs tailored to your brand and business goals",
+    features: ["Brand-aligned design", "User experience focus", "Conversion optimization", "Mobile-first approach"]
+  },
+  {
+    icon: "🛍️",
+    title: "E-commerce Solutions",
+    description: "Powerful online stores that drive sales and growth",
+    features: ["WooCommerce/Shopify", "Payment integration", "Inventory management", "Order tracking"]
+  },
+  {
+    icon: "⚡",
+    title: "Performance Optimization",
+    description: "Lightning-fast websites that rank and convert",
+    features: ["Page speed optimization", "Core Web Vitals", "CDN implementation", "Image optimization"]
+  },
+  {
+    icon: "📱",
+    title: "Responsive Design",
+    description: "Perfect experience on every device and screen size",
+    features: ["Mobile optimization", "Tablet compatibility", "Cross-browser testing", "Touch-friendly UI"]
+  }
+];
+
+const process = [
+  { step: "1", title: "Discovery", description: "Understanding your business, goals, and target audience" },
+  { step: "2", title: "Strategy", description: "Creating a roadmap for design and functionality" },
+  { step: "3", title: "Design", description: "Crafting beautiful, user-centric designs" },
+  { step: "4", title: "Development", description: "Building your website with clean, efficient code" },
+  { step: "5", title: "Testing", description: "Rigorous testing across devices and browsers" },
+  { step: "6", title: "Launch", description: "Going live with ongoing support and optimization" }
+];
+
+const benefits = [
+  "Professional design that builds trust",
+  "Mobile-responsive on all devices",
+  "SEO-optimized from the ground up",
+  "Fast loading speeds for better UX",
+  "Conversion-focused design elements",
+  "Easy content management system"
+];
+
+const faqs = [
+  {
+    question: "How long does it take to build a website?",
+    answer: "Typical timeline is 4-6 weeks for a standard website, 6-12 weeks for complex e-commerce or custom functionality."
+  },
+  {
+    question: "Do you provide website hosting?",
+    answer: "Yes! We include 6 months of free hosting with every new website, then offer competitive ongoing hosting plans."
+  },
+  {
+    question: "Can I update the website myself?",
+    answer: "Absolutely! We build on user-friendly CMS platforms and provide training so you can easily manage your content."
+  },
+  {
+    question: "What's included in website maintenance?",
+    answer: "Our maintenance includes security updates, backups, performance monitoring, and minor content updates."
+  }
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <style>
+    .hero {
+      background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+      padding: 120px 0 100px;
+      position: relative;
+      overflow: hidden;
+      color: white;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+      animation: slide 20s linear infinite;
+    }
+
+    @keyframes slide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(60px); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 8px 20px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      opacity: 0.95;
+      max-width: 700px;
+      margin: 0 auto 40px;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      margin-top: 60px;
+      flex-wrap: wrap;
+    }
+
+    .hero-stat {
+      text-align: center;
+    }
+
+    .hero-stat-number {
+      font-size: 2.5rem;
+      font-weight: 900;
+    }
+
+    .hero-stat-label {
+      opacity: 0.9;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      padding: 80px 0;
+    }
+
+    .service-card {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(124, 58, 237, 0.15);
+    }
+
+    .service-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .service-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 15px;
+    }
+
+    .service-description {
+      color: #64748b;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    .service-features {
+      list-style: none;
+    }
+
+    .service-features li {
+      padding: 8px 0;
+      color: #475569;
+      font-size: 0.95rem;
+      padding-left: 25px;
+      position: relative;
+    }
+
+    .service-features li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #7c3aed;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .benefits-section {
+      background: #faf5ff;
+      padding: 80px 0;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 60px;
+    }
+
+    .benefit-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 25px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+    }
+
+    .benefit-check {
+      font-size: 1.5rem;
+      color: #7c3aed;
+    }
+
+    .benefit-text {
+      color: #1e293b;
+      font-weight: 500;
+      line-height: 1.6;
+    }
+
+    .process-section {
+      padding: 80px 0;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
+    }
+
+    .process-item {
+      text-align: center;
+    }
+
+    .process-number {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #7c3aed, #a855f7);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      font-weight: 900;
+      margin: 0 auto 20px;
+    }
+
+    .process-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 10px;
+    }
+
+    .process-description {
+      color: #64748b;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .faq-section {
+      background: #f8fafc;
+      padding: 80px 0;
+    }
+
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: white;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+    }
+
+    .faq-question {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 15px;
+    }
+
+    .faq-answer {
+      color: #64748b;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 768px) {
+      .hero-stats {
+        gap: 30px;
+      }
+
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-content">
+      <span class="hero-badge">Worth $500 - Limited Time</span>
+      <h1>Websites That Convert Visitors Into Customers</h1>
+      <p>Beautiful, fast, and conversion-optimized websites that establish your brand and drive real business growth.</p>
+      
+      <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+        <a href="/free-audit" class="btn btn-primary" style="background: white; color: #7c3aed; font-size: 1.1rem; padding: 18px 36px;">
+          Get Free Website Audit
+        </a>
+        <a href="/portfolio" class="btn btn-secondary" style="border-color: white; color: white; font-size: 1.1rem; padding: 18px 36px;">
+          View Portfolio
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-number">94%</div>
+          <div class="hero-stat-label">Faster Load Times</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">2.8x</div>
+          <div class="hero-stat-label">Conversion Rate</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">100%</div>
+          <div class="hero-stat-label">Mobile Responsive</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="container">
+    <h2 class="gradient-text" style="text-align: center; font-size: 2.5rem; margin-bottom: 20px;">
+      Complete Web Design Services
+    </h2>
+    <p style="text-align: center; color: #64748b; font-size: 1.2rem; max-width: 700px; margin: 0 auto 60px;">
+      From concept to launch, we handle every aspect of your web presence
+    </p>
+
+    <div class="services-grid">
+      {services.map((service) => (
+        <div class="service-card">
+          <div class="service-icon">{service.icon}</div>
+          <h3 class="service-title">{service.title}</h3>
+          <p class="service-description">{service.description}</p>
+          <ul class="service-features">
+            {service.features.map((feature) => (
+              <li>{feature}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="benefits-section">
+    <div class="container">
+      <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px; color: #1e293b;">
+        Why Choose Our Web Design?
+      </h2>
+      <p style="text-align: center; color: #64748b; font-size: 1.2rem; max-width: 700px; margin: 0 auto;">
+        Every website we build is optimized for performance, conversions, and growth
+      </p>
+
+      <div class="benefits-grid">
+        {benefits.map((benefit) => (
+          <div class="benefit-item">
+            <span class="benefit-check">✓</span>
+            <span class="benefit-text">{benefit}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="process-section">
+    <div class="container">
+      <h2 class="gradient-text" style="text-align: center; font-size: 2.5rem; margin-bottom: 20px;">
+        Our Design Process
+      </h2>
+      <p style="text-align: center; color: #64748b; font-size: 1.2rem; max-width: 700px; margin: 0 auto;">
+        A proven approach that delivers exceptional websites on time and on budget
+      </p>
+
+      <div class="process-grid">
+        {process.map((item) => (
+          <div class="process-item">
+            <div class="process-number">{item.step}</div>
+            <h3 class="process-title">{item.title}</h3>
+            <p class="process-description">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="container">
+      <h2 class="gradient-text" style="text-align: center; font-size: 2.5rem; margin-bottom: 60px;">
+        Frequently Asked Questions
+      </h2>
+      <div class="faq-container">
+        {faqs.map((faq) => (
+          <div class="faq-item">
+            <h3 class="faq-question">{faq.question}</h3>
+            <p class="faq-answer">{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section style="background: linear-gradient(135deg, #7c3aed, #a855f7); padding: 100px 0; text-align: center; color: white;">
+    <div class="container">
+      <h2 style="font-size: 3rem; margin-bottom: 20px; font-weight: 900;">Ready for a Website That Works?</h2>
+      <p style="font-size: 1.3rem; opacity: 0.95; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+        Get your free website audit and quote - no obligations, just insights
+      </p>
+      <a href="/contact" class="btn btn-primary" style="background: white; color: #7c3aed; font-size: 1.2rem; padding: 20px 40px;">
+        Get Your Free Audit →
+      </a>
+    </div>
+  </section>
+</BaseLayout>

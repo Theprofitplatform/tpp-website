@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Optimization Framework - The Profit Platform</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #F9FAFB;
+            line-height: 1.6;
+            color: #374151;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .form-section {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1F2937;
+            margin-bottom: 24px;
+            border-bottom: 3px solid #6366F1;
+            padding-bottom: 8px;
+        }
+
+        .form-demo {
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            padding: 32px;
+            margin: 24px 0;
+            background: #FAFAFA;
+        }
+
+        .demo-label {
+            background: #6366F1;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            display: inline-block;
+        }
+
+        /* Optimized Form Styles */
+        .optimized-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .form-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #1F2937;
+            margin-bottom: 8px;
+        }
+
+        .form-subtitle {
+            color: #6B7280;
+            font-size: 16px;
+            margin-bottom: 16px;
+        }
+
+        .value-prop {
+            background: linear-gradient(135deg, #FEF3C7, #FCD34D);
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+            margin-bottom: 24px;
+            border: 2px solid #F59E0B;
+        }
+
+        .value-amount {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #D97706;
+            margin: 0;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .required-asterisk {
+            color: #EF4444;
+            margin-left: 4px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            font-size: 16px;
+            background: white;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #6366F1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+            background: #FEFEFE;
+        }
+
+        .form-input:invalid {
+            border-color: #EF4444;
+        }
+
+        .form-input.error {
+            border-color: #EF4444;
+            background: #FEF2F2;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .input-hint {
+            font-size: 12px;
+            color: #6B7280;
+            margin-top: 4px;
+        }
+
+        .error-message {
+            color: #EF4444;
+            font-size: 14px;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .success-message {
+            color: #10B981;
+            font-size: 14px;
+            margin-top: 4px;
+            display: none;
+        }
+
+        /* Progressive Disclosure */
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        .progress-bar {
+            background: #E5E7EB;
+            border-radius: 4px;
+            height: 8px;
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #6366F1, #8B5CF6);
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        /* Smart Defaults and Helpers */
+        .form-suggestions {
+            background: #F0F9FF;
+            border: 1px solid #BAE6FD;
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 8px;
+            font-size: 14px;
+        }
+
+        .suggestion-item {
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin: 2px 0;
+            transition: background 0.2s;
+        }
+
+        .suggestion-item:hover {
+            background: #DBEAFE;
+        }
+
+        /* Social Proof in Forms */
+        .form-social-proof {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            margin: 16px 0;
+            padding: 16px;
+            background: #F8FAFC;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #6B7280;
+        }
+
+        .social-stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #6366F1;
+            display: block;
+        }
+
+        /* Trust Signals */
+        .trust-indicators {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin: 16px 0;
+            font-size: 12px;
+            color: #6B7280;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .trust-icon {
+            color: #10B981;
+        }
+
+        /* CTA Button Optimization */
+        .form-submit {
+            background: linear-gradient(135deg, #10B981, #059669);
+            color: white;
+            border: none;
+            padding: 18px 36px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            margin: 24px 0 16px 0;
+            box-shadow: 0 4px 16px rgba(16, 185, 129, 0.2);
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+        }
+
+        .form-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-submit.loading {
+            position: relative;
+        }
+
+        .form-submit.loading::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top: 2px solid white;
+            border-radius: 50%;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: translateY(-50%) rotate(360deg); }
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .form-social-proof {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .trust-indicators {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .form-input {
+                font-size: 16px; /* Prevent zoom on iOS */
+            }
+        }
+
+        /* A/B Testing Variants */
+        .ab-variant {
+            margin: 32px 0;
+            padding: 24px;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+        }
+
+        .variant-label {
+            background: #F59E0B;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+
+        .conversion-stats {
+            display: flex;
+            gap: 24px;
+            margin-top: 16px;
+            font-size: 14px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 12px;
+            background: #F8FAFC;
+            border-radius: 8px;
+            flex: 1;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #6366F1;
+            display: block;
+        }
+
+        .stat-label {
+            color: #6B7280;
+            margin-top: 4px;
+        }
+
+        /* Interactive Elements */
+        .tooltip {
+            position: relative;
+            cursor: help;
+        }
+
+        .tooltip::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1F2937;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .tooltip:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .honeypot {
+            position: absolute;
+            left: -9999px;
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+        }
+
+        /* Real-time Validation */
+        .validation-icon {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-valid .validation-icon.success {
+            opacity: 1;
+            color: #10B981;
+        }
+
+        .input-error .validation-icon.error {
+            opacity: 1;
+            color: #EF4444;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center; font-size: 2.5rem; margin-bottom: 16px; color: #1F2937;">Form Optimization Framework</h1>
+        <p style="text-align: center; color: #6B7280; font-size: 1.1rem; margin-bottom: 48px;">Maximize conversions with psychologically optimized forms</p>
+
+        <!-- Before/After Comparison -->
+        <div class="form-section">
+            <h2 class="section-title">Before/After Form Optimization</h2>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 32px;">
+                <!-- BEFORE: Basic Form -->
+                <div class="form-demo">
+                    <div class="demo-label" style="background: #EF4444;">❌ BEFORE (Conversion: 1.2%)</div>
+                    <form style="max-width: 400px;">
+                        <h3 style="margin: 0 0 16px 0;">Contact Form</h3>
+                        <div style="margin-bottom: 12px;">
+                            <label>Name</label>
+                            <input type="text" style="width: 100%; padding: 8px; border: 1px solid #ccc; margin-top: 4px;">
+                        </div>
+                        <div style="margin-bottom: 12px;">
+                            <label>Email</label>
+                            <input type="email" style="width: 100%; padding: 8px; border: 1px solid #ccc; margin-top: 4px;">
+                        </div>
+                        <div style="margin-bottom: 12px;">
+                            <label>Phone</label>
+                            <input type="tel" style="width: 100%; padding: 8px; border: 1px solid #ccc; margin-top: 4px;">
+                        </div>
+                        <div style="margin-bottom: 12px;">
+                            <label>Message</label>
+                            <textarea rows="3" style="width: 100%; padding: 8px; border: 1px solid #ccc; margin-top: 4px;"></textarea>
+                        </div>
+                        <button type="submit" style="background: #ccc; padding: 10px 20px; border: none;">Submit</button>
+                    </form>
+                </div>
+
+                <!-- AFTER: Optimized Form -->
+                <div class="form-demo">
+                    <div class="demo-label">✅ AFTER (Conversion: 6.8%)</div>
+                    <div class="optimized-form" style="max-width: 400px;">
+                        <div class="form-header">
+                            <h3 class="form-title" style="font-size: 1.25rem; margin-bottom: 8px;">Get Your FREE $997 Marketing Audit</h3>
+                            <p class="form-subtitle" style="font-size: 14px; margin-bottom: 12px;">Discover exactly how to triple your Sydney leads</p>
+                            <div class="value-prop" style="padding: 12px; margin-bottom: 16px;">
+                                <p class="value-amount" style="font-size: 1.1rem;">Usually $997 - FREE Today</p>
+                            </div>
+                        </div>
+
+                        <form>
+                            <div class="form-row" style="grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+                                <div>
+                                    <label class="form-label" style="font-size: 12px;">First Name <span class="required-asterisk">*</span></label>
+                                    <input type="text" class="form-input" style="padding: 12px; font-size: 14px;" required>
+                                </div>
+                                <div>
+                                    <label class="form-label" style="font-size: 12px;">Last Name <span class="required-asterisk">*</span></label>
+                                    <input type="text" class="form-input" style="padding: 12px; font-size: 14px;" required>
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom: 16px;">
+                                <label class="form-label" style="font-size: 12px;">Business Email <span class="required-asterisk">*</span></label>
+                                <input type="email" class="form-input" style="padding: 12px; font-size: 14px;" placeholder="your@business.com" required>
+                            </div>
+
+                            <div style="margin-bottom: 16px;">
+                                <label class="form-label" style="font-size: 12px;">Phone Number <span class="required-asterisk">*</span></label>
+                                <input type="tel" class="form-input" style="padding: 12px; font-size: 14px;" placeholder="0400 000 000" required>
+                            </div>
+
+                            <div class="form-social-proof" style="margin: 12px 0; padding: 12px;">
+                                <div class="social-stat">
+                                    <span class="stat-number" style="font-size: 1rem;">50+</span>
+                                    <span style="font-size: 11px;">Businesses Helped</span>
+                                </div>
+                                <div class="social-stat">
+                                    <span class="stat-number" style="font-size: 1rem;">24hr</span>
+                                    <span style="font-size: 11px;">Response Time</span>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="form-submit" style="padding: 14px; font-size: 14px; margin: 16px 0 8px 0;">
+                                🚀 Get My FREE Marketing Audit
+                            </button>
+
+                            <div class="trust-indicators" style="justify-content: center; gap: 12px;">
+                                <div class="trust-item" style="font-size: 11px;">
+                                    <span class="trust-icon">🔒</span> Secure & Private
+                                </div>
+                                <div class="trust-item" style="font-size: 11px;">
+                                    <span class="trust-icon">⚡</span> No Spam Ever
+                                </div>
+                                <div class="trust-item" style="font-size: 11px;">
+                                    <span class="trust-icon">🎯</span> Sydney Expert
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="conversion-stats">
+                <div class="stat-item">
+                    <span class="stat-value">467%</span>
+                    <div class="stat-label">Conversion Increase</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">23%</span>
+                    <div class="stat-label">Higher Lead Quality</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">31%</span>
+                    <div class="stat-label">Faster Completion</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progressive Disclosure Demo -->
+        <div class="form-section">
+            <h2 class="section-title">Progressive Disclosure Strategy</h2>
+
+            <div class="form-demo">
+                <div class="demo-label">Multi-Step Form Example</div>
+                <div class="optimized-form">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 33%" id="progressBar"></div>
+                    </div>
+
+                    <div id="step1" class="form-step active">
+                        <div class="form-header">
+                            <h3 class="form-title">Let's Start With The Basics</h3>
+                            <p class="form-subtitle">This will help me understand your business better</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">What's your first name? <span class="required-asterisk">*</span></label>
+                            <input type="text" class="form-input" id="firstName" placeholder="Enter your first name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">What's your business name? <span class="required-asterisk">*</span></label>
+                            <input type="text" class="form-input" id="businessName" placeholder="Your business name" required>
+                        </div>
+
+                        <button type="button" class="form-submit" onclick="nextStep()">Continue →</button>
+                    </div>
+
+                    <div id="step2" class="form-step">
+                        <div class="form-header">
+                            <h3 class="form-title">How Can I Reach You?</h3>
+                            <p class="form-subtitle">I'll use these details to send your audit and follow up</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Business email address <span class="required-asterisk">*</span></label>
+                            <div class="input-wrapper">
+                                <input type="email" class="form-input" id="email" placeholder="your@business.com" required>
+                                <span class="validation-icon success">✓</span>
+                                <span class="validation-icon error">✗</span>
+                            </div>
+                            <div class="input-hint">I'll never spam you - promise!</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Phone number <span class="required-asterisk">*</span></label>
+                            <div class="input-wrapper">
+                                <input type="tel" class="form-input" id="phone" placeholder="0400 000 000" required>
+                                <span class="validation-icon success">✓</span>
+                                <span class="validation-icon error">✗</span>
+                            </div>
+                            <div class="input-hint">For urgent questions and faster support</div>
+                        </div>
+
+                        <button type="button" class="form-submit" onclick="nextStep()">Almost Done →</button>
+                        <p style="text-align: center; margin-top: 12px;">
+                            <a href="#" onclick="prevStep()" style="color: #6B7280; text-decoration: none; font-size: 14px;">← Go Back</a>
+                        </p>
+                    </div>
+
+                    <div id="step3" class="form-step">
+                        <div class="form-header">
+                            <h3 class="form-title">Tell Me About Your Goals</h3>
+                            <p class="form-subtitle">This helps me prepare a more targeted audit</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">What's your biggest marketing challenge?</label>
+                            <select class="form-input" id="challenge">
+                                <option value="">Select your main challenge...</option>
+                                <option value="no-traffic">Not enough website traffic</option>
+                                <option value="no-leads">Traffic but no leads</option>
+                                <option value="poor-conversion">Leads but no sales</option>
+                                <option value="expensive-ads">Google Ads too expensive</option>
+                                <option value="no-rankings">Can't rank on Google</option>
+                                <option value="no-time">Don't have time for marketing</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Monthly marketing budget range</label>
+                            <select class="form-input" id="budget">
+                                <option value="">Select budget range...</option>
+                                <option value="under-1000">Under $1,000/month</option>
+                                <option value="1000-2500">$1,000 - $2,500/month</option>
+                                <option value="2500-5000">$2,500 - $5,000/month</option>
+                                <option value="5000-plus">$5,000+/month</option>
+                                <option value="not-sure">Not sure yet</option>
+                            </select>
+                        </div>
+
+                        <div class="form-social-proof">
+                            <div class="social-stat">
+                                <span class="stat-number">287%</span>
+                                <span>Avg Growth</span>
+                            </div>
+                            <div class="social-stat">
+                                <span class="stat-number">50+</span>
+                                <span>Happy Clients</span>
+                            </div>
+                            <div class="social-stat">
+                                <span class="stat-number">24hr</span>
+                                <span>Response Time</span>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="form-submit" onclick="submitForm()">
+                            🎯 Get My FREE $997 Marketing Audit
+                        </button>
+
+                        <div class="trust-indicators">
+                            <div class="trust-item">
+                                <span class="trust-icon">🔒</span> 100% Secure
+                            </div>
+                            <div class="trust-item">
+                                <span class="trust-icon">⚡</span> No Spam Policy
+                            </div>
+                            <div class="trust-item">
+                                <span class="trust-icon">🛡️</span> Money-Back Guarantee
+                            </div>
+                        </div>
+
+                        <p style="text-align: center; margin-top: 12px;">
+                            <a href="#" onclick="prevStep()" style="color: #6B7280; text-decoration: none; font-size: 14px;">← Go Back</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- A/B Testing Variants -->
+        <div class="form-section">
+            <h2 class="section-title">A/B Testing Variants</h2>
+
+            <div class="ab-variant">
+                <div class="variant-label">Variant A: Benefit-Focused Headline</div>
+                <div style="text-align: center; padding: 20px;">
+                    <h3 style="color: #1F2937; margin-bottom: 8px;">Discover Why Your Competitors Are Getting More Leads</h3>
+                    <p style="color: #6B7280;">Get your FREE comprehensive marketing audit and find out exactly what's missing from your strategy</p>
+                </div>
+                <div class="conversion-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">4.2%</span>
+                        <div class="stat-label">Conversion Rate</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">127</span>
+                        <div class="stat-label">Avg. Time on Page</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ab-variant">
+                <div class="variant-label">Variant B: Value-Focused Headline</div>
+                <div style="text-align: center; padding: 20px;">
+                    <h3 style="color: #1F2937; margin-bottom: 8px;">Get Your FREE $997 Marketing Audit Today</h3>
+                    <p style="color: #6B7280;">Usually costs $997 - completely FREE for Sydney businesses this month only</p>
+                </div>
+                <div class="conversion-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">6.8%</span>
+                        <div class="stat-label">Conversion Rate</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">156</span>
+                        <div class="stat-label">Avg. Time on Page</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ab-variant">
+                <div class="variant-label">Variant C: Urgency-Focused Headline</div>
+                <div style="text-align: center; padding: 20px;">
+                    <h3 style="color: #1F2937; margin-bottom: 8px;">Only 3 Free Marketing Audits Left This Month</h3>
+                    <p style="color: #6B7280;">I personally handle every audit (3-4 hours each) - secure your spot before they're gone</p>
+                </div>
+                <div class="conversion-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">7.9%</span>
+                        <div class="stat-label">Conversion Rate</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">189</span>
+                        <div class="stat-label">Avg. Time on Page</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Field Optimization -->
+        <div class="form-section">
+            <h2 class="section-title">Form Field Optimization Techniques</h2>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+                <div>
+                    <h4 style="color: #1F2937; margin-bottom: 16px;">❌ Poor Field Design</h4>
+                    <div style="margin-bottom: 12px;">
+                        <label style="font-size: 12px; color: #6B7280;">Email Address*</label>
+                        <input type="email" style="width: 100%; padding: 8px; border: 1px solid #ccc; margin-top: 4px;" placeholder="Email">
+                    </div>
+                    <div style="margin-bottom: 12px;">
+                        <label style="font-size: 12px; color: #6B7280;">Phone*</label>
+                        <input type="tel" style="width: 100%; padding: 8px; border: 1px solid #ccc; margin-top: 4px;">
+                    </div>
+                    <div style="margin-bottom: 12px;">
+                        <label style="font-size: 12px; color: #6B7280;">Industry*</label>
+                        <select style="width: 100%; padding: 8px; border: 1px solid #ccc; margin-top: 4px;">
+                            <option>Select</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 style="color: #1F2937; margin-bottom: 16px;">✅ Optimized Field Design</h4>
+                    <div style="margin-bottom: 16px;">
+                        <label class="form-label">Business email address <span class="required-asterisk">*</span></label>
+                        <div class="input-wrapper">
+                            <input type="email" class="form-input" placeholder="your@business.com" style="padding: 12px;">
+                            <span class="validation-icon success">✓</span>
+                        </div>
+                        <div class="input-hint">We'll never share your email - promise!</div>
+                    </div>
+
+                    <div style="margin-bottom: 16px;">
+                        <label class="form-label">Phone number <span class="required-asterisk">*</span>
+                            <span class="tooltip" data-tooltip="For urgent updates and faster support">ℹ️</span>
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="tel" class="form-input" placeholder="0400 000 000" style="padding: 12px;">
+                            <span class="validation-icon success">✓</span>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 16px;">
+                        <label class="form-label">What industry are you in? <span class="required-asterisk">*</span></label>
+                        <select class="form-input" style="padding: 12px;">
+                            <option value="">Choose your industry...</option>
+                            <option value="healthcare">Healthcare & Medical</option>
+                            <option value="legal">Legal & Professional Services</option>
+                            <option value="retail">Retail & E-commerce</option>
+                            <option value="hospitality">Hospitality & Food</option>
+                            <option value="construction">Construction & Trades</option>
+                            <option value="fitness">Health & Fitness</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Implementation Code -->
+        <div class="form-section">
+            <h2 class="section-title">Implementation Code Examples</h2>
+
+            <div style="background: #1F2937; color: white; padding: 24px; border-radius: 12px; font-family: 'Courier New', monospace; font-size: 14px; overflow-x: auto;">
+                <div style="color: #10B981; margin-bottom: 16px;">/* Real-time Form Validation */</div>
+<pre style="margin: 0; color: #E5E7EB;">function validateField(field, rules) {
+    const value = field.value.trim();
+    const fieldName = field.name;
+    let isValid = true;
+    let message = '';
+
+    // Email validation
+    if (field.type === 'email') {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(value)) {
+            isValid = false;
+            message = 'Please enter a valid email address';
+        }
+    }
+
+    // Phone validation (Australian format)
+    if (field.type === 'tel') {
+        const phoneRegex = /^(\+61|0)[2-9]\d{8}$/;
+        const cleanPhone = value.replace(/\s|-|\(|\)/g, '');
+        if (!phoneRegex.test(cleanPhone)) {
+            isValid = false;
+            message = 'Please enter a valid Australian phone number';
+        }
+    }
+
+    // Update UI
+    updateFieldValidation(field, isValid, message);
+    return isValid;
+}
+
+// A/B Testing Implementation
+function assignFormVariant() {
+    const variants = ['control', 'value_focused', 'urgency_focused'];
+    const variant = variants[Math.floor(Math.random() * variants.length)];
+
+    sessionStorage.setItem('form_variant', variant);
+
+    // Apply variant styles and content
+    applyVariantContent(variant);
+
+    // Track assignment
+    gtag('event', 'form_variant_assigned', {
+        'variant': variant,
+        'page': window.location.pathname
+    });
+
+    return variant;
+}
+
+// Form Analytics Tracking
+function trackFormInteraction(action, field, value) {
+    gtag('event', 'form_interaction', {
+        'event_category': 'Form_Optimization',
+        'action': action,
+        'field_name': field,
+        'form_variant': sessionStorage.getItem('form_variant'),
+        'step_number': getCurrentStep(),
+        'time_on_page': Math.round((Date.now() - pageLoadTime) / 1000)
+    });
+}</pre>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 3;
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                // Validate current step
+                const currentStepElement = document.getElementById(`step${currentStep}`);
+                const requiredFields = currentStepElement.querySelectorAll('input[required], select[required]');
+
+                let isValid = true;
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        field.classList.add('error');
+                    } else {
+                        field.classList.remove('error');
+                    }
+                });
+
+                if (isValid) {
+                    document.getElementById(`step${currentStep}`).classList.remove('active');
+                    currentStep++;
+                    document.getElementById(`step${currentStep}`).classList.add('active');
+
+                    // Update progress bar
+                    const progress = (currentStep / totalSteps) * 100;
+                    document.getElementById('progressBar').style.width = progress + '%';
+
+                    // Track step completion
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'form_step_completed', {
+                            'step_number': currentStep - 1,
+                            'total_steps': totalSteps
+                        });
+                    }
+                }
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                document.getElementById(`step${currentStep}`).classList.remove('active');
+                currentStep--;
+                document.getElementById(`step${currentStep}`).classList.add('active');
+
+                // Update progress bar
+                const progress = (currentStep / totalSteps) * 100;
+                document.getElementById('progressBar').style.width = progress + '%';
+            }
+        }
+
+        function submitForm() {
+            // Validate final step
+            const finalStep = document.getElementById('step3');
+            const requiredFields = finalStep.querySelectorAll('input[required], select[required]');
+
+            let isValid = true;
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.classList.add('error');
+                }
+            });
+
+            if (isValid) {
+                // Simulate form submission
+                const submitButton = finalStep.querySelector('.form-submit');
+                submitButton.classList.add('loading');
+                submitButton.disabled = true;
+
+                // Track form submission
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'form_submitted', {
+                        'form_type': 'multi_step_audit',
+                        'steps_completed': totalSteps,
+                        'form_variant': sessionStorage.getItem('form_variant')
+                    });
+                }
+
+                setTimeout(() => {
+                    alert('Thank you! Your marketing audit request has been submitted. I\'ll be in touch within 24 hours.');
+                    submitButton.classList.remove('loading');
+                    submitButton.disabled = false;
+                }, 2000);
+            }
+        }
+
+        // Real-time validation for email and phone fields
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailField = document.getElementById('email');
+            const phoneField = document.getElementById('phone');
+
+            if (emailField) {
+                emailField.addEventListener('blur', function() {
+                    validateEmail(this);
+                });
+            }
+
+            if (phoneField) {
+                phoneField.addEventListener('blur', function() {
+                    validatePhone(this);
+                });
+            }
+
+            // Track field interactions
+            const allInputs = document.querySelectorAll('input, select, textarea');
+            allInputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    trackFormFieldFocus(this.name || this.id);
+                });
+
+                input.addEventListener('blur', function() {
+                    trackFormFieldBlur(this.name || this.id, this.value.length > 0);
+                });
+            });
+        });
+
+        function validateEmail(field) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const wrapper = field.closest('.input-wrapper');
+
+            if (emailRegex.test(field.value)) {
+                wrapper.classList.add('input-valid');
+                wrapper.classList.remove('input-error');
+            } else if (field.value.length > 0) {
+                wrapper.classList.add('input-error');
+                wrapper.classList.remove('input-valid');
+            }
+        }
+
+        function validatePhone(field) {
+            const phoneRegex = /^(\+61|0)[2-9]\d{8}$/;
+            const cleanPhone = field.value.replace(/\s|-|\(|\)/g, '');
+            const wrapper = field.closest('.input-wrapper');
+
+            if (phoneRegex.test(cleanPhone)) {
+                wrapper.classList.add('input-valid');
+                wrapper.classList.remove('input-error');
+            } else if (field.value.length > 0) {
+                wrapper.classList.add('input-error');
+                wrapper.classList.remove('input-valid');
+            }
+        }
+
+        function trackFormFieldFocus(fieldName) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'form_field_focus', {
+                    'event_category': 'Form_Engagement',
+                    'field_name': fieldName,
+                    'step_number': currentStep
+                });
+            }
+        }
+
+        function trackFormFieldBlur(fieldName, hasValue) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'form_field_blur', {
+                    'event_category': 'Form_Engagement',
+                    'field_name': fieldName,
+                    'step_number': currentStep,
+                    'field_completed': hasValue
+                });
+            }
+        }
+
+        // Auto-save form progress
+        function saveFormProgress() {
+            const formData = {};
+            const inputs = document.querySelectorAll('input, select, textarea');
+
+            inputs.forEach(input => {
+                if (input.value) {
+                    formData[input.id || input.name] = input.value;
+                }
+            });
+
+            localStorage.setItem('form_progress', JSON.stringify(formData));
+        }
+
+        // Load saved form progress
+        function loadFormProgress() {
+            const savedData = localStorage.getItem('form_progress');
+            if (savedData) {
+                const formData = JSON.parse(savedData);
+
+                Object.keys(formData).forEach(key => {
+                    const input = document.getElementById(key) || document.querySelector(`[name="${key}"]`);
+                    if (input) {
+                        input.value = formData[key];
+                    }
+                });
+            }
+        }
+
+        // Save progress on input change
+        document.addEventListener('input', function(e) {
+            if (e.target.matches('input, select, textarea')) {
+                saveFormProgress();
+            }
+        });
+
+        // Load progress on page load
+        loadFormProgress();
+
+        // Form abandonment tracking
+        let formStartTime = Date.now();
+        let hasInteracted = false;
+
+        window.addEventListener('beforeunload', function(e) {
+            if (hasInteracted && currentStep < totalSteps) {
+                // Track form abandonment
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'form_abandoned', {
+                        'event_category': 'Form_Conversion',
+                        'step_abandoned': currentStep,
+                        'time_spent': Math.round((Date.now() - formStartTime) / 1000),
+                        'form_variant': sessionStorage.getItem('form_variant')
+                    });
+                }
+            }
+        });
+
+        // Mark as interacted when user starts filling form
+        document.addEventListener('input', function(e) {
+            if (e.target.matches('input, select, textarea')) {
+                hasInteracted = true;
+            }
+        });
+    </script>
+</body>
+</html>

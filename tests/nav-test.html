@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Bar Test - Services Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: monospace;
+            background: #1a1a1a;
+            color: #00ff00;
+            padding: 0;
+            margin: 0;
+        }
+
+        .test-controls {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 100000;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #00ff00;
+            max-width: 350px;
+        }
+
+        .test-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            background: #333;
+            color: #00ff00;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: monospace;
+        }
+
+        .test-btn:hover {
+            background: #00ff00;
+            color: #000;
+        }
+
+        .test-result {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+
+        .pass {
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid #00ff00;
+        }
+
+        .fail {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid #ff0000;
+            color: #ff0000;
+        }
+
+        .warning {
+            background: rgba(255, 255, 0, 0.1);
+            border: 1px solid #ffff00;
+            color: #ffff00;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100vh;
+            border: none;
+        }
+
+        h3 {
+            color: #00ff00;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .viewport-info {
+            font-size: 11px;
+            color: #888;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <iframe id="testFrame" src="../services.html"></iframe>
+
+    <div class="test-controls">
+        <h3>🧪 Navigation Test Panel</h3>
+
+        <button class="test-btn" onclick="testNavStructure()">Test Nav Structure</button>
+        <button class="test-btn" onclick="testNavVisibility()">Test Visibility</button>
+        <button class="test-btn" onclick="testDropdown()">Test Dropdown Menu</button>
+        <button class="test-btn" onclick="testMobileNav()">Test Mobile Nav</button>
+        <button class="test-btn" onclick="testZIndex()">Test Z-Index Layers</button>
+        <button class="test-btn" onclick="testScrollBehavior()">Test Scroll Behavior</button>
+        <button class="test-btn" onclick="runAllTests()">🚀 Run All Tests</button>
+
+        <div id="results"></div>
+
+        <div class="viewport-info" id="viewportInfo"></div>
+    </div>
+
+    <script>
+        const iframe = document.getElementById('testFrame');
+        const results = document.getElementById('results');
+        const viewportInfo = document.getElementById('viewportInfo');
+
+        function updateViewportInfo() {
+            viewportInfo.innerHTML = `Viewport: ${window.innerWidth}x${window.innerHeight}`;
+        }
+
+        updateViewportInfo();
+        window.addEventListener('resize', updateViewportInfo);
+
+        function addResult(message, type = 'pass') {
+            const div = document.createElement('div');
+            div.className = `test-result ${type}`;
+            const icon = type === 'pass' ? '✅' : type === 'fail' ? '❌' : '⚠️';
+            div.textContent = `${icon} ${message}`;
+            results.appendChild(div);
+        }
+
+        function clearResults() {
+            results.innerHTML = '';
+        }
+
+        function testNavStructure() {
+            clearResults();
+            const doc = iframe.contentDocument;
+
+            // Test header exists
+            const header = doc.querySelector('header.premium-nav');
+            if (header) {
+                addResult('Header found', 'pass');
+            } else {
+                addResult('Header not found', 'fail');
+                return;
+            }
+
+            // Test nav container
+            const navContainer = doc.querySelector('.nav-floating-container');
+            if (navContainer) {
+                addResult('Nav container found', 'pass');
+            } else {
+                addResult('Nav container missing', 'fail');
+            }
+
+            // Test logo
+            const logo = doc.querySelector('.logo.premium-logo');
+            if (logo) {
+                addResult('Logo found', 'pass');
+            } else {
+                addResult('Logo missing', 'fail');
+            }
+
+            // Test nav links
+            const navLinks = doc.querySelectorAll('.nav-item.premium-nav-item');
+            if (navLinks.length > 0) {
+                addResult(`${navLinks.length} nav links found`, 'pass');
+            } else {
+                addResult('No nav links found', 'fail');
+            }
+
+            // Test CTA button
+            const cta = doc.querySelector('.btn.premium-cta-btn');
+            if (cta) {
+                addResult('CTA button found', 'pass');
+            } else {
+                addResult('CTA button missing', 'warning');
+            }
+        }
+
+        function testNavVisibility() {
+            clearResults();
+            const doc = iframe.contentDocument;
+            const win = iframe.contentWindow;
+
+            const header = doc.querySelector('header.premium-nav');
+            if (!header) {
+                addResult('Header not found', 'fail');
+                return;
+            }
+
+            const styles = win.getComputedStyle(header);
+
+            // Check visibility
+            if (styles.display !== 'none' && styles.visibility !== 'hidden') {
+                addResult('Header is visible', 'pass');
+            } else {
+                addResult('Header is hidden', 'fail');
+            }
+
+            // Check position
+            if (styles.position === 'fixed') {
+                addResult('Header is fixed position', 'pass');
+            } else {
+                addResult(`Header position: ${styles.position}`, 'warning');
+            }
+
+            // Check z-index
+            const zIndex = styles.zIndex;
+            if (parseInt(zIndex) >= 1000) {
+                addResult(`Z-index is high: ${zIndex}`, 'pass');
+            } else {
+                addResult(`Z-index too low: ${zIndex}`, 'fail');
+            }
+
+            // Check background
+            if (styles.background || styles.backgroundColor) {
+                addResult('Header has background', 'pass');
+            } else {
+                addResult('Header missing background', 'warning');
+            }
+        }
+
+        function testDropdown() {
+            clearResults();
+            const doc = iframe.contentDocument;
+
+            const dropdown = doc.querySelector('.nav-dropdown');
+            if (!dropdown) {
+                addResult('No dropdown found', 'warning');
+                return;
+            }
+
+            const dropdownMenu = doc.querySelector('.dropdown-menu');
+            if (dropdownMenu) {
+                addResult('Dropdown menu found', 'pass');
+
+                // Check dropdown items
+                const items = dropdownMenu.querySelectorAll('.dropdown-item');
+                if (items.length > 0) {
+                    addResult(`${items.length} dropdown items found`, 'pass');
+                } else {
+                    addResult('No dropdown items', 'fail');
+                }
+            } else {
+                addResult('Dropdown menu missing', 'fail');
+            }
+        }
+
+        function testMobileNav() {
+            clearResults();
+            const doc = iframe.contentDocument;
+
+            const menuToggle = doc.querySelector('.menu-toggle');
+            const mobileNav = doc.querySelector('.mobile-nav');
+            const overlay = doc.querySelector('.mobile-nav-overlay');
+
+            if (menuToggle) {
+                addResult('Mobile menu toggle found', 'pass');
+            } else {
+                addResult('Mobile menu toggle missing', 'fail');
+            }
+
+            if (mobileNav) {
+                addResult('Mobile nav container found', 'pass');
+            } else {
+                addResult('Mobile nav container missing', 'fail');
+            }
+
+            if (overlay) {
+                addResult('Mobile nav overlay found', 'pass');
+            } else {
+                addResult('Mobile nav overlay missing', 'warning');
+            }
+
+            // Check if responsive
+            if (window.innerWidth <= 968) {
+                const win = iframe.contentWindow;
+                const toggleStyles = win.getComputedStyle(menuToggle);
+                if (toggleStyles.display !== 'none') {
+                    addResult('Mobile toggle visible on small screen', 'pass');
+                } else {
+                    addResult('Mobile toggle hidden on small screen', 'fail');
+                }
+            }
+        }
+
+        function testZIndex() {
+            clearResults();
+            const doc = iframe.contentDocument;
+            const win = iframe.contentWindow;
+
+            const elements = [
+                { selector: 'header.premium-nav', name: 'Header' },
+                { selector: '.nav-floating-container', name: 'Nav Container' },
+                { selector: '.dropdown-menu', name: 'Dropdown' },
+                { selector: '.mobile-nav', name: 'Mobile Nav' },
+                { selector: '.mobile-nav-overlay', name: 'Mobile Overlay' }
+            ];
+
+            elements.forEach(({ selector, name }) => {
+                const el = doc.querySelector(selector);
+                if (el) {
+                    const styles = win.getComputedStyle(el);
+                    const zIndex = styles.zIndex;
+                    if (zIndex !== 'auto') {
+                        addResult(`${name} z-index: ${zIndex}`, parseInt(zIndex) >= 1000 ? 'pass' : 'warning');
+                    }
+                }
+            });
+        }
+
+        function testScrollBehavior() {
+            clearResults();
+            const doc = iframe.contentDocument;
+            const win = iframe.contentWindow;
+
+            // Simulate scroll
+            win.scrollTo(0, 100);
+
+            setTimeout(() => {
+                const header = doc.querySelector('header.premium-nav');
+                if (header) {
+                    const rect = header.getBoundingClientRect();
+                    if (rect.top === 0) {
+                        addResult('Header stays fixed on scroll', 'pass');
+                    } else {
+                        addResult(`Header moved on scroll: top=${rect.top}`, 'fail');
+                    }
+                }
+
+                // Reset scroll
+                win.scrollTo(0, 0);
+            }, 100);
+        }
+
+        function runAllTests() {
+            clearResults();
+            addResult('Running all tests...', 'warning');
+
+            setTimeout(() => {
+                clearResults();
+                testNavStructure();
+                setTimeout(() => {
+                    testNavVisibility();
+                    setTimeout(() => {
+                        testDropdown();
+                        setTimeout(() => {
+                            testMobileNav();
+                            setTimeout(() => {
+                                testZIndex();
+                                setTimeout(() => {
+                                    testScrollBehavior();
+                                }, 500);
+                            }, 500);
+                        }, 500);
+                    }, 500);
+                }, 500);
+            }, 500);
+        }
+
+        // Auto-run basic test on load
+        iframe.onload = function() {
+            setTimeout(() => {
+                testNavStructure();
+            }, 1000);
+        };
+    </script>
+</body>
+</html>

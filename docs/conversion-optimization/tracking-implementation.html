@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heatmap & User Journey Tracking Setup - The Profit Platform</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #F9FAFB;
+            line-height: 1.6;
+            color: #374151;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tracking-section {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #6366F1;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1F2937;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin: 24px 0;
+        }
+
+        .tool-card {
+            background: #F8FAFC;
+            border: 2px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover {
+            border-color: #6366F1;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.1);
+        }
+
+        .tool-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .tool-icon {
+            font-size: 2rem;
+        }
+
+        .tool-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1F2937;
+        }
+
+        .tool-purpose {
+            color: #6B7280;
+            margin-bottom: 16px;
+        }
+
+        .tool-features {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0;
+        }
+
+        .tool-features li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #374151;
+        }
+
+        .tool-features li::before {
+            content: '✓';
+            color: #10B981;
+            font-weight: bold;
+        }
+
+        .code-block {
+            background: #1F2937;
+            color: #E5E7EB;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+
+        .code-comment {
+            color: #10B981;
+            font-style: italic;
+        }
+
+        .implementation-step {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 16px 0;
+            border-left: 4px solid #F59E0B;
+        }
+
+        .step-number {
+            background: #F59E0B;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            margin-right: 12px;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: #1F2937;
+            margin-bottom: 8px;
+        }
+
+        .step-description {
+            color: #6B7280;
+            font-size: 14px;
+        }
+
+        .dashboard-preview {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+            color: white;
+        }
+
+        .dashboard-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .heatmap-demo {
+            background: #F3F4F6;
+            border: 2px solid #D1D5DB;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .heatmap-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 40%, rgba(255, 0, 0, 0.3), transparent 40%),
+                        radial-gradient(circle at 70% 20%, rgba(255, 100, 0, 0.2), transparent 30%),
+                        radial-gradient(circle at 60% 80%, rgba(255, 200, 0, 0.1), transparent 25%);
+            pointer-events: none;
+        }
+
+        .journey-flow {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 24px 0;
+            overflow-x: auto;
+            padding: 16px 0;
+        }
+
+        .journey-step {
+            background: white;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            padding: 16px;
+            min-width: 150px;
+            text-align: center;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .journey-step::after {
+            content: '→';
+            position: absolute;
+            right: -24px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: #6B7280;
+        }
+
+        .journey-step:last-child::after {
+            display: none;
+        }
+
+        .journey-step.active {
+            border-color: #10B981;
+            background: #F0FDF4;
+        }
+
+        .journey-step.dropped {
+            border-color: #EF4444;
+            background: #FEF2F2;
+        }
+
+        .conversion-funnel {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .funnel-stage {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+            padding: 16px;
+            background: #F8FAFC;
+            border-radius: 8px;
+        }
+
+        .funnel-bar {
+            flex: 1;
+            height: 24px;
+            background: #E5E7EB;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .funnel-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #10B981, #059669);
+            transition: width 0.3s ease;
+        }
+
+        .funnel-metrics {
+            text-align: right;
+            min-width: 80px;
+            font-size: 14px;
+        }
+
+        .tracking-checklist {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #374151;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #6366F1;
+        }
+
+        .alert-box {
+            background: #FEF3C7;
+            border: 1px solid #FCD34D;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .alert-title {
+            color: #D97706;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .alert-text {
+            color: #92400E;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .tool-grid,
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .journey-flow {
+                flex-direction: column;
+            }
+
+            .journey-step::after {
+                content: '↓';
+                right: 50%;
+                transform: translateX(50%);
+                bottom: -24px;
+                top: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center; font-size: 2.5rem; margin-bottom: 16px; color: #1F2937;">Heatmap & User Journey Tracking</h1>
+        <p style="text-align: center; color: #6B7280; font-size: 1.1rem; margin-bottom: 48px;">Complete implementation guide for behavior analytics and conversion optimization</p>
+
+        <!-- Tool Selection & Setup -->
+        <div class="tracking-section">
+            <h2 class="section-title">
+                🛠️ Essential Tracking Tools Setup
+            </h2>
+
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">🔥</div>
+                        <div class="tool-name">Hotjar</div>
+                    </div>
+                    <div class="tool-purpose">Heatmaps, session recordings, and user feedback</div>
+                    <ul class="tool-features">
+                        <li>Click, move, and scroll heatmaps</li>
+                        <li>Full session recordings</li>
+                        <li>Conversion funnel analysis</li>
+                        <li>Form analytics</li>
+                        <li>Feedback polls and surveys</li>
+                    </ul>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">📊</div>
+                        <div class="tool-name">Google Analytics 4</div>
+                    </div>
+                    <div class="tool-purpose">Advanced user journey and conversion tracking</div>
+                    <ul class="tool-features">
+                        <li>Enhanced ecommerce tracking</li>
+                        <li>Custom event tracking</li>
+                        <li>User flow analysis</li>
+                        <li>Audience insights</li>
+                        <li>Goal and conversion setup</li>
+                    </ul>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">🎯</div>
+                        <div class="tool-name">Microsoft Clarity</div>
+                    </div>
+                    <div class="tool-purpose">Free heatmaps and session recordings</div>
+                    <ul class="tool-features">
+                        <li>Unlimited heatmaps</li>
+                        <li>Session replays</li>
+                        <li>Dead clicks detection</li>
+                        <li>Rage clicks analysis</li>
+                        <li>Smart insights dashboard</li>
+                    </ul>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">📈</div>
+                        <div class="tool-name">Facebook Pixel</div>
+                    </div>
+                    <div class="tool-purpose">Social media conversion tracking</div>
+                    <ul class="tool-features">
+                        <li>Custom conversion events</li>
+                        <li>Audience building</li>
+                        <li>Cross-platform tracking</li>
+                        <li>Attribution analysis</li>
+                        <li>Retargeting setup</li>
+                    </ul>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">⚡</div>
+                        <div class="tool-name">Google Tag Manager</div>
+                    </div>
+                    <div class="tool-purpose">Centralized tracking management</div>
+                    <ul class="tool-features">
+                        <li>Tag deployment without code</li>
+                        <li>Event tracking automation</li>
+                        <li>Cross-domain tracking</li>
+                        <li>Debugging and testing</li>
+                        <li>Version control</li>
+                    </ul>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">📱</div>
+                        <div class="tool-name">Mixpanel/Amplitude</div>
+                    </div>
+                    <div class="tool-purpose">Advanced user behavior analytics</div>
+                    <ul class="tool-features">
+                        <li>Event-based tracking</li>
+                        <li>Cohort analysis</li>
+                        <li>Retention tracking</li>
+                        <li>A/B test analysis</li>
+                        <li>User segmentation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Implementation Steps -->
+        <div class="tracking-section">
+            <h2 class="section-title">
+                ⚙️ Step-by-Step Implementation
+            </h2>
+
+            <div class="implementation-step">
+                <div class="step-title">
+                    <span class="step-number">1</span>
+                    Google Tag Manager Setup
+                </div>
+                <div class="step-description">
+                    Install GTM container and configure basic tracking foundation
+                </div>
+
+                <div class="code-block">
+                    <div class="code-comment"><!-- Google Tag Manager --></div>
+<pre>&lt;!-- Add to &lt;head&gt; --&gt;
+&lt;script&gt;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-XXXXXXX');&lt;/script&gt;
+
+&lt;!-- Add after opening &lt;body&gt; tag --&gt;
+&lt;noscript&gt;&lt;iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;&lt;/noscript&gt;</pre>
+                </div>
+            </div>
+
+            <div class="implementation-step">
+                <div class="step-title">
+                    <span class="step-number">2</span>
+                    Google Analytics 4 Configuration
+                </div>
+                <div class="step-description">
+                    Set up GA4 with enhanced ecommerce and custom events
+                </div>
+
+                <div class="code-block">
+                    <div class="code-comment">// Enhanced GA4 Setup with Custom Events</div>
+<pre>// Configure GA4 with custom parameters
+gtag('config', 'GA_MEASUREMENT_ID', {
+    // Enable enhanced measurement
+    enhanced_measurements: true,
+    // Custom dimensions
+    custom_map: {
+        'custom_parameter_1': 'user_type',
+        'custom_parameter_2': 'lead_source',
+        'custom_parameter_3': 'service_interest'
+    }
+});
+
+// Track form interactions
+function trackFormInteraction(formName, step, field = null) {
+    gtag('event', 'form_interaction', {
+        'form_name': formName,
+        'form_step': step,
+        'field_name': field,
+        'timestamp': Date.now()
+    });
+}
+
+// Track CTA clicks with context
+function trackCTAClick(ctaText, location, page) {
+    gtag('event', 'cta_click', {
+        'cta_text': ctaText,
+        'cta_location': location,
+        'page_title': page,
+        'value': 1
+    });
+}
+
+// Track scroll depth milestones
+let scrollMilestones = [25, 50, 75, 90];
+let maxScroll = 0;
+
+window.addEventListener('scroll', function() {
+    const scrollPercent = Math.round(
+        (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100
+    );
+
+    if (scrollPercent > maxScroll) {
+        maxScroll = scrollPercent;
+
+        scrollMilestones.forEach(milestone => {
+            if (scrollPercent >= milestone && !window[`scroll_${milestone}_tracked`]) {
+                gtag('event', 'scroll_depth', {
+                    'percent_scrolled': milestone,
+                    'page_title': document.title
+                });
+                window[`scroll_${milestone}_tracked`] = true;
+            }
+        });
+    }
+});</pre>
+                </div>
+            </div>
+
+            <div class="implementation-step">
+                <div class="step-title">
+                    <span class="step-number">3</span>
+                    Hotjar Implementation
+                </div>
+                <div class="step-description">
+                    Install Hotjar for heatmaps, recordings, and user feedback
+                </div>
+
+                <div class="code-block">
+                    <div class="code-comment">// Hotjar Tracking Code</div>
+<pre>&lt;script&gt;
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:XXXXXXX,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+&lt;/script&gt;
+
+// Custom Hotjar events for specific interactions
+function trackHotjarEvent(eventName, properties) {
+    if (typeof hj !== 'undefined') {
+        hj('event', eventName, properties);
+    }
+}
+
+// Track specific user actions
+document.addEventListener('click', function(e) {
+    if (e.target.matches('.btn-primary')) {
+        trackHotjarEvent('primary_cta_click', {
+            button_text: e.target.textContent,
+            page_url: window.location.href
+        });
+    }
+
+    if (e.target.matches('[href*="tel:"]')) {
+        trackHotjarEvent('phone_click', {
+            phone_number: e.target.href.replace('tel:', '')
+        });
+    }
+});</pre>
+                </div>
+            </div>
+
+            <div class="implementation-step">
+                <div class="step-title">
+                    <span class="step-number">4</span>
+                    Microsoft Clarity Setup
+                </div>
+                <div class="step-description">
+                    Add Clarity for additional heatmap insights and session recordings
+                </div>
+
+                <div class="code-block">
+                    <div class="code-comment">// Microsoft Clarity Implementation</div>
+<pre>&lt;script type="text/javascript"&gt;
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "XXXXXXXXX");
+&lt;/script&gt;
+
+// Custom Clarity events
+function trackClarityEvent(eventName, data) {
+    if (typeof clarity !== 'undefined') {
+        clarity('set', eventName, data);
+    }
+}
+
+// Track user journey milestones
+const journeyMilestones = [
+    'homepage_loaded',
+    'services_viewed',
+    'contact_form_started',
+    'contact_form_completed'
+];
+
+// Example: Track when user reaches contact form
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                trackClarityEvent('contact_form_viewed', {
+                    timestamp: Date.now(),
+                    page: window.location.pathname
+                });
+            }
+        });
+    });
+    observer.observe(contactForm);
+}</pre>
+                </div>
+            </div>
+
+            <div class="implementation-step">
+                <div class="step-title">
+                    <span class="step-number">5</span>
+                    Facebook Pixel Integration
+                </div>
+                <div class="step-description">
+                    Configure Facebook Pixel for social media conversion tracking
+                </div>
+
+                <div class="code-block">
+                    <div class="code-comment">// Facebook Pixel with Custom Events</div>
+<pre>&lt;script&gt;
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+
+  fbq('init', 'XXXXXXXXXXXXXXXXX');
+  fbq('track', 'PageView');
+&lt;/script&gt;
+
+// Custom conversion events
+function trackFacebookConversion(eventType, parameters) {
+    if (typeof fbq !== 'undefined') {
+        fbq('track', eventType, parameters);
+    }
+}
+
+// Example: Track lead generation
+document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', function(e) {
+        trackFacebookConversion('Lead', {
+            content_name: 'Marketing Audit Request',
+            content_category: 'Lead Magnet',
+            value: 997,
+            currency: 'AUD'
+        });
+    });
+});
+
+// Track phone calls as conversions
+document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+        trackFacebookConversion('Contact', {
+            content_name: 'Phone Call',
+            content_category: 'Direct Contact'
+        });
+    });
+});</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Heatmap Analysis Demo -->
+        <div class="tracking-section">
+            <h2 class="section-title">
+                🔥 Heatmap Analysis Framework
+            </h2>
+
+            <div class="heatmap-demo">
+                <div class="heatmap-overlay"></div>
+                <h3 style="margin: 0 0 16px 0; color: #1F2937;">Sample Homepage Layout</h3>
+                <div style="background: white; padding: 16px; border-radius: 8px; margin-bottom: 16px; opacity: 0.9;">
+                    <h4 style="margin: 0 0 8px 0;">Hero Section</h4>
+                    <p style="margin: 0; font-size: 14px; color: #6B7280;">Primary headline and CTA button</p>
+                </div>
+                <div style="background: white; padding: 16px; border-radius: 8px; margin-bottom: 16px; opacity: 0.9;">
+                    <h4 style="margin: 0 0 8px 0;">Services Section</h4>
+                    <p style="margin: 0; font-size: 14px; color: #6B7280;">Service cards with descriptions</p>
+                </div>
+                <div style="background: white; padding: 16px; border-radius: 8px; opacity: 0.9;">
+                    <h4 style="margin: 0 0 8px 0;">Contact Form</h4>
+                    <p style="margin: 0; font-size: 14px; color: #6B7280;">Lead capture form</p>
+                </div>
+                <div style="position: absolute; top: 16px; right: 16px; background: rgba(255, 255, 255, 0.9); padding: 8px 12px; border-radius: 6px; font-size: 12px; color: #374151;">
+                    🔴 High Activity &nbsp;&nbsp; 🟡 Medium Activity &nbsp;&nbsp; 🟢 Low Activity
+                </div>
+            </div>
+
+            <div style="background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 12px; padding: 20px; margin-top: 16px;">
+                <h4 style="color: #15803D; margin: 0 0 12px 0;">Key Heatmap Insights to Track:</h4>
+                <ul style="margin: 0; padding-left: 20px; color: #166534;">
+                    <li><strong>Click Heatmaps:</strong> Which CTAs get the most attention</li>
+                    <li><strong>Scroll Heatmaps:</strong> How far users scroll before leaving</li>
+                    <li><strong>Move Heatmaps:</strong> Where users hover and focus attention</li>
+                    <li><strong>Form Analytics:</strong> Which fields cause abandonment</li>
+                    <li><strong>Dead Clicks:</strong> Elements users try to click but aren't clickable</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- User Journey Tracking -->
+        <div class="tracking-section">
+            <h2 class="section-title">
+                🗺️ User Journey Mapping
+            </h2>
+
+            <div class="journey-flow">
+                <div class="journey-step active">
+                    <h4 style="margin: 0 0 8px 0; color: #1F2937;">Landing</h4>
+                    <p style="margin: 0; font-size: 12px; color: #6B7280;">Homepage Visit</p>
+                    <div style="font-size: 18px; font-weight: 600; color: #10B981; margin-top: 8px;">1,000</div>
+                </div>
+
+                <div class="journey-step active">
+                    <h4 style="margin: 0 0 8px 0; color: #1F2937;">Engagement</h4>
+                    <p style="margin: 0; font-size: 12px; color: #6B7280;">Scroll 50%+</p>
+                    <div style="font-size: 18px; font-weight: 600; color: #10B981; margin-top: 8px;">650</div>
+                </div>
+
+                <div class="journey-step active">
+                    <h4 style="margin: 0 0 8px 0; color: #1F2937;">Interest</h4>
+                    <p style="margin: 0; font-size: 12px; color: #6B7280;">Services Page</p>
+                    <div style="font-size: 18px; font-weight: 600; color: #10B981; margin-top: 8px;">420</div>
+                </div>
+
+                <div class="journey-step dropped">
+                    <h4 style="margin: 0 0 8px 0; color: #1F2937;">Intent</h4>
+                    <p style="margin: 0; font-size: 12px; color: #6B7280;">Contact Page</p>
+                    <div style="font-size: 18px; font-weight: 600; color: #EF4444; margin-top: 8px;">120</div>
+                </div>
+
+                <div class="journey-step active">
+                    <h4 style="margin: 0 0 8px 0; color: #1F2937;">Conversion</h4>
+                    <p style="margin: 0; font-size: 12px; color: #6B7280;">Form Submit</p>
+                    <div style="font-size: 18px; font-weight: 600; color: #10B981; margin-top: 8px;">52</div>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <div class="code-comment">// Advanced User Journey Tracking</div>
+<pre>class UserJourneyTracker {
+    constructor() {
+        this.journey = [];
+        this.sessionId = this.generateSessionId();
+        this.startTime = Date.now();
+        this.init();
+    }
+
+    init() {
+        // Track page views
+        this.trackEvent('page_view', {
+            page: window.location.pathname,
+            title: document.title,
+            referrer: document.referrer
+        });
+
+        // Track scroll behavior
+        this.setupScrollTracking();
+
+        // Track clicks and interactions
+        this.setupClickTracking();
+
+        // Track form interactions
+        this.setupFormTracking();
+
+        // Track time on page
+        this.setupTimeTracking();
+    }
+
+    trackEvent(eventName, properties = {}) {
+        const event = {
+            event: eventName,
+            timestamp: Date.now(),
+            session_id: this.sessionId,
+            time_on_page: Date.now() - this.startTime,
+            ...properties
+        };
+
+        this.journey.push(event);
+
+        // Send to analytics
+        if (typeof gtag !== 'undefined') {
+            gtag('event', eventName, {
+                ...properties,
+                session_id: this.sessionId,
+                time_on_page: event.time_on_page
+            });
+        }
+
+        // Store locally for analysis
+        this.saveJourney();
+    }
+
+    setupScrollTracking() {
+        let maxScroll = 0;
+        let scrollMilestones = [10, 25, 50, 75, 90];
+
+        window.addEventListener('scroll', () => {
+            const scrollPercent = Math.round(
+                (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100
+            );
+
+            if (scrollPercent > maxScroll) {
+                maxScroll = scrollPercent;
+
+                scrollMilestones.forEach(milestone => {
+                    if (scrollPercent >= milestone &&
+                        !this.journey.find(e => e.event === 'scroll_milestone' && e.milestone === milestone)) {
+
+                        this.trackEvent('scroll_milestone', {
+                            milestone: milestone,
+                            max_scroll: maxScroll
+                        });
+                    }
+                });
+            }
+        });
+    }
+
+    setupClickTracking() {
+        document.addEventListener('click', (e) => {
+            const element = e.target;
+            const elementInfo = {
+                tag: element.tagName.toLowerCase(),
+                class: element.className,
+                id: element.id,
+                text: element.textContent.substring(0, 50),
+                href: element.href || null
+            };
+
+            // Track specific elements
+            if (element.matches('a, button, [data-track]')) {
+                this.trackEvent('element_click', {
+                    element: elementInfo,
+                    x: e.clientX,
+                    y: e.clientY
+                });
+            }
+
+            // Track CTA clicks specifically
+            if (element.matches('.btn-primary, .cta-button')) {
+                this.trackEvent('cta_click', {
+                    cta_text: element.textContent.trim(),
+                    cta_location: this.getElementLocation(element)
+                });
+            }
+        });
+    }
+
+    setupFormTracking() {
+        const forms = document.querySelectorAll('form');
+
+        forms.forEach(form => {
+            const formName = form.id || form.className || 'unnamed_form';
+
+            // Track form start
+            const inputs = form.querySelectorAll('input, select, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('focus', () => {
+                    if (!this.journey.find(e => e.event === 'form_started' && e.form === formName)) {
+                        this.trackEvent('form_started', {
+                            form: formName,
+                            first_field: input.name || input.id
+                        });
+                    }
+                });
+
+                // Track field completion
+                input.addEventListener('blur', () => {
+                    if (input.value) {
+                        this.trackEvent('form_field_completed', {
+                            form: formName,
+                            field: input.name || input.id,
+                            field_type: input.type
+                        });
+                    }
+                });
+            });
+
+            // Track form submission
+            form.addEventListener('submit', () => {
+                this.trackEvent('form_submitted', {
+                    form: formName,
+                    fields_completed: Array.from(inputs).filter(i => i.value).length,
+                    total_fields: inputs.length
+                });
+            });
+        });
+    }
+
+    setupTimeTracking() {
+        const timeCheckpoints = [30, 60, 120, 300]; // seconds
+
+        timeCheckpoints.forEach(checkpoint => {
+            setTimeout(() => {
+                this.trackEvent('time_checkpoint', {
+                    seconds_on_page: checkpoint,
+                    page_active: this.isPageActive()
+                });
+            }, checkpoint * 1000);
+        });
+    }
+
+    getElementLocation(element) {
+        const rect = element.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+
+        return {
+            x: rect.left + scrollLeft,
+            y: rect.top + scrollTop,
+            viewport_x: rect.left,
+            viewport_y: rect.top
+        };
+    }
+
+    isPageActive() {
+        return !document.hidden && document.hasFocus();
+    }
+
+    generateSessionId() {
+        return 'session_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
+    }
+
+    saveJourney() {
+        localStorage.setItem('user_journey', JSON.stringify({
+            session_id: this.sessionId,
+            journey: this.journey,
+            last_updated: Date.now()
+        }));
+    }
+
+    getJourneyData() {
+        return {
+            session_id: this.sessionId,
+            journey: this.journey,
+            total_events: this.journey.length,
+            session_duration: Date.now() - this.startTime
+        };
+    }
+}
+
+// Initialize journey tracking
+const journeyTracker = new UserJourneyTracker();</pre>
+            </div>
+        </div>
+
+        <!-- Conversion Funnel Analysis -->
+        <div class="tracking-section">
+            <h2 class="section-title">
+                📊 Conversion Funnel Analysis
+            </h2>
+
+            <div class="conversion-funnel">
+                <h3 style="margin: 0 0 24px 0; color: #1F2937;">Lead Generation Funnel</h3>
+
+                <div class="funnel-stage">
+                    <div style="min-width: 120px; font-weight: 600; color: #1F2937;">Website Visitors</div>
+                    <div class="funnel-bar">
+                        <div class="funnel-fill" style="width: 100%;"></div>
+                    </div>
+                    <div class="funnel-metrics">
+                        <div style="font-weight: 600; color: #1F2937;">1,000</div>
+                        <div style="color: #6B7280; font-size: 12px;">100%</div>
+                    </div>
+                </div>
+
+                <div class="funnel-stage">
+                    <div style="min-width: 120px; font-weight: 600; color: #1F2937;">Engaged (50%+ scroll)</div>
+                    <div class="funnel-bar">
+                        <div class="funnel-fill" style="width: 65%;"></div>
+                    </div>
+                    <div class="funnel-metrics">
+                        <div style="font-weight: 600; color: #1F2937;">650</div>
+                        <div style="color: #6B7280; font-size: 12px;">65%</div>
+                    </div>
+                </div>
+
+                <div class="funnel-stage">
+                    <div style="min-width: 120px; font-weight: 600; color: #1F2937;">Services Viewed</div>
+                    <div class="funnel-bar">
+                        <div class="funnel-fill" style="width: 42%;"></div>
+                    </div>
+                    <div class="funnel-metrics">
+                        <div style="font-weight: 600; color: #1F2937;">420</div>
+                        <div style="color: #6B7280; font-size: 12px;">42%</div>
+                    </div>
+                </div>
+
+                <div class="funnel-stage">
+                    <div style="min-width: 120px; font-weight: 600; color: #1F2937;">Contact Page</div>
+                    <div class="funnel-bar">
+                        <div class="funnel-fill" style="width: 12%;"></div>
+                    </div>
+                    <div class="funnel-metrics">
+                        <div style="font-weight: 600; color: #1F2937;">120</div>
+                        <div style="color: #6B7280; font-size: 12px;">12%</div>
+                    </div>
+                </div>
+
+                <div class="funnel-stage">
+                    <div style="min-width: 120px; font-weight: 600; color: #1F2937;">Form Started</div>
+                    <div class="funnel-bar">
+                        <div class="funnel-fill" style="width: 8%;"></div>
+                    </div>
+                    <div class="funnel-metrics">
+                        <div style="font-weight: 600; color: #1F2937;">80</div>
+                        <div style="color: #6B7280; font-size: 12px;">8%</div>
+                    </div>
+                </div>
+
+                <div class="funnel-stage">
+                    <div style="min-width: 120px; font-weight: 600; color: #1F2937;">Form Completed</div>
+                    <div class="funnel-bar">
+                        <div class="funnel-fill" style="width: 5.2%;"></div>
+                    </div>
+                    <div class="funnel-metrics">
+                        <div style="font-weight: 600; color: #1F2937;">52</div>
+                        <div style="color: #6B7280; font-size: 12px;">5.2%</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert-box">
+                <div class="alert-title">🎯 Key Optimization Opportunities</div>
+                <div class="alert-text">
+                    <strong>Biggest Drop-off:</strong> Services page to Contact page (30% drop)<br>
+                    <strong>Form Abandonment:</strong> 35% start but don't complete the form<br>
+                    <strong>Quick Win:</strong> Optimize contact page messaging and reduce form friction
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard & Reporting -->
+        <div class="tracking-section">
+            <h2 class="section-title">
+                📈 Analytics Dashboard Setup
+            </h2>
+
+            <div class="dashboard-preview">
+                <div class="dashboard-title">Weekly Conversion Report</div>
+                <p style="margin: 0 0 16px 0; opacity: 0.9;">Key metrics for The Profit Platform optimization</p>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">5.2%</div>
+                        <div class="metric-label">Conversion Rate</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">2:43</div>
+                        <div class="metric-label">Avg. Session Duration</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">68%</div>
+                        <div class="metric-label">Scroll Depth</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">23%</div>
+                        <div class="metric-label">Form Start Rate</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">65%</div>
+                        <div class="metric-label">Form Completion</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">$42</div>
+                        <div class="metric-label">Cost Per Lead</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <div class="code-comment">// Custom Dashboard Data Collection</div>
+<pre>// Weekly report data aggregation
+function generateWeeklyReport() {
+    const data = {
+        period: getLastWeekRange(),
+        metrics: {
+            total_visitors: getTotalVisitors(),
+            conversions: getTotalConversions(),
+            conversion_rate: getConversionRate(),
+            avg_session_duration: getAvgSessionDuration(),
+            bounce_rate: getBounceRate(),
+            top_traffic_sources: getTopTrafficSources(),
+            top_landing_pages: getTopLandingPages(),
+            form_analytics: getFormAnalytics(),
+            heatmap_insights: getHeatmapInsights()
+        },
+        recommendations: generateRecommendations()
+    };
+
+    // Send to dashboard or email
+    sendWeeklyReport(data);
+    return data;
+}
+
+// Automated alert system
+function setupAlerts() {
+    const thresholds = {
+        conversion_rate_drop: 0.02, // Alert if CVR drops by 2%
+        form_abandonment: 0.70,     // Alert if abandonment > 70%
+        page_load_time: 3000,       // Alert if load time > 3s
+        error_rate: 0.05            // Alert if error rate > 5%
+    };
+
+    // Check metrics every hour
+    setInterval(() => {
+        checkMetricsAndAlert(thresholds);
+    }, 3600000);
+}
+
+// Heatmap analysis automation
+function analyzeHeatmapData() {
+    const analysis = {
+        top_clicked_elements: getTopClickedElements(),
+        dead_clicks: getDeadClicks(),
+        rage_clicks: getRageClicks(),
+        scroll_patterns: getScrollPatterns(),
+        form_field_interactions: getFormFieldData(),
+        mobile_vs_desktop: getDeviceComparison()
+    };
+
+    return analysis;
+}</pre>
+            </div>
+        </div>
+
+        <!-- Implementation Checklist -->
+        <div class="tracking-section">
+            <h2 class="section-title">
+                ✅ Implementation Checklist
+            </h2>
+
+            <div class="tracking-checklist">
+                <h4 style="margin: 0 0 16px 0; color: #1F2937;">Complete Setup Checklist:</h4>
+
+                <div class="checklist-item">
+                    <input type="checkbox" id="gtm-setup">
+                    <label for="gtm-setup">Install Google Tag Manager container code</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="ga4-config">
+                    <label for="ga4-config">Configure Google Analytics 4 with enhanced ecommerce</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="hotjar-install">
+                    <label for="hotjar-install">Install Hotjar tracking code and configure heatmaps</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="clarity-setup">
+                    <label for="clarity-setup">Add Microsoft Clarity for additional insights</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="fb-pixel">
+                    <label for="fb-pixel">Configure Facebook Pixel with custom conversion events</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="custom-events">
+                    <label for="custom-events">Set up custom event tracking for all CTAs and forms</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="goals-setup">
+                    <label for="goals-setup">Create conversion goals and funnels in GA4</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="dashboard-config">
+                    <label for="dashboard-config">Set up custom dashboard with key metrics</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="alerts-config">
+                    <label for="alerts-config">Configure automated alerts for metric changes</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="reporting-schedule">
+                    <label for="reporting-schedule">Schedule weekly/monthly automated reports</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="testing-validation">
+                    <label for="testing-validation">Test all tracking implementations across devices</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="team-training">
+                    <label for="team-training">Train team on reading and interpreting analytics data</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Demonstrate real-time funnel updates
+        function updateFunnelDemo() {
+            const stages = document.querySelectorAll('.funnel-fill');
+            const metrics = [100, 65, 42, 12, 8, 5.2];
+
+            stages.forEach((stage, index) => {
+                // Simulate slight variations in metrics
+                const variation = (Math.random() - 0.5) * 4; // ±2% variation
+                const newValue = Math.max(0, metrics[index] + variation);
+                stage.style.width = newValue + '%';
+
+                // Update number displays
+                const metricDisplay = stage.closest('.funnel-stage').querySelector('.funnel-metrics div');
+                const baseValue = [1000, 650, 420, 120, 80, 52][index];
+                const newCount = Math.round(baseValue * (newValue / metrics[index]));
+                metricDisplay.textContent = newCount;
+            });
+        }
+
+        // Update metrics every 10 seconds for demo
+        setInterval(updateFunnelDemo, 10000);
+
+        // Checkbox persistence
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            // Load saved state
+            const saved = localStorage.getItem(checkbox.id);
+            if (saved === 'true') {
+                checkbox.checked = true;
+            }
+
+            // Save state on change
+            checkbox.addEventListener('change', function() {
+                localStorage.setItem(this.id, this.checked);
+            });
+        });
+
+        // Calculate completion percentage
+        function updateChecklistProgress() {
+            const total = document.querySelectorAll('.tracking-checklist input[type="checkbox"]').length;
+            const completed = document.querySelectorAll('.tracking-checklist input[type="checkbox"]:checked').length;
+            const percentage = Math.round((completed / total) * 100);
+
+            console.log(`Implementation Progress: ${percentage}% (${completed}/${total})`);
+        }
+
+        // Update progress when checkboxes change
+        document.addEventListener('change', function(e) {
+            if (e.target.matches('.tracking-checklist input[type="checkbox"]')) {
+                updateChecklistProgress();
+            }
+        });
+
+        // Initial progress calculation
+        updateChecklistProgress();
+
+        // Demo: Simulate user journey tracking
+        class DemoJourneyTracker {
+            constructor() {
+                this.events = [];
+                this.startDemo();
+            }
+
+            startDemo() {
+                // Simulate realistic user journey events
+                setTimeout(() => this.addEvent('page_view', 'Homepage'), 0);
+                setTimeout(() => this.addEvent('scroll_milestone', '25% scrolled'), 2000);
+                setTimeout(() => this.addEvent('cta_hover', 'Hero CTA'), 5000);
+                setTimeout(() => this.addEvent('scroll_milestone', '50% scrolled'), 8000);
+                setTimeout(() => this.addEvent('click', 'Services navigation'), 12000);
+                setTimeout(() => this.addEvent('page_view', 'Services page'), 13000);
+                setTimeout(() => this.addEvent('form_view', 'Contact form visible'), 20000);
+                setTimeout(() => this.addEvent('form_start', 'Name field focused'), 25000);
+            }
+
+            addEvent(type, description) {
+                const event = {
+                    type: type,
+                    description: description,
+                    timestamp: new Date().toISOString(),
+                    time_elapsed: Date.now() - this.startTime
+                };
+
+                this.events.push(event);
+                console.log('Journey Event:', event);
+
+                // In real implementation, send to analytics
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', type, {
+                        event_category: 'User_Journey',
+                        event_label: description
+                    });
+                }
+            }
+        }
+
+        // Start demo journey tracker
+        // const demoTracker = new DemoJourneyTracker();
+    </script>
+</body>
+</html>

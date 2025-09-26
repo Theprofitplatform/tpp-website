@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TPP Code Search - Vector-Based Code Discovery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .search-section {
+            padding: 40px;
+        }
+
+        .search-box {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 20px 60px 20px 20px;
+            border: 2px solid #e1e5e9;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid #e1e5e9;
+            border-radius: 25px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .results-section {
+            margin-top: 30px;
+        }
+
+        .result-item {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .result-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .result-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .result-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .result-tag {
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .result-code {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+
+        .score-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .example-queries {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .example-queries h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .example-item {
+            display: inline-block;
+            background: white;
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 20px;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            transition: all 0.3s ease;
+        }
+
+        .example-item:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .stats {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .search-section {
+                padding: 20px;
+            }
+
+            .filters {
+                justify-content: center;
+            }
+
+            .result-meta {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔍 TPP Code Search</h1>
+            <p>AI-powered semantic search across the entire TPP website codebase</p>
+        </div>
+
+        <div class="search-section">
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Search for functions, components, styles, or features..." id="searchInput">
+                <button class="search-btn" onclick="performSearch()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="filters">
+                <div class="filter-btn active" data-filter="all">All Files</div>
+                <div class="filter-btn" data-filter="html">HTML</div>
+                <div class="filter-btn" data-filter="css">CSS</div>
+                <div class="filter-btn" data-filter="js">JavaScript</div>
+                <div class="filter-btn" data-filter="py">Python</div>
+                <div class="filter-btn" data-filter="json">Config</div>
+            </div>
+
+            <div class="example-queries">
+                <h3>💡 Try these example searches:</h3>
+                <div class="example-item" onclick="searchExample('navigation menu')">navigation menu</div>
+                <div class="example-item" onclick="searchExample('contact form')">contact form</div>
+                <div class="example-item" onclick="searchExample('pricing section')">pricing section</div>
+                <div class="example-item" onclick="searchExample('seo optimization')">seo optimization</div>
+                <div class="example-item" onclick="searchExample('responsive design')">responsive design</div>
+                <div class="example-item" onclick="searchExample('performance monitoring')">performance monitoring</div>
+                <div class="example-item" onclick="searchExample('animation effects')">animation effects</div>
+            </div>
+
+            <div class="results-section" id="resultsSection"></div>
+        </div>
+
+        <div class="stats">
+            <p>🚀 Powered by AI Vector Search | Finds code by meaning, not just keywords</p>
+        </div>
+    </div>
+
+    <script>
+        let currentFilter = 'all';
+
+        // Mock data - In real implementation, this would come from the Python backend
+        const mockResults = {
+            'navigation menu': [
+                {
+                    name: 'nav-main-menu',
+                    file_path: 'website/index.html',
+                    line_number: 45,
+                    score: 0.892,
+                    file_type: 'html',
+                    category: 'Frontend/Templates',
+                    code: `<nav class="main-navigation">
+    <div class="nav-container">
+        <div class="nav-brand">TPP</div>
+        <ul class="nav-menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>`
+                },
+                {
+                    name: 'mobile-nav-toggle',
+                    file_path: 'website/js/navigation.js',
+                    line_number: 12,
+                    score: 0.834,
+                    file_type: 'js',
+                    category: 'JavaScript/Logic',
+                    code: `function toggleMobileMenu() {
+    const navMenu = document.querySelector('.nav-menu');
+    const hamburger = document.querySelector('.hamburger');
+
+    navMenu.classList.toggle('active');
+    hamburger.classList.toggle('active');
+}`
+                }
+            ],
+            'contact form': [
+                {
+                    name: 'form-contact',
+                    file_path: 'website/contact.html',
+                    line_number: 78,
+                    score: 0.945,
+                    file_type: 'html',
+                    category: 'Frontend/Templates',
+                    code: `<form class="contact-form" action="/submit-contact" method="POST">
+    <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+    </div>
+    <button type="submit" class="submit-btn">Send Message</button>
+</form>`
+                },
+                {
+                    name: 'validateContactForm',
+                    file_path: 'website/js/contact.js',
+                    line_number: 25,
+                    score: 0.823,
+                    file_type: 'js',
+                    category: 'JavaScript/Logic',
+                    code: `function validateContactForm(formData) {
+    const errors = [];
+
+    if (!formData.name || formData.name.length < 2) {
+        errors.push('Name must be at least 2 characters');
+    }
+
+    if (!formData.email || !isValidEmail(formData.email)) {
+        errors.push('Please enter a valid email address');
+    }
+
+    if (!formData.message || formData.message.length < 10) {
+        errors.push('Message must be at least 10 characters');
+    }
+
+    return errors;
+}`
+                }
+            ],
+            'pricing section': [
+                {
+                    name: 'section#pricing',
+                    file_path: 'website/pricing.html',
+                    line_number: 156,
+                    score: 0.911,
+                    file_type: 'html',
+                    category: 'Frontend/Templates',
+                    code: `<section id="pricing" class="pricing-section">
+    <div class="container">
+        <h2 class="section-title">Our Pricing Plans</h2>
+        <div class="pricing-grid">
+            <div class="pricing-card basic">
+                <h3>Basic Package</h3>
+                <div class="price">$299/month</div>
+                <ul class="features">
+                    <li>Website Design</li>
+                    <li>Basic SEO</li>
+                    <li>2 Revisions</li>
+                </ul>
+                <button class="pricing-btn">Get Started</button>
+            </div>
+        </div>
+    </div>
+</section>`
+                }
+            ]
+        };
+
+        // Setup filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFilter = btn.dataset.filter;
+            });
+        });
+
+        // Search input handler
+        document.getElementById('searchInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        function searchExample(query) {
+            document.getElementById('searchInput').value = query;
+            performSearch();
+        }
+
+        function performSearch() {
+            const query = document.getElementById('searchInput').value.trim();
+            const resultsSection = document.getElementById('resultsSection');
+
+            if (!query) {
+                resultsSection.innerHTML = '<p style="text-align: center; color: #666; padding: 40px;">Enter a search query to find code</p>';
+                return;
+            }
+
+            // Show loading
+            resultsSection.innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Searching TPP codebase with AI...</p>
+                </div>
+            `;
+
+            // Simulate API call delay
+            setTimeout(() => {
+                displayResults(query);
+            }, 1500);
+        }
+
+        function displayResults(query) {
+            const resultsSection = document.getElementById('resultsSection');
+            const results = mockResults[query.toLowerCase()] || [];
+
+            if (results.length === 0) {
+                resultsSection.innerHTML = `
+                    <div style="text-align: center; padding: 40px; color: #666;">
+                        <h3>No results found for "${query}"</h3>
+                        <p>Try a different search term or check the examples above</p>
+                    </div>
+                `;
+                return;
+            }
+
+            let html = `<h3 style="margin-bottom: 25px; color: #333;">Found ${results.length} results for "${query}":</h3>`;
+
+            results.forEach((result, index) => {
+                // Filter by file type if not 'all'
+                if (currentFilter !== 'all' && result.file_type !== currentFilter) {
+                    return;
+                }
+
+                html += `
+                    <div class="result-item">
+                        <div class="result-header">
+                            <div>
+                                <div class="result-title">📄 ${result.name}</div>
+                                <div class="result-meta">
+                                    <span>📍 ${result.file_path}:${result.line_number}</span>
+                                    <span class="result-tag">${result.file_type.toUpperCase()}</span>
+                                    <span class="result-tag">${result.category}</span>
+                                </div>
+                            </div>
+                            <div class="score-badge">Score: ${result.score.toFixed(3)}</div>
+                        </div>
+                        <div class="result-code">${escapeHtml(result.code)}</div>
+                    </div>
+                `;
+            });
+
+            resultsSection.innerHTML = html;
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Initialize with welcome message
+        document.getElementById('resultsSection').innerHTML = `
+            <div style="text-align: center; padding: 40px; color: #666;">
+                <h3>🚀 Welcome to TPP Code Search!</h3>
+                <p>Enter a search query above or try one of the example searches.</p>
+                <p style="margin-top: 15px; font-size: 0.9rem;">This AI-powered search understands <strong>meaning</strong>, not just keywords.</p>
+            </div>
+        `;
+    </script>
+</body>
+</html>

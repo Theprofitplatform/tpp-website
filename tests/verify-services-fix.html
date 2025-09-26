@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services Page Fix Verification</title>
+    <style>
+        body {
+            font-family: monospace;
+            margin: 0;
+            padding: 0;
+            background: #f0f0f0;
+        }
+
+        .test-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .test-panel {
+            width: 400px;
+            background: #1a1a1a;
+            color: #00ff00;
+            padding: 20px;
+            overflow-y: auto;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+        }
+
+        .preview-panel {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .test-result {
+            margin: 15px 0;
+            padding: 10px;
+            border-radius: 5px;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .pass {
+            border-left: 3px solid #00ff00;
+        }
+
+        .fail {
+            border-left: 3px solid #ff0000;
+        }
+
+        .warning {
+            border-left: 3px solid #ffff00;
+        }
+
+        button {
+            background: #4F46E5;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 0;
+            width: 100%;
+        }
+
+        button:hover {
+            background: #6366F1;
+        }
+
+        .viewport-controls {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .viewport-btn {
+            flex: 1;
+            padding: 8px;
+            font-size: 12px;
+        }
+
+        h1 {
+            color: #00ff00;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #ffff00;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-panel">
+            <h1>📋 Services Page Fix Verification</h1>
+
+            <h2>⚡ Quick Actions</h2>
+            <button onclick="runAllTests()">Run All Tests</button>
+
+            <div class="viewport-controls">
+                <button class="viewport-btn" onclick="setViewport(375, 667)">📱 Mobile</button>
+                <button class="viewport-btn" onclick="setViewport(768, 1024)">📱 Tablet</button>
+                <button class="viewport-btn" onclick="setViewport(1920, 1080)">💻 Desktop</button>
+            </div>
+
+            <button onclick="toggleCSS()">Toggle Fix CSS</button>
+            <button onclick="reloadPage()">Reload Page</button>
+
+            <h2>🔍 Test Results</h2>
+            <div id="results"></div>
+        </div>
+
+        <div class="preview-panel">
+            <iframe id="preview" src="../services.html"></iframe>
+        </div>
+    </div>
+
+    <script>
+        const iframe = document.getElementById('preview');
+        const results = document.getElementById('results');
+        let cssFixEnabled = true;
+
+        function setViewport(width, height) {
+            iframe.style.width = width + 'px';
+            iframe.style.height = height + 'px';
+            iframe.style.margin = '0 auto';
+            iframe.style.display = 'block';
+            iframe.style.boxShadow = '0 0 20px rgba(0,0,0,0.3)';
+            addResult(`Viewport set to ${width}x${height}`, 'pass');
+        }
+
+        function toggleCSS() {
+            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+            const fixCSS = iframeDoc.querySelector('link[href*="services-fix.css"]');
+
+            if (fixCSS) {
+                cssFixEnabled = !cssFixEnabled;
+                fixCSS.disabled = !cssFixEnabled;
+                addResult(`Fix CSS ${cssFixEnabled ? 'enabled' : 'disabled'}`, cssFixEnabled ? 'pass' : 'warning');
+            } else {
+                addResult('Fix CSS not found!', 'fail');
+            }
+        }
+
+        function reloadPage() {
+            iframe.src = iframe.src;
+            setTimeout(runAllTests, 1000);
+        }
+
+        function addResult(message, type = 'pass') {
+            const div = document.createElement('div');
+            div.className = `test-result ${type}`;
+            const icon = type === 'pass' ? '✅' : type === 'fail' ? '❌' : '⚠️';
+            div.innerHTML = `${icon} ${message}`;
+            results.insertBefore(div, results.firstChild);
+        }
+
+        function runAllTests() {
+            results.innerHTML = '';
+
+            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+            // Test 1: CSS Files Loaded
+            const styleCSS = iframeDoc.querySelector('link[href*="style.css"]');
+            const criticalCSS = iframeDoc.querySelector('link[href*="critical.css"]');
+            const fixCSS = iframeDoc.querySelector('link[href*="services-fix.css"]');
+
+            if (styleCSS && criticalCSS && fixCSS) {
+                addResult('All CSS files loaded', 'pass');
+            } else {
+                addResult('Missing CSS files', 'fail');
+            }
+
+            // Test 2: Service Cards Visible
+            const serviceCards = iframeDoc.querySelectorAll('.service-card');
+            if (serviceCards.length >= 3) {
+                let visibleCount = 0;
+                serviceCards.forEach(card => {
+                    const styles = iframe.contentWindow.getComputedStyle(card);
+                    if (styles.display !== 'none' && styles.visibility !== 'hidden') {
+                        visibleCount++;
+                    }
+                });
+                addResult(`${visibleCount}/${serviceCards.length} service cards visible`, visibleCount === serviceCards.length ? 'pass' : 'warning');
+            } else {
+                addResult('Service cards not found', 'fail');
+            }
+
+            // Test 3: Hero Section
+            const hero = iframeDoc.querySelector('.services-hero');
+            if (hero) {
+                const heroStyles = iframe.contentWindow.getComputedStyle(hero);
+                const isVisible = heroStyles.display !== 'none' && heroStyles.visibility !== 'hidden';
+                addResult(`Hero section ${isVisible ? 'visible' : 'hidden'}`, isVisible ? 'pass' : 'fail');
+            } else {
+                addResult('Hero section not found', 'fail');
+            }
+
+            // Test 4: No Horizontal Scroll
+            const hasHScroll = iframeDoc.documentElement.scrollWidth > iframeDoc.documentElement.clientWidth;
+            addResult(`Horizontal scroll: ${hasHScroll ? 'Present ⚠️' : 'None ✓'}`, hasHScroll ? 'warning' : 'pass');
+
+            // Test 5: Navigation
+            const nav = iframeDoc.querySelector('header');
+            if (nav) {
+                const navStyles = iframe.contentWindow.getComputedStyle(nav);
+                const zIndex = navStyles.zIndex;
+                addResult(`Navigation z-index: ${zIndex}`, parseInt(zIndex) >= 1000 ? 'pass' : 'warning');
+            }
+
+            // Test 6: Content Sections
+            const sections = iframeDoc.querySelectorAll('section');
+            let visibleSections = 0;
+            sections.forEach(section => {
+                const styles = iframe.contentWindow.getComputedStyle(section);
+                if (styles.display !== 'none' && styles.visibility !== 'hidden') {
+                    visibleSections++;
+                }
+            });
+            addResult(`${visibleSections}/${sections.length} sections visible`, 'pass');
+
+            // Test 7: Font Loading
+            const bodyStyles = iframe.contentWindow.getComputedStyle(iframeDoc.body);
+            const fontFamily = bodyStyles.fontFamily;
+            addResult(`Font: ${fontFamily.split(',')[0]}`, fontFamily.includes('Inter') ? 'pass' : 'warning');
+
+            // Test 8: Mobile Responsiveness
+            const viewportMeta = iframeDoc.querySelector('meta[name="viewport"]');
+            addResult(`Viewport meta: ${viewportMeta ? 'Present' : 'Missing'}`, viewportMeta ? 'pass' : 'fail');
+
+            // Test 9: CTA Buttons
+            const ctaButtons = iframeDoc.querySelectorAll('.service-cta');
+            addResult(`${ctaButtons.length} CTA buttons found`, ctaButtons.length >= 3 ? 'pass' : 'warning');
+
+            // Test 10: Container Elements
+            const containers = iframeDoc.querySelectorAll('.container');
+            addResult(`${containers.length} container elements`, containers.length > 0 ? 'pass' : 'fail');
+        }
+
+        // Run tests when iframe loads
+        iframe.onload = function() {
+            setTimeout(runAllTests, 500);
+        };
+    </script>
+</body>
+</html>

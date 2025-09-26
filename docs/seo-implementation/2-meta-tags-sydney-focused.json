@@ -1,0 +1,116 @@
+{
+  "homepage": {
+    "title": "Digital Marketing Agency Sydney | SEO, Google Ads & Web Design | The Profit Platform",
+    "meta_description": "Sydney's leading digital marketing agency. Expert SEO, Google Ads, and web design services helping local businesses grow online. Free audit + no contracts. Call 0487 286 451.",
+    "keywords": "digital marketing agency sydney, seo services sydney, google ads sydney, web design sydney, local seo, digital marketing consultant",
+    "h1": "Sydney's Premier Digital Marketing Agency",
+    "geo_tags": {
+      "geo.region": "AU-NSW",
+      "geo.placename": "Sydney",
+      "geo.position": "-33.8688;151.2093",
+      "ICBM": "-33.8688, 151.2093"
+    }
+  },
+  "services_page": {
+    "title": "Digital Marketing Services Sydney | SEO, Ads & Web Design | The Profit Platform",
+    "meta_description": "Professional digital marketing services for Sydney businesses. SEO, Google Ads, web design that delivers results. Personal service, no contracts. Free consultation available.",
+    "keywords": "digital marketing services sydney, seo company sydney, google ads management sydney, web design services sydney, local marketing",
+    "h1": "Digital Marketing Services for Sydney Businesses"
+  },
+  "seo_page": {
+    "title": "SEO Services Sydney | Local SEO & Google Rankings | The Profit Platform",
+    "meta_description": "Expert SEO services in Sydney. Dominate local search, improve Google rankings, attract more customers. Proven results for Sydney businesses. Free SEO audit available.",
+    "keywords": "seo services sydney, local seo sydney, seo company sydney, google ranking sydney, search engine optimization sydney",
+    "h1": "Professional SEO Services in Sydney"
+  },
+  "google_ads_page": {
+    "title": "Google Ads Management Sydney | PPC Experts | The Profit Platform",
+    "meta_description": "Expert Google Ads management for Sydney businesses. Drive instant traffic, generate qualified leads, maximize ROI. Professional PPC campaigns. Free audit included.",
+    "keywords": "google ads sydney, ppc management sydney, google adwords sydney, paid advertising sydney, google ads agency sydney",
+    "h1": "Google Ads Management Services in Sydney"
+  },
+  "web_design_page": {
+    "title": "Web Design Sydney | Custom Websites That Convert | The Profit Platform",
+    "meta_description": "Professional web design in Sydney. Custom websites that convert visitors to customers. Mobile-responsive, SEO-optimized, fast-loading. Free consultation available.",
+    "keywords": "web design sydney, website design sydney, web development sydney, responsive web design sydney, custom websites sydney",
+    "h1": "Professional Web Design Services in Sydney"
+  },
+  "about_page": {
+    "title": "About The Profit Platform | Sydney Digital Marketing Expert | Avi Khanna",
+    "meta_description": "Meet Avi Khanna, Sydney's trusted digital marketing expert. Personal service, proven results, no lock-in contracts. Helping local businesses grow online since 2018.",
+    "keywords": "digital marketing expert sydney, avi khanna, about the profit platform, sydney marketing consultant, local seo expert",
+    "h1": "About The Profit Platform - Your Sydney Digital Marketing Partner"
+  },
+  "contact_page": {
+    "title": "Contact The Profit Platform | Sydney Digital Marketing Agency | Free Consultation",
+    "meta_description": "Contact Sydney's leading digital marketing agency. Free consultation, fast response, personal service. Call 0487 286 451 or book online. Serving all Sydney areas.",
+    "keywords": "contact digital marketing sydney, free consultation sydney, digital marketing quote sydney, call the profit platform",
+    "h1": "Contact Sydney's Digital Marketing Experts"
+  },
+  "blog_page": {
+    "title": "Digital Marketing Blog Sydney | SEO Tips & Marketing Insights | The Profit Platform",
+    "meta_description": "Latest digital marketing insights for Sydney businesses. SEO tips, Google Ads strategies, web design trends. Expert advice from Sydney's leading marketing agency.",
+    "keywords": "digital marketing blog sydney, seo tips sydney, marketing insights sydney, google ads tips, web design blog",
+    "h1": "Digital Marketing Insights for Sydney Businesses"
+  },
+  "pricing_page": {
+    "title": "Digital Marketing Pricing Sydney | Transparent Rates | The Profit Platform",
+    "meta_description": "Transparent pricing for digital marketing services in Sydney. SEO from $990/month, Google Ads from $1290/month, websites from $1490. No hidden fees or contracts.",
+    "keywords": "digital marketing pricing sydney, seo pricing sydney, google ads cost sydney, web design pricing sydney, marketing packages sydney",
+    "h1": "Transparent Digital Marketing Pricing for Sydney Businesses"
+  },
+  "location_specific_tags": {
+    "sydney_cbd": {
+      "title": "Digital Marketing Services Sydney CBD | The Profit Platform",
+      "meta_description": "Expert digital marketing services in Sydney CBD. SEO, Google Ads, web design for CBD businesses. Local expertise, proven results. Free consultation available.",
+      "keywords": "digital marketing sydney cbd, seo services sydney cbd, google ads sydney cbd, web design sydney cbd"
+    },
+    "eastern_suburbs": {
+      "title": "Digital Marketing Eastern Suburbs Sydney | The Profit Platform",
+      "meta_description": "Professional digital marketing for Eastern Suburbs Sydney businesses. Bondi, Double Bay, Paddington, Rose Bay. SEO, Google Ads, web design services.",
+      "keywords": "digital marketing eastern suburbs, seo bondi, google ads double bay, web design paddington, marketing rose bay"
+    },
+    "north_shore": {
+      "title": "Digital Marketing North Shore Sydney | The Profit Platform",
+      "meta_description": "Expert digital marketing services for North Shore Sydney. Chatswood, Hornsby, St Leonards, North Sydney. Local SEO, Google Ads, custom websites.",
+      "keywords": "digital marketing north shore, seo chatswood, google ads hornsby, web design north sydney, marketing st leonards"
+    },
+    "western_sydney": {
+      "title": "Digital Marketing Western Sydney | The Profit Platform",
+      "meta_description": "Professional digital marketing for Western Sydney businesses. Parramatta, Penrith, Blacktown, Liverpool. SEO, Google Ads, web design that delivers results.",
+      "keywords": "digital marketing western sydney, seo parramatta, google ads penrith, web design blacktown, marketing liverpool"
+    },
+    "inner_west": {
+      "title": "Digital Marketing Inner West Sydney | The Profit Platform",
+      "meta_description": "Digital marketing services for Inner West Sydney. Newtown, Surry Hills, Glebe, Balmain. Local SEO, Google Ads, custom web design for local businesses.",
+      "keywords": "digital marketing inner west, seo newtown, google ads surry hills, web design glebe, marketing balmain"
+    },
+    "northern_beaches": {
+      "title": "Digital Marketing Northern Beaches Sydney | The Profit Platform",
+      "meta_description": "Expert digital marketing for Northern Beaches businesses. Manly, Dee Why, Mona Vale, Avalon. SEO, Google Ads, web design services. Local expertise.",
+      "keywords": "digital marketing northern beaches, seo manly, google ads dee why, web design mona vale, marketing avalon"
+    }
+  },
+  "industry_specific_tags": {
+    "restaurants_sydney": {
+      "title": "Restaurant Digital Marketing Sydney | SEO & Google Ads for Restaurants",
+      "meta_description": "Specialized digital marketing for Sydney restaurants. Local SEO, Google Ads, website design that increases bookings and foot traffic. Proven restaurant marketing.",
+      "keywords": "restaurant marketing sydney, restaurant seo sydney, restaurant google ads, food business marketing sydney"
+    },
+    "healthcare_sydney": {
+      "title": "Healthcare Digital Marketing Sydney | Medical Practice SEO & Web Design",
+      "meta_description": "Digital marketing for Sydney healthcare providers. Medical practice SEO, Google Ads, professional websites. AHPRA compliant marketing solutions.",
+      "keywords": "medical practice marketing sydney, healthcare seo sydney, doctor website design, medical google ads sydney"
+    },
+    "legal_sydney": {
+      "title": "Legal Digital Marketing Sydney | Law Firm SEO & Google Ads",
+      "meta_description": "Digital marketing for Sydney law firms. Legal SEO, Google Ads for lawyers, professional law firm websites. Ethical, compliant legal marketing solutions.",
+      "keywords": "law firm marketing sydney, legal seo sydney, lawyer google ads, legal website design sydney"
+    },
+    "real_estate_sydney": {
+      "title": "Real Estate Digital Marketing Sydney | Property SEO & Google Ads",
+      "meta_description": "Digital marketing for Sydney real estate agents. Property SEO, Google Ads for real estate, agent websites. Generate more leads and listings.",
+      "keywords": "real estate marketing sydney, property seo sydney, real estate google ads, agent website design sydney"
+    }
+  }
+}

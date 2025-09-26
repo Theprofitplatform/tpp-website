@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Non-Disclosure Agreement - The Profit Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #f8f9fa;
+        }
+
+        .document-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .document-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .document-type {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        .document-content {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .parties-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border: 2px solid #667eea;
+        }
+
+        .party-info {
+            margin: 15px 0;
+        }
+
+        .party-info input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        h2 {
+            color: #667eea;
+            margin-top: 35px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h3 {
+            color: #2c3e50;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        p, li {
+            margin-bottom: 12px;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        .recital {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #667eea;
+            font-style: italic;
+        }
+
+        .definition-term {
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .clause-number {
+            font-weight: bold;
+            color: #667eea;
+            margin-right: 10px;
+        }
+
+        .important-clause {
+            background: #fff4e5;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #ff9800;
+            border-radius: 5px;
+        }
+
+        .signature-section {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 2px dashed #dee2e6;
+            page-break-inside: avoid;
+        }
+
+        .signature-block {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 80px;
+        }
+
+        .signature-field {
+            width: 45%;
+        }
+
+        .signature-line {
+            border-bottom: 2px solid #2c3e50;
+            margin-bottom: 5px;
+            height: 40px;
+        }
+
+        .field-label {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .witness-section {
+            margin-top: 60px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .print-button {
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin: 20px 0;
+        }
+
+        .print-button:hover {
+            background: #5a67d8;
+        }
+
+        @media print {
+            body {
+                background: white;
+                max-width: 100%;
+            }
+            .print-button {
+                display: none;
+            }
+            .document-header {
+                background: none;
+                color: black;
+                border: 2px solid black;
+            }
+            .signature-section {
+                page-break-before: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">📄 Print NDA</button>
+
+    <div class="document-header">
+        <h1>Non-Disclosure Agreement</h1>
+        <p>Mutual Confidentiality Agreement</p>
+        <div class="document-type">CONFIDENTIAL</div>
+    </div>
+
+    <div class="document-content">
+        <div class="parties-section">
+            <h3>PARTIES TO THIS AGREEMENT</h3>
+
+            <div class="party-info">
+                <label><strong>Party 1 (Service Provider):</strong></label>
+                <p>The Profit Platform</p>
+                <p>ABN: [TO BE PROVIDED]</p>
+                <p>Level 1, 234 George Street, Sydney NSW 2000</p>
+                <p>("Disclosing Party" or "Service Provider")</p>
+            </div>
+
+            <div class="party-info">
+                <label><strong>Party 2 (Client):</strong></label>
+                <input type="text" placeholder="Company Name">
+                <input type="text" placeholder="ABN/ACN">
+                <input type="text" placeholder="Address">
+                <p style="margin-top: 10px;">("Receiving Party" or "Client")</p>
+            </div>
+
+            <div class="party-info">
+                <label><strong>Effective Date:</strong></label>
+                <input type="date">
+            </div>
+        </div>
+
+        <div class="recital">
+            <p><strong>WHEREAS,</strong> the parties wish to explore a business opportunity of mutual interest and benefit regarding digital marketing and business consulting services ("Purpose"), and in connection with the Purpose, each party may disclose to the other certain confidential technical and business information that the disclosing party desires the receiving party to treat as confidential.</p>
+        </div>
+
+        <p><strong>NOW, THEREFORE,</strong> in consideration of the mutual covenants and agreements contained herein, and for other good and valuable consideration, the receipt and sufficiency of which are hereby acknowledged, the parties agree as follows:</p>
+
+        <h2>ARTICLE 1<br>DEFINITIONS</h2>
+
+        <p><span class="clause-number">1.1</span> <span class="definition-term">"Confidential Information"</span> means any and all information or data, in any form or medium, that is disclosed by one party to the other, whether orally, in writing, or in any other form, including but not limited to:</p>
+
+        <ol type="a">
+            <li>Business strategies, marketing plans, and financial information</li>
+            <li>Customer lists, supplier information, and pricing data</li>
+            <li>Technical data, trade secrets, and proprietary methodologies</li>
+            <li>Software, source code, and algorithms</li>
+            <li>Product plans, designs, and specifications</li>
+            <li>Employee information and internal processes</li>
+            <li>Any other information marked as "Confidential" or that would reasonably be considered confidential</li>
+        </ol>
+
+        <h2>ARTICLE 2<br>OBLIGATIONS OF RECEIVING PARTY</h2>
+
+        <p><span class="clause-number">2.1</span> <strong>Confidentiality.</strong> The Receiving Party agrees to:</p>
+
+        <ol type="a">
+            <li>Hold all Confidential Information in strict confidence</li>
+            <li>Not disclose Confidential Information to third parties without prior written consent</li>
+            <li>Use the same degree of care to protect Confidential Information as it uses for its own confidential information, but in no event less than reasonable care</li>
+            <li>Use Confidential Information solely for the Purpose stated above</li>
+            <li>Limit access to Confidential Information to employees or agents having a legitimate need to know</li>
+        </ol>
+
+        <p><span class="clause-number">2.2</span> <strong>No License.</strong> Nothing in this Agreement grants any rights to the Receiving Party in or to the Confidential Information except as expressly set forth herein.</p>
+
+        <h2>ARTICLE 3<br>EXCLUSIONS FROM CONFIDENTIAL INFORMATION</h2>
+
+        <p><span class="clause-number">3.1</span> The obligations set forth in Article 2 shall not apply to any Confidential Information that:</p>
+
+        <ol type="a">
+            <li>Was known to the Receiving Party prior to disclosure by the Disclosing Party</li>
+            <li>Is or becomes publicly available through no breach of this Agreement</li>
+            <li>Is rightfully received from a third party without breach of any confidentiality obligation</li>
+            <li>Is independently developed without use of or reference to Confidential Information</li>
+            <li>Is required to be disclosed by law or court order, provided the Receiving Party gives reasonable notice</li>
+        </ol>
+
+        <h2>ARTICLE 4<br>TERM AND TERMINATION</h2>
+
+        <p><span class="clause-number">4.1</span> <strong>Term.</strong> This Agreement shall commence on the Effective Date and continue for a period of three (3) years, unless earlier terminated.</p>
+
+        <p><span class="clause-number">4.2</span> <strong>Survival.</strong> The obligations of the Receiving Party under this Agreement shall survive termination and continue for a period of five (5) years from the date of disclosure of the specific Confidential Information.</p>
+
+        <p><span class="clause-number">4.3</span> <strong>Return of Materials.</strong> Upon termination or upon request, the Receiving Party shall promptly return or destroy all Confidential Information and certify such return or destruction in writing.</p>
+
+        <h2>ARTICLE 5<br>SPECIFIC PROVISIONS FOR DIGITAL MARKETING SERVICES</h2>
+
+        <div class="important-clause">
+            <p><span class="clause-number">5.1</span> <strong>Marketing Data.</strong> The parties acknowledge that in the course of providing digital marketing services, sensitive business information including but not limited to marketing strategies, customer data, campaign performance metrics, and competitive intelligence may be shared. Both parties agree to treat all such information as Confidential Information.</p>
+        </div>
+
+        <p><span class="clause-number">5.2</span> <strong>Client Data Protection.</strong> The Service Provider agrees to implement appropriate technical and organizational measures to protect Client's customer data and marketing information from unauthorized access, use, or disclosure.</p>
+
+        <p><span class="clause-number">5.3</span> <strong>Proprietary Methods.</strong> The Client acknowledges that the Service Provider's methodologies, tools, frameworks, and processes constitute valuable trade secrets and agrees not to reverse engineer, copy, or create derivative works from such proprietary methods.</p>
+
+        <h2>ARTICLE 6<br>REMEDIES</h2>
+
+        <p><span class="clause-number">6.1</span> <strong>Injunctive Relief.</strong> The parties acknowledge that breach of this Agreement may cause irreparable harm for which monetary damages would be inadequate. Therefore, the non-breaching party shall be entitled to seek injunctive relief without the necessity of posting bond.</p>
+
+        <p><span class="clause-number">6.2</span> <strong>Indemnification.</strong> The breaching party shall indemnify and hold harmless the non-breaching party from any damages, losses, costs, or expenses arising from breach of this Agreement.</p>
+
+        <h2>ARTICLE 7<br>GENERAL PROVISIONS</h2>
+
+        <p><span class="clause-number">7.1</span> <strong>Governing Law.</strong> This Agreement shall be governed by the laws of New South Wales, Australia.</p>
+
+        <p><span class="clause-number">7.2</span> <strong>Entire Agreement.</strong> This Agreement constitutes the entire agreement between the parties concerning the subject matter hereof and supersedes all prior agreements and understandings.</p>
+
+        <p><span class="clause-number">7.3</span> <strong>Amendment.</strong> This Agreement may only be amended by written agreement signed by both parties.</p>
+
+        <p><span class="clause-number">7.4</span> <strong>Severability.</strong> If any provision is held invalid or unenforceable, the remaining provisions shall continue in full force and effect.</p>
+
+        <p><span class="clause-number">7.5</span> <strong>No Assignment.</strong> Neither party may assign this Agreement without the prior written consent of the other party.</p>
+
+        <p><span class="clause-number">7.6</span> <strong>Counterparts.</strong> This Agreement may be executed in counterparts, each of which shall be deemed an original.</p>
+
+        <p><span class="clause-number">7.7</span> <strong>Notices.</strong> All notices shall be in writing and delivered to the addresses set forth above.</p>
+
+        <div class="signature-section">
+            <h2>IN WITNESS WHEREOF</h2>
+            <p style="text-align: center; margin: 20px 0;">The parties have executed this Non-Disclosure Agreement as of the date first written above.</p>
+
+            <div class="signature-block">
+                <div class="signature-field">
+                    <p><strong>THE PROFIT PLATFORM</strong></p>
+                    <div class="signature-line"></div>
+                    <p class="field-label">Authorized Signature</p>
+                    <div class="signature-line"></div>
+                    <p class="field-label">Name: Avi [Last Name]</p>
+                    <div class="signature-line"></div>
+                    <p class="field-label">Title: Founder & Lead Consultant</p>
+                    <div class="signature-line"></div>
+                    <p class="field-label">Date</p>
+                </div>
+
+                <div class="signature-field">
+                    <p><strong>CLIENT</strong></p>
+                    <div class="signature-line"></div>
+                    <p class="field-label">Authorized Signature</p>
+                    <div class="signature-line"></div>
+                    <p class="field-label">Print Name</p>
+                    <div class="signature-line"></div>
+                    <p class="field-label">Title</p>
+                    <div class="signature-line"></div>
+                    <p class="field-label">Date</p>
+                </div>
+            </div>
+
+            <div class="witness-section">
+                <h3>WITNESS (Optional)</h3>
+                <p>This agreement was signed in the presence of:</p>
+                <div class="signature-block" style="margin-top: 40px;">
+                    <div class="signature-field">
+                        <p><strong>Witness for The Profit Platform:</strong></p>
+                        <div class="signature-line"></div>
+                        <p class="field-label">Signature</p>
+                        <div class="signature-line"></div>
+                        <p class="field-label">Print Name</p>
+                        <div class="signature-line"></div>
+                        <p class="field-label">Date</p>
+                    </div>
+
+                    <div class="signature-field">
+                        <p><strong>Witness for Client:</strong></p>
+                        <div class="signature-line"></div>
+                        <p class="field-label">Signature</p>
+                        <div class="signature-line"></div>
+                        <p class="field-label">Print Name</p>
+                        <div class="signature-line"></div>
+                        <p class="field-label">Date</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

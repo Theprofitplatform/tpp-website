@@ -1,0 +1,451 @@
+{
+  "enhanced_local_business_schema": {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://theprofitplatform.com.au/#localbusiness",
+    "name": "The Profit Platform",
+    "alternateName": [
+      "TPP Digital Marketing",
+      "The Profit Platform Sydney",
+      "TPP Marketing Agency"
+    ],
+    "description": "Sydney's premier digital marketing agency specializing in SEO, Google Ads, and web design for local businesses. Personal service, proven results, no lock-in contracts. Serving all Sydney areas including CBD, Eastern Suburbs, North Shore, and Western Sydney.",
+    "url": "https://theprofitplatform.com.au",
+    "logo": {
+      "@type": "ImageObject",
+      "@id": "https://theprofitplatform.com.au/#logo",
+      "url": "https://theprofitplatform.com.au/images/logo.png",
+      "contentUrl": "https://theprofitplatform.com.au/images/logo.png",
+      "width": 300,
+      "height": 100,
+      "caption": "The Profit Platform Logo"
+    },
+    "image": [
+      {
+        "@type": "ImageObject",
+        "url": "https://theprofitplatform.com.au/images/sydney-office.jpg",
+        "width": 1200,
+        "height": 800,
+        "caption": "The Profit Platform Sydney Office"
+      },
+      {
+        "@type": "ImageObject",
+        "url": "https://theprofitplatform.com.au/images/team-working.jpg",
+        "width": 1200,
+        "height": 800,
+        "caption": "Digital marketing team at work"
+      },
+      {
+        "@type": "ImageObject",
+        "url": "https://theprofitplatform.com.au/images/sydney-harbour-office-view.jpg",
+        "width": 1200,
+        "height": 800,
+        "caption": "Sydney Harbour office view"
+      }
+    ],
+    "telephone": "+61487286451",
+    "email": "avi@theprofitplatform.com.au",
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+61487286451",
+        "contactType": "customer service",
+        "areaServed": "AU",
+        "availableLanguage": "English",
+        "contactOption": "TollFree"
+      },
+      {
+        "@type": "ContactPoint",
+        "email": "avi@theprofitplatform.com.au",
+        "contactType": "customer service",
+        "areaServed": "AU"
+      },
+      {
+        "@type": "ContactPoint",
+        "url": "https://theprofitplatform.com.au/contact.html",
+        "contactType": "customer service",
+        "areaServed": "AU"
+      }
+    ],
+    "founder": {
+      "@type": "Person",
+      "name": "Avi Khanna",
+      "jobTitle": "Digital Marketing Strategist & Founder",
+      "email": "avi@theprofitplatform.com.au",
+      "worksFor": {
+        "@id": "https://theprofitplatform.com.au/#localbusiness"
+      },
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "University of Technology Sydney"
+      },
+      "knowsAbout": [
+        "SEO",
+        "Google Ads",
+        "Web Design",
+        "Digital Marketing",
+        "Local SEO",
+        "PPC Marketing"
+      ]
+    },
+    "employee": [
+      {
+        "@type": "Person",
+        "name": "Avi Khanna",
+        "jobTitle": "Digital Marketing Strategist",
+        "worksFor": {
+          "@id": "https://theprofitplatform.com.au/#localbusiness"
+        }
+      }
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Level 1, 234 George Street",
+      "addressLocality": "Sydney",
+      "addressRegion": "NSW",
+      "postalCode": "2000",
+      "addressCountry": {
+        "@type": "Country",
+        "name": "Australia"
+      }
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "-33.8688",
+      "longitude": "151.2093",
+      "elevation": "0"
+    },
+    "areaServed": [
+      {
+        "@type": "City",
+        "@id": "https://en.wikipedia.org/wiki/Sydney",
+        "name": "Sydney",
+        "containedIn": {
+          "@type": "State",
+          "name": "New South Wales",
+          "containedIn": {
+            "@type": "Country",
+            "name": "Australia"
+          }
+        }
+      },
+      {
+        "@type": "Place",
+        "name": "Sydney CBD",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "-33.8688",
+          "longitude": "151.2093"
+        }
+      },
+      {
+        "@type": "Place",
+        "name": "Eastern Suburbs Sydney",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "-33.8913",
+          "longitude": "151.2770"
+        }
+      },
+      {
+        "@type": "Place",
+        "name": "North Shore Sydney",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "-33.7969",
+          "longitude": "151.1964"
+        }
+      },
+      {
+        "@type": "Place",
+        "name": "Western Sydney",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "-33.8191",
+          "longitude": "150.7841"
+        }
+      },
+      {
+        "@type": "Place",
+        "name": "Inner West Sydney",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "-33.8878",
+          "longitude": "151.1626"
+        }
+      },
+      {
+        "@type": "Place",
+        "name": "Northern Beaches Sydney",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "-33.7515",
+          "longitude": "151.2940"
+        }
+      },
+      {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": "-33.8688",
+          "longitude": "151.2093"
+        },
+        "geoRadius": "50000"
+      }
+    ],
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "10:00",
+        "closes": "15:00"
+      }
+    ],
+    "priceRange": "$990-$3990",
+    "paymentAccepted": [
+      "Cash",
+      "Credit Card",
+      "Debit Card",
+      "Bank Transfer",
+      "PayPal",
+      "Invoice"
+    ],
+    "currenciesAccepted": "AUD",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "@id": "https://theprofitplatform.com.au/#offercatalog",
+      "name": "Digital Marketing Services Sydney",
+      "description": "Comprehensive digital marketing services for Sydney businesses",
+      "itemListElement": [
+        {
+          "@type": "OfferCatalogItem",
+          "name": "SEO Services Sydney",
+          "offers": {
+            "@type": "Offer",
+            "@id": "https://theprofitplatform.com.au/#seo-offer",
+            "name": "Local SEO Sydney Package",
+            "description": "Complete SEO optimization for Sydney businesses including keyword research, on-page optimization, Google My Business, and local citations",
+            "price": "990",
+            "priceCurrency": "AUD",
+            "unitText": "MONTH",
+            "availability": "https://schema.org/InStock",
+            "validThrough": "2024-12-31",
+            "seller": {
+              "@id": "https://theprofitplatform.com.au/#localbusiness"
+            },
+            "itemOffered": {
+              "@type": "Service",
+              "name": "SEO Services Sydney",
+              "serviceType": "Search Engine Optimization"
+            }
+          }
+        },
+        {
+          "@type": "OfferCatalogItem",
+          "name": "Google Ads Management Sydney",
+          "offers": {
+            "@type": "Offer",
+            "@id": "https://theprofitplatform.com.au/#googleads-offer",
+            "name": "Google Ads Management Package",
+            "description": "Professional Google Ads campaign setup, management, and optimization for Sydney businesses",
+            "price": "1290",
+            "priceCurrency": "AUD",
+            "unitText": "MONTH",
+            "availability": "https://schema.org/InStock",
+            "validThrough": "2024-12-31",
+            "seller": {
+              "@id": "https://theprofitplatform.com.au/#localbusiness"
+            },
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Google Ads Management Sydney",
+              "serviceType": "Pay-Per-Click Advertising"
+            }
+          }
+        },
+        {
+          "@type": "OfferCatalogItem",
+          "name": "Web Design Sydney",
+          "offers": {
+            "@type": "Offer",
+            "@id": "https://theprofitplatform.com.au/#webdesign-offer",
+            "name": "Professional Website Design Package",
+            "description": "Custom website design and development for Sydney businesses with SEO optimization and mobile responsiveness",
+            "price": "1490",
+            "priceCurrency": "AUD",
+            "availability": "https://schema.org/InStock",
+            "validThrough": "2024-12-31",
+            "seller": {
+              "@id": "https://theprofitplatform.com.au/#localbusiness"
+            },
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Web Design Sydney",
+              "serviceType": "Website Development"
+            }
+          }
+        }
+      ]
+    },
+    "sameAs": [
+      "https://www.facebook.com/theprofitplatform",
+      "https://www.instagram.com/theprofitplatform",
+      "https://www.linkedin.com/company/theprofitplatform",
+      "https://twitter.com/profitplatform",
+      "https://www.youtube.com/c/theprofitplatform",
+      "https://www.google.com/maps/place/The+Profit+Platform",
+      "https://www.yelp.com.au/biz/the-profit-platform-sydney",
+      "https://foursquare.com/v/the-profit-platform"
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "@id": "https://theprofitplatform.com.au/#aggregaterating",
+      "ratingValue": "4.9",
+      "reviewCount": "127",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "127"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "@id": "https://theprofitplatform.com.au/#review1",
+        "author": {
+          "@type": "Person",
+          "name": "Sarah Mitchell"
+        },
+        "datePublished": "2024-09-10",
+        "reviewBody": "Avi and The Profit Platform transformed our Sydney restaurant's online presence. Our SEO rankings improved dramatically and we're now getting 3x more bookings through Google. The local SEO work was particularly impressive - we now rank #1 for 'best restaurant Surry Hills'. Highly recommended for any Sydney business looking to grow online!",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Google Reviews"
+        }
+      },
+      {
+        "@type": "Review",
+        "@id": "https://theprofitplatform.com.au/#review2",
+        "author": {
+          "@type": "Person",
+          "name": "David Chen"
+        },
+        "datePublished": "2024-08-22",
+        "reviewBody": "Professional service and outstanding results. Our Google Ads campaigns are generating high-quality leads for our Sydney accounting firm. Avi's knowledge of the local market is exceptional and his personal approach sets him apart from other agencies. We've seen a 200% increase in qualified enquiries.",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Google Reviews"
+        }
+      },
+      {
+        "@type": "Review",
+        "@id": "https://theprofitplatform.com.au/#review3",
+        "author": {
+          "@type": "Person",
+          "name": "Lisa Thompson"
+        },
+        "datePublished": "2024-09-01",
+        "reviewBody": "The Profit Platform redesigned our North Shore dental practice website and implemented local SEO. Within 3 months, we're ranking on page 1 for multiple keywords and our online bookings have increased by 150%. Avi is responsive, knowledgeable, and delivers what he promises.",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Google Reviews"
+        }
+      }
+    ],
+    "makesOffer": [
+      {
+        "@type": "Offer",
+        "name": "Free Digital Marketing Audit",
+        "description": "Comprehensive $997 value digital marketing audit at no cost for Sydney businesses",
+        "price": "0",
+        "priceCurrency": "AUD",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+          "@id": "https://theprofitplatform.com.au/#localbusiness"
+        }
+      }
+    ],
+    "knowsAbout": [
+      "Search Engine Optimization",
+      "Local SEO Sydney",
+      "Google Ads Management",
+      "PPC Marketing",
+      "Web Design",
+      "Digital Marketing Strategy",
+      "Content Marketing",
+      "Social Media Marketing",
+      "Conversion Rate Optimization",
+      "Google My Business Optimization",
+      "Sydney Business Marketing",
+      "Australian Digital Marketing"
+    ],
+    "memberOf": [
+      {
+        "@type": "Organization",
+        "name": "Google Partner Program",
+        "url": "https://www.google.com/partners/"
+      },
+      {
+        "@type": "Organization",
+        "name": "Australian Association of Marketing Professionals",
+        "url": "https://www.amp.org.au/"
+      }
+    ],
+    "award": [
+      "Google Partner Badge 2024",
+      "Top Rated Digital Marketing Agency Sydney 2024",
+      "Best Local SEO Services NSW 2023",
+      "Excellence in Customer Service 2024"
+    ],
+    "slogan": "Your Success, Our Platform",
+    "motto": "Personal Service. Proven Results. No Lock-in Contracts.",
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "TPP Digital Holdings Pty Ltd",
+      "legalName": "TPP Digital Holdings Pty Ltd",
+      "taxID": "ABN 12 345 678 901"
+    },
+    "vatID": "ABN 12 345 678 901",
+    "duns": "123456789",
+    "faxNumber": "+61287654321",
+    "isicV4": "7320",
+    "naics": "541613",
+    "numberOfEmployees": {
+      "@type": "QuantitativeValue",
+      "value": "5"
+    },
+    "foundingDate": "2018-01-15",
+    "foundingLocation": {
+      "@type": "Place",
+      "name": "Sydney, NSW, Australia"
+    }
+  }
+}

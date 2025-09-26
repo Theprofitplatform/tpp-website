@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating CTA Variations - The Profit Platform</title>
+    <style>
+        /* Floating CTA Styles */
+        .floating-cta {
+            position: fixed;
+            z-index: 9999;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* Sticky Bottom Banner */
+        .floating-cta.sticky-bottom {
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #6366F1, #8B5CF6);
+            color: white;
+            padding: 16px 20px;
+            text-align: center;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .sticky-bottom .cta-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 20px;
+        }
+
+        .sticky-bottom .cta-text {
+            flex: 1;
+            font-weight: 600;
+        }
+
+        .sticky-bottom .cta-button {
+            background: white;
+            color: #6366F1;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .sticky-bottom .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .sticky-bottom .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        .sticky-bottom .close-btn:hover {
+            opacity: 1;
+        }
+
+        /* Side Tab */
+        .floating-cta.side-tab {
+            right: -200px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #10B981;
+            color: white;
+            padding: 20px;
+            border-radius: 12px 0 0 12px;
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+            max-width: 250px;
+        }
+
+        .floating-cta.side-tab.visible {
+            right: 0;
+        }
+
+        .side-tab .tab-trigger {
+            position: absolute;
+            left: -50px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #10B981;
+            color: white;
+            padding: 15px 10px;
+            border-radius: 8px 0 0 8px;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-weight: 600;
+            box-shadow: -4px 0 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Floating Action Button */
+        .floating-cta.fab {
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #F59E0B, #D97706);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 8px 24px rgba(245, 158, 11, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        .floating-cta.fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 32px rgba(245, 158, 11, 0.4);
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 8px 24px rgba(245, 158, 11, 0.3);
+            }
+            50% {
+                box-shadow: 0 8px 32px rgba(245, 158, 11, 0.6);
+            }
+            100% {
+                box-shadow: 0 8px 24px rgba(245, 158, 11, 0.3);
+            }
+        }
+
+        /* Slide-in notification */
+        .floating-cta.notification {
+            top: 20px;
+            right: -400px;
+            background: white;
+            border-left: 4px solid #10B981;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            max-width: 350px;
+        }
+
+        .floating-cta.notification.visible {
+            right: 20px;
+        }
+
+        .notification .notification-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .notification .notification-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #10B981, #059669);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .notification .notification-text h4 {
+            margin: 0 0 4px 0;
+            color: #374151;
+            font-size: 16px;
+        }
+
+        .notification .notification-text p {
+            margin: 0;
+            color: #6B7280;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .notification .notification-close {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            background: none;
+            border: none;
+            color: #9CA3AF;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        /* Smart Bar */
+        .floating-cta.smart-bar {
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #1F2937;
+            color: white;
+            padding: 12px 20px;
+            text-align: center;
+            transform: translateY(-100%);
+        }
+
+        .floating-cta.smart-bar.visible {
+            transform: translateY(0);
+        }
+
+        .smart-bar .bar-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            font-size: 14px;
+        }
+
+        .smart-bar .bar-cta {
+            background: #10B981;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .sticky-bottom .cta-content {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .floating-cta.side-tab {
+                display: none;
+            }
+
+            .floating-cta.fab {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .floating-cta.notification {
+                right: -350px;
+                max-width: 320px;
+            }
+
+            .floating-cta.notification.visible {
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating CTA Variations -->
+
+    <!-- 1. Sticky Bottom Banner -->
+    <div class="floating-cta sticky-bottom" id="stickyBottomCTA" style="display: none;">
+        <div class="cta-content">
+            <div class="cta-text">
+                <strong>🎯 Ready to dominate Sydney's digital landscape?</strong> Get your $997 marketing audit FREE
+            </div>
+            <a href="contact.html?utm_source=sticky_cta&utm_campaign=free_audit" class="cta-button" onclick="trackCTAClick('sticky_bottom')">
+                Get Free Audit
+            </a>
+            <button class="close-btn" onclick="closeStickyBottom()">&times;</button>
+        </div>
+    </div>
+
+    <!-- 2. Side Tab -->
+    <div class="floating-cta side-tab" id="sideTabCTA">
+        <div class="tab-trigger" onclick="toggleSideTab()">Free Audit</div>
+        <div class="tab-content">
+            <h4 style="margin: 0 0 12px 0; font-size: 18px;">Ready to Grow?</h4>
+            <p style="margin: 0 0 16px 0; font-size: 14px; line-height: 1.4;">
+                Get your FREE $997 marketing audit and discover exactly how to attract more Sydney customers.
+            </p>
+            <a href="contact.html?utm_source=side_tab&utm_campaign=free_audit"
+               style="background: white; color: #10B981; padding: 10px 16px; border-radius: 6px; text-decoration: none; font-weight: 600; display: inline-block; width: 100%; text-align: center;"
+               onclick="trackCTAClick('side_tab')">
+                Claim Free Audit
+            </a>
+        </div>
+    </div>
+
+    <!-- 3. Floating Action Button -->
+    <div class="floating-cta fab" id="fabCTA" onclick="showFABAction()" title="Get Free Marketing Audit">
+        💬
+    </div>
+
+    <!-- 4. Notification Popup -->
+    <div class="floating-cta notification" id="notificationCTA">
+        <button class="notification-close" onclick="closeNotification()">&times;</button>
+        <div class="notification-content">
+            <div class="notification-icon">🔥</div>
+            <div class="notification-text">
+                <h4>Sydney Business Owner Alert!</h4>
+                <p>Someone just claimed their FREE $997 marketing audit. Only 3 spots left this week!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. Smart Top Bar -->
+    <div class="floating-cta smart-bar" id="smartBarCTA">
+        <div class="bar-content">
+            <span>📍 <strong>Sydney Special:</strong> Free $997 marketing audit - Limited time offer</span>
+            <a href="contact.html?utm_source=top_bar&utm_campaign=free_audit"
+               class="bar-cta"
+               onclick="trackCTAClick('smart_bar')">
+                Claim Now
+            </a>
+        </div>
+    </div>
+
+    <!-- CTA Copy Variations Container (for A/B testing) -->
+    <div id="ctaVariations" style="display: none;">
+        <!-- Sticky Bottom Variations -->
+        <div data-element="sticky-bottom" data-variation="1">
+            <strong>🚀 Transform Your Sydney Business in 90 Days!</strong> Get your proven growth system FREE
+        </div>
+        <div data-element="sticky-bottom" data-variation="2">
+            <strong>⚡ Stop Losing Sydney Customers to Competitors!</strong> Get your $997 audit FREE today
+        </div>
+        <div data-element="sticky-bottom" data-variation="3">
+            <strong>💰 Sydney's #1 Marketing Expert</strong> wants to give you a FREE $997 business audit
+        </div>
+
+        <!-- Side Tab Variations -->
+        <div data-element="side-tab" data-variation="1">
+            <h4>Free Growth Audit</h4>
+            <p>Discover the 3 hidden opportunities every Sydney business has to double their revenue in 90 days.</p>
+        </div>
+        <div data-element="side-tab" data-variation="2">
+            <h4>Beat Your Competition</h4>
+            <p>See exactly what your Sydney competitors are doing wrong and how to capitalize on their mistakes.</p>
+        </div>
+
+        <!-- Notification Variations -->
+        <div data-element="notification" data-variation="1">
+            <h4>🎯 Marketing Breakthrough!</h4>
+            <p>Local Sydney plumber increased leads 340% in 60 days. Get the same system FREE!</p>
+        </div>
+        <div data-element="notification" data-variation="2">
+            <h4>⏰ Limited Time Alert</h4>
+            <p>Only 2 FREE marketing audits left this month. Claim yours before they're gone!</p>
+        </div>
+    </div>
+
+    <script>
+        // CTA Management System
+        class FloatingCTAManager {
+            constructor() {
+                this.activeVariations = {};
+                this.ctaShown = {};
+                this.scrollThreshold = 30;
+                this.timeThresholds = {
+                    notification: 15000, // 15 seconds
+                    sideTab: 30000,     // 30 seconds
+                    stickyBottom: 45000 // 45 seconds
+                };
+                this.init();
+            }
+
+            init() {
+                // A/B test assignment
+                this.assignVariations();
+
+                // Set up scroll tracking
+                this.setupScrollTracking();
+
+                // Set up timed triggers
+                this.setupTimedTriggers();
+
+                // Set up exit intent for mobile
+                this.setupMobileExitIntent();
+            }
+
+            assignVariations() {
+                const elements = ['sticky-bottom', 'side-tab', 'notification'];
+                elements.forEach(element => {
+                    const maxVariations = this.getMaxVariations(element);
+                    this.activeVariations[element] = Math.floor(Math.random() * maxVariations) + 1;
+                });
+                console.log('CTA Variations:', this.activeVariations);
+            }
+
+            getMaxVariations(element) {
+                const variations = document.querySelectorAll(`[data-element="${element}"]`);
+                return variations.length || 1;
+            }
+
+            setupScrollTracking() {
+                let scrolled = false;
+                window.addEventListener('scroll', () => {
+                    const scrollPercentage = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+
+                    if (scrollPercentage > this.scrollThreshold && !scrolled) {
+                        scrolled = true;
+                        this.showSmartBar();
+                    }
+
+                    if (scrollPercentage > 50 && !this.ctaShown.sideTab) {
+                        this.showSideTab();
+                    }
+                });
+            }
+
+            setupTimedTriggers() {
+                // Notification popup
+                setTimeout(() => {
+                    if (!this.ctaShown.notification) {
+                        this.showNotification();
+                    }
+                }, this.timeThresholds.notification);
+
+                // Sticky bottom
+                setTimeout(() => {
+                    if (!this.ctaShown.stickyBottom) {
+                        this.showStickyBottom();
+                    }
+                }, this.timeThresholds.stickyBottom);
+            }
+
+            setupMobileExitIntent() {
+                if (window.innerWidth <= 768) {
+                    let lastScrollY = window.scrollY;
+                    window.addEventListener('scroll', () => {
+                        const currentScrollY = window.scrollY;
+                        if (currentScrollY < lastScrollY && currentScrollY < 100) {
+                            if (!this.ctaShown.notification) {
+                                this.showNotification();
+                            }
+                        }
+                        lastScrollY = currentScrollY;
+                    });
+                }
+            }
+
+            showStickyBottom() {
+                const element = document.getElementById('stickyBottomCTA');
+                const variation = this.activeVariations['sticky-bottom'];
+
+                // Apply variation content
+                this.applyVariation('sticky-bottom', variation, element.querySelector('.cta-text'));
+
+                element.style.display = 'block';
+                this.ctaShown.stickyBottom = true;
+
+                this.trackEvent('cta_shown', 'sticky_bottom', variation);
+            }
+
+            showSideTab() {
+                const element = document.getElementById('sideTabCTA');
+                element.classList.add('visible');
+                this.ctaShown.sideTab = true;
+
+                this.trackEvent('cta_shown', 'side_tab', this.activeVariations['side-tab']);
+            }
+
+            showNotification() {
+                const element = document.getElementById('notificationCTA');
+                const variation = this.activeVariations['notification'];
+
+                // Apply variation content
+                this.applyVariation('notification', variation, element.querySelector('.notification-text'));
+
+                element.classList.add('visible');
+                this.ctaShown.notification = true;
+
+                this.trackEvent('cta_shown', 'notification', variation);
+
+                // Auto-hide after 8 seconds
+                setTimeout(() => {
+                    this.closeNotification();
+                }, 8000);
+            }
+
+            showSmartBar() {
+                const element = document.getElementById('smartBarCTA');
+                element.classList.add('visible');
+
+                this.trackEvent('cta_shown', 'smart_bar', 1);
+            }
+
+            applyVariation(element, variation, target) {
+                const variationContent = document.querySelector(`[data-element="${element}"][data-variation="${variation}"]`);
+                if (variationContent && target) {
+                    target.innerHTML = variationContent.innerHTML;
+                }
+            }
+
+            trackEvent(action, cta_type, variation) {
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', action, {
+                        'event_category': 'Floating_CTA',
+                        'event_label': cta_type,
+                        'custom_parameter_1': variation
+                    });
+                }
+            }
+        }
+
+        // Initialize CTA Manager
+        const ctaManager = new FloatingCTAManager();
+
+        // CTA Interaction Functions
+        function closeStickyBottom() {
+            document.getElementById('stickyBottomCTA').style.display = 'none';
+            ctaManager.trackEvent('cta_closed', 'sticky_bottom', ctaManager.activeVariations['sticky-bottom']);
+        }
+
+        function toggleSideTab() {
+            const element = document.getElementById('sideTabCTA');
+            if (element.classList.contains('visible')) {
+                element.classList.remove('visible');
+                ctaManager.trackEvent('cta_closed', 'side_tab', ctaManager.activeVariations['side-tab']);
+            } else {
+                element.classList.add('visible');
+                ctaManager.trackEvent('cta_shown', 'side_tab', ctaManager.activeVariations['side-tab']);
+            }
+        }
+
+        function showFABAction() {
+            // Show contact options or redirect to contact
+            window.location.href = 'contact.html?utm_source=fab&utm_campaign=floating_cta';
+            ctaManager.trackEvent('cta_clicked', 'fab', 1);
+        }
+
+        function closeNotification() {
+            document.getElementById('notificationCTA').classList.remove('visible');
+            ctaManager.trackEvent('cta_closed', 'notification', ctaManager.activeVariations['notification']);
+        }
+
+        function trackCTAClick(ctaType) {
+            const variation = ctaManager.activeVariations[ctaType.replace('_', '-')] || 1;
+            ctaManager.trackEvent('cta_clicked', ctaType, variation);
+
+            // Facebook Pixel
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Lead', {
+                    content_name: 'Floating CTA Click',
+                    content_category: ctaType
+                });
+            }
+        }
+
+        // Prevent CTA overlap
+        function manageCTAVisibility() {
+            const activeCTAs = document.querySelectorAll('.floating-cta:not([style*="display: none"])');
+            if (activeCTAs.length > 2) {
+                // Hide oldest CTA if too many are visible
+                activeCTAs[0].style.display = 'none';
+            }
+        }
+
+        // Run visibility check every 5 seconds
+        setInterval(manageCTAVisibility, 5000);
+
+        // Track page engagement for CTA optimization
+        let pageEngagement = {
+            timeOnPage: 0,
+            scrollDepth: 0,
+            ctaInteractions: 0
+        };
+
+        setInterval(() => {
+            pageEngagement.timeOnPage++;
+        }, 1000);
+
+        window.addEventListener('scroll', () => {
+            const scrollPercentage = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+            pageEngagement.scrollDepth = Math.max(pageEngagement.scrollDepth, scrollPercentage);
+        });
+
+        // Send engagement data when user leaves
+        window.addEventListener('beforeunload', () => {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'page_engagement', {
+                    'event_category': 'User_Behavior',
+                    'time_on_page': pageEngagement.timeOnPage,
+                    'scroll_depth': pageEngagement.scrollDepth,
+                    'cta_interactions': pageEngagement.ctaInteractions
+                });
+            }
+        });
+    </script>
+</body>
+</html>
