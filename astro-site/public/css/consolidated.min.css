@@ -1,0 +1,56 @@
+/* Consolidated and minified CSS - Performance optimized version */
+/* This file combines all critical styles in optimized order */
+
+/* 1. CSS Variables and Theme Setup */
+:root{--primary-blue:#007bff;--primary-dark:#004494;--primary-light:#4da3ff;--secondary-gray:#6c757d;--success-green:#28a745;--warning-yellow:#ffc107;--danger-red:#dc3545;--info-cyan:#17a2b8;--white:#ffffff;--light-gray:#f8f9fa;--medium-gray:#e9ecef;--dark-gray:#343a40;--black:#000000;--glass-bg:rgba(255,255,255,0.95);--glass-border:rgba(255,255,255,0.2);--glass-shadow:0 8px 32px rgba(0,0,0,0.1);--glass-blur:10px;--gradient-primary:linear-gradient(135deg,var(--primary-blue) 0%,var(--primary-dark) 100%);--gradient-secondary:linear-gradient(135deg,#667eea 0%,#764ba2 100%);--gradient-success:linear-gradient(135deg,#84fab0 0%,#8fd3f4 100%);--shadow-sm:0 2px 4px rgba(0,0,0,0.1);--shadow-md:0 4px 8px rgba(0,0,0,0.15);--shadow-lg:0 8px 16px rgba(0,0,0,0.2);--shadow-xl:0 16px 32px rgba(0,0,0,0.25);--transition-fast:150ms ease;--transition-normal:300ms ease;--transition-slow:500ms ease;--border-radius-sm:4px;--border-radius-md:8px;--border-radius-lg:16px;--border-radius-xl:24px;--border-radius-round:50%;--spacing-xs:4px;--spacing-sm:8px;--spacing-md:16px;--spacing-lg:32px;--spacing-xl:48px;--spacing-xxl:64px;--font-primary:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;--font-heading:"Inter",var(--font-primary);--font-monospace:"SF Mono","Monaco","Inconsolata","Fira Code","Courier New",monospace;--font-weight-light:300;--font-weight-regular:400;--font-weight-medium:500;--font-weight-semibold:600;--font-weight-bold:700;--font-size-xs:0.75rem;--font-size-sm:0.875rem;--font-size-base:1rem;--font-size-lg:1.125rem;--font-size-xl:1.25rem;--font-size-2xl:1.5rem;--font-size-3xl:2rem;--font-size-4xl:2.5rem;--font-size-5xl:3rem;--line-height-tight:1.2;--line-height-normal:1.5;--line-height-relaxed:1.75;--letter-spacing-tight:-0.025em;--letter-spacing-normal:0;--letter-spacing-wide:0.025em;--z-index-dropdown:1000;--z-index-modal:1050;--z-index-popover:1060;--z-index-tooltip:1070;--z-index-notification:1080}
+
+/* 2. Reset and Base Styles */
+*,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;line-height:1.15}body{margin:0;font-family:var(--font-primary);font-size:var(--font-size-base);line-height:var(--line-height-normal);color:var(--dark-gray);background-color:var(--white);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}h1,h2,h3,h4,h5,h6{margin-top:0;margin-bottom:0.5rem;font-family:var(--font-heading);font-weight:var(--font-weight-bold);line-height:var(--line-height-tight)}p{margin-top:0;margin-bottom:1rem}a{color:var(--primary-blue);text-decoration:none;transition:color var(--transition-fast)}a:hover{color:var(--primary-dark)}img,video{max-width:100%;height:auto;display:block}button{cursor:pointer;border:none;background:none;font:inherit}
+
+/* 3. Layout and Container */
+.container{width:100%;max-width:1200px;margin:0 auto;padding:0 var(--spacing-md)}@media(min-width:768px){.container{padding:0 var(--spacing-lg)}}@media(min-width:1024px){.container{padding:0 var(--spacing-xl)}}
+
+/* 4. Navigation - Optimized */
+.navigation{position:fixed;top:0;left:0;right:0;z-index:var(--z-index-dropdown);background:var(--glass-bg);backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));border-bottom:1px solid var(--glass-border);transition:all var(--transition-normal)}.nav-container{display:flex;align-items:center;justify-content:space-between;padding:1rem 0}.nav-logo{font-size:var(--font-size-xl);font-weight:var(--font-weight-bold);color:var(--primary-blue)}.nav-menu{display:flex;list-style:none;margin:0;padding:0;gap:var(--spacing-lg)}.nav-item{position:relative}.nav-link{color:var(--dark-gray);font-weight:var(--font-weight-medium);padding:var(--spacing-sm) var(--spacing-md);border-radius:var(--border-radius-md);transition:all var(--transition-fast)}.nav-link:hover{background:rgba(0,123,255,0.1);color:var(--primary-blue)}.nav-cta{background:var(--gradient-primary);color:var(--white);padding:var(--spacing-sm) var(--spacing-lg);border-radius:var(--border-radius-md);font-weight:var(--font-weight-semibold);transition:all var(--transition-normal)}.nav-cta:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+
+/* 5. Hero Section */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(0,123,255,0.1) 0%,rgba(0,68,148,0.1) 100%);padding:var(--spacing-xxl) 0}.hero-content{text-align:center;max-width:800px}.hero-title{font-size:clamp(2rem,5vw,3.5rem);margin-bottom:var(--spacing-lg);background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.hero-subtitle{font-size:var(--font-size-xl);color:var(--secondary-gray);margin-bottom:var(--spacing-xl)}.hero-buttons{display:flex;gap:var(--spacing-md);justify-content:center;flex-wrap:wrap}
+
+/* 6. Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:var(--spacing-sm) var(--spacing-lg);border-radius:var(--border-radius-md);font-weight:var(--font-weight-semibold);transition:all var(--transition-normal);cursor:pointer;border:2px solid transparent}.btn-primary{background:var(--gradient-primary);color:var(--white);border-color:var(--primary-blue)}.btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}.btn-secondary{background:transparent;color:var(--primary-blue);border-color:var(--primary-blue)}.btn-secondary:hover{background:var(--primary-blue);color:var(--white)}
+
+/* 7. Cards and Components */
+.card{background:var(--white);border-radius:var(--border-radius-lg);padding:var(--spacing-lg);box-shadow:var(--shadow-md);transition:all var(--transition-normal)}.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-xl)}.card-title{font-size:var(--font-size-xl);margin-bottom:var(--spacing-md);color:var(--dark-gray)}.card-text{color:var(--secondary-gray);line-height:var(--line-height-relaxed)}
+
+/* 8. Grid System */
+.grid{display:grid;gap:var(--spacing-lg)}.grid-2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}.grid-3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}.grid-4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}@media(max-width:768px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}}
+
+/* 9. Sections */
+.section{padding:var(--spacing-xxl) 0}.section-title{font-size:var(--font-size-3xl);text-align:center;margin-bottom:var(--spacing-xl);color:var(--dark-gray)}.section-subtitle{font-size:var(--font-size-lg);text-align:center;color:var(--secondary-gray);margin-bottom:var(--spacing-xl)}
+
+/* 10. Forms */
+.form-group{margin-bottom:var(--spacing-lg)}.form-label{display:block;margin-bottom:var(--spacing-sm);font-weight:var(--font-weight-medium);color:var(--dark-gray)}.form-control{width:100%;padding:var(--spacing-sm) var(--spacing-md);border:2px solid var(--medium-gray);border-radius:var(--border-radius-md);font-size:var(--font-size-base);transition:all var(--transition-fast)}.form-control:focus{outline:none;border-color:var(--primary-blue);box-shadow:0 0 0 3px rgba(0,123,255,0.1)}
+
+/* 11. Footer */
+.footer{background:var(--dark-gray);color:var(--white);padding:var(--spacing-xl) 0;margin-top:var(--spacing-xxl)}.footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:var(--spacing-xl)}.footer-title{font-size:var(--font-size-lg);margin-bottom:var(--spacing-md)}.footer-links{list-style:none;padding:0}.footer-link{color:var(--light-gray);transition:color var(--transition-fast)}.footer-link:hover{color:var(--white)}
+
+/* 12. Utilities */
+.text-center{text-align:center}.text-left{text-align:left}.text-right{text-align:right}.mt-1{margin-top:var(--spacing-sm)}.mt-2{margin-top:var(--spacing-md)}.mt-3{margin-top:var(--spacing-lg)}.mb-1{margin-bottom:var(--spacing-sm)}.mb-2{margin-bottom:var(--spacing-md)}.mb-3{margin-bottom:var(--spacing-lg)}.p-1{padding:var(--spacing-sm)}.p-2{padding:var(--spacing-md)}.p-3{padding:var(--spacing-lg)}.d-none{display:none}.d-block{display:block}.d-flex{display:flex}.align-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}
+
+/* 13. Animations */
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes slideInLeft{from{opacity:0;transform:translateX(-50px)}to{opacity:1;transform:translateX(0)}}@keyframes slideInRight{from{opacity:0;transform:translateX(50px)}to{opacity:1;transform:translateX(0)}}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}.animate-fadeIn{animation:fadeIn 0.6s ease forwards}.animate-slideInLeft{animation:slideInLeft 0.6s ease forwards}.animate-slideInRight{animation:slideInRight 0.6s ease forwards}.animate-pulse{animation:pulse 2s infinite}
+
+/* 14. Loading States */
+.skeleton{background:linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);background-size:200% 100%;animation:loading 1.5s infinite}@keyframes loading{0%{background-position:200% 0}100%{background-position:-200% 0}}.spinner{display:inline-block;width:40px;height:40px;border:4px solid rgba(0,123,255,0.1);border-top-color:var(--primary-blue);border-radius:50%;animation:spin 1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+
+/* 15. Responsive Utilities */
+@media(max-width:768px){.hide-mobile{display:none}.show-mobile{display:block}}@media(min-width:769px){.hide-desktop{display:none}.show-desktop{display:block}}
+
+/* 16. Print Styles */
+@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a,a:visited{text-decoration:underline}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h2,h3{page-break-after:avoid}}
+
+/* 17. Accessibility */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}:focus-visible{outline:2px solid var(--primary-blue);outline-offset:2px}
+
+/* 18. Performance Critical */
+.lazyload{opacity:0;transition:opacity var(--transition-normal)}.lazyloaded{opacity:1}[loading="lazy"]{background:var(--light-gray)}

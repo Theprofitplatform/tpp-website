@@ -53,9 +53,8 @@ const {
         pageType="website"
     />
 
-    <!-- Critical CSS inline for faster rendering -->
-    <link rel="stylesheet" href="/css/critical.min.css">
-    <link rel="stylesheet" href="/css/loading-states.css">
+    <!-- Bundled CSS for Performance -->
+    <link rel="stylesheet" href="/css/bundled.min.css" media="all">
 
     <!-- External Resources - Load asynchronously -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" media="all">
@@ -64,22 +63,6 @@ const {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     </noscript>
-
-    <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="/css/style.min.css" media="all">
-
-    <!-- Consolidated Navigation & Layout Styles -->
-    <link rel="stylesheet" href="/css/modern-theme-variables.css" media="all">
-    <link rel="stylesheet" href="/css/navigation.css" media="all">
-    <link rel="stylesheet" href="/css/skip-links-fix.css" media="all">
-    <link rel="stylesheet" href="/css/main-content-spacing.css" media="all">
-    <link rel="stylesheet" href="/css/modern-theme-components.css" media="all">
-    <link rel="stylesheet" href="/css/dropdown-fix.css" media="all">
-    <link rel="stylesheet" href="/css/layout.css" media="all">
-    <link rel="stylesheet" href="/css/navigation-glass-enhanced.css" media="all">
-    <link rel="stylesheet" href="/css/hero-content-spacing.css" media="all">
-    <link rel="stylesheet" href="/css/trust-signals-enhanced.css" media="all">
-    <link rel="stylesheet" href="/css/trust-signals-homepage-theme.css" media="all">
 
     <!-- Structured Data -->
     <StructuredData pageType={pageType} />
@@ -101,5 +84,106 @@ const {
     <script src="/js/combined.min.js" defer></script>
     <script src="/js/main.js" defer></script>
     <script src="/js/homepage.js" defer></script>
+    <script src="/js/predictive-resource-loader.js" defer></script>
+
+    <!-- Phase 2 Performance Testing -->
+    <script src="/test-phase2-performance.js" defer></script>
+
+    <!-- Phase 1: Inline Performance Testing -->
+    <script>
+        // Inline Performance Monitor (no external file needed)
+        console.log('🧪 TPP Inline Performance Monitor Loading...');
+
+        class SimplePerformanceMonitor {
+            constructor() {
+                this.metrics = {};
+                this.init();
+            }
+
+            init() {
+                console.log('📊 Simple Performance Monitor starting...');
+
+                // Collect basic Core Web Vitals
+                this.collectLCP();
+                this.collectFID();
+                this.collectCLS();
+
+                // Show dashboard on Ctrl+Shift+P
+                document.addEventListener('keydown', (e) => {
+                    if (e.ctrlKey && e.shiftKey && e.key === 'P') {
+                        this.showDashboard();
+                    }
+                });
+
+                setTimeout(() => {
+                    console.log('✅ Simple Performance Monitor ready!');
+                    console.log('📈 Current metrics:', this.metrics);
+                    console.log('🔍 Press Ctrl+Shift+P to view dashboard');
+                }, 1000);
+            }
+
+            collectLCP() {
+                if ('PerformanceObserver' in window) {
+                    const observer = new PerformanceObserver((list) => {
+                        for (const entry of list.getEntries()) {
+                            this.metrics.lcp = Math.round(entry.startTime);
+                            console.log('📏 LCP:', this.metrics.lcp + 'ms');
+                        }
+                    });
+                    observer.observe({ entryTypes: ['largest-contentful-paint'] });
+                }
+            }
+
+            collectFID() {
+                if ('PerformanceObserver' in window) {
+                    const observer = new PerformanceObserver((list) => {
+                        for (const entry of list.getEntries()) {
+                            this.metrics.fid = Math.round(entry.processingStart - entry.startTime);
+                            console.log('⚡ FID:', this.metrics.fid + 'ms');
+                        }
+                    });
+                    observer.observe({ entryTypes: ['first-input'] });
+                }
+            }
+
+            collectCLS() {
+                if ('PerformanceObserver' in window) {
+                    let clsValue = 0;
+                    const observer = new PerformanceObserver((list) => {
+                        for (const entry of list.getEntries()) {
+                            if (!entry.hadRecentInput) {
+                                clsValue += entry.value;
+                            }
+                        }
+                        this.metrics.cls = Math.round(clsValue * 1000) / 1000;
+                        console.log('🔄 CLS:', this.metrics.cls);
+                    });
+                    observer.observe({ entryTypes: ['layout-shift'] });
+                }
+            }
+
+            showDashboard() {
+                const dashboard = `📊 TPP PERFORMANCE DASHBOARD
+============================
+🎯 LCP: ${this.metrics.lcp || 'measuring...'}ms (Target: <2500ms)
+⚡ FID: ${this.metrics.fid || 'waiting for interaction...'}ms (Target: <100ms)
+🔄 CLS: ${this.metrics.cls || 'measuring...'} (Target: <0.1)
+
+🖼️ Images: ${document.images.length} total
+📊 Page Load: ${Math.round(Date.now() - performance.timeOrigin)}ms
+💾 Memory: ${navigator.deviceMemory || 'unknown'}GB
+🌐 Connection: ${navigator.connection?.effectiveType || 'unknown'}`;
+
+                alert(dashboard);
+                console.log(dashboard);
+            }
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Initializing TPP Performance Monitor...');
+            window.tppPerformanceMonitor = new SimplePerformanceMonitor();
+        });
+    </script>
 </body>
 </html>

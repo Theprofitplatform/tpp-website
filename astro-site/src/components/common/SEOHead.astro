@@ -95,11 +95,40 @@ const {
 
 <!-- Preload Critical Resources -->
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="css/critical.min.css" as="style">
-<link rel="preload" href="css/style.min.css" as="style">
-<link rel="preload" href="js/combined.min.js" as="script">
+<link rel="preload" href="/css/critical.min.css" as="style">
+<link rel="preload" href="/css/style.min.css" as="style">
+<link rel="preload" href="/js/combined.min.js" as="script">
 <link rel="preload" href="https://storage.googleapis.com/msgsndr/El8AYzrtJG3nVg76QPpa/media/68b56f6e09148075ab5016df.png" as="image" fetchpriority="high">
 <link rel="preload" href="https://storage.googleapis.com/msgsndr/El8AYzrtJG3nVg76QPpa/media/68b56f98291670614001dfbf.png" as="image" fetchpriority="high">
 
 <!-- Fallback for preload -->
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
+
+<!-- Critical CSS inline for faster rendering -->
+<link rel="stylesheet" href="/css/critical.min.css">
+<link rel="stylesheet" href="/css/loading-states.css">
+
+<!-- External Resources - Load asynchronously -->
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" media="all">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" media="all">
+<noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</noscript>
+
+<!-- Main Stylesheet -->
+<link rel="stylesheet" href="/css/style.min.css" media="all">
+
+<!-- Consolidated Navigation & Layout Styles -->
+<link rel="stylesheet" href="/css/modern-theme-variables.css" media="all">
+<link rel="stylesheet" href="/css/navigation.css" media="all">
+<link rel="stylesheet" href="/css/skip-links-fix.css" media="all">
+<link rel="stylesheet" href="/css/main-content-spacing.css" media="all">
+<link rel="stylesheet" href="/css/modern-theme-components.css" media="all">
+<link rel="stylesheet" href="/css/dropdown-fix.css" media="all">
+<link rel="stylesheet" href="/css/layout.css" media="all">
+<link rel="stylesheet" href="/css/navigation-glass-enhanced.css" media="all">
+<link rel="stylesheet" href="/css/hero-content-spacing.css" media="all">
+<link rel="stylesheet" href="/css/hero-modern.css" media="all">
+<link rel="stylesheet" href="/css/trust-signals-enhanced.css" media="all">
+<link rel="stylesheet" href="/css/trust-signals-homepage-theme.css" media="all">

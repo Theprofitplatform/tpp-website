@@ -1,0 +1,215 @@
+---
+export interface SuccessStory {
+  badge: string;
+  icon: string;
+  colorClass: string;
+  before: string;
+  after: string;
+  metric: string;
+  description: string;
+  clientName: string;
+  location: string;
+  duration: string;
+  testimonial: string;
+}
+
+export interface Props {
+  sectionTag?: string;
+  title?: string;
+  subtitle?: string;
+  stories?: SuccessStory[];
+  stats?: {
+    clients?: string;
+    roi?: string;
+    experience?: string;
+    rating?: string;
+  };
+}
+
+const {
+  sectionTag = "🚀 Early Success Stories",
+  title = "Real Results in Just Our First Year",
+  subtitle = "See what our early clients are already achieving with our fresh approach to digital marketing.",
+  stories = [
+    {
+      badge: "SUCCESS STORY",
+      icon: "fa-phone",
+      colorClass: "success-card-purple",
+      before: "3/week",
+      after: "8/week",
+      metric: "2.6x",
+      description: "More Phone Calls",
+      clientName: "Mike's Plumbing",
+      location: "Parramatta, NSW",
+      duration: "30 days",
+      testimonial: "The phone doesn't stop ringing now. Best investment I've made."
+    },
+    {
+      badge: "GROWTH",
+      icon: "fa-calendar-check",
+      colorClass: "success-card-pink",
+      before: "5/week",
+      after: "12/week",
+      metric: "2.4x",
+      description: "Booking Increase",
+      clientName: "Sydney Physio Care",
+      location: "North Shore, NSW",
+      duration: "45 days",
+      testimonial: "More than doubled our bookings already. Great start!"
+    },
+    {
+      badge: "COST SAVINGS",
+      icon: "fa-dollar-sign",
+      colorClass: "success-card-blue",
+      before: "$75",
+      after: "$52",
+      metric: "-31%",
+      description: "Cost Per Lead",
+      clientName: "Dan's Electrical",
+      location: "Western Sydney, NSW",
+      duration: "30 days",
+      testimonial: "Already saving money while getting better quality leads."
+    },
+    {
+      badge: "SEO VICTORY",
+      icon: "fa-trophy",
+      colorClass: "success-card-green",
+      before: "Page 3",
+      after: "#1",
+      metric: "#1",
+      description: "Google Ranking",
+      clientName: "Aussie Electric Pro",
+      location: "Inner West, NSW",
+      duration: "4 months",
+      testimonial: "Finally ranking #1 for 'electrician Sydney'. Game changer!"
+    }
+  ],
+  stats = {
+    clients: "15+",
+    roi: "120%",
+    experience: "5+",
+    rating: "4.9"
+  }
+} = Astro.props;
+---
+
+<section class="results section animate-on-scroll" id="results" aria-labelledby="results-title">
+  <div class="container">
+    <header class="section-header">
+      <span class="section-tag">
+        {sectionTag}
+      </span>
+      <h2 id="results-title" class="section-title">{title}</h2>
+      <p class="section-subtitle">{subtitle}</p>
+    </header>
+
+    <div class="success-cards-grid" role="list" aria-label="Client success stories">
+      {stories.map((story, index) => (
+        <article
+          class={`success-card ${story.colorClass} animate-on-scroll`}
+          role="listitem"
+          aria-labelledby={`story-${index + 1}-title`}
+          aria-describedby={`story-${index + 1}-desc`}
+        >
+          <div class="success-badge" role="img" aria-label={`${story.badge} story`}>
+            <div class="success-icon" aria-hidden="true">
+              <i class={`fas ${story.icon}`}></i>
+            </div>
+            <span class="success-label">{story.badge}</span>
+          </div>
+
+          <div class="success-before-after" aria-label="Performance comparison">
+            <div class="success-before-after-row">
+              <span class="label">BEFORE</span>
+              <i class="fas fa-arrow-right arrow" aria-hidden="true"></i>
+              <span class="label">AFTER</span>
+            </div>
+            <div class="success-before-after-values">
+              <span class="before-value" aria-label={`Before: ${story.before}`}>
+                {story.before}
+              </span>
+              <span class="after-value" aria-label={`After: ${story.after}`}>
+                {story.after}
+              </span>
+            </div>
+          </div>
+
+          <div class="success-main-metric">
+            <span
+              class="success-percentage"
+              id={`story-${index + 1}-title`}
+              aria-label={`${story.metric} increase`}
+            >
+              {story.metric}
+            </span>
+            <span class="success-description" id={`story-${index + 1}-desc`}>
+              {story.description}
+            </span>
+          </div>
+
+          <div class="success-client" aria-label="Client information">
+            <div class="client-name">{story.clientName}</div>
+            <div class="client-location">{story.location}</div>
+            <div class="client-duration">
+              <i class="fas fa-clock" aria-hidden="true"></i>
+              <span aria-label={`Campaign duration: ${story.duration}`}>
+                {story.duration}
+              </span>
+            </div>
+          </div>
+
+          <blockquote class="success-testimonial" aria-label="Client testimonial">
+            <p>"{story.testimonial}"</p>
+          </blockquote>
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <!-- Modern Stats Section -->
+  <div
+    class="modern-stats-section"
+    style="background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); padding: 60px 0; margin-bottom: -80px;"
+  >
+    <div class="container">
+      <div class="modern-stats-grid">
+        <div class="modern-stat-item animate-on-scroll">
+          <div class="modern-stat-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="modern-stat-content">
+            <div class="modern-stat-value">{stats.clients}</div>
+            <div class="modern-stat-label">Clients & Growing</div>
+          </div>
+        </div>
+        <div class="modern-stat-item animate-on-scroll">
+          <div class="modern-stat-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div class="modern-stat-content">
+            <div class="modern-stat-value">{stats.roi}</div>
+            <div class="modern-stat-label">Average ROI</div>
+          </div>
+        </div>
+        <div class="modern-stat-item animate-on-scroll">
+          <div class="modern-stat-icon">
+            <i class="fas fa-trophy"></i>
+          </div>
+          <div class="modern-stat-content">
+            <div class="modern-stat-value">{stats.experience}</div>
+            <div class="modern-stat-label">Years Founder Experience</div>
+          </div>
+        </div>
+        <div class="modern-stat-item animate-on-scroll">
+          <div class="modern-stat-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="modern-stat-content">
+            <div class="modern-stat-value">{stats.rating}</div>
+            <div class="modern-stat-label">Client Rating</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

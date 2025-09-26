@@ -1,0 +1,121 @@
+/* ===================================
+   HERO CONTENT SPACING
+   Ensures hero content doesn't get hidden behind navbar
+   =================================== */
+
+/* Hero sections start from top but content has padding */
+.hero,
+.hero-modern,
+.about-hero,
+.pricing-hero,
+.pricing-hero-enhanced,
+.portfolio-hero,
+.contact-hero,
+.services-hero,
+.web-design-hero,
+.google-ads-hero,
+.seo-hero {
+    position: relative !important;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* Add padding to the hero content container */
+.hero .container,
+.hero-modern .container,
+.about-hero .container,
+.pricing-hero .container,
+.pricing-hero-enhanced .container,
+.portfolio-hero .container,
+.contact-hero .container,
+.services-hero .container,
+.web-design-hero .container,
+.google-ads-hero .container,
+.seo-hero .container {
+    padding-top: 120px !important;
+}
+
+/* Hero content wrapper if it exists */
+.hero-content,
+.hero-text,
+.hero-left,
+.hero-section-content {
+    padding-top: 120px !important;
+}
+
+/* Sections after hero need padding */
+.hero + section,
+.hero-modern + section,
+.about-hero + section,
+.pricing-hero + section,
+.pricing-hero-enhanced + section,
+.portfolio-hero + section,
+.contact-hero + section,
+.services-hero + section,
+.web-design-hero + section,
+.google-ads-hero + section,
+.seo-hero + section,
+main > section:not(:first-child) {
+    padding-top: 80px !important;
+}
+
+/* Trust signals bar should have normal padding */
+.trust-signals-bar {
+    padding-top: 3rem !important;
+    margin-top: 0 !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .hero .container,
+    .hero-modern .container,
+    .about-hero .container,
+    .pricing-hero .container,
+    .pricing-hero-enhanced .container,
+    .portfolio-hero .container,
+    .contact-hero .container,
+    .services-hero .container,
+    .web-design-hero .container,
+    .google-ads-hero .container,
+    .seo-hero .container {
+        padding-top: 100px !important;
+    }
+
+    .hero-content,
+    .hero-text,
+    .hero-left,
+    .hero-section-content {
+        padding-top: 100px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero .container,
+    .hero-modern .container,
+    .about-hero .container,
+    .pricing-hero .container,
+    .pricing-hero-enhanced .container,
+    .portfolio-hero .container,
+    .contact-hero .container,
+    .services-hero .container,
+    .web-design-hero .container,
+    .google-ads-hero .container,
+    .seo-hero .container {
+        padding-top: 90px !important;
+    }
+
+    .hero-content,
+    .hero-text,
+    .hero-left,
+    .hero-section-content {
+        padding-top: 90px !important;
+    }
+}
+
+/* Ensure background effects start from top */
+.hero-background-elements,
+.floating-shape,
+.hero::before,
+.hero::after {
+    top: 0 !important;
+}

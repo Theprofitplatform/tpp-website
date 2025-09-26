@@ -1,0 +1,102 @@
+---
+export interface Service {
+  icon: string;
+  title: string;
+  description: string;
+  features: string[];
+  ctaLink: string;
+  ctaText: string;
+}
+
+export interface Props {
+  sectionTag?: string;
+  title?: string;
+  subtitle?: string;
+  services?: Service[];
+}
+
+const {
+  sectionTag = "🎯 Our Services",
+  title = "Everything You Need to Dominate Sydney",
+  subtitle = "We don't just offer services—we deliver complete digital dominance. Our integrated approach ensures every dollar spent drives measurable growth.",
+  services = [
+    {
+      icon: "fa-search",
+      title: "Local SEO & Search Domination",
+      description: "Own page 1 of Google for your most profitable keywords. We don't just get you ranked—we get you the customers that matter.",
+      features: [
+        "Google My Business optimization",
+        "Local citation building",
+        "Review management system",
+        "Technical SEO audits",
+        "Content marketing strategy",
+        "Competitor analysis"
+      ],
+      ctaLink: "/seo",
+      ctaText: "Learn More"
+    },
+    {
+      icon: "fa-bullhorn",
+      title: "Google & Meta Ads Management",
+      description: "Get instant customers while your SEO builds momentum. Our certified experts maximize every ad dollar for maximum ROI.",
+      features: [
+        "Search & display campaigns",
+        "Facebook & Instagram ads",
+        "Landing page optimization",
+        "Conversion tracking setup",
+        "Advanced audience targeting",
+        "A/B testing & optimization"
+      ],
+      ctaLink: "/google-ads",
+      ctaText: "Learn More"
+    },
+    {
+      icon: "fa-laptop-code",
+      title: "High-Converting Web Design",
+      description: "Your website should be a 24/7 sales machine. We design conversion-focused sites that turn visitors into paying customers.",
+      features: [
+        "Mobile-first responsive design",
+        "Speed & performance optimization",
+        "Conversion rate optimization",
+        "User experience design",
+        "E-commerce development",
+        "Ongoing maintenance & support"
+      ],
+      ctaLink: "/web-design",
+      ctaText: "Learn More"
+    }
+  ]
+} = Astro.props;
+---
+
+<section class="services section animate-on-scroll" id="services">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">{sectionTag}</span>
+      <h2 class="section-title">{title}</h2>
+      <p class="section-subtitle">{subtitle}</p>
+    </div>
+
+    <div class="services-grid">
+      {services.map((service) => (
+        <div class="service-card animate-on-scroll">
+          <div class="service-icon">
+            <i class={`fas ${service.icon}`}></i>
+          </div>
+          <h3>{service.title}</h3>
+          <p>{service.description}</p>
+          <ul class="service-features">
+            {service.features.map((feature) => (
+              <li>{feature}</li>
+            ))}
+          </ul>
+          <div class="service-cta">
+            <a href={service.ctaLink} class="btn btn-secondary">
+              {service.ctaText}
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

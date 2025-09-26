@@ -1,0 +1,44 @@
+/* Dropdown Position Fix - Centers dropdown under Services menu */
+.nav-dropdown {
+    position: relative !important;
+}
+
+.nav-dropdown .dropdown-menu,
+.nav-dropdown .mega-dropdown {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    top: 100% !important;
+    margin-top: 10px !important;
+    right: auto !important;
+}
+
+/* Ensure dropdown doesn't overflow viewport */
+@media (min-width: 768px) {
+    .nav-dropdown .dropdown-menu,
+    .nav-dropdown .mega-dropdown {
+        min-width: 320px !important;
+        max-width: 400px !important;
+    }
+}
+
+/* Reset any JS-applied styles when not active */
+.nav-dropdown:not(.active) .dropdown-menu,
+.nav-dropdown:not(.active) .mega-dropdown {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+}
+
+/* When dropdown is active/shown */
+.nav-dropdown.active .dropdown-menu,
+.nav-dropdown.active .mega-dropdown,
+.dropdown-menu.show,
+.mega-dropdown.show {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}

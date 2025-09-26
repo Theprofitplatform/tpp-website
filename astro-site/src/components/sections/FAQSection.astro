@@ -1,0 +1,251 @@
+---
+export interface FAQ {
+  id: string;
+  category: string;
+  icon: string;
+  question: string;
+  answer: string;
+}
+
+export interface Props {
+  sectionTag?: string;
+  title?: string;
+  subtitle?: string;
+  categories?: { value: string; label: string }[];
+  faqs?: FAQ[];
+}
+
+const {
+  sectionTag = "❓ FAQs",
+  title = "Everything You Need to Know",
+  subtitle = "Get answers to common questions about our services, process, and how we help Sydney businesses succeed.",
+  categories = [
+    { value: "all", label: "All Questions" },
+    { value: "pricing", label: "Services & Pricing" },
+    { value: "results", label: "Results & Timeline" },
+    { value: "process", label: "Support & Process" },
+    { value: "technical", label: "Technical & Ownership" }
+  ],
+  faqs = [
+    {
+      id: "pricing-1",
+      category: "pricing",
+      icon: "fa-dollar-sign",
+      question: "How is your pricing structured?",
+      answer: "Our pricing is transparent and straightforward with no hidden fees. We offer three tiers: Starter Growth ($990/month), Professional Growth ($1,990/month), and Enterprise Domination ($3,990/month). Each package is designed for different business sizes and growth goals."
+    },
+    {
+      id: "pricing-2",
+      category: "pricing",
+      icon: "fa-map-marker-alt",
+      question: "What areas of Sydney do you service?",
+      answer: "We service all of Greater Sydney including CBD, Eastern Suburbs, North Shore, Inner West, Western Sydney, and Southern Sydney. We work both remotely and in-person depending on your needs."
+    },
+    {
+      id: "results-1",
+      category: "results",
+      icon: "fa-clock",
+      question: "How quickly will I see results?",
+      answer: "Most clients see initial improvements within 30 days, with significant results by 60-90 days. SEO typically takes 3-6 months for full impact, while Google Ads can generate leads within days."
+    },
+    {
+      id: "results-2",
+      category: "results",
+      icon: "fa-chart-line",
+      question: "What kind of results can I expect?",
+      answer: "While results vary by industry and competition, our clients typically see 2-3x increase in leads, 50-200% improvement in Google rankings, and 15-25% reduction in cost per acquisition within the first 6 months."
+    },
+    {
+      id: "process-1",
+      category: "process",
+      icon: "fa-handshake",
+      question: "Are there any lock-in contracts?",
+      answer: "No! We believe in earning your business every month. All our services are month-to-month with no lock-in contracts. You can cancel or change your plan at any time with 30 days notice."
+    },
+    {
+      id: "technical-1",
+      category: "technical",
+      icon: "fa-laptop",
+      question: "Do I need a new website to work with you?",
+      answer: "Not necessarily. We'll audit your current website first. If it's fundamentally sound, we'll optimize it. If it needs major work, we can redesign it as part of our Professional or Enterprise packages."
+    }
+  ]
+} = Astro.props;
+---
+
+<section class="faq section animate-on-scroll" id="faq">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">{sectionTag}</span>
+      <h2 class="section-title">{title}</h2>
+      <p class="section-subtitle">{subtitle}</p>
+    </div>
+
+    <!-- FAQ Controls -->
+    <div class="faq-controls">
+      <!-- Search Bar -->
+      <div class="faq-search-wrapper">
+        <i class="fas fa-search faq-search-icon"></i>
+        <input
+          type="text"
+          id="faqSearch"
+          class="faq-search"
+          placeholder="Search your question..."
+          aria-label="Search FAQs"
+        >
+        <span class="faq-result-count">
+          <span id="faqCount">{faqs.length}</span> questions
+        </span>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="faq-filters" role="group" aria-label="Filter FAQs by category">
+        {categories.map((cat) => (
+          <button
+            class={`faq-filter ${cat.value === 'all' ? 'active' : ''}`}
+            data-filter={cat.value}
+            aria-pressed={cat.value === 'all' ? 'true' : 'false'}
+          >
+            {cat.label}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- FAQ Container -->
+    <div class="faq-container" id="faqContainer">
+      {faqs.map((faq, index) => (
+        <div
+          class={`faq-item ${index >= 6 ? 'hidden' : ''}`}
+          data-category={faq.category}
+          style={index >= 6 ? 'display: none;' : ''}
+        >
+          <button class="faq-question" aria-expanded="false">
+            <div class="faq-icon-wrapper">
+              <i class={`fas ${faq.icon} faq-icon`}></i>
+            </div>
+            <span class="faq-text">{faq.question}</span>
+            <i class="fas fa-chevron-down faq-toggle"></i>
+          </button>
+          <div class="faq-answer">
+            <p>{faq.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Show More Button -->
+    {faqs.length > 6 && (
+      <div class="faq-show-more">
+        <button id="showMoreFAQ" class="btn btn-secondary">
+          Show More Questions <i class="fas fa-chevron-down"></i>
+        </button>
+      </div>
+    )}
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqItems = document.querySelectorAll('.faq-item');
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    const faqFilters = document.querySelectorAll('.faq-filter');
+    const faqSearch = document.getElementById('faqSearch') as HTMLInputElement;
+    const faqCount = document.getElementById('faqCount');
+    const showMoreBtn = document.getElementById('showMoreFAQ');
+
+    // Accordion functionality
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+        const isExpanded = question.getAttribute('aria-expanded') === 'true';
+        const answer = question.nextElementSibling as HTMLElement;
+
+        // Close all other items
+        faqQuestions.forEach(q => {
+          if (q !== question) {
+            q.setAttribute('aria-expanded', 'false');
+            q.classList.remove('active');
+            const a = q.nextElementSibling as HTMLElement;
+            if (a) a.style.maxHeight = '0';
+          }
+        });
+
+        // Toggle current item
+        if (isExpanded) {
+          question.setAttribute('aria-expanded', 'false');
+          question.classList.remove('active');
+          if (answer) answer.style.maxHeight = '0';
+        } else {
+          question.setAttribute('aria-expanded', 'true');
+          question.classList.add('active');
+          if (answer) answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+
+    // Filter functionality
+    let currentFilter = 'all';
+
+    faqFilters.forEach(filter => {
+      filter.addEventListener('click', () => {
+        currentFilter = filter.getAttribute('data-filter') || 'all';
+
+        // Update active state
+        faqFilters.forEach(f => {
+          f.classList.remove('active');
+          f.setAttribute('aria-pressed', 'false');
+        });
+        filter.classList.add('active');
+        filter.setAttribute('aria-pressed', 'true');
+
+        // Filter items
+        filterFAQs();
+      });
+    });
+
+    // Search functionality
+    let searchTimer: number;
+    if (faqSearch) {
+      faqSearch.addEventListener('input', () => {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(filterFAQs, 300);
+      });
+    }
+
+    // Filter function
+    function filterFAQs() {
+      const searchTerm = faqSearch?.value.toLowerCase() || '';
+      let visibleCount = 0;
+
+      faqItems.forEach((item, index) => {
+        const category = item.getAttribute('data-category') || '';
+        const text = item.textContent?.toLowerCase() || '';
+
+        const matchesCategory = currentFilter === 'all' || category === currentFilter;
+        const matchesSearch = !searchTerm || text.includes(searchTerm);
+
+        if (matchesCategory && matchesSearch) {
+          item.style.display = '';
+          visibleCount++;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      // Update count
+      if (faqCount) faqCount.textContent = visibleCount.toString();
+    }
+
+    // Show more functionality
+    if (showMoreBtn) {
+      showMoreBtn.addEventListener('click', () => {
+        const hiddenItems = document.querySelectorAll('.faq-item.hidden');
+        hiddenItems.forEach(item => {
+          item.classList.remove('hidden');
+          (item as HTMLElement).style.display = '';
+        });
+        showMoreBtn.style.display = 'none';
+      });
+    }
+  });
+</script>

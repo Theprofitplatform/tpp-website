@@ -1,0 +1,288 @@
+/* ===================================
+   ENHANCED GLASSMORPHISM NAVIGATION
+   Premium glass effects with improved aesthetics
+   =================================== */
+
+/* Override base navigation with enhanced glass effect */
+.premium-nav {
+    position: fixed !important;
+    top: 15px !important;
+    left: 50% !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: translateX(-50%) !important;
+    width: calc(100% - 60px) !important;
+    max-width: 1200px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 1000 !important;
+    box-sizing: border-box !important;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border-radius: 20px !important;
+    contain: layout style !important;
+    overflow: visible !important;
+
+    /* Advanced Glassmorphism */
+    background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0.25) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0.25) 100%
+    ) !important;
+    backdrop-filter: blur(20px) saturate(180%) brightness(1.1) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) brightness(1.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+
+    /* Layered shadows for depth */
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.1) inset,
+        0 2px 4px rgba(255, 255, 255, 0.2) inset,
+        0 10px 40px rgba(0, 0, 0, 0.08),
+        0 2px 8px rgba(44, 134, 249, 0.1),
+        0 0 80px rgba(44, 134, 249, 0.05) !important;
+}
+
+/* Animated glass shine effect */
+.premium-nav::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.2) 50%,
+        transparent 100%
+    ) !important;
+    border-radius: 20px !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+    animation: glassShine 3s ease-in-out infinite !important;
+}
+
+@keyframes glassShine {
+    0%, 100% { left: -100%; }
+    50% { left: 100%; }
+}
+
+/* Subtle gradient overlay */
+.premium-nav::after {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: radial-gradient(
+        ellipse at top,
+        rgba(44, 134, 249, 0.03) 0%,
+        transparent 70%
+    ) !important;
+    border-radius: 20px !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+}
+
+/* Container z-index fix */
+.premium-nav .container {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* Enhanced scrolled state */
+.premium-nav.scrolled {
+    top: 10px !important;
+    width: calc(100% - 80px) !important;
+    max-width: 1100px !important;
+    transform: translateX(-50%) scale(0.98) !important;
+
+    background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0.35) 0%,
+        rgba(255, 255, 255, 0.4) 50%,
+        rgba(255, 255, 255, 0.35) 100%
+    ) !important;
+    backdrop-filter: blur(25px) saturate(200%) brightness(1.15) !important;
+    -webkit-backdrop-filter: blur(25px) saturate(200%) brightness(1.15) !important;
+
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.2) inset,
+        0 2px 4px rgba(255, 255, 255, 0.3) inset,
+        0 15px 50px rgba(0, 0, 0, 0.1),
+        0 5px 15px rgba(44, 134, 249, 0.15),
+        0 0 100px rgba(44, 134, 249, 0.08) !important;
+}
+
+/* Enhanced nav links glass effect */
+.nav-links a {
+    position: relative !important;
+    background: rgba(255, 255, 255, 0) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border-radius: 12px !important;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.5),
+        rgba(255, 255, 255, 0.3)
+    ) !important;
+    backdrop-filter: blur(10px) brightness(1.1) !important;
+    -webkit-backdrop-filter: blur(10px) brightness(1.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow:
+        0 4px 12px rgba(44, 134, 249, 0.15),
+        0 0 0 1px rgba(44, 134, 249, 0.1) inset !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Enhanced dropdown glass effect */
+.dropdown-menu,
+.mega-dropdown {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.85),
+        rgba(255, 255, 255, 0.75)
+    ) !important;
+    backdrop-filter: blur(25px) saturate(180%) brightness(1.1) !important;
+    -webkit-backdrop-filter: blur(25px) saturate(180%) brightness(1.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    border-radius: 16px !important;
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.2) inset,
+        0 25px 50px rgba(0, 0, 0, 0.15),
+        0 10px 20px rgba(44, 134, 249, 0.1),
+        0 0 60px rgba(44, 134, 249, 0.05) !important;
+}
+
+/* Enhanced CTA button glass effect */
+.nav-cta .btn-primary {
+    background: linear-gradient(
+        135deg,
+        rgba(44, 134, 249, 0.85),
+        rgba(30, 95, 200, 0.85)
+    ) !important;
+    backdrop-filter: blur(10px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(10px) saturate(150%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.1) inset,
+        0 2px 4px rgba(255, 255, 255, 0.2) inset,
+        0 8px 24px rgba(44, 134, 249, 0.3),
+        0 0 40px rgba(44, 134, 249, 0.15) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.nav-cta .btn-primary::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 100%
+    ) !important;
+    transition: left 0.5s ease !important;
+}
+
+.nav-cta .btn-primary:hover::before {
+    left: 100% !important;
+}
+
+.nav-cta .btn-primary:hover {
+    transform: translateY(-2px) scale(1.02) !important;
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.2) inset,
+        0 2px 4px rgba(255, 255, 255, 0.3) inset,
+        0 12px 35px rgba(44, 134, 249, 0.4),
+        0 0 60px rgba(44, 134, 249, 0.25) !important;
+}
+
+/* Mobile navigation glass enhancement */
+.mobile-nav {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.95),
+        rgba(250, 251, 255, 0.95)
+    ) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+}
+
+.mobile-nav-overlay {
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    background: rgba(15, 23, 42, 0.6) !important;
+}
+
+/* Logo area glass enhancement */
+.logo {
+    background: rgba(255, 255, 255, 0) !important;
+    transition: all 0.3s ease !important;
+    border-radius: 12px !important;
+    padding: 8px 12px !important;
+}
+
+.logo:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    box-shadow: 0 4px 12px rgba(44, 134, 249, 0.15) !important;
+}
+
+/* Progress bar enhancement */
+.scroll-progress {
+    background: linear-gradient(
+        90deg,
+        rgba(44, 134, 249, 0.05),
+        rgba(44, 134, 249, 0.1),
+        rgba(44, 134, 249, 0.05)
+    ) !important;
+}
+
+.scroll-progress .progress-bar {
+    background: linear-gradient(
+        90deg,
+        #2c86f9,
+        #60a5fa,
+        #2c86f9
+    ) !important;
+    background-size: 200% 100% !important;
+    animation: shimmer 2s linear infinite !important;
+    box-shadow: 0 0 10px rgba(44, 134, 249, 0.5) !important;
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .premium-nav {
+        width: calc(100% - 30px) !important;
+        top: 10px !important;
+        border-radius: 16px !important;
+    }
+
+    .premium-nav.scrolled {
+        width: calc(100% - 40px) !important;
+        top: 8px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .premium-nav {
+        width: calc(100% - 20px) !important;
+        top: 8px !important;
+        border-radius: 14px !important;
+    }
+}

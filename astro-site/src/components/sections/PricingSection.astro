@@ -1,0 +1,160 @@
+---
+export interface PricingPlan {
+  name: string;
+  description: string;
+  monthlyPrice: number;
+  annualPrice: number;
+  features: string[];
+  ctaText: string;
+  ctaClass: string;
+  featured?: boolean;
+  note?: string;
+}
+
+export interface Props {
+  sectionTag?: string;
+  title?: string;
+  subtitle?: string;
+  plans?: PricingPlan[];
+}
+
+const {
+  sectionTag = "💰 Simple Pricing",
+  title = "Choose Your Growth Level",
+  subtitle = "No hidden fees, no lock-in contracts, no surprises. Just transparent pricing that scales with your success.",
+  plans = [
+    {
+      name: "Starter Growth",
+      description: "Perfect for small businesses ready to establish their online presence",
+      monthlyPrice: 990,
+      annualPrice: 792,
+      features: [
+        "Local SEO optimization",
+        "Google My Business management",
+        "Basic website audit & fixes",
+        "Monthly progress reports",
+        "Email & phone support",
+        "No lock-in contracts"
+      ],
+      ctaText: "Get Started",
+      ctaClass: "btn-secondary"
+    },
+    {
+      name: "Professional Growth",
+      description: "Comprehensive digital marketing for businesses serious about growth",
+      monthlyPrice: 1990,
+      annualPrice: 1592,
+      features: [
+        "Everything in Starter Growth",
+        "Google & Meta Ads management",
+        "Advanced SEO & content marketing",
+        "Conversion rate optimization",
+        "Weekly strategy calls",
+        "Priority support & dedicated account manager",
+        "Performance guarantee"
+      ],
+      ctaText: "Get Started",
+      ctaClass: "btn-primary",
+      featured: true
+    },
+    {
+      name: "Enterprise Domination",
+      description: "Complete market domination for established businesses",
+      monthlyPrice: 3990,
+      annualPrice: 3192,
+      features: [
+        "Everything in Professional Growth",
+        "Full website redesign & optimization",
+        "Advanced analytics & attribution",
+        "Multi-location SEO management",
+        "Dedicated marketing team",
+        "Custom integrations & automation",
+        "Quarterly business reviews"
+      ],
+      ctaText: "Get Started",
+      ctaClass: "btn-secondary",
+      note: "*Custom enterprise solutions available"
+    }
+  ]
+} = Astro.props;
+---
+
+<section class="pricing section animate-on-scroll" id="pricing">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">{sectionTag}</span>
+      <h2 class="section-title">{title}</h2>
+      <p class="section-subtitle">{subtitle}</p>
+    </div>
+
+    <div class="pricing-toggle">
+      <span class="toggle-label">Monthly</span>
+      <div class="toggle-switch" id="pricingToggle">
+        <div class="toggle-knob"></div>
+      </div>
+      <span class="toggle-label">Annual (Save 20%)</span>
+    </div>
+
+    <div class="pricing-grid">
+      {plans.map((plan) => (
+        <div class={`pricing-card ${plan.featured ? 'featured' : ''} animate-on-scroll`}>
+          {plan.featured && (
+            <div class="popular-badge">Most Popular</div>
+          )}
+          <h3>{plan.name}</h3>
+          <p class="pricing-description">{plan.description}</p>
+          <div class="price-wrapper">
+            <span
+              class="price"
+              data-monthly={plan.monthlyPrice}
+              data-annual={plan.annualPrice}
+            >
+              ${plan.monthlyPrice.toLocaleString()}
+            </span>
+            <span class="price-period">/month</span>
+          </div>
+          <ul class="pricing-features">
+            {plan.features.map((feature) => (
+              <li>{feature}</li>
+            ))}
+          </ul>
+          <div class="pricing-cta">
+            <a href="#contact" class={`btn ${plan.ctaClass}`}>
+              {plan.ctaText}
+            </a>
+          </div>
+          {plan.note && (
+            <p class="price-note">{plan.note}</p>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // Pricing toggle functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('pricingToggle');
+    const prices = document.querySelectorAll('.price');
+    let isAnnual = false;
+
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        isAnnual = !isAnnual;
+        toggle.classList.toggle('active');
+
+        prices.forEach(price => {
+          const monthlyPrice = price.getAttribute('data-monthly');
+          const annualPrice = price.getAttribute('data-annual');
+
+          if (isAnnual && annualPrice) {
+            price.textContent = `$${parseInt(annualPrice).toLocaleString()}`;
+          } else if (monthlyPrice) {
+            price.textContent = `$${parseInt(monthlyPrice).toLocaleString()}`;
+          }
+        });
+      });
+    }
+  });
+</script>

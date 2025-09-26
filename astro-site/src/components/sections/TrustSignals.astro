@@ -1,0 +1,213 @@
+---
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  metrics?: {
+    roi?: { value: number; label: string; sublabel: string };
+    clients?: { value: number; label: string; sublabel: string; growth?: string };
+    leads?: { value: number; label: string; sublabel: string };
+    responseTime?: { value: number; unit: string; label: string; sublabel: string };
+  };
+  reviews?: {
+    google?: { rating: number; text: string; author: string };
+  };
+  badges?: {
+    transparent?: { title: string; subtitle: string };
+    guarantee?: { title: string; subtitle: string };
+  };
+}
+
+const {
+  title = "Trusted by Sydney's Growing Businesses",
+  subtitle = "Real results that speak for themselves",
+  metrics = {
+    roi: { value: 312, label: "Average ROI", sublabel: "Last 6 Months" },
+    clients: { value: 23, label: "Active Clients", sublabel: "Sydney Businesses", growth: "+45%" },
+    leads: { value: 847, label: "Leads Generated", sublabel: "This Quarter" },
+    responseTime: { value: 15, unit: "min", label: "Response Time", sublabel: "Business Hours" }
+  },
+  reviews = {
+    google: { rating: 5.0, text: "Best marketing investment", author: "Sarah M." }
+  },
+  badges = {
+    transparent: { title: "100% Transparent", subtitle: "No Hidden Fees Ever" },
+    guarantee: { title: "30-Day Guarantee", subtitle: "Risk-Free Trial" }
+  }
+} = Astro.props;
+---
+
+<section class="trust-signals-section" aria-labelledby="trust-title">
+  <div class="trust-bg-pattern"></div>
+
+  <div class="container">
+    <!-- Section Title -->
+    <div class="trust-title">
+      <h2 id="trust-title" style="color: #1e293b; background: none; -webkit-text-fill-color: unset;">
+        {title}
+      </h2>
+      <p class="trust-subtitle">{subtitle}</p>
+    </div>
+
+    <!-- Key Metrics -->
+    <div class="metrics-grid">
+      <!-- ROI Metric -->
+      {metrics.roi && (
+        <div class="metric-card">
+          <div class="metric-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div class="metric-value">
+            <span class="counter" data-target={metrics.roi.value}>0</span>%
+          </div>
+          <div class="metric-label">{metrics.roi.label}</div>
+          <div class="metric-sublabel">{metrics.roi.sublabel}</div>
+        </div>
+      )}
+
+      <!-- Active Clients -->
+      {metrics.clients && (
+        <div class="metric-card featured">
+          <span class="featured-badge">Growing Fast</span>
+          <div class="metric-icon">
+            <i class="fas fa-rocket"></i>
+          </div>
+          <div class="metric-value">
+            <span class="counter" data-target={metrics.clients.value}>0</span>+
+          </div>
+          <div class="metric-label">{metrics.clients.label}</div>
+          <div class="metric-sublabel">{metrics.clients.sublabel}</div>
+          {metrics.clients.growth && (
+            <div class="growth-indicator">
+              <i class="fas fa-arrow-trend-up"></i> {metrics.clients.growth}
+            </div>
+          )}
+        </div>
+      )}
+
+      <!-- Leads Generated -->
+      {metrics.leads && (
+        <div class="metric-card">
+          <div class="metric-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="metric-value">
+            <span class="counter" data-target={metrics.leads.value}>0</span>+
+          </div>
+          <div class="metric-label">{metrics.leads.label}</div>
+          <div class="metric-sublabel">{metrics.leads.sublabel}</div>
+        </div>
+      )}
+
+      <!-- Response Time -->
+      {metrics.responseTime && (
+        <div class="metric-card">
+          <div class="metric-icon">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <div class="metric-value">
+            <span class="counter" data-target={metrics.responseTime.value}>0</span>{metrics.responseTime.unit}
+          </div>
+          <div class="metric-label">{metrics.responseTime.label}</div>
+          <div class="metric-sublabel">{metrics.responseTime.sublabel}</div>
+        </div>
+      )}
+    </div>
+
+    <!-- Reviews & Trust Badges -->
+    <div class="reviews-section">
+      <div class="reviews-grid">
+        <!-- Google Reviews -->
+        {reviews.google && (
+          <div class="review-block">
+            <div class="review-source">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+                alt="Google"
+                class="source-logo"
+              >
+              <div class="review-stars">
+                {[...Array(5)].map(() => (
+                  <i class="fas fa-star"></i>
+                ))}
+              </div>
+              <span class="review-rating">{reviews.google.rating.toFixed(1)}</span>
+            </div>
+            <p class="review-text">"{reviews.google.text}" - {reviews.google.author}</p>
+          </div>
+        )}
+
+        <!-- Trust Badge -->
+        {badges.transparent && (
+          <div class="trust-badge">
+            <div class="badge-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="badge-content">
+              <div class="badge-title">{badges.transparent.title}</div>
+              <div class="badge-subtitle">{badges.transparent.subtitle}</div>
+            </div>
+          </div>
+        )}
+
+        <!-- Guarantee Badge -->
+        {badges.guarantee && (
+          <div class="trust-badge">
+            <div class="badge-icon">
+              <i class="fas fa-award"></i>
+            </div>
+            <div class="badge-content">
+              <div class="badge-title">{badges.guarantee.title}</div>
+              <div class="badge-subtitle">{badges.guarantee.subtitle}</div>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Counter animation
+  document.addEventListener('DOMContentLoaded', () => {
+    const counters = document.querySelectorAll('.counter');
+    const speed = 200;
+
+    const animateCounter = (counter: Element) => {
+      const target = parseInt(counter.getAttribute('data-target') || '0');
+      const increment = target / speed;
+      let current = 0;
+
+      const updateCounter = () => {
+        current += increment;
+        if (current < target) {
+          counter.textContent = Math.ceil(current).toString();
+          requestAnimationFrame(updateCounter);
+        } else {
+          counter.textContent = target.toString();
+        }
+      };
+
+      updateCounter();
+    };
+
+    // Intersection Observer for triggering animation
+    const observerOptions = {
+      threshold: 0.5,
+      rootMargin: '0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const counter = entry.target;
+          animateCounter(counter);
+          observer.unobserve(counter);
+        }
+      });
+    }, observerOptions);
+
+    counters.forEach(counter => {
+      observer.observe(counter);
+    });
+  });
+</script>

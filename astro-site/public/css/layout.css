@@ -1,0 +1,173 @@
+/* ===================================
+   CONSOLIDATED LAYOUT & SPACING
+   All container, alignment, spacing, and hero positioning
+
+   OPTIMIZED TO AVOID HOMEPAGE CONFLICTS:
+   - Excludes .hero-modern (homepage hero)
+   - Excludes .modern-stats-section (homepage stats)
+   - Uses specific selectors to prevent interference
+   - Removed aggressive !important declarations
+   =================================== */
+
+/* === BASE RESET === */
+html {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* === CONTAINER SYSTEM === */
+.container {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* Ensure main content area is centered - only if not already styled */
+main:not([class]),
+#main-content:not([class]) {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Sections should be full width with centered content - only if not specifically styled */
+section:not([class*="hero"]):not([class*="stats"]):not([class*="services"]) {
+    width: 100%;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* === HERO SECTIONS - CONSOLIDATED POSITIONING === */
+/* Only apply to secondary pages, not homepage hero */
+.hero:not(.hero-modern),
+.hero-section,
+.services-hero-enhanced,
+.about-hero {
+    width: 100%;
+    margin: 0;
+    margin-top: 140px; /* Account for fixed header height + spacing */
+    padding-top: 0;
+    min-height: auto;
+}
+
+/* Hero heading adjustment for navbar clearance - not for homepage */
+.hero:not(.hero-modern) h1 {
+    padding-top: 60px;
+}
+
+/* === SECTION SPACING STANDARDIZATION === */
+/* Only apply to generic sections, not specific components */
+.section:not([class*="hero"]):not([class*="modern"]):not([class*="stats"]) {
+    padding: 80px 0;
+}
+
+/* Fix excessive bottom padding on specific sections - only if not already styled */
+#results:not([style*="padding"]) {
+    padding-bottom: 80px;
+}
+
+#cta:not([style*="padding"]) {
+    padding-bottom: 80px;
+}
+
+/* Let modern sections handle their own spacing */
+.modern-stats-section {
+    /* Remove forced padding - let component handle this */
+}
+
+/* === FOOTER === */
+footer {
+    width: 100%;
+    margin: 0;
+}
+
+footer .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* === LAYOUT SAFETY === */
+/* Remove any transform or position that might shift content - only for generic elements */
+.container:not([class*="hero"]):not([class*="modern"]),
+main:not([class*="hero"]):not([class*="modern"]),
+section:not([class*="hero"]):not([class*="modern"]):not([class*="stats"]) {
+    position: static;
+    transform: none;
+    left: auto;
+    right: auto;
+}
+
+/* Prevent images from breaking layout */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Fix wrapper divs */
+.wrapper,
+.page-wrapper,
+.content-wrapper {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* === RESPONSIVE BREAKPOINTS === */
+@media (max-width: 1400px) {
+    .container {
+        padding: 0 30px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .hero:not(.hero-modern),
+    .hero-section,
+    .services-hero-enhanced,
+    .about-hero {
+        margin-top: 120px;
+    }
+
+    .hero:not(.hero-modern) h1 {
+        padding-top: 40px;
+    }
+}
+
+@media (max-width: 968px) {
+    .container {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .hero:not(.hero-modern),
+    .hero-section,
+    .services-hero-enhanced,
+    .about-hero {
+        margin-top: 110px;
+    }
+
+    .hero:not(.hero-modern) h1 {
+        padding-top: 30px;
+    }
+
+    .section:not([class*="hero"]):not([class*="modern"]):not([class*="stats"]) {
+        padding: 60px 0;
+    }
+}

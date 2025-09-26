@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Theme Showcase | The Profit Platform</title>
+    <meta name="description" content="Complete showcase of The Profit Platform's modern design system with all theme elements, components, and interactions.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://theprofitplatform.com.au/theme-showcase.html">
+    <meta property="og:title" content="Modern Theme Showcase | The Profit Platform">
+    <meta property="og:description" content="Complete showcase of modern design system with glass morphism, animations, and responsive components.">
+    <meta property="og:image" content="https://theprofitplatform.com.au/images/theme-showcase.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://theprofitplatform.com.au/theme-showcase.html">
+    <meta property="twitter:title" content="Modern Theme Showcase | The Profit Platform">
+    <meta property="twitter:description" content="Complete showcase of modern design system with glass morphism, animations, and responsive components.">
+    <meta property="twitter:image" content="https://theprofitplatform.com.au/images/theme-showcase.jpg">
+
+    <!-- Additional Meta Tags -->
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Theme Showcase">
+    <meta name="format-detection" content="telephone=yes">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Theme CSS Files -->
+    <link rel="stylesheet" href="css/modern-theme-variables.css">
+    <link rel="stylesheet" href="css/modern-theme-components.css">
+    <link rel="stylesheet" href="css/hero-modern.css" media="all">
+    <link rel="stylesheet" href="css/critical-inline.css" media="all">
+    <link rel="stylesheet" href="css/theme-showcase.css" media="all">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "https://theprofitplatform.com.au/#organization",
+                "name": "The Profit Platform",
+                "description": "Sydney's leading digital marketing agency specializing in modern web design and conversion optimization.",
+                "url": "https://theprofitplatform.com.au",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://theprofitplatform.com.au/images/logo.png",
+                    "width": 300,
+                    "height": 100
+                },
+                "contactPoint": {
+                    "@type": "ContactPoint",
+                    "telephone": "+61-2-8123-4567",
+                    "contactType": "customer service",
+                    "areaServed": "AU",
+                    "availableLanguage": "English"
+                },
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Level 15, 1 Bligh Street",
+                    "addressLocality": "Sydney",
+                    "addressRegion": "NSW",
+                    "postalCode": "2000",
+                    "addressCountry": "AU"
+                },
+                "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": -33.8688,
+                    "longitude": 151.2093
+                }
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://theprofitplatform.com.au/theme-showcase.html#webpage",
+                "url": "https://theprofitplatform.com.au/theme-showcase.html",
+                "name": "Modern Theme Showcase - The Profit Platform",
+                "description": "Complete showcase of modern design system with glass morphism, animations, and responsive components.",
+                "isPartOf": {
+                    "@id": "https://theprofitplatform.com.au/#website"
+                }
+            }
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                    "@id": "https://theprofitplatform.com.au",
+                    "name": "Home"
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                    "@id": "https://theprofitplatform.com.au/theme-showcase.html",
+                    "name": "Theme Showcase"
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FB947JWCFT"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-FB947JWCFT');
+    </script>
+
+    <!-- Hotjar Tracking Code -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:6526316,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+</head>
+<body class="loading">
+    <!-- Dynamic Navigation Loader -->
+    <script src="js/components/navigation-inline.js" defer></script>
+
+    <!-- Hero Section -->
+    <section class="hero hero-modern" id="theme-hero">
+        <div class="hero-background">
+            <div class="hero-grid"></div>
+            <div class="hero-orbs">
+                <div class="orb orb-1"></div>
+                <div class="orb orb-2"></div>
+                <div class="orb orb-3"></div>
+            </div>
+        </div>
+
+        <div class="container hero-content">
+            <div class="hero-main">
+                <div class="hero-text" data-aos="fade-up" data-aos-delay="100">
+                    <h1 class="hero-title">
+                        Modern <span class="text-gradient-primary">Theme</span><br>
+                        <span class="text-gradient-secondary">Showcase</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Complete demonstration of <strong>The Profit Platform's</strong> modern design system with glass morphism, animations, and responsive components.
+                    </p>
+
+                    <!-- Statistics Section -->
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="50">0</div>
+                            <div class="stat-label">Components</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="100">0</div>
+                            <div class="stat-label">% Modern</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="15">0</div>
+                            <div class="stat-label">Animations</div>
+                        </div>
+                    </div>
+
+                    <!-- Call-to-Action Section -->
+                    <div class="hero-cta-section">
+                        <div class="hero-buttons">
+                            <a href="#components" class="btn-primary-modern enhanced-cta">
+                                <div class="btn-text">Explore Components</div>
+                                <div class="btn-icon"><i class="fas fa-arrow-down"></i></div>
+                            </a>
+                            <a href="#design-system" class="btn-secondary-modern">
+                                <span>Design System</span>
+                                <i class="fas fa-palette"></i>
+                            </a>
+                        </div>
+                        <div class="trust-badges" data-aos="fade-up" data-aos-delay="400">
+                            <div class="badge">
+                                <div class="badge-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="badge-text">Modern Design</div>
+                            </div>
+                            <div class="badge">
+                                <div class="badge-icon"><i class="fas fa-rocket"></i></div>
+                                <div class="badge-text">Performance Optimized</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Components Showcase Section -->
+    <section class="section-modern" id="components">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title text-gradient-primary">Theme Components</h2>
+                <p class="section-subtitle">Explore all the modern UI components and their variations</p>
+            </div>
+
+            <!-- Card Components -->
+            <div class="grid-modern" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-modern">
+                    <div class="card-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="card-title">Glass Morphism Cards</h3>
+                    <p class="card-description">Beautiful translucent cards with backdrop blur effects and hover animations.</p>
+                    <div class="card-features">
+                        <div class="feature-item">Backdrop Blur</div>
+                        <div class="feature-item">3D Hover Effects</div>
+                        <div class="feature-item">Gradient Borders</div>
+                    </div>
+                    <a href="#" class="card-button">
+                        <span>View Details</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="card-modern featured">
+                    <div class="card-badge">Featured</div>
+                    <div class="card-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="card-title">Interactive Buttons</h3>
+                    <p class="card-description">Multiple button styles with smooth animations, gradients, and micro-interactions.</p>
+                    <div class="card-features">
+                        <div class="feature-item">Gradient Backgrounds</div>
+                        <div class="feature-item">Glow Effects</div>
+                        <div class="feature-item">Icon Animations</div>
+                    </div>
+                    <a href="#" class="card-button">
+                        <span>Explore More</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="card-modern">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="card-title">Animated Statistics</h3>
+                    <p class="card-description">Eye-catching stat cards with number counters and progress animations.</p>
+                    <div class="card-features">
+                        <div class="feature-item">Counter Animation</div>
+                        <div class="feature-item">Progress Bars</div>
+                        <div class="feature-item">Icon Integration</div>
+                    </div>
+                    <a href="#" class="card-button">
+                        <span>See Demo</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Button Variations -->
+            <div class="button-showcase" data-aos="fade-up" data-aos-delay="400">
+                <h3 class="showcase-title">Button Variations</h3>
+                <div class="button-grid">
+                    <button class="btn-primary-modern">
+                        <div class="btn-text">Primary Button</div>
+                        <div class="btn-icon"><i class="fas fa-arrow-right"></i></div>
+                    </button>
+
+                    <button class="btn-secondary-modern">
+                        <span>Secondary Button</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </button>
+
+                    <button class="btn-outline-modern">
+                        <span>Outline Button</span>
+                        <i class="fas fa-download"></i>
+                    </button>
+
+                    <button class="btn-ghost-modern">
+                        <span>Ghost Button</span>
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Design System Section -->
+    <section class="section-modern bg-alt" id="design-system">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title text-gradient-secondary">Design System</h2>
+                <p class="section-subtitle">Colors, typography, and spacing that make up our modern theme</p>
+            </div>
+
+            <div class="design-system-grid" data-aos="fade-up" data-aos-delay="200">
+                <!-- Color Palette -->
+                <div class="design-card">
+                    <h3 class="design-card-title">Color Palette</h3>
+                    <div class="color-swatches">
+                        <div class="color-swatch primary" data-color="#3b82f6">
+                            <div class="color-preview"></div>
+                            <div class="color-info">
+                                <div class="color-name">Primary Blue</div>
+                                <div class="color-value">#3b82f6</div>
+                            </div>
+                        </div>
+                        <div class="color-swatch secondary" data-color="#8b5cf6">
+                            <div class="color-preview"></div>
+                            <div class="color-info">
+                                <div class="color-name">Purple</div>
+                                <div class="color-value">#8b5cf6</div>
+                            </div>
+                        </div>
+                        <div class="color-swatch accent" data-color="#06b6d4">
+                            <div class="color-preview"></div>
+                            <div class="color-info">
+                                <div class="color-name">Cyan</div>
+                                <div class="color-value">#06b6d4</div>
+                            </div>
+                        </div>
+                        <div class="color-swatch success" data-color="#10b981">
+                            <div class="color-preview"></div>
+                            <div class="color-info">
+                                <div class="color-name">Success</div>
+                                <div class="color-value">#10b981</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Typography -->
+                <div class="design-card">
+                    <h3 class="design-card-title">Typography</h3>
+                    <div class="typography-samples">
+                        <div class="type-sample">
+                            <div class="sample-text hero-title-sample">Hero Title</div>
+                            <div class="sample-info">Inter 800 / clamp(2.5rem, 6vw, 4rem)</div>
+                        </div>
+                        <div class="type-sample">
+                            <div class="sample-text section-title-sample">Section Title</div>
+                            <div class="sample-info">Inter 700 / clamp(2rem, 4vw, 3rem)</div>
+                        </div>
+                        <div class="type-sample">
+                            <div class="sample-text card-title-sample">Card Title</div>
+                            <div class="sample-info">Inter 600 / clamp(1.25rem, 2vw, 1.5rem)</div>
+                        </div>
+                        <div class="type-sample">
+                            <div class="sample-text body-text-sample">Body Text</div>
+                            <div class="sample-info">Inter 400 / 1.125rem</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spacing System -->
+                <div class="design-card">
+                    <h3 class="design-card-title">Spacing System</h3>
+                    <div class="spacing-samples">
+                        <div class="spacing-item" data-size="4px">
+                            <div class="spacing-box"></div>
+                            <span>4px (0.25rem)</span>
+                        </div>
+                        <div class="spacing-item" data-size="8px">
+                            <div class="spacing-box"></div>
+                            <span>8px (0.5rem)</span>
+                        </div>
+                        <div class="spacing-item" data-size="16px">
+                            <div class="spacing-box"></div>
+                            <span>16px (1rem)</span>
+                        </div>
+                        <div class="spacing-item" data-size="24px">
+                            <div class="spacing-box"></div>
+                            <span>24px (1.5rem)</span>
+                        </div>
+                        <div class="spacing-item" data-size="32px">
+                            <div class="spacing-box"></div>
+                            <span>32px (2rem)</span>
+                        </div>
+                        <div class="spacing-item" data-size="48px">
+                            <div class="spacing-box"></div>
+                            <span>48px (3rem)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Animations -->
+                <div class="design-card">
+                    <h3 class="design-card-title">Animations</h3>
+                    <div class="animation-samples">
+                        <div class="animation-demo fade-in">
+                            <div class="demo-box">Fade In</div>
+                        </div>
+                        <div class="animation-demo slide-up">
+                            <div class="demo-box">Slide Up</div>
+                        </div>
+                        <div class="animation-demo scale-in">
+                            <div class="demo-box">Scale In</div>
+                        </div>
+                        <div class="animation-demo hover-lift">
+                            <div class="demo-box">Hover Lift</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section-modern" id="features">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title text-gradient-primary">Modern Features</h2>
+                <p class="section-subtitle">Advanced capabilities built into our theme system</p>
+            </div>
+
+            <div class="features-grid" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-item" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Responsive Design</h3>
+                    <p class="feature-description">Mobile-first approach with fluid layouts that work perfectly on all devices.</p>
+                </div>
+
+                <div class="feature-item" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">Performance Optimized</h3>
+                    <p class="feature-description">Hardware acceleration, lazy loading, and optimized animations for smooth performance.</p>
+                </div>
+
+                <div class="feature-item" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-universal-access"></i>
+                    </div>
+                    <h3 class="feature-title">Accessibility First</h3>
+                    <p class="feature-description">WCAG compliant with screen reader support and keyboard navigation.</p>
+                </div>
+
+                <div class="feature-item" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="feature-title">Glass Morphism</h3>
+                    <p class="feature-description">Modern frosted glass effects with backdrop blur and transparency layers.</p>
+                </div>
+
+                <div class="feature-item" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="feature-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3 class="feature-title">Smooth Animations</h3>
+                    <p class="feature-description">Carefully crafted animations that enhance user experience without being distracting.</p>
+                </div>
+
+                <div class="feature-item" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="feature-title">Clean Code</h3>
+                    <p class="feature-description">Semantic HTML, modern CSS, and well-structured JavaScript following best practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section-modern cta-section">
+        <div class="container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2 class="cta-title text-gradient-primary">Ready to Transform Your Website?</h2>
+                <p class="cta-subtitle">Experience the power of modern design with our comprehensive theme system.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn-primary-modern enhanced-cta">
+                        <div class="btn-text">Get Started Today</div>
+                        <div class="btn-icon"><i class="fas fa-arrow-right"></i></div>
+                    </a>
+                    <a href="portfolio.html" class="btn-secondary-modern">
+                        <span>View Our Work</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-modern">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="images/logo.png" alt="The Profit Platform" class="logo-img">
+                        <div class="logo-text">The Profit Platform</div>
+                    </div>
+                    <p class="footer-description">
+                        Sydney's leading digital marketing agency specializing in modern web design and conversion optimization.
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="web-design.html">Web Design</a></li>
+                        <li><a href="seo.html">SEO Services</a></li>
+                        <li><a href="google-ads.html">Google Ads</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-title">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="theme-showcase.html">Theme Showcase</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-title">Connect</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+61 2 8123 4567</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>hello@theprofitplatform.com.au</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; 2024 The Profit Platform. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Modern Theme JavaScript -->
+    <script src="js/modern-theme.js"></script>
+    <script src="js/consolidated.js"></script>
+    <script src="js/animated-counter.js"></script>
+
+    <!-- Initialize AOS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-out-cubic',
+                once: true,
+                offset: 50
+            });
+        });
+    </script>
+
+    <!-- Theme Showcase Specific JavaScript -->
+    <script>
+        // Initialize theme showcase functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scroll for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Animation demo triggers
+            const animationDemos = document.querySelectorAll('.animation-demo');
+            animationDemos.forEach(demo => {
+                demo.addEventListener('click', function() {
+                    const box = this.querySelector('.demo-box');
+                    box.style.animation = 'none';
+                    box.offsetHeight; // Trigger reflow
+                    box.style.animation = null;
+                });
+            });
+
+            // Color swatch click to copy
+            document.querySelectorAll('.color-swatch').forEach(swatch => {
+                swatch.addEventListener('click', function() {
+                    const colorValue = this.dataset.color;
+                    if (navigator.clipboard) {
+                        navigator.clipboard.writeText(colorValue).then(() => {
+                            // Show feedback
+                            const feedback = document.createElement('div');
+                            feedback.textContent = 'Copied!';
+                            feedback.style.cssText = `
+                                position: absolute;
+                                top: -30px;
+                                left: 50%;
+                                transform: translateX(-50%);
+                                background: #10b981;
+                                color: white;
+                                padding: 4px 8px;
+                                border-radius: 4px;
+                                font-size: 12px;
+                                pointer-events: none;
+                                z-index: 1000;
+                            `;
+                            this.style.position = 'relative';
+                            this.appendChild(feedback);
+                            setTimeout(() => feedback.remove(), 1500);
+                        });
+                    }
+                });
+            });
+
+            // Remove loading class when everything is loaded
+            window.addEventListener('load', function() {
+                document.body.classList.remove('loading');
+            });
+        });
+    </script>
+</body>
+</html>

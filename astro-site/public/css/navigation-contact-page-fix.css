@@ -1,0 +1,75 @@
+/* Special Navigation Fixes for Contact & Portfolio Pages */
+/* This file addresses specific hover glitches on these pages */
+
+/* When Contact is the active page, prevent hover conflicts */
+body[data-page="contact"] .nav-item[data-page="contact"],
+body[data-page="portfolio"] .nav-item[data-page="contact"] {
+    position: relative !important;
+    isolation: isolate !important;
+    z-index: 10 !important;
+}
+
+/* Create buffer zone around Contact nav item */
+.nav-item[data-page="contact"] {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+    margin-right: 5px !important;
+}
+
+/* Stabilize CTA button positioning */
+.nav-cta {
+    transform: translateZ(0) !important;
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
+    will-change: auto !important;
+}
+
+/* Prevent hover state bleeding */
+.nav-item[data-page="contact"]:hover::before,
+.nav-item[data-page="contact"]:hover::after {
+    content: none !important;
+}
+
+/* Specific fix for Portfolio page Contact link */
+body[data-page="portfolio"] .nav-links li:nth-child(6) {
+    margin-right: 15px !important;
+}
+
+/* Specific fix for Contact page when it's active */
+body[data-page="contact"] .nav-item[data-page="contact"].active {
+    pointer-events: auto !important;
+    z-index: 15 !important;
+}
+
+/* Ensure clean boundaries between interactive elements */
+.nav-links.premium-nav-links > li {
+    isolation: isolate !important;
+}
+
+/* Remove any transform effects that might cause reflow */
+.nav-item[data-page="contact"]:hover {
+    transform: none !important;
+}
+
+/* Stabilize the nav pill background */
+.nav-item[data-page="contact"] .nav-pill-bg {
+    transform: translateZ(0) !important;
+    will-change: transform !important;
+}
+
+/* Prevent CTA button from moving when Contact is hovered */
+.nav-links:has(.nav-item[data-page="contact"]:hover) ~ .nav-cta {
+    transform: translateX(0) !important;
+    transition: none !important;
+}
+
+/* Additional spacing for better separation */
+@media (min-width: 969px) {
+    .nav-links.premium-nav-links {
+        gap: 8px !important;
+    }
+
+    .nav-item[data-page="portfolio"] + li .nav-item[data-page="contact"] {
+        margin-left: 5px !important;
+    }
+}

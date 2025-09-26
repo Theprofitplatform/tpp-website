@@ -1,0 +1,72 @@
+---
+export interface ProcessStep {
+  number: number;
+  icon: string;
+  title: string;
+  description: string;
+}
+
+export interface Props {
+  sectionTag?: string;
+  title?: string;
+  subtitle?: string;
+  steps?: ProcessStep[];
+}
+
+const {
+  sectionTag = "⚡ Our Process",
+  title = "From Struggling to Dominating in 90 Days",
+  subtitle = "Our proven 4-step system is helping Sydney businesses transform from invisible to industry leaders. Here's exactly how we do it.",
+  steps = [
+    {
+      number: 1,
+      icon: "fa-search-plus",
+      title: "Deep-Dive Analysis",
+      description: "We audit your current digital presence, analyze your competitors, and identify the exact opportunities that will drive the biggest impact for your business. No guesswork—just data-driven insights."
+    },
+    {
+      number: 2,
+      icon: "fa-chess",
+      title: "Strategic Planning",
+      description: "Based on our analysis, we create a customized growth strategy that targets your ideal customers, maximizes your budget, and delivers measurable results within 90 days."
+    },
+    {
+      number: 3,
+      icon: "fa-rocket",
+      title: "Rapid Implementation",
+      description: "We execute your strategy with precision and speed. From website optimization to ad campaigns, everything is implemented according to our proven framework for maximum impact."
+    },
+    {
+      number: 4,
+      icon: "fa-chart-line",
+      title: "Optimize & Scale",
+      description: "We continuously monitor, test, and optimize your campaigns to ensure peak performance. As results improve, we scale successful strategies to drive even greater growth."
+    }
+  ]
+} = Astro.props;
+---
+
+<section class="process section animate-on-scroll" id="process">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">{sectionTag}</span>
+      <h2 class="section-title">{title}</h2>
+      <p class="section-subtitle">{subtitle}</p>
+    </div>
+
+    <div class="process-timeline">
+      {steps.map((step) => (
+        <div class="process-step animate-on-scroll">
+          <div class="step-number">{step.number}</div>
+          <div class="process-icon">
+            <i class={`fas ${step.icon}`}></i>
+          </div>
+          <div class="process-content">
+            <h3>{step.title}</h3>
+            <p>{step.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
